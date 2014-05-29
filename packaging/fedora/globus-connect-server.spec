@@ -20,6 +20,8 @@ BuildArch:      noarch
 %global python  python
 %endif
 
+BuildRequires:  %{python}
+
 Requires:       globus-connect-server-common = %{version}
 Requires:       globus-connect-server-io = %{version}
 Requires:       globus-connect-server-id = %{version}
