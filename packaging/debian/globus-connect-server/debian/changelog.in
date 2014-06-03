@@ -1,5 +1,11 @@
 globus-connect-server (4.0.0-1+gt6.@distro@) @distro@; urgency=low
 
+  * Rebuild to fix extra source inclusion problem
+
+ -- Globus Toolkit <support@globus.org>  Tue, 03 June 2014 11:36:13 -0400
+
+globus-connect-server (4.0.0-1+gt6.@distro@) @distro@; urgency=low
+
   * Prep for GT6
 
  -- Globus Toolkit <support@globus.org>  Thu, 29 May 2014 09:44:53 -0400
