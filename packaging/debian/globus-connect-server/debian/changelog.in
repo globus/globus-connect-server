@@ -1,4 +1,4 @@
-globus-connect-server (4.0.0-1+gt6.@distro@) @distro@; urgency=low
+globus-connect-server (4.0.0-2+gt6.@distro@) @distro@; urgency=low
 
   * Rebuild to fix extra source inclusion problem
 
