@@ -1,3 +1,12 @@
 #! /bin/sh
 #DEBHELPER#
-rm -rf /usr/share/globus-connect-server/globusonline/transfer/
+
+if which pyclean >/dev/null 2>&1; then
+        pyclean -p globus-connect-server-common
+else
+        dpkg -L globus-connect-server-common | grep \.py$ | while read file
+        do
+                rm -f "${file}"[co] >/dev/null
+        done
+fi
+

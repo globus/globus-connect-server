@@ -1,3 +1,9 @@
+globus-connect-server (4.0.0-3+gt6.@distro@) @distro@; urgency=low
+
+  * Fix byte-compiled files at install/uninstall
+
+ -- Globus Toolkit <support@globus.org>  Tue, 03 June 2014 13:12:10 -0400
+
 globus-connect-server (4.0.0-2+gt6.@distro@) @distro@; urgency=low
 
   * Rebuild to fix extra source inclusion problem
