@@ -19,6 +19,7 @@ package GlobusTransferAPIClient;
 
 use strict;
 use HTML::Form;
+use IO::Socket::SSL;
 use JSON;
 use LWP;
 use POSIX;
@@ -48,7 +49,7 @@ sub new($;%)
     };
     if (! $self->{ua})
     {
-        $self->{ua} = LWP::UserAgent->new(ssl_opts => {verify_hostname => 0 });
+        $self->{ua} = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0, SSL_verify_mode => SSL_VERIFY_NONE });
         $self->{ua}->cookie_jar({});
     }
     if (! $self->{token_host})
