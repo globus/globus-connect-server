@@ -89,7 +89,7 @@ sub force_cleanup()
 # Prepare
 plan tests => 3;
 
-my $ua = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0, SSL_verify_mode => SSL_VERIFY_NONE });
+my $ua = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0, SSL_verify_mode => 'SSL_VERIFY_NONE' });
 
 # Test Step #1:
 # Setup ID server

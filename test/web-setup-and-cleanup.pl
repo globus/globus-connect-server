@@ -27,7 +27,7 @@ use LWP;
 
 # Prepare
 my $config_file = "test-web.conf";
-my $ua = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0, SSL_verify_mode => SSL_VERIFY_NONE });
+my $ua = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0, SSL_verify_mode => 'SSL_VERIFY_NONE' });
 
 sub diagsystem(@)
 {
