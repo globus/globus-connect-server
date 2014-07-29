@@ -404,7 +404,6 @@ sub endpoint_access_add($$;%)
     my $endpoint = $self->qualified_endpoint_name(shift);
     my %doc = (
         DATA_TYPE => "access",
-        id => time(),
         path => '/',
         principal_type => 'user',
         principal => $self->{user},
@@ -412,6 +411,10 @@ sub endpoint_access_add($$;%)
         @_
     );
     my ($json, $req, $res);
+
+    if ($doc{path} !~ m|/$|) {
+        $doc{path} .= '/';
+    }
 
     $json = $json_parser->encode(\%doc);
 
