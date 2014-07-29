@@ -817,7 +817,7 @@ class GCMU(object):
         (name, ver, id) = platform.linux_distribution()
         args = ["/etc/init.d/" + self.service, "stop"]
 
-        if name == 'CentOS' \
+        if name.startswith('CentOS') \
                 or name == 'RedHat' \
                 or name.startswith("Scientific") \
                 or name == 'Fedora':
@@ -834,7 +834,7 @@ class GCMU(object):
         (name, ver, id) = platform.linux_distribution()
         args = ["/etc/init.d/" + self.service, "restart"]
 
-        if name == 'CentOS' \
+        if name.startswith('CentOS') \
                 or name == 'RedHat' \
                 or name.startswith("Scientific") \
                 or name == 'Fedora':

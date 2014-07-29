@@ -1,3 +1,9 @@
+globus-connect-server (4.0.3-1+gt6.@distro@) @distro@; urgency=low
+
+  * Update to 4.0.3 (compatible with CentOS 7)
+
+ -- Globus Toolkit <support@globus.org>  Tue, 29 July 2014 13:01:34 -0400
+
 globus-connect-server (4.0.2-3+gt6.@distro@) @distro@; urgency=low
 
   * Add debian source/format

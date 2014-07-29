@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.2
+Version:        4.0.3
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Tue Jul 29 2014 Globus Toolkit <support@globus.org> 4.0.3-1
+- Compatibility with CentOS 7
+
 * Mon Jun 23 2014 Globus Toolkit <support@globus.org> 4.0.2-1
 - Improve diagnostics when IdentityMethod = OAuth and [OAuth] section doesn't
   contain a server name
