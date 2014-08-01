@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.4
+Version:        4.0.5
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
