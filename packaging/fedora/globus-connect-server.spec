@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.3
+Version:        4.0.4
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Thu Jul 31 2014 Globus Toolkit <support@globus.org> 4.0.4-1
+- Compatibility with SLES 11.3
+
 * Tue Jul 29 2014 Globus Toolkit <support@globus.org> 4.0.3-1
 - Compatibility with CentOS 7
 

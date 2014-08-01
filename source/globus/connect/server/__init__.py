@@ -820,7 +820,8 @@ class GCMU(object):
         if name.startswith('CentOS') \
                 or name == 'RedHat' \
                 or name.startswith("Scientific") \
-                or name == 'Fedora':
+                or name == 'Fedora' \
+                or name.startswith("SUSE"):
             args = ["/sbin/service", self.service, "stop"]
         elif name == 'Ubuntu' or name == 'Debian':
             args = ["/usr/sbin/service", self.service, "stop"]
@@ -837,7 +838,8 @@ class GCMU(object):
         if name.startswith('CentOS') \
                 or name == 'RedHat' \
                 or name.startswith("Scientific") \
-                or name == 'Fedora':
+                or name == 'Fedora' \
+                or name.startswith("SUSE"):
             args = ["/sbin/service", self.service, "restart"]
         elif name == 'Ubuntu' or name == 'Debian':
             args = ["/usr/sbin/service", self.service, "restart"]

@@ -1,3 +1,9 @@
+globus-connect-server (4.0.4-1+gt6.@distro@) @distro@; urgency=low
+
+  * Update to 4.0.4 (Add support for SLES 11)
+
+ -- Globus Toolkit <support@globus.org>  Thu, 31 July 2014 15:13:13 -0400
+
 globus-connect-server (4.0.3-1+gt6.@distro@) @distro@; urgency=low
 
   * Update to 4.0.3 (compatible with CentOS 7)
