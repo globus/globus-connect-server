@@ -1,3 +1,9 @@
+globus-connect-server (4.0.5-1+gt6.@distro@) @distro@; urgency=low
+
+  * Update to 4.0.5 (Add support for Ubuntu 14.04)
+
+ -- Globus Toolkit <support@globus.org>  Fri, 01 August 2014 14:10:27 -0400
+
 globus-connect-server (4.0.4-1+gt6.@distro@) @distro@; urgency=low
 
   * Update to 4.0.4 (Add support for SLES 11)

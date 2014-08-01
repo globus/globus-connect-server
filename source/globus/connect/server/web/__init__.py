@@ -36,6 +36,8 @@ _enabled_mod_ssl = "/var/lib/globus-connect-server/enabled_mod_ssl"
 _enabled_mod_wsgi = "/var/lib/globus-connect-server/enabled_mod_wsgi"
 _enabled_default_ssl_site = \
         "/var/lib/globus-connect-server/enabled_default_ssl_site"
+_enabled_myproxy_oauth_conf = \
+        "/var/lib/globus-connect-server/enabled_myproxy_oauth_conf"
 _created_vhost_conf = "/var/lib/globus-connect-server/created_vhost_conf"
 _created_ssl_cert = "/var/lib/globus-connect-server/created_ssl_cert"
 _created_pidfile_symlink = "/var/lib/globus-connect-server/created_pidfile_symlink"
@@ -58,10 +60,17 @@ class Web(gcmu.GCMU):
         self.password = kwargs.get("password")
         (distname, distver, distid) = platform.dist()
 
-        if distname in [ 'Ubuntu', 'debian' ]:
+        if distname == 'debian':
             self.service = "apache2"
             self.dist_type = "deb"
             self.http_conf_dir = '/etc/apache2/conf.d'
+        elif distname == 'Ubuntu':
+            self.service = "apache2"
+            self.dist_type = "deb"
+            if float(distver) > 14:
+                self.http_conf_dir = '/etc/apache2/conf-available'
+            else:
+                self.http_conf_dir = '/etc/apache2/conf.d'
         elif distname == 'SuSE':
             self.service = "apache2"
             self.dist_type = "suse"
@@ -215,6 +224,19 @@ class Web(gcmu.GCMU):
                     self.logger.warn(err)
                 touched = file(_enabled_mod_wsgi, "w")
                 touched.close()
+            if self.http_conf_dir == '/etc/apache2/conf-available' and not \
+                    os.path.exists(
+                    "/etc/apache2/conf-available/myproxy-oauth.conf"):
+                enabler = Popen(["/usr/sbin/a2enconf", "myproxy-oauth"],
+                        stdin=None, stdout=PIPE, stderr=PIPE)
+                (out, err) = enabler.communicate()
+                if out != "":
+                    self.logger.debug(out)
+                if err != "":
+                    self.logger.warn(err)
+                touched = file(_enabled_myproxy_oauth_conf, "w")
+                touched.close()
+
         self.logger.debug("EXIT: Web.enable_mod_wsgi()")
 
     def disable_mod_ssl(self, **kwargs):
@@ -256,6 +278,15 @@ class Web(gcmu.GCMU):
                 if err != "":
                     self.logger.warn(err)
                 os.remove(_enabled_mod_wsgi)
+            if os.path.exists(_enabled_myproxy_oauth_conf):
+                disabler = Popen(["/usr/sbin/a2disconf", "myproxy-oauth"],
+                        stdin=None, stdout=PIPE, stderr=PIPE)
+                (out, err) = disabler.communicate()
+                if out != "":
+                    self.logger.debug(out)
+                if err != "":
+                    self.logger.warn(err)
+                os.remove(_enabled_myproxy_oauth_conf)
         self.logger.debug("EXIT: Web.disable_mod_wsgi()")
 
     def enable_default_ssl_site(self, **kwargs):

@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Fri Aug 01 2014 Globus Toolkit <support@globus.org> 4.0.5-1
+- Compatibility with Ubuntu 14.04
+
 * Thu Jul 31 2014 Globus Toolkit <support@globus.org> 4.0.4-1
 - Compatibility with SLES 11.3
 
