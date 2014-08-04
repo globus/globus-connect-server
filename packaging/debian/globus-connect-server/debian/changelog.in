@@ -1,3 +1,9 @@
+globus-connect-server (4.0.6-1+gt6.@distro@) @distro@; urgency=low
+
+  * Fix incorrect SuSE paths
+
+ -- Globus Toolkit <support@globus.org>  Mon, 04 August 2014 13:04:49 -0400
+
 globus-connect-server (4.0.5-1+gt6.@distro@) @distro@; urgency=low
 
   * Update to 4.0.5 (Add support for Ubuntu 14.04)

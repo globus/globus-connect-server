@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.5
+Version:        4.0.6
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon Aug 04 2014 Globus Toolkit <support@globus.org> 4.0.6-1
+- Fix incorrect SuSE paths
+
 * Fri Aug 01 2014 Globus Toolkit <support@globus.org> 4.0.5-1
 - Compatibility with Ubuntu 14.04
 

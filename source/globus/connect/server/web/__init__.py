@@ -304,7 +304,7 @@ class Web(gcmu.GCMU):
                 touched.close()
 
             if not os.path.exists(_suse_ssl_cert):
-                ssl_create = Popen(["/usr/sbin/gensslcert"],
+                ssl_create = Popen(["/usr/bin/gensslcert"],
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = ssl_create.communicate()
                 if out != "":
@@ -329,7 +329,7 @@ class Web(gcmu.GCMU):
             if os.path.exists(_created_ssl_cert):
                 os.remove(_suse_ssl_cert)
                 os.remove(_suse_ssl_key)
-                os.remove(_suse_ssl_csr)
+                os.remove(_suse_ssl_req)
                 os.remove(_created_ssl_cert)
 
 # vim: filetype=python:
