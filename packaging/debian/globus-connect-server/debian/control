@@ -1,5 +1,5 @@
 Source: globus-connect-server
-Section: unknown
+Section: net
 Priority: extra
 Maintainer: Mattias Ellert <mattias.ellert@fysast.uu.se>
 Build-Depends: debhelper (>= 7.0.0)
