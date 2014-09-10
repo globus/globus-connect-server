@@ -1,3 +1,9 @@
+globus-connect-server (4.0.7-1+gt6.@distro@) @distro@; urgency=low
+
+  * Update version after commit was done without doing so
+
+ -- Globus Toolkit <support@globus.org>  Wed, 10 September 2014 11:41:16 -0400
+
 globus-connect-server (4.0.6-2+gt6.@distro@) @distro@; urgency=low
 
   * Fix incorrect section in metadata
