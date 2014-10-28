@@ -15,6 +15,7 @@
 import copy
 import globus.connect.server as gcmu
 import os
+import re
 import ConfigParser
 
 class ConfigFile(ConfigParser.ConfigParser):
@@ -25,7 +26,6 @@ class ConfigFile(ConfigParser.ConfigParser):
     MYPROXY_SECTION = "MyProxy"
     OAUTH_SECTION = "OAuth"
 
-    # [Globus]
     USER_OPTION = "User"
     PASSWORD_OPTION = "Password"
     GLOBUS_INSTANCE_OPTION = "Instance"
@@ -65,7 +65,7 @@ class ConfigFile(ConfigParser.ConfigParser):
         AUTHORIZATION_METHOD_CILOGON,
         AUTHORIZATION_METHOD_GRIDMAP
     ]
-    CILOGON_IDENTITY_PROVIDER = "CILogonIdentityProvider"
+    CILOGON_IDENTITY_PROVIDER_OPTION = "CILogonIdentityProvider"
     
     # [GridFTP]
     SERVER_OPTION = "Server"                        # Also [MyProxy and OAuth]
@@ -75,10 +75,9 @@ class ConfigFile(ConfigParser.ConfigParser):
     DATA_INTERFACE_OPTION = "DataInterface"
     RESTRICT_PATHS_OPTION = "RestrictPaths"
     SHARING_OPTION = "Sharing"
-    SHARING_DN = "SharingDN"
-    SHARING_RESTRICT_PATHS = "SharingRestrictPaths"
-    SHARING_DIR = "SharingStateDir"
-    SHARING_CONTROL = "SharingControl"
+    SHARING_DN_OPTION = "SharingDN"
+    SHARING_RESTRICT_PATHS_OPTION = "SharingRestrictPaths"
+    SHARING_STATE_DIR_OPTION = "SharingStateDir"
     DEFAULT_SHARING_DN = "/C=US/O=Globus Consortium/OU=Globus Online/OU=Transfer User/CN=__transfer__"
     UDT_OPTION = "AllowUDT"
 
@@ -100,6 +99,335 @@ class ConfigFile(ConfigParser.ConfigParser):
     LOGO_OPTION = "Logo"
     SSL_SERVER_CERT = "SSLServerCert"
     SSL_SERVER_KEY = "SSLServerKey"
+
+    validity = {
+        GLOBUS_SECTION: {
+            USER_OPTION.lower(): {
+                "option": USER_OPTION,
+                "expression": r".*"
+            },
+            PASSWORD_OPTION.lower(): {
+                "option": PASSWORD_OPTION,
+                "expression": r".*"
+            },
+            GLOBUS_INSTANCE_OPTION.lower(): {
+                "option": GLOBUS_INSTANCE_OPTION,
+                "expression": r"^(" + \
+                    "|".join([GLOBUS_INSTANCE_PRODUCTION,
+                            GLOBUS_INSTANCE_TEST]) + r")$"
+            }
+        },
+        ENDPOINT_SECTION: {
+            NAME_OPTION.lower(): {
+                "option": NAME_OPTION,
+                "expression": r".*"
+            },
+            PUBLIC_OPTION.lower(): {
+                "option": PUBLIC_OPTION,
+                "expression": r"^(True|False)$"
+            },
+            DEFAULT_DIRECTORY_OPTION.lower(): {
+                "option": DEFAULT_DIRECTORY_OPTION,
+                "expression": r"^/.*/$"
+            }
+        },
+        SECURITY_SECTION: {
+            FETCH_CREDENTIAL_FROM_RELAY_OPTION.lower(): {
+                "option": FETCH_CREDENTIAL_FROM_RELAY_OPTION,
+                "expression": r"^(True|False)$"
+            },
+            CERTIFICATE_FILE_OPTION.lower(): {
+                "option": CERTIFICATE_FILE_OPTION,
+                "expression": r"^/.*$"
+            },
+            KEY_FILE_OPTION.lower(): {
+                "option": KEY_FILE_OPTION,
+                "expression": r"^/.*$"
+            },
+            TRUSTED_CERTIFICATE_DIRECTORY_OPTION.lower(): {
+                "option": TRUSTED_CERTIFICATE_DIRECTORY_OPTION,
+                "expression": r"^/.*$"
+            },
+            IDENTITY_METHOD_OPTION.lower(): {
+                "option": IDENTITY_METHOD_OPTION,
+                "expression": r"^(" + \
+                    "|".join([IDENTITY_METHOD_MYPROXY,
+                            IDENTITY_METHOD_OAUTH,
+                            IDENTITY_METHOD_CILOGON]) + r")$"
+            },
+            AUTHORIZATION_METHOD_OPTION.lower(): {
+                "option": AUTHORIZATION_METHOD_OPTION,
+                "expression": r"^(" + \
+                    "|".join([AUTHORIZATION_METHOD_MYPROXY_GRIDMAP_CALLOUT,
+                            AUTHORIZATION_METHOD_CILOGON,
+                            AUTHORIZATION_METHOD_GRIDMAP]) + r")$"
+            },
+            GRIDMAP_OPTION.lower(): {
+                "option": GRIDMAP_OPTION,
+                "expression": r"^/.*$"
+            },
+            # Current as aof 2014-10-28
+            CILOGON_IDENTITY_PROVIDER_OPTION.lower(): {
+                "option": CILOGON_IDENTITY_PROVIDER_OPTION,
+                "expression": r"^(" + \
+                    "|".join([
+                        "Argonne National Laboratory",
+                        "Arizona State University",
+                        "Auburn University",
+                        "Bloomsburg University of Pennsylvania",
+                        "Boise State University",
+                        "Boston University",
+                        "Brookhaven National Laboratory",
+                        "Brown University",
+                        "California Institute of Technology",
+                        "California State Polytechnic University, Pomona",
+                        "California State University, Fresno",
+                        "California State University, Fullerton",
+                        "Carleton College",
+                        "Carnegie Mellon University",
+                        "Case Western Reserve University",
+                        "Clemson University",
+                        "Colorado School of Mines",
+                        "Colorado State University",
+                        "Columbia University",
+                        "Cornell University",
+                        "Duke University",
+                        "Emory University",
+                        "ESnet",
+                        "Florida Atlantic University",
+                        "Florida International University",
+                        "George Mason University",
+                        "Georgetown University",
+                        "Georgia Institute of Technology",
+                        "Google",
+                        "Goucher College",
+                        "GPN (Great Plains Network)",
+                        "Indiana University",
+                        "Indiana University of Pennsylvania",
+                        "Internet2",
+                        "Iowa State University",
+                        "Johns Hopkins",
+                        "Kansas State University",
+                        "Lawrence Berkeley National Laboratory",
+                        "Lehigh University",
+                        "LIGO Scientific Collaboration",
+                        "Louisiana State University",
+                        "Loyola University Maryland",
+                        "LTERN (Long Term Ecological Research Network)",
+                        "Marine Biological Laboratory",
+                        "Massachusetts Institute of Technology",
+                        "MCNC",
+                        "Medical University of South Carolina",
+                        "Michigan State University",
+                        "Montana State University - Bozeman",
+                        "Moss Landing Marine Laboratories",
+                        "National Institutes of Health",
+                        "New York University",
+                        "North Carolina State University",
+                        "Northwestern University",
+                        "Oak Ridge National Laboratory",
+                        "Ohio State University",
+                        "Ohio Technology Consortium (OH-TECH)",
+                        "Oklahoma State University System",
+                        "Old Dominion University",
+                        "Penn State",
+                        "Pomona College",
+                        "ProtectNetwork",
+                        "Purdue University Main Campus",
+                        "Reed College",
+                        "Rice University",
+                        "Rockefeller University",
+                        "Rutgers, The State University of New Jersey",
+                        "San Diego State University",
+                        "Southern Illinois University",
+                        "Southern Methodist University",
+                        "Stevens Institute of Technology",
+                        "Stony Brook University",
+                        "Syracuse University",
+                        "Texas A &amp; M University",
+                        "Texas State University - San Marcos",
+                        "Texas Tech University",
+                        "The Broad Institute of MIT and Harvard",
+                        "The George Washington University",
+                        "The University of Arizona",
+                        "Towson University",
+                        "Tufts University",
+                        "University At Albany, State University of New York",
+                        "University of Alabama, The",
+                        "University of Alabama at Birmingham",
+                        "University of Arkansas",
+                        "University of California, Davis",
+                        "University of California, San Francisco",
+                        "University of California, Santa Cruz",
+                        "University of California-Los Angeles",
+                        "University of California - Office of the President",
+                        "University of California-San Diego",
+                        "University of Central Florida",
+                        "University of Chicago",
+                        "University of Cincinnati Main Campus",
+                        "University of Colorado at Boulder",
+                        "University of Dayton",
+                        "University of Delaware",
+                        "University of Florida",
+                        "University of Hawaii",
+                        "University of Houston Libraries",
+                        "University of Illinois at Chicago",
+                        "University of Illinois At Springfield",
+                        "University of Illinois at Urbana-Champaign",
+                        "University of Iowa",
+                        "University of Kansas",
+                        "University of Kansas Medical Center",
+                        "University of Maryland Baltimore",
+                        "University of Maryland Baltimore County",
+                        "University of Maryland College Park",
+                        "University of Massachusetts Amherst",
+                        "University of Michigan",
+                        "University of Minnesota",
+                        "University of Mississippi",
+                        "University of Missouri System",
+                        "University of Nebraska-Lincoln",
+                        "University of North Carolina at Chapel Hill",
+                        "University of Notre Dame",
+                        "University of Oregon",
+                        "University of Pennsylvania",
+                        "University of Pittsburgh",
+                        "University of South Carolina",
+                        "University of South Florida",
+                        "University of Tennessee",
+                        "University of Texas at Austin",
+                        "University of Texas at Dallas",
+                        "University of Texas System",
+                        "University of Utah",
+                        "University of Vermont",
+                        "University of Virginia",
+                        "University of Washington",
+                        "University of Wisconsin-Madison",
+                        "University of Wisconsin-Milwaukee",
+                        "Utah State University",
+                        "Vanderbilt University",
+                        "Virginia Polytechnic Institute and State University",
+                        "Weill Cornell Medical College",
+                        "Western Michigan University",
+                        "West Virginia University",
+                        "Wheaton College (MA)",
+                        "Yale University"]) + r")$"
+            }
+        },
+        GRIDFTP_SECTION: {
+            SERVER_OPTION.lower(): {
+                "option": SERVER_OPTION,
+                "expression": r"^.*$"
+            },
+            SERVER_BEHIND_NAT_OPTION.lower(): {
+                "option": SERVER_BEHIND_NAT_OPTION,
+                "expression": r"^(True|False)$"
+            },
+            DN_OPTION.lower(): {
+                "option": DN_OPTION,
+                "expression": r"^/.*$"
+            },
+            INCOMING_PORT_RANGE_OPTION.lower(): {
+                "option": INCOMING_PORT_RANGE_OPTION,
+                "expression": r"^\d+,\d+$"
+            },
+            OUTGOING_PORT_RANGE_OPTION.lower(): {
+                "option": OUTGOING_PORT_RANGE_OPTION,
+                "expression": r"^\d+,\d+$"
+            },
+            DATA_INTERFACE_OPTION.lower(): {
+                "option": DATA_INTERFACE_OPTION,
+                "expression": r"^[a-zA-Z0-9][a-zA-Z0-9.-]*$"
+            },
+            RESTRICT_PATHS_OPTION.lower(): {
+                "option": RESTRICT_PATHS_OPTION,
+                "expression": r"^((R|RW|N).*)?$"
+            },
+            SHARING_OPTION.lower(): {
+                "option": SHARING_OPTION,
+                "expression": r"^(True|False)$"
+            },
+            SHARING_DN_OPTION.lower(): {
+                "option": SHARING_DN_OPTION,
+                "expression": r"^.*$"
+            },
+            SHARING_RESTRICT_PATHS_OPTION.lower(): {
+                "option": SHARING_RESTRICT_PATHS_OPTION,
+                "expression": r"^((R|RW|N).*)?$"
+            },
+            SHARING_STATE_DIR_OPTION.lower(): {
+                "option": SHARING_STATE_DIR_OPTION,
+                "expression": r"^.*$"
+            },
+            UDT_OPTION.lower(): {
+                "option": UDT_OPTION,
+                "expression": r"^(True|False)$"
+            }
+        },
+        MYPROXY_SECTION: {
+            SERVER_OPTION.lower(): {
+                "option": SERVER_OPTION,
+                "expression": r"^.*$"
+            },
+            SERVER_BEHIND_NAT_OPTION.lower(): {
+                "option": SERVER_BEHIND_NAT_OPTION,
+                "expression": r"^(True|False)$"
+            },
+            DN_OPTION.lower(): {
+                "option": DN_OPTION,
+                "expression": r"^.*$"
+            },
+            CA_OPTION.lower(): {
+                "option": CA_OPTION,
+                "expression": r"^(True|False)$"
+            },
+            CA_DIRECTORY_OPTION.lower(): {
+                "option": CA_DIRECTORY_OPTION,
+                "expression": r"/.*$"
+            },
+            CA_PASSPHRASE_OPTION.lower(): {
+                "option": CA_PASSPHRASE_OPTION,
+                "expression": r"^.*$"
+            },
+            CA_SUBJECT_DN_OPTION.lower(): {
+                "option": CA_SUBJECT_DN_OPTION,
+                "expression": r"^.*$"
+            },
+            USE_PAM_LOGIN_OPTION.lower(): {
+                "option": USE_PAM_LOGIN_OPTION,
+                "expression": r"^(True|False)$"
+            },
+            CONFIG_FILE_OPTION.lower(): {
+                "option": CONFIG_FILE_OPTION,
+                "expression": r"/.*$"
+            }
+        },
+        OAUTH_SECTION: {
+            SERVER_OPTION.lower(): {
+                "option": SERVER_OPTION,
+                "expression": r"^.*$"
+            },
+            SERVER_BEHIND_NAT_OPTION.lower(): {
+                "option": SERVER_BEHIND_NAT_OPTION,
+                "expression": r"^(True|False)$"
+            },
+            STYLESHEET_OPTION.lower(): {
+                "option": STYLESHEET_OPTION,
+                "expression": r"^/.*$"
+            },
+            LOGO_OPTION.lower(): {
+                "option": LOGO_OPTION,
+                "expression": r"^/.*$"
+            },
+            SSL_SERVER_CERT.lower(): {
+                "option": SSL_SERVER_CERT,
+                "expression": r"^/.*$"
+            },
+            SSL_SERVER_KEY.lower(): {
+                "option": SSL_SERVER_KEY,
+                "expression": r"^/.*$"
+            }
+        }
+    }
 
     DEFAULT_CONFIG_FILE = os.path.join("etc","globus-connect-server.conf")
     DEFAULT_DIR = os.path.join("var","lib", "globus-connect-server")
@@ -129,9 +457,32 @@ class ConfigFile(ConfigParser.ConfigParser):
         config_fp = open(config_file, "r")
         try:
             if self.readfp(config_fp) == []:
-                raise ParsingError()
+                raise ConfigParser.ParsingError(config_file)
         finally:
             config_fp.close()
+        self.validate(config_file)
+
+    def validate(self, config_file):
+        for section in self.sections():
+            validators = ConfigFile.validity.get(section)
+            if validators is None:
+                raise Exception("Invalid configuration section " + section
+                        + " in " + config_file)
+            for opt in self.options(section):
+                option_validity = validators.get(opt)
+                if option_validity is None:
+                    if opt not in self.defaults():
+                        raise Exception("Invalid configuration option in [" 
+                                + section + "] of " + config_file + ": " + opt)
+                    else:
+                        continue
+                val = self.get(section, opt)
+                validator_re = option_validity['expression']
+                optname = option_validity['option']
+                if re.match(validator_re, val) is None:
+                    raise Exception("Invalid value for " 
+                            + optname + " in " + "[" + section + "] section of "
+                            + config_file + ": " + val)
 
     def __get_list(self, section, option, maxsplit = 0):
         if not self.has_option(section, option):
@@ -339,10 +690,10 @@ class ConfigFile(ConfigParser.ConfigParser):
         cilogon_idp = None
         if self.has_option(
                 ConfigFile.SECURITY_SECTION,
-                ConfigFile.CILOGON_IDENTITY_PROVIDER):
+                ConfigFile.CILOGON_IDENTITY_PROVIDER_OPTION):
             cilogon_idp = self.get(
                 ConfigFile.SECURITY_SECTION,
-                ConfigFile.CILOGON_IDENTITY_PROVIDER)
+                ConfigFile.CILOGON_IDENTITY_PROVIDER_OPTION)
             if cilogon_idp == '':
                 cilogon_idp = None
         return cilogon_idp
@@ -454,10 +805,10 @@ class ConfigFile(ConfigParser.ConfigParser):
     def get_gridftp_sharing_state_dir(self):
         sharing_state_dir = None
         if self.has_option(ConfigFile.GRIDFTP_SECTION,
-                ConfigFile.SHARING_DIR):
+                ConfigFile.SHARING_STATE_DIR_OPTION):
             sharing_state_dir = self.get(
                 ConfigFile.GRIDFTP_SECTION,
-                ConfigFile.SHARING_DIR)
+                ConfigFile.SHARING_STATE_DIR_OPTION)
             if sharing_state_dir == '' :
                 sharing_state_dir = None
         return sharing_state_dir
@@ -465,9 +816,9 @@ class ConfigFile(ConfigParser.ConfigParser):
     def get_gridftp_sharing_dn(self):
         sharing_dn = None
         if self.has_option(ConfigFile.GRIDFTP_SECTION,
-                ConfigFile.SHARING_DN):
+                ConfigFile.SHARING_DN_OPTION):
             sharing_dn = self.get(ConfigFile.GRIDFTP_SECTION,
-                ConfigFile.SHARING_DN)
+                ConfigFile.SHARING_DN_OPTION)
             if sharing_dn == '':
                 sharing_dn = None
         if sharing_dn is None:
@@ -478,31 +829,13 @@ class ConfigFile(ConfigParser.ConfigParser):
     def get_gridftp_sharing_restrict_paths(self):
         sharing_rp = None
         if self.has_option(ConfigFile.GRIDFTP_SECTION,
-                ConfigFile.SHARING_RESTRICT_PATHS):
+                ConfigFile.SHARING_RESTRICT_PATHS_OPTION):
             sharing_rp = self.get(ConfigFile.GRIDFTP_SECTION,
-                ConfigFile.SHARING_RESTRICT_PATHS)
+                ConfigFile.SHARING_RESTRICT_PATHS_OPTION)
             if sharing_rp == '':
                 sharing_rp = None
 
         return sharing_rp
-
-    def get_gridftp_sharing_file_control(self):
-        sharing_file_control = True
-        if self.has_option(ConfigFile.GRIDFTP_SECTION,
-                ConfigFile.SHARING_FILE_CONTROL):
-            sharing_file_control = self.getboolean(
-                    ConfigFile.GRIDFTP_SECTION,
-                    ConfigFile.SHARING_FILE_CONTROL)
-        return sharing_file_control
-
-    def get_gridftp_sharing_control(self):
-        sharing_control = True
-        if self.has_option(ConfigFile.GRIDFTP_SECTION,
-                ConfigFile.SHARING_CONTROL):
-            sharing_control = self.getboolean(
-                    ConfigFile.GRIDFTP_SECTION,
-                    ConfigFile.SHARING_CONTROL)
-        return sharing_control
 
     def get_gridftp_udt(self):
         udt_enabled = False
@@ -621,22 +954,6 @@ class ConfigFile(ConfigParser.ConfigParser):
         return use_pam_login
 
     def get_myproxy_config_file(self):
-        config_file = None
-
-        if self.has_option(
-                    ConfigFile.MYPROXY_SECTION,
-                    ConfigFile.CONFIG_FILE_OPTION):
-            config_file = self.get(
-                    ConfigFile.MYPROXY_SECTION,
-                    ConfigFile.CONFIG_FILE_OPTION)
-            if config_file == '':
-                config_file = None
-        if config_file is None:
-            config_file = os.path.join(
-                self.root, ConfigFile.DEFAULT_DIR, 'myproxy-server.conf')
-        return config_file
-
-    def get_myproxy_init_config_file(self):
         config_file = None
 
         if self.has_option(
