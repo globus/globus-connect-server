@@ -1,3 +1,9 @@
+globus-connect-server (4.0.8-1+gt6.@distro@) @distro@; urgency=low
+
+  * GT-569: globus-connect-server doesn't catch some configuration errors
+
+ -- Globus Toolkit <support@globus.org>  Tue, 28 Oct 2014 14:08:00 -0400
+
 globus-connect-server (4.0.7-1+gt6.@distro@) @distro@; urgency=low
 
   * Update version after commit was done without doing so
