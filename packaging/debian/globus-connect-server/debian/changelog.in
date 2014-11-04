@@ -1,3 +1,9 @@
+globus-connect-server (4.0.8-2+gt6.@distro@) @distro@; urgency=low
+
+  * Add python build dependency
+
+ -- Globus Toolkit <support@globus.org>  Tue, 04 Nov 2014 11:11:51 -0500
+
 globus-connect-server (4.0.8-1+gt6.@distro@) @distro@; urgency=low
 
   * GT-569: globus-connect-server doesn't catch some configuration errors
