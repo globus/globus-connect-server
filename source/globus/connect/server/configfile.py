@@ -100,6 +100,8 @@ class ConfigFile(ConfigParser.ConfigParser):
     SSL_SERVER_CERT = "SSLServerCert"
     SSL_SERVER_KEY = "SSLServerKey"
 
+    BOOLEAN_PATTERN = r"^(0|[Ff][Aa][Ll][Ss][Ee]|[Nn][Oo]|[Oo][Ff][Ff]|1|[Tt][Rr][Uu][Ee]|[Yy][Ee][Ss]|[Oo][Nn])$"
+
     validity = {
         GLOBUS_SECTION: {
             USER_OPTION.lower(): {
@@ -124,7 +126,7 @@ class ConfigFile(ConfigParser.ConfigParser):
             },
             PUBLIC_OPTION.lower(): {
                 "option": PUBLIC_OPTION,
-                "expression": r"^(True|False)$"
+                "expression": BOOLEAN_PATTERN
             },
             DEFAULT_DIRECTORY_OPTION.lower(): {
                 "option": DEFAULT_DIRECTORY_OPTION,
@@ -134,7 +136,7 @@ class ConfigFile(ConfigParser.ConfigParser):
         SECURITY_SECTION: {
             FETCH_CREDENTIAL_FROM_RELAY_OPTION.lower(): {
                 "option": FETCH_CREDENTIAL_FROM_RELAY_OPTION,
-                "expression": r"^(True|False)$"
+                "expression": BOOLEAN_PATTERN
             },
             CERTIFICATE_FILE_OPTION.lower(): {
                 "option": CERTIFICATE_FILE_OPTION,
@@ -320,7 +322,7 @@ class ConfigFile(ConfigParser.ConfigParser):
             },
             SERVER_BEHIND_NAT_OPTION.lower(): {
                 "option": SERVER_BEHIND_NAT_OPTION,
-                "expression": r"^(True|False)$"
+                "expression": BOOLEAN_PATTERN
             },
             DN_OPTION.lower(): {
                 "option": DN_OPTION,
@@ -344,7 +346,7 @@ class ConfigFile(ConfigParser.ConfigParser):
             },
             SHARING_OPTION.lower(): {
                 "option": SHARING_OPTION,
-                "expression": r"^(True|False)$"
+                "expression": BOOLEAN_PATTERN
             },
             SHARING_DN_OPTION.lower(): {
                 "option": SHARING_DN_OPTION,
@@ -360,7 +362,7 @@ class ConfigFile(ConfigParser.ConfigParser):
             },
             UDT_OPTION.lower(): {
                 "option": UDT_OPTION,
-                "expression": r"^(True|False)$"
+                "expression": BOOLEAN_PATTERN
             }
         },
         MYPROXY_SECTION: {
@@ -370,7 +372,7 @@ class ConfigFile(ConfigParser.ConfigParser):
             },
             SERVER_BEHIND_NAT_OPTION.lower(): {
                 "option": SERVER_BEHIND_NAT_OPTION,
-                "expression": r"^(True|False)$"
+                "expression": BOOLEAN_PATTERN
             },
             DN_OPTION.lower(): {
                 "option": DN_OPTION,
@@ -378,11 +380,11 @@ class ConfigFile(ConfigParser.ConfigParser):
             },
             CA_OPTION.lower(): {
                 "option": CA_OPTION,
-                "expression": r"^(True|False)$"
+                "expression": BOOLEAN_PATTERN
             },
             CA_DIRECTORY_OPTION.lower(): {
                 "option": CA_DIRECTORY_OPTION,
-                "expression": r"/.*$"
+                "expression": r".*$"
             },
             CA_PASSPHRASE_OPTION.lower(): {
                 "option": CA_PASSPHRASE_OPTION,
@@ -394,11 +396,11 @@ class ConfigFile(ConfigParser.ConfigParser):
             },
             USE_PAM_LOGIN_OPTION.lower(): {
                 "option": USE_PAM_LOGIN_OPTION,
-                "expression": r"^(True|False)$"
+                "expression": BOOLEAN_PATTERN
             },
             CONFIG_FILE_OPTION.lower(): {
                 "option": CONFIG_FILE_OPTION,
-                "expression": r"/.*$"
+                "expression": r".*$"
             }
         },
         OAUTH_SECTION: {
@@ -408,23 +410,23 @@ class ConfigFile(ConfigParser.ConfigParser):
             },
             SERVER_BEHIND_NAT_OPTION.lower(): {
                 "option": SERVER_BEHIND_NAT_OPTION,
-                "expression": r"^(True|False)$"
+                "expression": BOOLEAN_PATTERN
             },
             STYLESHEET_OPTION.lower(): {
                 "option": STYLESHEET_OPTION,
-                "expression": r"^/.*$"
+                "expression": r"^.*$"
             },
             LOGO_OPTION.lower(): {
                 "option": LOGO_OPTION,
-                "expression": r"^/.*$"
+                "expression": r"^.*$"
             },
             SSL_SERVER_CERT.lower(): {
                 "option": SSL_SERVER_CERT,
-                "expression": r"^/.*$"
+                "expression": r"^.*$"
             },
             SSL_SERVER_KEY.lower(): {
                 "option": SSL_SERVER_KEY,
-                "expression": r"^/.*$"
+                "expression": r"^.*$"
             }
         }
     }
@@ -479,7 +481,7 @@ class ConfigFile(ConfigParser.ConfigParser):
                 val = self.get(section, opt)
                 validator_re = option_validity['expression']
                 optname = option_validity['option']
-                if re.match(validator_re, val) is None:
+                if val != '' and re.match(validator_re, val) is None:
                     raise Exception("Invalid value for " 
                             + optname + " in " + "[" + section + "] section of "
                             + config_file + ": " + val)

@@ -111,52 +111,52 @@ my $random = int(1000000*rand());
 my $endpoint_name = "ENDPOINT_OPTIONS_$random";
 
 # Test Step #1:
-# Setup server with (Public=True, DefaultDirectory="/tmp")
-ok(setup_server($endpoint_name, 1, "/tmp"), "setup_server_public_tmp");
+# Setup server with (Public=True, DefaultDirectory="/tmp/")
+ok(setup_server($endpoint_name, 1, "/tmp/"), "setup_server_public_tmp");
 
 # Test Step #2:
 # Check that endpoint's Public attribute is True
 ok(is_endpoint_public($endpoint_name), "is_endpoint_public");
 
 # Test Step #3:
-# Check that endpoint's DefaultDirectory attribute is /tmp
+# Check that endpoint's DefaultDirectory attribute is /tmp/
 like(default_dir($endpoint_name), qr(^/tmp/*$), "is_default_dir_tmp");
 
 # Test Step #4
-# Set up server with (Public=False, DefaultDirectory="/tmp")
-ok(setup_server($endpoint_name, 0, "/tmp"), "setup_server_non_public_tmp");
+# Set up server with (Public=False, DefaultDirectory="/tmp/")
+ok(setup_server($endpoint_name, 0, "/tmp/"), "setup_server_non_public_tmp");
 
 # Test Step #5:
 # Check that endpoint's Public attribute is False
 ok(!is_endpoint_public($endpoint_name), "is_endpoint_non_public");
 
 # Test Step #6:
-# Check that endpoint's DefaultDirectory attribute is /tmp
+# Check that endpoint's DefaultDirectory attribute is /tmp/
 like(default_dir($endpoint_name), qr(^/tmp/*$), "is_default_dir_still_tmp");
 
 # Test Step #7
-# Set up server with (Public=False, DefaultDirectory="/home")
-ok(setup_server($endpoint_name, 0, "/home"), "setup_server_non_public_home");
+# Set up server with (Public=False, DefaultDirectory="/home/")
+ok(setup_server($endpoint_name, 0, "/home/"), "setup_server_non_public_home");
 
 # Test Step #8:
 # Check that endpoint's Public attribute is False
 ok(!is_endpoint_public($endpoint_name), "is_endpoint_still_non_public");
 
 # Test Step #9:
-# Check that endpoint's DefaultDirectory attribute is /home
+# Check that endpoint's DefaultDirectory attribute is /home/
 like(default_dir($endpoint_name), qr(^/home/*$), "is_default_dir_home");
 
 # Test Step #10:
-# Set up server with (Public=True, DefaultDirectory="/tmp")
+# Set up server with (Public=True, DefaultDirectory="/tmp/")
 # Change both at once
-ok(setup_server($endpoint_name, 1, "/tmp"), "setup_server_public_tmp");
+ok(setup_server($endpoint_name, 1, "/tmp/"), "setup_server_public_tmp");
 
 # Test Step #11:
 # Check that endpoint's Public attribute is True
 ok(is_endpoint_public($endpoint_name), "is_endpoint_public_again");
 
 # Test Step #12:
-# Check that endpoint's DefaultDirectory attribute is "/tmp"
+# Check that endpoint's DefaultDirectory attribute is "/tmp/"
 like(default_dir($endpoint_name), qr(^/tmp/*$), "is_default_dir_back_to_tmp");
 
 # Clean up the services

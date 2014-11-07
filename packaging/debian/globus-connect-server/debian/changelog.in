@@ -1,3 +1,9 @@
+globus-connect-server (4.0.10-1+gt6.@distro@) @distro@; urgency=low
+
+  * Fix some config file validitation errors with valid values
+
+ -- Globus Toolkit <support@globus.org>  Fri, 07 Nov 2014 15:17:02 -0500
+
 globus-connect-server (4.0.9-1+gt6.@distro@) @distro@; urgency=low
 
   * Fix enabling of apache2 modules
