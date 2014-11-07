@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.8
+Version:        4.0.9
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Fri Nov 07 2014 Globus Toolkit <support@globus.org> 4.0.9-1
+- Fix enabling of apache2 modules
+
 * Tue Oct 28 2014 Globus Toolkit <support@globus.org> 4.0.8-1
 - GT-569: globus-connect-server doesn't catch some configuration errors
 

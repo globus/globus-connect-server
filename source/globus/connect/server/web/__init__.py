@@ -172,7 +172,7 @@ class Web(gcmu.GCMU):
     def enable_mod_ssl(self, **kwargs):
         self.logger.debug("ENTER: Web.enable_mod_ssl()")
         if self.dist_type == 'deb':
-            if not os.path.exists("/etc/apache2/mods-available/mod_ssl.load"):
+            if not os.path.exists("/etc/apache2/mods-enabled/mod_ssl.load"):
                 enabler = Popen(["/usr/sbin/a2enmod","ssl"],
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = enabler.communicate()
@@ -214,7 +214,7 @@ class Web(gcmu.GCMU):
     def enable_mod_wsgi(self, **kwargs):
         self.logger.debug("ENTER: Web.enable_mod_wsgi()")
         if self.dist_type == 'deb':
-            if not os.path.exists("/etc/apache2/mods-available/mod_wsgi.load"):
+            if not os.path.exists("/etc/apache2/mods-enabled/mod_wsgi.load"):
                 enabler = Popen(["/usr/sbin/a2enmod","wsgi"],
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = enabler.communicate()
@@ -226,7 +226,7 @@ class Web(gcmu.GCMU):
                 touched.close()
             if self.http_conf_dir == '/etc/apache2/conf-available' and not \
                     os.path.exists(
-                    "/etc/apache2/conf-available/myproxy-oauth.conf"):
+                    "/etc/apache2/conf-enabled/myproxy-oauth.conf"):
                 enabler = Popen(["/usr/sbin/a2enconf", "myproxy-oauth"],
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = enabler.communicate()
