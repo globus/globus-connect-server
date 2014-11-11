@@ -22,7 +22,7 @@ multinode-test:
 dist:
 	rm -rf $(DIST_STAGING)
 	mkdir $(DIST_STAGING)
-	cp Makefile *.conf *.pl *.pm *.py *.css *.png $(DIST_STAGING)
+	cp Makefile *.conf *.pl *.pm *.py *.css *.png tap-to-junit-xml $(DIST_STAGING)
 	tar -c -f - $(DIST_STAGING) | gzip -9c > $(DIST_FILE)
 	rm -rf $(DIST_STAGING)
 

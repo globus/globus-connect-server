@@ -22,36 +22,45 @@ require 5.005;
 use vars qw(@tests);
 $ENV{PATH} .= ":.";
 
-my $harness;
-BEGIN {
+sub get_harness {
     my $xmlfile = "gcmu-test.xml";
-    eval "use TAP::Harness::JUnit";
-    if ($@)
-    {
-        eval "use TAP::Harness;";
+    my $harness;
 
-        if ($@)
-        {
-            die "Unable to find JUnit TAP formatter";
-        }
-        else
-        {
-            $harness = TAP::Harness->new( {
-                formatter_class => 'TAP::Formatter::JUnit',
-                merge => 1
-            } );
-        }
-        open(STDOUT, ">$xmlfile");
-    }
-    else
+    eval "use TAP::Harness::JUnit";
+    if (! $@)
     {
         $harness = TAP::Harness::JUnit->new({
                                 xmlfile => $xmlfile,
                                 merge => 1});
+        return ($harness, 'junit');
+    }
+    eval "use TAP::Harness;";
+    if (! $@)
+    {
+        my $constructor_arg = { merge => 1 };
+        my $harness_type;
+        eval "use TAP::Formatter::JUnit";
+        if (! $@) {
+            $constructor_arg->{formatter_class} = 'TAP::Formatter::JUnit';
+            $harness_type = 'junit';
+            open(STDOUT, ">$xmlfile");
+        } else {
+            $constructor_arg->{formatter_class} = 'TAP::Formatter::File';
+            $constructor_arg->{verbosity} = 1;
+            $harness_type = 'tap';
+            open(STDOUT, ">gcmu-test.tap");
+        }
+        $harness = TAP::Harness->new($constructor_arg);
+        return ($harness, $harness_type);
+    }
+    else
+    {
+        die "Unable to initialize test harness: $@";
     }
 }
 
 $|=1;
+
 @tests = qw(
     command-line-options.pl
     id-setup-and-cleanup.pl
@@ -73,5 +82,20 @@ $|=1;
     transfer-test-udt.pl
 );
 
-my $test_result = $harness->runtests(@tests);
-exit($test_result)
+my ($harness, $harness_type) = get_harness();
+
+if ($harness_type eq 'tap') {
+    my $aggregate_test_result = 0;
+    for my $testname (@tests) {
+        ($harness, $_) = get_harness();
+        open(STDOUT, ">$testname.tap");
+        $aggregate_test_result += $harness->runtests($testname);
+    }
+    for my $testname (@tests) {
+        system("perl tap-to-junit-xml -i $testname.tap -o $testname.xml -p $testname --puretap");
+    }
+    exit($aggregate_test_result);
+} else {
+    my $test_result = $harness->runtests(@tests);
+    exit($test_result)
+}
