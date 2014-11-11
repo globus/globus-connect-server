@@ -78,6 +78,9 @@ install-stamp: build-stamp
 install: install-stamp
 	:
 
+binary-indep: install
+	dh $@
+
 binary: install
 	dh $@
 
