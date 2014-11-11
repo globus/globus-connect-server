@@ -252,6 +252,10 @@ sub activate($$$$)
             # This redirects me to oauth server
             $res = $self->{ua}->get($res->header('location'));
             my $form = HTML::Form->parse($res);
+
+            if (!defined $form) {
+                return {code => "FORM PARSE FAILED: " . $res->content()}
+            }
             $form->param('username', $username);
             $form->param('passphrase', $password);
             $req = $form->click();
