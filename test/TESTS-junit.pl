@@ -17,11 +17,34 @@
 
 
 use strict;
+use Config;
 
 require 5.005;
 use vars qw(@tests);
 $ENV{PATH} .= ":.";
 
+sub get_harness_type {
+
+    eval "use TAP::Harness::JUnit";
+    if (! $@)
+    {
+        return 'junit';
+    }
+    eval "use TAP::Harness;";
+    if (! $@)
+    {
+        eval "use TAP::Formatter::JUnit";
+        if (! $@) {
+            return 'junit';
+        } else {
+            return 'tap';
+        }
+    }
+    else
+    {
+        die "Unable to initialize test harness: $@";
+    }
+}
 sub get_harness {
     my $xmlfile = "gcmu-test.xml";
     my $harness;
@@ -44,19 +67,11 @@ sub get_harness {
             $constructor_arg->{formatter_class} = 'TAP::Formatter::JUnit';
             $harness_type = 'junit';
             open(STDOUT, ">$xmlfile");
-        } else {
-            $constructor_arg->{formatter_class} = 'TAP::Formatter::File';
-            $constructor_arg->{verbosity} = 1;
-            $harness_type = 'tap';
-            open(STDOUT, ">gcmu-test.tap");
         }
         $harness = TAP::Harness->new($constructor_arg);
         return ($harness, $harness_type);
     }
-    else
-    {
-        die "Unable to initialize test harness: $@";
-    }
+    die "Unable to initialize test harness: $@";
 }
 
 $|=1;
@@ -82,20 +97,23 @@ $|=1;
     transfer-test-udt.pl
 );
 
-my ($harness, $harness_type) = get_harness();
+my ($harness_type) = get_harness_type();
 
 if ($harness_type eq 'tap') {
     my $aggregate_test_result = 0;
     for my $testname (@tests) {
-        ($harness, $_) = get_harness();
-        open(STDOUT, ">$testname.tap");
-        $aggregate_test_result += $harness->runtests($testname);
+        my $output;
+        system("$Config{perlpath} $testname > $testname.tap 2>&1");
+        my $aggregate_test_result += $?;
     }
+
     for my $testname (@tests) {
         system("perl tap-to-junit-xml -i $testname.tap -o $testname.xml -p $testname --puretap");
     }
     exit($aggregate_test_result);
 } else {
+    my $harness;
+    ($harness, $_) = get_harness();
     my $test_result = $harness->runtests(@tests);
     exit($test_result)
 }
