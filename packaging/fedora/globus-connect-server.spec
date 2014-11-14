@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.10
+Version:        4.0.11
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Fri Nov 14 2014 Globus Toolkit <support@globus.org> 4.0.11-1
+- New anoncert/anonkey
+
 * Fri Nov 07 2014 Globus Toolkit <support@globus.org> 4.0.10-1
 - Fix some config file validitation errors with valid values
 

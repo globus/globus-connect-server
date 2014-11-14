@@ -1,3 +1,9 @@
+globus-connect-server (4.0.11-1+gt6.@distro@) @distro@; urgency=low
+
+  * New anoncert/anonkey
+
+ -- Globus Toolkit <support@globus.org>  Tue, 11 Nov 2014 11:57:49 -0500
+
 globus-connect-server (4.0.10-2+gt6.@distro@) @distro@; urgency=low
 
   * Fix arch-independent build in cowbuilder
