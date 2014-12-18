@@ -3,7 +3,7 @@
 from distutils.core import setup
 import os
 
-version = "4.0.11"
+version = "4.0.12"
 
 versionfile_path = os.path.join("globus","connect","server", "version")
 oldversion = None
