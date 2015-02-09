@@ -62,6 +62,7 @@ class IO(gcmu.GCMU):
         self.configure_sharing(**kwargs)
         self.configure_trust_roots(**kwargs)
         self.configure_authorization(**kwargs)
+        self.configure_logging(**kwargs)
         self.restart(**kwargs)
         self.enable(**kwargs)
         self.bind_to_endpoint(**kwargs)
@@ -303,6 +304,43 @@ server
         elif method == "Gridmap":
             return self.configure_gridmap(
                     conf_file_name, conf_link_name, **kwargs)
+
+    def configure_logging(self, **kwargs):
+        conf_file_name = os.path.join(
+                self.var_gridftp_d,
+                "globus-connect-server-gridftp-logging")
+        conf_link_name = os.path.join(
+                self.etc_gridftp_d,
+                "globus-connect-server-gridftp-logging")
+
+        if os.path.lexists(conf_link_name):
+            os.remove(conf_link_name)
+
+        conf_file = file(conf_file_name, "w")
+        try:
+            conf_file.write("log_single /var/log/gridftp.log\n")
+            conf_file.write("log_level WARN\n")
+            os.symlink(conf_file_name, conf_link_name)
+        finally:
+            conf_file.close()
+
+        if os.path.lexists("/etc/logrotate.d/gridftp"):
+            os.remove("/etc/logrotate.d/gridftp")
+
+        logrotate_file = file("/etc/logrotate.d/gridftp", "w")
+        try:
+            logrotate_file.write("/var/log/gridftp.log {\n")
+            logrotate_file.write("   rotate 4\n")
+            logrotate_file.write("   weekly\n")
+            logrotate_file.write("   compress\n")
+            logrotate_file.write("   create 644 root root\n")
+            logrotate_file.write("   postrotate\n")
+            logrotate_file.write("       kill -HUP `cat /var/run/globus-gridftp-server.pid`\n")
+            logrotate_file.write("   endscript\n")
+            logrotate_file.write("}\n")
+        finally:
+            logrotate_file.close()
+        self.logger.debug("EXIT: IO.configure_logging()")
 
     def configure_gridmap_verify_myproxy_callout(self, conf_file_name, conf_link_name, **kwargs):
         self.logger.debug("ENTER: configure_gridmap_verify_myproxy_callout()")
