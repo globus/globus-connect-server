@@ -319,7 +319,7 @@ server
         conf_file = file(conf_file_name, "w")
         try:
             conf_file.write("log_single /var/log/gridftp.log\n")
-            conf_file.write("log_level WARN\n")
+            conf_file.write("log_level ERROR,WARN\n")
             os.symlink(conf_file_name, conf_link_name)
         finally:
             conf_file.close()
