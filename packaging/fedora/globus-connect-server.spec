@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.12
+Version:        4.0.13
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Tue Mar 3 2015 Globus Toolkit <support@globus.org> 4.0.13-1
+- Add gridftp logging
+
 * Fri Nov 14 2014 Globus Toolkit <support@globus.org> 4.0.11-1
 - New anoncert/anonkey
 

@@ -40,6 +40,9 @@ class IO(gcmu.GCMU):
         super(IO, self).__init__(**kwargs)
         self.etc_gridftp_d = self.conf.get_etc_gridftp_d()
         self.var_gridftp_d = self.conf.get_var_gridftp_d()
+        self.logrotate_d = os.path.join(self.conf.root, "etc", "logrotate.d")
+        self.logrotate_path = os.path.join(self.logrotate_d,
+                "globus-connect-server")
         self.service = "globus-gridftp-server"
 
         if not os.path.exists(self.etc_gridftp_d):
@@ -324,10 +327,10 @@ server
         finally:
             conf_file.close()
 
-        if os.path.lexists("/etc/logrotate.d/gridftp"):
-            os.remove("/etc/logrotate.d/gridftp")
+        if os.path.lexists(self.logrotate_path):
+            os.remove(self.logrotate_path)
 
-        logrotate_file = file("/etc/logrotate.d/gridftp", "w")
+        logrotate_file = file(self.logrotate_path, "w")
         try:
             logrotate_file.write("/var/log/gridftp.log {\n")
             logrotate_file.write("   rotate 4\n")
@@ -502,6 +505,10 @@ server
             conf_file.close()
         self.logger.debug("EXIT: configure_gridmap()")
 
+    def cleanup_logging(self):
+        if os.path.lexists(self.logrotate_path):
+            os.remove(self.logrotate_path)
+
     def cleanup(self, **kwargs):
         if not self.is_local():
             return
@@ -512,6 +519,7 @@ server
                         or name.startswith("gcmu"):
                 os.remove(os.path.join(self.etc_gridftp_d, name))
         self.cleanup_trust_roots()
+        self.cleanup_logging()
         self.stop()
         self.disable()
         endpoint_name = self.conf.get_endpoint_name()
