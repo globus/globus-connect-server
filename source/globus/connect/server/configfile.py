@@ -78,6 +78,10 @@ class ConfigFile(ConfigParser.ConfigParser):
     SHARING_DN_OPTION = "SharingDN"
     SHARING_RESTRICT_PATHS_OPTION = "SharingRestrictPaths"
     SHARING_STATE_DIR_OPTION = "SharingStateDir"
+    SHARING_USERS_ALLOW_OPTION = "SharingUsersAllow"
+    SHARING_USERS_DENY_OPTION = "SharingUsersDeny"
+    SHARING_GROUPS_ALLOW_OPTION = "SharingGroupsAllow"
+    SHARING_GROUPS_DENY_OPTION = "SharingGroupsDeny"
     DEFAULT_SHARING_DN = "/C=US/O=Globus Consortium/OU=Globus Online/OU=Transfer User/CN=__transfer__"
     UDT_OPTION = "AllowUDT"
     EXTRA_ARG_OPTION = "ExtraArgs"
@@ -843,6 +847,46 @@ class ConfigFile(ConfigParser.ConfigParser):
                 sharing_rp = None
 
         return sharing_rp
+
+    def get_gridftp_sharing_users_allow(self):
+        sharing_users_allow = None
+        if self.has_option(ConfigFile.GRIDFTP_SECTION,
+                ConfigFile.SHARING_USERS_ALLOW_OPTION):
+            sharing_users_allow = self.get(ConfigFile.GRIDFTP_SECTION,
+                ConfigFile.SHARING_USERS_ALLOW_OPTION)
+            if sharing_users_allow == '':
+                sharing_users_allow = None
+        return sharing_users_allow
+
+    def get_gridftp_sharing_groups_allow(self):
+        sharing_groups_allow = None
+        if self.has_option(ConfigFile.GRIDFTP_SECTION,
+                ConfigFile.SHARING_GROUPS_ALLOW_OPTION):
+            sharing_groups_allow = self.get(ConfigFile.GRIDFTP_SECTION,
+                ConfigFile.SHARING_GROUPS_ALLOW_OPTION)
+            if sharing_groups_allow == '':
+                sharing_groups_allow = None
+        return sharing_groups_allow
+
+    def get_gridftp_sharing_users_deny(self):
+        sharing_users_deny = None
+        if self.has_option(ConfigFile.GRIDFTP_SECTION,
+                ConfigFile.SHARING_USERS_DENY_OPTION):
+            sharing_users_deny = self.get(ConfigFile.GRIDFTP_SECTION,
+                ConfigFile.SHARING_USERS_DENY_OPTION)
+            if sharing_users_deny == '':
+                sharing_users_deny = None
+        return sharing_users_deny
+
+    def get_gridftp_sharing_groups_deny(self):
+        sharing_groups_deny = None
+        if self.has_option(ConfigFile.GRIDFTP_SECTION,
+                ConfigFile.SHARING_GROUPS_DENY_OPTION):
+            sharing_groups_deny = self.get(ConfigFile.GRIDFTP_SECTION,
+                ConfigFile.SHARING_GROUPS_DENY_OPTION)
+            if sharing_groups_deny == '':
+                sharing_groups_deny = None
+        return sharing_groups_deny
 
     def get_gridftp_udt(self):
         udt_enabled = False

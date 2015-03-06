@@ -218,7 +218,9 @@ server
         """
         Write GridFTP sharing-related configuration items. These are written
         only if Sharing is True in the configuration file. The configuration
-        parameters SharingDN, SharingRestrictPaths, and SharingStateDir are
+        parameters SharingDN, SharingRestrictPaths, SharingUsersAllow, 
+        SharingUsersDeny, SharingGroupsAllow, SharingGroupsDeny, and 
+        SharingStateDir are
         processed here
         """
         self.logger.debug("ENTER: IO.configure_sharing()")
@@ -250,6 +252,18 @@ server
             sharing_dir = self.conf.get_gridftp_sharing_state_dir()
             if sharing_dir is not None:
                 conf_file.write("sharing_state_dir %s\n" % sharing_dir)
+            sharing_users_allow = self.conf.get_gridftp_sharing_users_allow()
+            if sharing_users_allow is not None:
+                conf_file.write("sharing_users_allow %s\n" % sharing_users_allow)
+            sharing_users_deny = self.conf.get_gridftp_sharing_users_deny()
+            if sharing_users_deny is not None:
+                conf_file.write("sharing_users_deny %s\n" % sharing_users_deny)
+            sharing_groups_allow = self.conf.get_gridftp_sharing_groups_allow()
+            if sharing_groups_allow is not None:
+                conf_file.write("sharing_groups_allow %s\n" % sharing_groups_allow)
+            sharing_groups_deny = self.conf.get_gridftp_sharing_groups_deny()
+            if sharing_groups_deny is not None:
+                conf_file.write("sharing_groups_deny %s\n" % sharing_groups_deny)
             os.symlink(conf_file_name, conf_link_name)
         finally:
             conf_file.close()

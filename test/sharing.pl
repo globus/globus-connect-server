@@ -69,15 +69,23 @@ sub cleanup
     return $rc==0;
 }
 
-sub gcmu_setup($$)
+sub gcmu_setup($$;$$$$)
 {
     my $endpoint = shift;
     my $identity_method = shift;
+    my $users_allow = shift || "";
+    my $users_deny = shift || "";
+    my $groups_allow = shift || "";
+    my $groups_deny = shift || "";
+    
     my @cmd = ("globus-connect-server-setup", "-c", $config_file, "-v");
     
     $ENV{ENDPOINT_NAME} = $endpoint;
     $ENV{SECURITY_IDENTITY_METHOD} = $identity_method;
-
+    $ENV{SHARING_USERS_ALLOW_VAL} = $users_allow;
+    $ENV{SHARING_USERS_DENY_VAL} = $users_deny;
+    $ENV{SHARING_GROUPS_ALLOW_VAL} = $groups_allow;
+    $ENV{SHARING_GROUPS_DENY_VAL} = $groups_deny;
     my $rc = diagsystem(@cmd);
 
     return $rc == 0;
