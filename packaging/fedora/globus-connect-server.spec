@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.14
+Version:        4.0.15
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -80,7 +80,7 @@ Requires:       myproxy
 Requires:       gsi-openssh
 Requires:       gsi-openssh-clients
 Requires:       globus-gsi-cert-utils-progs
-Requires:       globus-gridftp-server-progs >= 7.17
+Requires:       globus-gridftp-server-progs >= 7.22
 Requires:       globus-gass-copy-progs
 Requires:       globus-gss-assist-progs
 Requires:       globus-callout >= 2.4
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Tue Mar 3 2015 Globus Toolkit <support@globus.org> 4.0.15-1
+- Bump GridFTP requirement
+
 * Tue Mar 3 2015 Globus Toolkit <support@globus.org> 4.0.14-1
 - Add Groups/Users Allow/Deny options for GridFTP sharing
 

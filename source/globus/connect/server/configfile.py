@@ -365,6 +365,22 @@ class ConfigFile(ConfigParser.ConfigParser):
                 "option": SHARING_STATE_DIR_OPTION,
                 "expression": r"^.*$"
             },
+            SHARING_USERS_ALLOW_OPTION.lower(): {
+                "option": SHARING_USERS_ALLOW_OPTION,
+                "expression": r"^.*$"
+            },
+            SHARING_USERS_DENY_OPTION.lower(): {
+                "option": SHARING_USERS_DENY_OPTION,
+                "expression": r"^.*$"
+            },
+            SHARING_GROUPS_ALLOW_OPTION.lower(): {
+                "option": SHARING_GROUPS_ALLOW_OPTION,
+                "expression": r"^.*$"
+            },
+            SHARING_GROUPS_DENY_OPTION.lower(): {
+                "option": SHARING_GROUPS_DENY_OPTION,
+                "expression": r"^.*$"
+            },
             UDT_OPTION.lower(): {
                 "option": UDT_OPTION,
                 "expression": BOOLEAN_PATTERN
