@@ -168,12 +168,17 @@ foreach my $method ("OAuth", "MyProxy")
 {
     # To match failures with test step numbers, add 9 for MyProxy pass through
     # the tests
-    my $random = int(1000000*rand());
-    my $short_hostname;
     my $endpoint;
+    my $short_hostname;
 
     ($short_hostname = $hostname) =~ s/\..*//;
-    $endpoint = "MULTI1-$short_hostname-$random";
+
+    if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
+        my $random = int(1000000*rand());
+        $endpoint = "MULTI1-$short_hostname-$random";
+    } else {
+        $endpoint = "MULTI1-$ENV{TEST_ENDPOINT_SUFFIX}";
+    }
 
     $ENV{SECURITY_IDENTITY_METHOD} = $method;
     set_barrier_prefix("multi-node-cluster-scenario-1-$method-");

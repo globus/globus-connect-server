@@ -89,9 +89,15 @@ sub gcmu_setup($$;@)
 }
 
 # Prepare
-my $random = int(1000000*rand());
-my $endpoint = "DOUBLE$random";
-my $server = "DOUBLE$random";
+my $endpoint;
+if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
+    my $random = int(1000000*rand());
+    $endpoint = "DOUBLE_$random";
+    $server = "DOUBLE_$random";
+} else {
+    $endpoint = "DOUBLE_$ENV{TEST_ENDPOINT_SUFFIX}";
+}
+my $server = $endpoint;
 
 # Test Step #1:
 # Create endpoint

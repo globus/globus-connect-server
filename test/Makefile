@@ -1,10 +1,20 @@
-VERSION = 0.29
+VERSION = 0.30
 DIST_STAGING = globus_connect_server_test-$(VERSION)
 DIST_FILE = $(DIST_STAGING).tar.gz
+
+osname := $(shell lsb_release -is)
+osver  := $(shell lsb_release -rs)
+
+ifeq(,$(osname)$(osver))
+    test_endpoint_suffix =
+else
+    test_endpoint_suffix = $(osname)_$(osver)
+endif
 
 test:
 	env GLOBUS_USER=gcmutest \
             GLOBUS_PASSWORD=Automatic-GCMU-Test-Cases \
+	    TEST_ENDPOINT_SUFFIX=$(test_endpoint_suffix) \
             TERM=vt100 \
             perl TESTS-junit.pl || true
 

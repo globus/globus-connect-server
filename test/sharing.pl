@@ -205,9 +205,16 @@ sub deactivate_endpoint($;$)
 }
 
 # Prepare
-my $random = int(1000000*rand());
-my $endpoint = "SHARED-PHYSICAL-$random";
-my $shared_endpoint = "gcmusharetest#SHARED-LOGICAL-$random";
+my $endpoint;
+my $shared_endpoint;
+if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
+    my $random = int(1000000*rand());
+    $endpoint = "SHARED-PHYSICAL-$random";
+    $shared_endpoint = "gcmusharetest#SHARED-LOGICAL-$random";
+} else {
+    $endpoint = "SHARED-PHYSICAL-$ENV{TEST_ENDPOINT_SUFFIX}";
+    $shared_endpoint = "gcmusharetest#SHARED-LOGICAL-$ENV{TEST_ENDPOINT_SUFFIX}";
+}
 my ($random_user, $random_pass) = TempUser::create_user();
 my ($random_user2, $random_pass2) = TempUser::create_user();
 if ((!$random_user) || (!$random_user2))

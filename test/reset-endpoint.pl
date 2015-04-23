@@ -27,8 +27,14 @@ use GlobusTransferAPIClient;
 my $api = GlobusTransferAPIClient->new();
 
 # Prepare
-my $random = int(1000000*rand());
-my $endpoint = "RESET$random";
+my $endpoint;
+
+if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
+    my $random = int(1000000*rand());
+    $endpoint = "RESET$random";
+} else {
+    $endpoint = "RESET_$ENV{TEST_ENDPOINT_SUFFIX}";
+}
 my $server = "RESET$random";
 my $config_file = "reset-endpoint.conf";
 

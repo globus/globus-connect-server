@@ -164,8 +164,13 @@ sub force_cleanup()
 plan tests => 27;
 
 # Prepare
-my $random = int(1000000*rand());
-my $endpoint_name = "GRIDFTP_OPTIONS_$random";
+my $endpoint_name;
+if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
+    my $random = int(1000000*rand());
+    $endpoint_name = "GRIDFTP_OPTIONS_$random";
+} else {
+    $endpoint_name = "GRIDFTP_OPTIONS_$ENV{TEST_ENDPOINT_SUFFIX}";
+}
 my $simple_ca_dir = mkdtemp("/tmp/XXXXXXXXX");
 END { File::Path::rmtree($simple_ca_dir); }
 

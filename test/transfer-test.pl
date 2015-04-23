@@ -130,8 +130,14 @@ sub deactivate_endpoint($)
 }
 
 # Prepare
-my $random = int(1000000*rand());
-my $endpoint = "TRANSFER$random";
+my $endpoint;
+if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
+    my $random = int(1000000*rand());
+    $endpoint = "TRANSFER_$random";
+} else {
+    $endpoint = "TRANSFER_$ENV{TEST_ENDPOINT_SUFFIX}";
+}
+
 my ($random_user, $random_pass) = TempUser::create_user();
 if (!$random_user)
 {

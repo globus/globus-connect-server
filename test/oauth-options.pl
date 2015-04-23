@@ -140,8 +140,13 @@ if ($hostname !~ /\./)
 {
     $hostname = (POSIX::uname())[1];
 }
-my $random = int(1000000*rand());
 my $endpoint_name = "OAUTH_OPTIONS_$random";
+if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
+    my $random = int(1000000*rand());
+    $endpoint_name = "OAUTH_OPTIONS_$random";
+} else {
+    $endpoint_name = "OAUTH_OPTIONS_$ENV{TEST_ENDPOINT_SUFFIX}";
+}
 
 # Try to create endpoint with different server name than hostname and
 # server_behind_nat is false

@@ -139,8 +139,13 @@ if(!(-e "/usr/lib/libglobus_xio_udt_driver.so.0") &&
 }
 
 # Prepare
-my $random = int(1000000*rand());
 my $endpoint = "TRANSFER$random";
+if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
+    my $random = int(1000000*rand());
+    $endpoint = "TRANSFER_$random";
+} else {
+    $endpoint = "TRANSFER_$ENV{TEST_ENDPOINT_SUFFIX}";
+}
 my ($random_user, $random_pass) = TempUser::create_user();
 if (!$random_user)
 {
