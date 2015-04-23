@@ -822,12 +822,19 @@ class GCMU(object):
                 or name.startswith("Scientific") \
                 or name == 'Fedora' \
                 or name.startswith("SUSE"):
-            args = ["/sbin/service", self.service, "stop"]
+            if os.path.exists("/bin/systemctl"):
+                args = ["/bin/systemctl", "stop", self.service]
+            else:
+                args = ["/sbin/service", self.service, "stop"]
+            fi
         elif name == 'Ubuntu' or name == 'Debian':
-            args = ["/usr/sbin/service", self.service, "stop"]
+            if os.path.exists("/bin/systemctl"):
+                args = ["/bin/systemctl", "stop", self.service]
+            else:
+                args = ["/usr/sbin/service", self.service, "stop"]
 
-        restarter = Popen(args, stdin = None, stdout=PIPE, stderr=PIPE)
-        restarter.communicate()
+        stopper = Popen(args, stdin = None, stdout=PIPE, stderr=PIPE)
+        stopper.communicate()
                     
 
     def restart(self, **kwargs):
@@ -840,9 +847,15 @@ class GCMU(object):
                 or name.startswith("Scientific") \
                 or name == 'Fedora' \
                 or name.startswith("SUSE"):
-            args = ["/sbin/service", self.service, "restart"]
+            if os.path.exists("/bin/systemctl"):
+                args = ["/bin/systemctl", "restart", self.service]
+            else:
+                args = ["/sbin/service", self.service, "restart"]
         elif name == 'Ubuntu' or name == 'Debian':
-            args = ["/usr/sbin/service", self.service, "restart"]
+            if os.path.exists("/bin/systemctl"):
+                args = ["/bin/systemctl", "restart", self.service]
+            else:
+                args = ["/usr/sbin/service", self.service, "restart"]
 
         self.logger.debug("restarting with " + " ".join(args))
         restarter = Popen(args, stdin = None, stdout=PIPE, stderr=PIPE)

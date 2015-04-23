@@ -64,6 +64,10 @@ class Web(gcmu.GCMU):
             self.service = "apache2"
             self.dist_type = "deb"
             self.http_conf_dir = '/etc/apache2/conf.d'
+            if int(distver[0:distver.find(".")]) >= 8:
+                self.http_conf_dir = '/etc/apache2/conf-available'
+            else:
+                self.http_conf_dir = '/etc/apache2/conf.d'
         elif distname == 'Ubuntu':
             self.service = "apache2"
             self.dist_type = "deb"
@@ -214,7 +218,8 @@ class Web(gcmu.GCMU):
     def enable_mod_wsgi(self, **kwargs):
         self.logger.debug("ENTER: Web.enable_mod_wsgi()")
         if self.dist_type == 'deb':
-            if not os.path.exists("/etc/apache2/mods-enabled/mod_wsgi.load"):
+            if not(os.path.exists("/etc/apache2/mods-enabled/mod_wsgi.load") \
+                    or os.path.exists("/etc/apache2/mods-enabled/wsgi.load")):
                 enabler = Popen(["/usr/sbin/a2enmod","wsgi"],
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = enabler.communicate()

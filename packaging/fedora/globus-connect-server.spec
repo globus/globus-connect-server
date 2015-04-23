@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.15
+Version:        4.0.16
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Tue Apr 23 2015 Globus Toolkit <support@globus.org> 4.0.16-1
+- Use systemctl where available
+
 * Tue Mar 3 2015 Globus Toolkit <support@globus.org> 4.0.15-1
 - Bump GridFTP requirement
 
