@@ -232,93 +232,98 @@ ok(transfer_file($endpoint, $random_user), "transfer_file_myproxy");
 
 # Test Step #4:
 # Create shared endpoint
-ok(shared_endpoint_create($endpoint, $shared_endpoint),
+my $shared_ok;
+ok($shared_ok = shared_endpoint_create($endpoint, $shared_endpoint),
         "shared_endpoint_create");
 
-# Test Step #5:
-# Create RW directory and share it
-ok(create_and_share_dir($shared_endpoint, $random_user, "gcmutest",
-        "RW", "rw", $owner_api), "shared_endpoint_access_add_rw");
+SKIP: {
+    skip "Shared endpoint create failed", 15 unless $shared_ok;
 
-# Test Step #6:
-# Create RO directory and share it
-ok(create_and_share_dir($shared_endpoint, $random_user, "gcmutest",
-        "RO", "r", $owner_api), "shared_endpoint_access_add_r");
+    # Test Step #5:
+    # Create RW directory and share it
+    ok(create_and_share_dir($shared_endpoint, $random_user, "gcmutest",
+            "RW", "rw", $owner_api), "shared_endpoint_access_add_rw");
 
-# Test Step #7:
-# Activate shared endpoint
-ok(activate_endpoint($shared_endpoint, $random_user, $random_pass),
-        "activate_shared_owner");
+    # Test Step #6:
+    # Create RO directory and share it
+    ok(create_and_share_dir($shared_endpoint, $random_user, "gcmutest",
+            "RO", "r", $owner_api), "shared_endpoint_access_add_r");
 
-# Test Step #8:
-# Activate shared endpoint with 2nd user we share with
-ok(activate_endpoint($shared_endpoint, $random_user2, $random_pass2,
-        $friend_api), "activate_shared_friend");
+    # Test Step #7:
+    # Activate shared endpoint
+    ok(activate_endpoint($shared_endpoint, $random_user, $random_pass),
+            "activate_shared_owner");
 
-# Test Step #9:
-# Transfer file into rw using owner credentials
-ok(transfer_file($endpoint, $random_user, api=>$owner_api,
-        source_dir => "RW", dest_dir => "RW"),
-        "transfer_via_shared_endpoint_owner");
+    # Test Step #8:
+    # Activate shared endpoint with 2nd user we share with
+    ok(activate_endpoint($shared_endpoint, $random_user2, $random_pass2,
+            $friend_api), "activate_shared_friend");
 
-# Test Step #10:
-# Transfer file into rw using friend credentials
-ok(transfer_file($shared_endpoint, $random_user, api=>$friend_api,
-        source_dir => "RW", dest_dir => "RW"),
-        "transfer_via_shared_endpoint_friend");
+    # Test Step #9:
+    # Transfer file into rw using owner credentials
+    ok(transfer_file($endpoint, $random_user, api=>$owner_api,
+            source_dir => "RW", dest_dir => "RW"),
+            "transfer_via_shared_endpoint_owner");
 
-# Test Step #11:
-# Try to transfer file into r dir using owner credentials
-ok(!transfer_file($shared_endpoint, $random_user, api=>$owner_api,
-        source_dir => "RO", dest_dir => "RO"),
-        "transfer_via_shared_endpoint_owner_ro");
+    # Test Step #10:
+    # Transfer file into rw using friend credentials
+    ok(transfer_file($shared_endpoint, $random_user, api=>$friend_api,
+            source_dir => "RW", dest_dir => "RW"),
+            "transfer_via_shared_endpoint_friend");
 
-# Test Step #12:
-# Try to transfer file from r to rw dir using owner credentials
-ok(transfer_file($shared_endpoint, $random_user, api=>$owner_api,
-        source_dir => "RO", dest_dir => "RW"),
-        "transfer_via_shared_endpoint_owner_ro_to_rw");
+    # Test Step #11:
+    # Try to transfer file into r dir using owner credentials
+    ok(!transfer_file($shared_endpoint, $random_user, api=>$owner_api,
+            source_dir => "RO", dest_dir => "RO"),
+            "transfer_via_shared_endpoint_owner_ro");
 
-# Test Step #13:
-# Try to transfer file into r dir using friend credentials (should fail)
-ok(!transfer_file($shared_endpoint, $random_user, api=>$friend_api,
-        source_dir => "RO", dest_dir => "RO"),
-        "transfer_via_shared_endpoint_friend_ro");
+    # Test Step #12:
+    # Try to transfer file from r to rw dir using owner credentials
+    ok(transfer_file($shared_endpoint, $random_user, api=>$owner_api,
+            source_dir => "RO", dest_dir => "RW"),
+            "transfer_via_shared_endpoint_owner_ro_to_rw");
 
-# Test Step #14:
-# Try to transfer file from r to rw dir using friend credentials
-ok(transfer_file($shared_endpoint, $random_user, api=>$friend_api,
-        source_dir => "RO", dest_dir => "RW"),
-        "transfer_via_shared_endpoint_friend_ro_to_rw");
+    # Test Step #13:
+    # Try to transfer file into r dir using friend credentials (should fail)
+    ok(!transfer_file($shared_endpoint, $random_user, api=>$friend_api,
+            source_dir => "RO", dest_dir => "RO"),
+            "transfer_via_shared_endpoint_friend_ro");
 
-# Test Step #15:
-# Try to allow access to a path outside of the sharing restricted paths
-# GO currently does not check access so this should always succeed
-ok(create_and_share_dir($shared_endpoint, $random_user, "gcmutest",
-        "NONE", "r", $owner_api),
-        "shared_endpoint_access_add_restricted");
+    # Test Step #14:
+    # Try to transfer file from r to rw dir using friend credentials
+    ok(transfer_file($shared_endpoint, $random_user, api=>$friend_api,
+            source_dir => "RO", dest_dir => "RW"),
+            "transfer_via_shared_endpoint_friend_ro_to_rw");
 
-# Test Step #16:
-# Try to transfer file into N dir using friend credentials (should fail)
-ok(!transfer_file($shared_endpoint, $random_user, api=>$friend_api,
-        source_dir => "RO", dest_dir => "NONE"),
-        "transfer_via_shared_endpoint_friend_ro_to_n");
+    # Test Step #15:
+    # Try to allow access to a path outside of the sharing restricted paths
+    # GO currently does not check access so this should always succeed
+    ok(create_and_share_dir($shared_endpoint, $random_user, "gcmutest",
+            "NONE", "r", $owner_api),
+            "shared_endpoint_access_add_restricted");
 
-# Test Step #17:
-# Try to transfer file from N to rw dir using friend credentials (should fail)
-ok(!transfer_file($shared_endpoint, $random_user, api=>$friend_api,
-        source_dir => "NONE", dest_dir => "RW"),
-        "transfer_via_shared_endpoint_friend_n_to_rw");
+    # Test Step #16:
+    # Try to transfer file into N dir using friend credentials (should fail)
+    ok(!transfer_file($shared_endpoint, $random_user, api=>$friend_api,
+            source_dir => "RO", dest_dir => "NONE"),
+            "transfer_via_shared_endpoint_friend_ro_to_n");
 
-# Test Step #18:
-# Deactivate friend's access to shared endpoint
-ok(deactivate_endpoint($shared_endpoint, $friend_api),
-        "deactivate_shared_endpoint_friend");
+    # Test Step #17:
+    # Try to transfer file from N to rw dir using friend credentials (should fail)
+    ok(!transfer_file($shared_endpoint, $random_user, api=>$friend_api,
+            source_dir => "NONE", dest_dir => "RW"),
+            "transfer_via_shared_endpoint_friend_n_to_rw");
 
-# Test Step #19:
-# Deactivate access to shared endpoint
-ok(deactivate_endpoint($shared_endpoint),
-        "deactivate_shared_endpoint_owner");
+    # Test Step #18:
+    # Deactivate friend's access to shared endpoint
+    ok(deactivate_endpoint($shared_endpoint, $friend_api),
+            "deactivate_shared_endpoint_friend");
+
+    # Test Step #19:
+    # Deactivate access to shared endpoint
+    ok(deactivate_endpoint($shared_endpoint),
+            "deactivate_shared_endpoint_owner");
+}
 
 # Test Step #20:
 # Deactivate access to endpoint
