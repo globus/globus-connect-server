@@ -1,9 +1,9 @@
-VERSION = 0.30
+VERSION = 0.31
 DIST_STAGING = globus_connect_server_test-$(VERSION)
 DIST_FILE = $(DIST_STAGING).tar.gz
 
-osname := $(shell lsb_release -is||:)
-osver  := $(shell lsb_release -rs||:)
+osname := $(shell lsb_release -is 2> /dev/null | tr -d ' ' ||:)
+osver  := $(shell lsb_release -rs 2> /dev/null | tr -d ' ' || :)
 
 ifeq (,$(osname)$(osver))
 test_endpoint_suffix =
