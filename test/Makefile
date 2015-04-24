@@ -1,4 +1,4 @@
-VERSION = 0.31
+VERSION = 0.32
 DIST_STAGING = globus_connect_server_test-$(VERSION)
 DIST_FILE = $(DIST_STAGING).tar.gz
 
@@ -18,7 +18,11 @@ test:
             TERM=vt100 \
             perl TESTS-junit.pl || true
 	if [ -f ~/.ssh/gcmutest ] && [ -n "$(test_endpoint_suffix)" ]; then \
-            ssh -i ~/.ssh/gcmutest -t gcmutest@cli.globusonline.org endpoint-remove gcmutest#*$(test_endpoint_suffix); \
+            ssh -o "StrictHostKeyChecking no" \
+                -o "UserKnownHostsFile /dev/null" \
+                -i ~/.ssh/gcmutest \
+                -t gcmutest@cli.globusonline.org \
+                endpoint-remove "gcmutest#*$(test_endpoint_suffix)" || : ; \
         fi
 
 multinode-test:
