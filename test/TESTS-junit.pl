@@ -93,9 +93,9 @@ $|=1;
     double-server-config.pl
     activation-test.pl
     transfer-test.pl
-    sharing.pl
     transfer-test-udt.pl
 );
+# sharing.pl
 
 my ($harness_type) = get_harness_type();
 
