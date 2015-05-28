@@ -1,0 +1,64 @@
+GLOBUS-CONNECT-SERVER-WEB-CLEANUP(8)
+====================================
+:doctype: manpage
+:man source: University of Chicago
+:man manual: Globus Connect Server
+
+NAME
+----
+globus-connect-server-web-cleanup - Clean up MyProxy OAuth server configuration
+
+[[globus-connect-server-web-cleanup-SYNOPSIS]]
+SYNOPSIS
+--------
+*globus-connect-server-web-cleanup* [-h|--help]
+
+*globus-connect-server-web-cleanup*
+{-c FILENAME|--config-file=FILENAME}
+{-v|--verbose}
+{-r PATH|--root=PATH}
+
+[[globus-connect-server-web-cleanup-DESCRIPTION]]
+DESCRIPTION
+-----------
+The *globus-connect-server-web-cleanup* command deletes MyProxy OAuth service
+configuration previously created by running globus-connect-server-web-setup. It
+deletes configuration files, stops, and disables the MyProxy server.
+
+If the *-r _PATH_* or *--root=_PATH_* command-line option is used,
+*globus-connect-server-web-cleanup* will delete MyProxy OAuth configuration in
+a subdirectory rooted at _PATH_ instead of +/+. This means, for example, that
+*globus-connect-server-web-cleanup* deletes MyProxy OAuth configuration files
+in +_PATH_/etc/apache2+ or +_PATH_/etc/httpd+.
+
+[[globus-connect-server-web-cleanup-OPTIONS]]
+OPTIONS
+-------
+The following options are available:
+
+*-h, --help*::
+    Display help information
+*-c FILENAME, --config-file=FILENAME*::
+    Use configuration file _FILENAME_ instead of
+    +/etc/globus-connect-server.conf+
+*-v, --verbose*::
+    Print more information about tasks
+*-r PATH, --root=PATH*::
+    Use _PATH_ as the directory prefix for the configuration files that
+    *globus-connect-server-web-cleanup* deletes.
+
+[[globus-connect-server-web-cleanup-ENVIRONMENT]]
+ENVIRONMENT
+-----------
+*GLOBUS_USER*::
+    Default Globus user name
+*GLOBUS_PASSWORD*::
+    Default Globus password
+
+[[globus-connect-server-web-cleanup-SEE-ALSO]]
+SEE ALSO
+--------
+*globus-connect-server-web-setup*(8)
+////
+vim: set syntax=asciidoc:
+////

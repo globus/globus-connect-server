@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.16
+Version:        4.0.17
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,10 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Thu May 28 2015 Globus Toolkit <support@globus.org> 4.0.17-1
+- Add html version of documentation to source
+- Note managed endpoint configuration needed when enabling sharing
+
 * Tue Apr 23 2015 Globus Toolkit <support@globus.org> 4.0.16-1
 - Use systemctl where available
 

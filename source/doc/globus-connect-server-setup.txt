@@ -1,0 +1,79 @@
+GLOBUS-CONNECT-SERVER-SETUP(8)
+==============================
+:doctype: manpage
+:man source: University of Chicago
+:man manual: Globus Connect Server
+
+NAME
+----
+globus-connect-server-setup - Configure a MyProxy, OAuth, and GridFTP server and create a Globus endpoint
+
+[[globus-connect-server-setup-SYNOPSIS]]
+SYNOPSIS
+--------
+*globus-connect-server-setup* [-h|--help]
+
+*globus-connect-server-setup*
+{-c FILENAME|--config-file=FILENAME}
+{-v|--verbose}
+{-r PATH|--root=PATH}
+{-s|--reset-endpoint}
+
+[[globus-connect-server-setup-DESCRIPTION]]
+DESCRIPTION
+-----------
+The *globus-connect-server-setup* command combines the functionality of
+*globus-connect-server-io-setup*, *globus-connect-server-id-setup*,
+and *globus-connect-server-web-setup* to configure a system to act as a GridFTP
+server, MyProxy ID server, and OAuth server. It also registers the GridFTP
+server as a Globus endpoint.  Depending on features enabled in the
+configuration file, this process will include fetching a service credential
+from the Globus Connect CA, writing GridFTP configuration files in the 
++/etc/gridftp.d+ directory, adding trusted certificates to the GridFTP server's
+trust roots, restarting the GridFTP server, enabling the GridFTP server to
+start at boot, and creating or modifying an endpoint to point to this server.
+
+If the *-s* or *--reset-endpoint* command-line option is used,
+*globus-connect-server-setup* removes all other GridFTP servers associated with
+the endpoint before adding this server if the endpoint already exists.
+Otherwise, *globus-connect-server-setup* adds this server to the list of
+servers associated with the endpoint.
+
+If the *-r _PATH_* or *--root=_PATH_* command-line option is used,
+*globus-connect-server-setup* will write its GridFTP and MyProxy configuration
+files and certificates in a subdirectory rooted at _PATH_ instead of +/+. This
+means, for example, that *globus-connect-server-setup* writes GridFTP
+configuration files in +_PATH_/etc/gridftp.d+.
+
+[[globus-connect-server-setup-OPTIONS]]
+OPTIONS
+-------
+The following options are available:
+
+*-h, --help*::
+    Display help information
+*-c FILENAME, --config-file=FILENAME*::
+    Use configuration file FILENAME instead of +/etc/globus-connect-server.conf+
+*-v, --verbose*::
+    Print more information about tasks
+*-r PATH, --root=PATH*::
+    Add _PATH_ as the directory prefix for the configuration files that
+    *globus-connect-server-setup* writes
+*-s, --reset-endpoint*::
+    Remove all other GridFTP servers from this endpoint before adding this one
+
+[[globus-connect-server-setup-ENVIRONMENT]]
+ENVIRONMENT
+-----------
+*GLOBUS_USER*::
+    Default Globus user name
+*GLOBUS_PASSWORD*::
+    Default Globus password
+
+[[globus-connect-server-setup-SEE-ALSO]]
+SEE ALSO
+--------
+*globus-connect-server-cleanup*(8), *globus-connect-server-io-setup*(8), *globus-connect-server-id-setup*(8), *globus-connect-server-web-setup*(8)
+////
+vim: set syntax=asciidoc:
+////

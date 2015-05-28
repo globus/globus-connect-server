@@ -1,0 +1,72 @@
+GLOBUS-CONNECT-SERVER-CLEANUP(8)
+================================
+:doctype: manpage
+:man source: University of Chicago
+:man manual: Globus Connect Server
+
+NAME
+----
+globus-connect-server-cleanup - Remove GridFTP, MyProxy, and OAuth configuration and remove it from a Globus endpoint
+
+[[globus-connect-server-cleanup-SYNOPSIS]]
+SYNOPSIS
+--------
+*globus-connect-server-cleanup* [-h|--help]
+
+*globus-connect-server-cleanup*
+{-c _FILENAME_|--config-file=_FILENAME_}
+{-v|--verbose}
+{-r _PATH_|--root=_PATH_}
+{-d|--delete-endpoint}
+
+[[globus-connect-server-cleanup-DESCRIPTION]]
+DESCRIPTION
+-----------
+The *globus-connect-server-cleanup* command deletes the GridFTP, MyProxy and
+OAuth service configurations previously created by running
+*globus-connect-server-setup* and removes the GridFTP server from a Globus
+endpoint. It deletes configuration files, stops, and disables the services.
+
+If the +-d+ or +--delete-endpoint+ command-line option is used,
+*globus-connect-server-cleanup* removes the endpoint named in the configuration
+file as well as cleaning up generated configuration files.
+
+If the +-r PATH+ or +--root=PATH+ command-line option is used,
+*globus-connect-server-cleanup* will clean up its GridFTP configuration and
+certificates in a subdirectory rooted at _PATH_ instead of +/+. This means, for
+example, that *globus-connect-server-cleanup* deletes GridFTP configuration
+files in +_PATH_/etc/gridftp.d+.
+
+[[globus-connect-server-cleanup-OPTIONS]]
+OPTIONS
+-------
+The following options are available:
+
+*-h, --help*::
+    Display help information
+*-c FILENAME, --config-file=FILENAME*::
+    Use configuration file _FILENAME_ instead of
+    +/etc/globus-connect-server.conf+
+*-v, --verbose*::
+    Print more information about tasks
+*-r PATH, --root=PATH*::
+    Use _PATH_ as the directory prefix for the configuration files that
+    *globus-connect-server-cleanup* deletes.
+*-d, --delete-endpoint*::
+    Delete the Globus endpoint as well as local configuration
+
+[[globus-connect-server-cleanup-ENVIRONMENT]]
+ENVIRONMENT
+-----------
+*GLOBUS_USER*::
+    Default Globus user name
+*GLOBUS_PASSWORD*::
+    Default Globus password
+
+[[globus-connect-server-cleanup-SEE-ALSO]]
+SEE ALSO
+--------
+*globus-connect-server-setup*(8), *globus-connect-server-io-cleanup*(8), *globus-connect-server-id-cleanup*(8), *globus-connect-server-web-cleanup*(8)
+////
+vim: set syntax=asciidoc:
+////

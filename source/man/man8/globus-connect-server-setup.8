@@ -1,98 +1,90 @@
-.TH globus-connect-server-setup 8
-.SH NAME
-.P
-globus-connect-server-setup - Configure a MyProxy, OAuth, and GridFTP server and create a Globus endpoint
-
-.SH SYNOPSIS
-.HP
-globus-connect-server-setup [-h|--help]
-.HP
-globus-connect-server-setup
-.br
-{-c FILENAME|--config-file=FILENAME}
-.br
-{-v|--verbose}
-.br
-{-r PATH|--root=PATH}
-.br
-{-s|--reset-endpoint}
-
-.SH DESCRIPTION
-.P
-The
-.B globus-connect-server-setup
-command combines the functionality of
-.BR "globus-connect-server-io-setup" ,
-.BR "globus-connect-server-id-setup" ,
-and
-.B "globus-connect-server-web-setup"
-to configure a system to act as a GridFTP server, MyProxy ID server, and OAuth
-server. It also registers the GridFTP server as a Globus endpoint.
-Depending on features enabled in the configuration file, this process will
-include fetching a service credential from the Globus Connect CA, writing
-GridFTP configuration files in the
-.I /etc/gridftp.d/
-directory, adding trusted
-certificates to the GridFTP server's trust roots, restarting the GridFTP
-server, enabling the GridFTP server to start at boot, and creating or modifying
-an endpoint to point to this server.
-.P
-If the
-.B "-s"
-or
-.B "--reset-endpoint"
-command-line option is used,
-.B globus-connect-server-setup
-removes all other GridFTP servers associated with the endpoint before adding
-this server if the endpoint already exists. Otherwise,
-.B globus-connect-server-setup
-adds this server to the list of servers associated with the endpoint.
-.P
-If the 
-.B "-r PATH"
-or
-.B "--root=PATH"
-command-line option is used,
-.B globus-connect-server-setup
-will write its GridFTP and MyProxy configuration files and certificates in a
-subdirectory rooted at
-.I PATH
-instead of /. This means, for example, that
-.B globus-connect-server-setup
-writes GridFTP configuration files in
-.IB "PATH/etc/gridftp.d" .
-.P
+'\" t
+.\"     Title: globus-connect-server-setup
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 05/28/2015
+.\"    Manual: Globus Connect Server
+.\"    Source: University of Chicago
+.\"  Language: English
+.\"
+.TH "GLOBUS\-CONNECT\-SER" "8" "05/28/2015" "University of Chicago" "Globus Connect Server"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+globus-connect-server-setup \- Configure a MyProxy, OAuth, and GridFTP server and create a Globus endpoint
+.SH "SYNOPSIS"
+.sp
+\fBglobus\-connect\-server\-setup\fR [\-h|\-\-help]
+.sp
+\fBglobus\-connect\-server\-setup\fR {\-c FILENAME|\-\-config\-file=FILENAME} {\-v|\-\-verbose} {\-r PATH|\-\-root=PATH} {\-s|\-\-reset\-endpoint}
+.SH "DESCRIPTION"
+.sp
+The \fBglobus\-connect\-server\-setup\fR command combines the functionality of \fBglobus\-connect\-server\-io\-setup\fR, \fBglobus\-connect\-server\-id\-setup\fR, and \fBglobus\-connect\-server\-web\-setup\fR to configure a system to act as a GridFTP server, MyProxy ID server, and OAuth server\&. It also registers the GridFTP server as a Globus endpoint\&. Depending on features enabled in the configuration file, this process will include fetching a service credential from the Globus Connect CA, writing GridFTP configuration files in the /etc/gridftp\&.d directory, adding trusted certificates to the GridFTP server\(cqs trust roots, restarting the GridFTP server, enabling the GridFTP server to start at boot, and creating or modifying an endpoint to point to this server\&.
+.sp
+If the \fB\-s\fR or \fB\-\-reset\-endpoint\fR command\-line option is used, \fBglobus\-connect\-server\-setup\fR removes all other GridFTP servers associated with the endpoint before adding this server if the endpoint already exists\&. Otherwise, \fBglobus\-connect\-server\-setup\fR adds this server to the list of servers associated with the endpoint\&.
+.sp
+If the \fB\-r \fR\fB\fIPATH\fR\fR or \fB\-\-root=\fR\fB\fIPATH\fR\fR command\-line option is used, \fBglobus\-connect\-server\-setup\fR will write its GridFTP and MyProxy configuration files and certificates in a subdirectory rooted at \fIPATH\fR instead of /\&. This means, for example, that \fBglobus\-connect\-server\-setup\fR writes GridFTP configuration files in \fIPATH\fR/etc/gridftp\&.d\&.
+.SH "OPTIONS"
+.sp
 The following options are available:
-.HP
--h, --help  Display help information
-.HP
-.B "-c FILENAME, --config-file=FILENAME"
-.br
-Use configuration file FILENAME instead of /etc/globus-connect-server.conf
-.HP
-.B "-v, --verbose"
-.br
+.PP
+\fB\-h, \-\-help\fR
+.RS 4
+Display help information
+.RE
+.PP
+\fB\-c FILENAME, \-\-config\-file=FILENAME\fR
+.RS 4
+Use configuration file FILENAME instead of
+/etc/globus\-connect\-server\&.conf
+.RE
+.PP
+\fB\-v, \-\-verbose\fR
+.RS 4
 Print more information about tasks
-.HP
-.B "-r PATH, --root=PATH"
-.br
-Add PATH as the directory prefix for the configuration files that
-.B globus-connect-server-io-setup
+.RE
+.PP
+\fB\-r PATH, \-\-root=PATH\fR
+.RS 4
+Add
+\fIPATH\fR
+as the directory prefix for the configuration files that
+\fBglobus\-connect\-server\-setup\fR
 writes
-.HP
-.B "-s, --reset-endpoint"
-.br
+.RE
+.PP
+\fB\-s, \-\-reset\-endpoint\fR
+.RS 4
 Remove all other GridFTP servers from this endpoint before adding this one
-
-.SH ENVIRONMENT
-.HP
-.B GLOBUS_USER
-.br
+.RE
+.SH "ENVIRONMENT"
+.PP
+\fBGLOBUS_USER\fR
+.RS 4
 Default Globus user name
-.HP
-.B GLOBUS_PASSWORD
-.br
+.RE
+.PP
+\fBGLOBUS_PASSWORD\fR
+.RS 4
 Default Globus password
-
-.SH SEE ALSO
-.B globus-connect-server-cleanup(8), globus-connect-server-io-setup(8), globus-connect-server-id-setup(8), globus-connect-server-web-setup(8)
+.RE
+.SH "SEE ALSO"
+.sp
+\fBglobus\-connect\-server\-cleanup\fR(8), \fBglobus\-connect\-server\-io\-setup\fR(8), \fBglobus\-connect\-server\-id\-setup\fR(8), \fBglobus\-connect\-server\-web\-setup\fR(8)

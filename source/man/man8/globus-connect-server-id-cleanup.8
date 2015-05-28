@@ -1,73 +1,83 @@
-.TH globus-connect-server-id-cleanup 8
-
-.SH NAME
-globus-connect-server-id-cleanup - Remove Globus -related MyProxy server configuration
-
-.SH SYNOPSIS
-.HP
-globus-connect-server-id-cleanup [-h|--help]
-.HP
-globus-connect-server-id-cleanup
-.br
-{-c FILENAME|--config-file=FILENAME}
-.br
-{-v|--verbose}
-.br
-{-r PATH|--root=PATH}
-
-.SH DESCRIPTION
-.P
-The
-.B globus-connect-server-id-cleanup
-command deletes MyProxy service configuration previously created by running
-.BR "globus-connect-server-id-setup".
-It deletes configuration files, stops, and
-disables the MyProxy server.
-.P
-If the
-.B "-r PATH
-or
-.B "--root=PATH"
-command-line option is used,
-.B globus-connect-server-id-cleanup
-will delete MyProxy configuration and certificates from a subdirectory rooted
-at
-.I PATH
-instead of /. This means, for example, that
-.B globus-connect-server-id-cleanup
-deletes MyProxy configuration files in
-.IR "PATH/etc/myproxy.d".
-.P
+'\" t
+.\"     Title: globus-connect-server-id-cleanup
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 05/28/2015
+.\"    Manual: Globus Connect Server
+.\"    Source: University of Chicago
+.\"  Language: English
+.\"
+.TH "GLOBUS\-CONNECT\-SER" "8" "05/28/2015" "University of Chicago" "Globus Connect Server"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+globus-connect-server-id-cleanup \- Remove Globus \-related MyProxy server configuration
+.SH "SYNOPSIS"
+.sp
+\fBglobus\-connect\-server\-id\-cleanup\fR [\-h|\-\-help]
+.sp
+\fBglobus\-connect\-server\-id\-cleanup\fR {\-c \fIFILENAME\fR|\-\-config\-file=\fIFILENAME\fR} {\-v|\-\-verbose} {\-r \fIPATH\fR|\-\-root=\fIPATH\fR}
+.SH "DESCRIPTION"
+.sp
+The \fBglobus\-connect\-server\-id\-cleanup\fR command deletes MyProxy service configuration previously created by running \fBglobus\-connect\-server\-id\-setup\fR\&. It deletes configuration files, stops, and disables the MyProxy server\&.
+.sp
+If the \fB\-r PATH\fR or \fB\-\-root=PATH\fR command\-line option is used, \fBglobus\-connect\-server\-id\-cleanup\fR will delete MyProxy configuration and certificates from a subdirectory rooted at \fIPATH\fR instead of /\&. This means, for example, that \fBglobus\-connect\-server\-id\-cleanup\fR deletes MyProxy configuration files in \fIPATH\fR/etc/myproxy\&.d\&.
+.SH "OPTIONS"
+.sp
 The following options are available:
-.HP
-.B "-h, --help"
-.br
+.PP
+\fB\-h, \-\-help\fR
+.RS 4
 Display help information
-.HP
-.B "-c FILENAME, --config-file=FILENAME"
-.br
+.RE
+.PP
+\fB\-c FILENAME, \-\-config\-file=FILENAME\fR
+.RS 4
 Use configuration file FILENAME instead of
-.I "/etc/globus-connect-server.conf"
-.HP
-.B "-v, --verbose"
-.br
+/etc/globus\-connect\-server\&.conf
+.RE
+.PP
+\fB\-v, \-\-verbose\fR
+.RS 4
 Print more information about tasks
-.HP
-.B "-r PATH, --root=PATH"
-.br
-Add PATH as the directory prefix for the configuration files that
-.B globus-connect-server-id-cleanup
-writes
-
-.SH ENVIRONMENT
-.HP
-.B GLOBUS_USER
-.br
+.RE
+.PP
+\fB\-r PATH, \-\-root=PATH\fR
+.RS 4
+Add
+\fIPATH\fR
+as the directory prefix for the configuration files that
+\fBglobus\-connect\-server\-id\-cleanup\fR
+changes
+.RE
+.SH "ENVIRONMENT"
+.PP
+\fBGLOBUS_USER\fR
+.RS 4
 Default Globus user name
-.HP
-.B GLOBUS_PASSWORD
-.br
+.RE
+.PP
+\fBGLOBUS_PASSWORD\fR
+.RS 4
 Default Globus password
-
+.RE
 .SH "SEE ALSO"
-.B "globus-connect-server-id-setup(8)"
+.sp
+\fBglobus\-connect\-server\-id\-setup\fR(8)

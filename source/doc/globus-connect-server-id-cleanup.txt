@@ -1,0 +1,63 @@
+GLOBUS-CONNECT-SERVER-ID-CLEANUP(8)
+===================================
+:doctype: manpage
+:man source: University of Chicago
+:man manual: Globus Connect Server
+
+NAME
+----
+globus-connect-server-id-cleanup - Remove Globus -related MyProxy server configuration
+
+[[globus-connect-server-id-cleanup-SYNOPSIS]]
+SYNOPSIS
+--------
+*globus-connect-server-id-cleanup* [-h|--help]
+
+*globus-connect-server-id-cleanup* {-c _FILENAME_|--config-file=_FILENAME_}
+{-v|--verbose}
+{-r _PATH_|--root=_PATH_}
+
+[[globus-connect-server-id-cleanup-DESCRIPTION]]
+DESCRIPTION
+-----------
+The *globus-connect-server-id-cleanup* command deletes MyProxy service
+configuration previously created by running *globus-connect-server-id-setup*.
+It deletes configuration files, stops, and disables the MyProxy server.
+
+If the *-r PATH* or *--root=PATH* command-line option is used,
+*globus-connect-server-id-cleanup* will delete MyProxy configuration and
+certificates from a subdirectory rooted at _PATH_ instead of +/+. This means,
+for example, that *globus-connect-server-id-cleanup* deletes MyProxy
+configuration files in +_PATH_/etc/myproxy.d+.
+
+[[globus-connect-server-id-cleanup-OPTIONS]]
+OPTIONS
+-------
+The following options are available:
+
+*-h, --help*::
+    Display help information
+*-c FILENAME, --config-file=FILENAME*::
+    Use configuration file FILENAME instead of
+    +/etc/globus-connect-server.conf+
+*-v, --verbose*::
+    Print more information about tasks
+*-r PATH, --root=PATH*::
+    Add _PATH_ as the directory prefix for the configuration files that
+    *globus-connect-server-id-cleanup* changes
+
+[[globus-connect-server-id-cleanup-ENVIRONMENT]]
+ENVIRONMENT
+-----------
+*GLOBUS_USER*::
+    Default Globus user name
+*GLOBUS_PASSWORD*::
+    Default Globus password
+
+[[globus-connect-server-id-cleanup-SEE-ALSO]]
+SEE ALSO
+--------
+*globus-connect-server-id-setup*(8)
+////
+vim: set syntax=asciidoc:
+////

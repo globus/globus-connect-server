@@ -1,0 +1,67 @@
+GLOBUS-CONNECT-SERVER-ID-SETUP(8)
+===================================
+:doctype: manpage
+:man source: University of Chicago
+:man manual: Globus Connect Server
+
+NAME
+----
+globus-connect-server-id-setup - Configure a MyProxy server for use with Globus 
+
+[[globus-connect-server-id-setup-SYNOPSIS]]
+SYNOPSIS
+--------
+*globus-connect-server-id-setup* [-h|--help]
+
+*globus-connect-server-id-setup*
+{-c _FILENAME_|--config-file=_FILENAME_}
+{-v|--verbose}
+{-r _PATH_|--root=_PATH_}
+
+[[globus-connect-server-id-setup-DESCRIPTION]]
+DESCRIPTION
+-----------
+The *globus-connect-server-id-setup* command generates MyProxy service
+configuration based on the globus-connect-server configuration file, and starts
+the MyProxy server. Depending on features enabled in the configuration file,
+this process will include fetching a service credential from the Globus Connect
+CA, writing MyProxy configuration files in the +/etc/myproxy.d+ directory,
+restarting the MyProxy server, and enabling the MyProxy server to start at
+boot.
+
+If the *-r _PATH_* *--root=_PATH_* command-line option is used,
+*globus-connect-server-id-setup* will write its MyProxy configuration and
+certificates in a subdirectory rooted at _PATH_ instead of +/+. This means, for
+example, that *globus-connect-server-id-setup* writes MyProxy configuration
+files in +_PATH_/etc/myproxy.d+.
+
+[[globus-connect-server-id-setup-OPTIONS]]
+OPTIONS
+-------
+The following options are available:
+
+*-h, --help*::
+    Display help information
+*-c FILENAME, --config-file=FILENAME*::
+    Use configuration file FILENAME instead of +/etc/globus-connect-server.conf+
+*-v, --verbose*::
+    Print more information about tasks
+*-r PATH, --root=PATH*::
+    Add _PATH_ as the directory prefix for the configuration files that
+    *globus-connect-server-id-setup* writes
+
+[[globus-connect-server-id-setup-ENVIRONMENT]]
+ENVIRONMENT
+-----------
+*GLOBUS_USER*::
+    Default Globus user name
+*GLOBUS_PASSWORD*::
+    Default Globus password
+
+[[globus-connect-server-id-setup-SEE-ALSO]]
+SEE ALSO
+--------
+*globus-connect-server-id-cleanup*(8)
+////
+vim: set syntax=asciidoc:
+////

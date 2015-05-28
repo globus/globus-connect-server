@@ -1,94 +1,92 @@
-.TH globus-connect-server-cleanup 8
-.SH NAME
-.P
-globus-connect-server-cleanup - Remove GridFTP, MyProxy, and OAuth configuration and remove it from a Globus endpoint
-
-.SH SYNOPSIS
-.HP
-globus-connect-server-cleanup [-h|--help]
-.HP
-globus-connect-server-cleanup
-.br
-{-c FILENAME|--config-file=FILENAME}
-.br
-{-v|--verbose}
-.br
-{-r PATH|--root=PATH}
-.br
-{-d|--delete-endpoint}
-
-.SH DESCRIPTION
-.P
-The
-.B globus-connect-server-cleanup
-command deletes the GridFTP, MyProxy and OAuth service configurations
-previously created by running
-.B globus-connect-server-setup
-and removes the GridFTP server from a Globus endpoint. It deletes
-configuration files, stops, and disables the services.
-.P
-If the
-.B -d
-or
-.B --delete-endpoint
-command-line option is used,
-.B globus-connect-server-io-cleanup
-removes the endpoint named in the configuration file as well as cleaning up
-.BR "globus-connect-server-setup" "-generated"
-configuration files.
-.P
-If the
-.B "-r PATH"
-or
-.B "--root=PATH"
-command-line option is used,
-.B globus-connect-server-cleanup
-will write its GridFTP configuration and certificates in a subdirectory rooted
-at
-.I PATH
-instead of /. This means, for example, that
-.B globus-connect-server-cleanup
-deletes GridFTP configuration files in
-.IR "PATH/etc/gridftp.d" .
-.P
+'\" t
+.\"     Title: globus-connect-server-cleanup
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 05/28/2015
+.\"    Manual: Globus Connect Server
+.\"    Source: University of Chicago
+.\"  Language: English
+.\"
+.TH "GLOBUS\-CONNECT\-SER" "8" "05/28/2015" "University of Chicago" "Globus Connect Server"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+globus-connect-server-cleanup \- Remove GridFTP, MyProxy, and OAuth configuration and remove it from a Globus endpoint
+.SH "SYNOPSIS"
+.sp
+\fBglobus\-connect\-server\-cleanup\fR [\-h|\-\-help]
+.sp
+\fBglobus\-connect\-server\-cleanup\fR {\-c \fIFILENAME\fR|\-\-config\-file=\fIFILENAME\fR} {\-v|\-\-verbose} {\-r \fIPATH\fR|\-\-root=\fIPATH\fR} {\-d|\-\-delete\-endpoint}
+.SH "DESCRIPTION"
+.sp
+The \fBglobus\-connect\-server\-cleanup\fR command deletes the GridFTP, MyProxy and OAuth service configurations previously created by running \fBglobus\-connect\-server\-setup\fR and removes the GridFTP server from a Globus endpoint\&. It deletes configuration files, stops, and disables the services\&.
+.sp
+If the \-d or \-\-delete\-endpoint command\-line option is used, \fBglobus\-connect\-server\-cleanup\fR removes the endpoint named in the configuration file as well as cleaning up generated configuration files\&.
+.sp
+If the \-r PATH or \-\-root=PATH command\-line option is used, \fBglobus\-connect\-server\-cleanup\fR will clean up its GridFTP configuration and certificates in a subdirectory rooted at \fIPATH\fR instead of /\&. This means, for example, that \fBglobus\-connect\-server\-cleanup\fR deletes GridFTP configuration files in \fIPATH\fR/etc/gridftp\&.d\&.
+.SH "OPTIONS"
+.sp
 The following options are available:
-.HP
-.B "-h, --help"
-.br
+.PP
+\fB\-h, \-\-help\fR
+.RS 4
 Display help information
-.HP
-.B "-c FILENAME, --config-file=FILENAME"
-.br
+.RE
+.PP
+\fB\-c FILENAME, \-\-config\-file=FILENAME\fR
+.RS 4
 Use configuration file
-.I FILENAME
+\fIFILENAME\fR
 instead of
-.I "/etc/globus-connect-server.conf"
-.HP
-.B "-v, --verbose"
-.br
+/etc/globus\-connect\-server\&.conf
+.RE
+.PP
+\fB\-v, \-\-verbose\fR
+.RS 4
 Print more information about tasks
-.HP
-.B "-r PATH, --root=PATH"
-.br
-Add
-.I PATH
+.RE
+.PP
+\fB\-r PATH, \-\-root=PATH\fR
+.RS 4
+Use
+\fIPATH\fR
 as the directory prefix for the configuration files that
-.B globus-connect-server-io-cleanup
-writes.
-.HP
-.B "-d, --delete-endpoint"
-.br
-Delete the Globus endpoint
-
-.SH ENVIRONMENT
-.HP
-.B GLOBUS_USER
-.br
+\fBglobus\-connect\-server\-cleanup\fR
+deletes\&.
+.RE
+.PP
+\fB\-d, \-\-delete\-endpoint\fR
+.RS 4
+Delete the Globus endpoint as well as local configuration
+.RE
+.SH "ENVIRONMENT"
+.PP
+\fBGLOBUS_USER\fR
+.RS 4
 Default Globus user name
-.HP
-.B GLOBUS_PASSWORD
-.br
+.RE
+.PP
+\fBGLOBUS_PASSWORD\fR
+.RS 4
 Default Globus password
-
-.SH SEE ALSO
-.BR "globus-connect-server-setup(8)" ", " "globus-connect-server-io-cleanup(8)" ", " "globus-connect-server-id-cleanup(8)" ", " "globus-connect-server-web-cleanup(8)"
+.RE
+.SH "SEE ALSO"
+.sp
+\fBglobus\-connect\-server\-setup\fR(8), \fBglobus\-connect\-server\-io\-cleanup\fR(8), \fBglobus\-connect\-server\-id\-cleanup\fR(8), \fBglobus\-connect\-server\-web\-cleanup\fR(8)

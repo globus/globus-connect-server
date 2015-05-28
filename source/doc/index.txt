@@ -1,0 +1,11 @@
+Globus Connect Server Manual Pages
+==================================
+
+- link:globus-connect-server-cleanup.html[globus-connect-server-cleanup]
+- link:globus-connect-server-id-cleanup.html[globus-connect-server-id-cleanup]
+- link:globus-connect-server-id-setup.html[globus-connect-server-id-setup]
+- link:globus-connect-server-io-cleanup.html[globus-connect-server-io-cleanup]
+- link:globus-connect-server-io-setup.html[globus-connect-server-io-setup]
+- link:globus-connect-server-setup.html[globus-connect-server-setup]
+- link:globus-connect-server-web-cleanup.html[globus-connect-server-web-cleanup]
+- link:globus-connect-server-web-setup.html[globus-connect-server-web-setup]

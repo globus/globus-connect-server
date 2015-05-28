@@ -1,79 +1,83 @@
-.TH globus-connect-server-id-setup 8
-
-.SH NAME
-globus-connect-server-id-setup - Configure a MyProxy server for use with Globus 
-
-.SH SYNOPSIS
-.HP
-globus-connect-server-id-setup [-h|--help]
-.HP
-globus-connect-server-id-setup
-.br
-{-c FILENAME|--config-file=FILENAME}
-.br
-{-v|--verbose}
-.br
-{-r PATH|--root=PATH}
-.br
-
-.SH DESCRIPTION
-.P
-The
-.B globus-connect-server-id-setup
-command generates MyProxy service
-configuration based on the globus-connect-server configuration file, and
-starts the MyProxy server. Depending on features enabled in the configuration
-file, this process will include fetching a service credential from the Globus
-Connect CA, writing MyProxy configuration files in the /etc/myproxy.d/
-directory, restarting the MyProxy server, and enabling the MyProxy server to
-start at boot.
-.P
-If the 
-.B "-r PATH"
-or
-.B "--root=PATH"
-command-line option is used,
-.B globus-connect-server-id-setup
-will write its MyProxy configuration and certificates in a subdirectory rooted
-at
-.I PATH
-instead of /. This means, for example, that
-.B globus-connect-server-id-setup
-writes MyProxy configuration files in
-.IR "PATH/etc/gridftp.d" .
-.P
+'\" t
+.\"     Title: globus-connect-server-id-setup
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 05/28/2015
+.\"    Manual: Globus Connect Server
+.\"    Source: University of Chicago
+.\"  Language: English
+.\"
+.TH "GLOBUS\-CONNECT\-SER" "8" "05/28/2015" "University of Chicago" "Globus Connect Server"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+globus-connect-server-id-setup \- Configure a MyProxy server for use with Globus
+.SH "SYNOPSIS"
+.sp
+\fBglobus\-connect\-server\-id\-setup\fR [\-h|\-\-help]
+.sp
+\fBglobus\-connect\-server\-id\-setup\fR {\-c \fIFILENAME\fR|\-\-config\-file=\fIFILENAME\fR} {\-v|\-\-verbose} {\-r \fIPATH\fR|\-\-root=\fIPATH\fR}
+.SH "DESCRIPTION"
+.sp
+The \fBglobus\-connect\-server\-id\-setup\fR command generates MyProxy service configuration based on the globus\-connect\-server configuration file, and starts the MyProxy server\&. Depending on features enabled in the configuration file, this process will include fetching a service credential from the Globus Connect CA, writing MyProxy configuration files in the /etc/myproxy\&.d directory, restarting the MyProxy server, and enabling the MyProxy server to start at boot\&.
+.sp
+If the \fB\-r \fR\fB\fIPATH\fR\fR \fB\-\-root=\fR\fB\fIPATH\fR\fR command\-line option is used, \fBglobus\-connect\-server\-id\-setup\fR will write its MyProxy configuration and certificates in a subdirectory rooted at \fIPATH\fR instead of /\&. This means, for example, that \fBglobus\-connect\-server\-id\-setup\fR writes MyProxy configuration files in \fIPATH\fR/etc/myproxy\&.d\&.
+.SH "OPTIONS"
+.sp
 The following options are available:
-.HP
-.B "-h, --help"
-.br
+.PP
+\fB\-h, \-\-help\fR
+.RS 4
 Display help information
-.HP
-.B "-c FILENAME, --config-file=FILENAME"
-.br
-Use configuration file
-.I FILENAME
-instead of
-.I /etc/globus-connect-server.conf
-.HP
-.B "-v, --verbose"
-.br
+.RE
+.PP
+\fB\-c FILENAME, \-\-config\-file=FILENAME\fR
+.RS 4
+Use configuration file FILENAME instead of
+/etc/globus\-connect\-server\&.conf
+.RE
+.PP
+\fB\-v, \-\-verbose\fR
+.RS 4
 Print more information about tasks
-.HP
-.B "-r PATH, --root=PATH"
-.br
+.RE
+.PP
+\fB\-r PATH, \-\-root=PATH\fR
+.RS 4
 Add
-.I PATH
+\fIPATH\fR
 as the directory prefix for the configuration files that
-globus-connect-server-id-setup writes
-
-.SH ENVIRONMENT
-.HP
-.B GLOBUS_USER
-.br
+\fBglobus\-connect\-server\-id\-setup\fR
+writes
+.RE
+.SH "ENVIRONMENT"
+.PP
+\fBGLOBUS_USER\fR
+.RS 4
 Default Globus user name
-.B GLOBUS_PASSWORD
-.br
+.RE
+.PP
+\fBGLOBUS_PASSWORD\fR
+.RS 4
 Default Globus password
-
+.RE
 .SH "SEE ALSO"
-globus-connect-server-id-cleanup(8)
+.sp
+\fBglobus\-connect\-server\-id\-cleanup\fR(8)
