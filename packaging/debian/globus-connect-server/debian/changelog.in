@@ -1,5 +1,11 @@
 globus-connect-server (4.0.17-1+gt6.@distro@) @distro@; urgency=low
 
+  * Fix typo
+
+ -- Globus Toolkit <support@globus.org>  Mon, 01 Jun 2015 11:56:44 -0400
+
+globus-connect-server (4.0.17-1+gt6.@distro@) @distro@; urgency=low
+
   * Add html version of documentation to source
   * Note managed endpoint configuration needed when enabling sharing
 
