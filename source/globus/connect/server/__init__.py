@@ -826,7 +826,6 @@ class GCMU(object):
                 args = ["/bin/systemctl", "stop", self.service]
             else:
                 args = ["/sbin/service", self.service, "stop"]
-            fi
         elif name == 'Ubuntu' or name == 'Debian':
             if os.path.exists("/bin/systemctl"):
                 args = ["/bin/systemctl", "stop", self.service]
