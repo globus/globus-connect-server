@@ -1,4 +1,4 @@
-globus-connect-server (4.0.17-1+gt6.@distro@) @distro@; urgency=low
+globus-connect-server (4.0.18-1+gt6.@distro@) @distro@; urgency=low
 
   * Fix typo
 
