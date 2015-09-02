@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.21
+Version:        4.0.22
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,7 +211,7 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
-* Wed Sep 2 2015 Globus Toolkit <support@globus.org> 4.0.21-1
+* Wed Sep 2 2015 Globus Toolkit <support@globus.org> 4.0.22-1
 - Upgrade to transferapi version 0.10.16
 - Replace obsolescent endpoint_update calls
 - Changes for python3 compatibility

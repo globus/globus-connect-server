@@ -72,6 +72,7 @@ import traceback
 
 from globus.connect.server import get_api, is_latest_version
 from globusonline.transfer.api_client import TransferAPIClient
+from globus.connect.server.io import IO
 from globus.connect.server.id import ID
 from globus.connect.server.web import Web
 from globus.connect.server.configfile import ConfigFile
