@@ -1,9 +1,9 @@
 globus-connect-multiuser (4.0.19-1) unstable; urgency=low
 
- * Upgrade to transferapi version 0.10.16
- * Replace obsolescent endpoint_update calls
- * Changes for python3 compatibility
- * Add is-this-the-latest-version? check
+  * Upgrade to transferapi version 0.10.16
+  * Replace obsolescent endpoint_update calls
+  * Changes for python3 compatibility
+  * Add is-this-the-latest-version? check
 
  -- Globus Toolkit <support@globus.org>  Wed, 02 Sep 2015 09:15:51 -0400
 
