@@ -17,7 +17,7 @@
 from distutils.core import setup
 import os
 
-version = "4.0.19"
+version = "4.0.20"
 
 versionfile_path = os.path.join("globus","connect","server", "version")
 oldversion = None

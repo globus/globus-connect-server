@@ -1,11 +1,11 @@
-globus-connect-server (4.0.19-1) unstable; urgency=low
+globus-connect-server (4.0.20-1) unstable; urgency=low
 
   * Upgrade to transferapi version 0.10.16
   * Replace obsolescent endpoint_update calls
   * Changes for python3 compatibility
   * Add is-this-the-latest-version? check
 
- -- Globus Toolkit <support@globus.org>  Wed, 02 Sep 2015 09:15:51 -0400
+ -- Globus Toolkit <support@globus.org>  Wed, 02 Sep 2015 12:00:08 -0400
 
 globus-connect-server (4.0.18-1+gt6.@distro@) @distro@; urgency=low
 
