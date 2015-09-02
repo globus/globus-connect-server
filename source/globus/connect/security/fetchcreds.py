@@ -1,6 +1,7 @@
 #! /usr/bin/python
+
 # 
-# Copyright 2010-2013 University of Chicago
+# Copyright 2010-2015 University of Chicago
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+from __future__ import print_function, absolute_import
 
 """
 Globus Connect fetchcreds module
@@ -30,7 +33,6 @@ import shutil
 import tempfile
 
 from subprocess import Popen, PIPE
-
 
 class FetchCreds(object):
     """
@@ -57,7 +59,7 @@ class FetchCreds(object):
 
     def __setup_x509_dirs(self):
         if self.certfile is None:
-            old_umask = os.umask(0133)
+            old_umask = os.umask(0o133)
             self.certfile = tempfile.NamedTemporaryFile()
             anoncert = pkgutil.get_data(
                     'globus.connect.security',
@@ -73,11 +75,11 @@ class FetchCreds(object):
 
             self.pipe_env['X509_USER_CERT'] = self.certfile.name
             if self.debug:
-                print "Wrote anoncert to " + self.certfile.name
+                print("Wrote anoncert to " + self.certfile.name)
             os.umask(old_umask)
 
         if self.keyfile is None:
-            old_umask = os.umask(0177)
+            old_umask = os.umask(0o177)
             self.keyfile = tempfile.NamedTemporaryFile()
             try:
                 self.keyfile.write(anonkey)
@@ -86,7 +88,7 @@ class FetchCreds(object):
                 pass
             os.umask(old_umask)
             if self.debug:
-                print "Wrote anonkey to " + self.certfile.name
+                print("Wrote anonkey to " + self.certfile.name)
             self.pipe_env['X509_USER_KEY'] = self.keyfile.name
 
         if self.cadir is None:
@@ -96,7 +98,7 @@ class FetchCreds(object):
             atexit.register(self.cleanup_cadir)
 
             if self.debug:
-                print "Wrote relay trusted cert to " + self.cadir
+                print("Wrote relay trusted cert to " + self.cadir)
 
             self.pipe_env['X509_CERT_DIR'] = self.cadir
             self.pipe_env['X509_USER_PROXY'] = ''
@@ -125,26 +127,26 @@ class FetchCreds(object):
                     "register", code]
             self.__setup_x509_dirs()
             if self.debug:
-                print "Executing '" + "' '" + join(args) + "'\n"
+                print("Executing '" + "' '" + join(args) + "'\n")
             pipe = Popen(args, env = self.pipe_env,
                 stdout=PIPE, stderr=PIPE, close_fds = True)
             (out, err) = pipe.communicate()
             returncode = pipe.returncode
             if returncode == 255:
-                print "Error: Could not connect to server"
-                print "---"
-                print err
+                print("Error: Could not connect to server")
+                print("---")
+                print(err)
                 return None
             elif returncode > 0:
-                print "Error: The server returned an error" 
-                print "---"
-                print out, err
+                print("Error: The server returned an error") 
+                print("---")
+                print(out, err)
                 return None
             elif returncode < 0:
-                print "Error: Could not connect to server" 
-                print "---"
-                print "Exited abnormaly: received signal " + str(-returncode)
-                print out, err
+                print("Error: Could not connect to server") 
+                print("---")
+                print("Exited abnormaly: received signal " + str(-returncode))
+                print(out, err)
                 return None
             self.data[code] = self.parse_config(out)
 
@@ -179,7 +181,7 @@ class FetchCreds(object):
 if __name__ == '__main__':
     args = sys.argv[1:]
     if not args or args[0] == '-h':
-        print "Usage %s code [server]" %(sys.argv[0])
+        print("Usage %s code [server]" %(sys.argv[0]))
         sys.exit(2)
     code = args[0].strip()
     server = None
@@ -190,7 +192,7 @@ if __name__ == '__main__':
         fetchcreds = FetchCreds()
 
     (cert, key) = fetchcreds.get_cert_and_key(code)
-    print "cert:\n%s" %(cert)
-    print "key:\n%s" %(key)
+    print("cert:\n%s" %(cert))
+    print("key:\n%s" %(key))
     sys.exit(0)
 #  vim: filetype=python:

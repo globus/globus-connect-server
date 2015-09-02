@@ -186,8 +186,8 @@ if ($hostname !~ /\./)
     $hostname = (POSIX::uname())[1];
 }
 my $endpoint_name;
+my $random = int(1000000*rand());
 if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
-    my $random = int(1000000*rand());
     $endpoint_name = "MYPROXY_OPTIONS_$random";
 } else {
     $endpoint_name = "MYPROXY_OPTIONS_$ENV{TEST_ENDPOINT_SUFFIX}";

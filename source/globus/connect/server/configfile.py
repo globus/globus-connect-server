@@ -1,4 +1,4 @@
-# Copyright 2013 University of Chicago
+# Copyright 2015 University of Chicago
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,13 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import absolute_import
+
 import copy
 import globus.connect.server as gcmu
 import os
 import re
-import ConfigParser
+try:
+    import configparser
+except ImportError:
+    import ConfigParser as configparser
 
-class ConfigFile(ConfigParser.ConfigParser):
+class ConfigFile(configparser.ConfigParser):
     GLOBUS_SECTION = "Globus"
     ENDPOINT_SECTION = "Endpoint"
     SECURITY_SECTION = "Security"
@@ -477,14 +482,14 @@ class ConfigFile(ConfigParser.ConfigParser):
         if "GLOBUS_PASSWORD" not in defaults:
             defaults["GLOBUS_PASSWORD"] = ""
 
-        ConfigParser.ConfigParser.__init__(self, defaults)
+        configparser.ConfigParser.__init__(self, defaults)
         self.root = root
         if config_file is None:
             config_file = os.path.join("/", ConfigFile.DEFAULT_CONFIG_FILE)
         config_fp = open(config_file, "r")
         try:
             if self.readfp(config_fp) == []:
-                raise ConfigParser.ParsingError(config_file)
+                raise configparser.ParsingError(config_file)
         finally:
             config_fp.close()
         self.validate(config_file)
@@ -525,7 +530,7 @@ class ConfigFile(ConfigParser.ConfigParser):
     def get(self, section, option):
         res_str = ''
         if self.has_option(section, option):
-            res_str = ConfigParser.ConfigParser.get(self, section, option)
+            res_str = configparser.ConfigParser.get(self, section, option)
             if len(res_str) > 1 and res_str[0] == '"' and res_str[-1] == '"':
                 res_str = res_str[1:-1]
         return res_str

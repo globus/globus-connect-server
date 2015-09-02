@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#! /usr/bin/python
 
-# Copyright 2012-2013 University of Chicago
+# Copyright 2012-2015 University of Chicago
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+from __future__ import print_function, absolute_import
 
 import copy
 import getopt
@@ -92,8 +94,8 @@ class Web(gcmu.GCMU):
 
         if not self.is_local():
             if self.conf.get_security_identity_method() == self.conf.IDENTITY_METHOD_OAUTH:
-                print "Using remote OAuth server " \
-                    + self.conf.get_oauth_server()
+                print("Using remote OAuth server " \
+                    + self.conf.get_oauth_server())
             self.logger.debug("No OAuth server to configure on this node")
             return
 
@@ -105,7 +107,7 @@ class Web(gcmu.GCMU):
         self.configure_trust_roots(**kwargs)
         self.restart(**kwargs)
         self.enable(**kwargs)
-        print "Configured OAuth server " + self.conf.get_oauth_server()
+        print("Configured OAuth server " + self.conf.get_oauth_server())
 
         self.logger.debug("EXIT: Web.setup()")
 

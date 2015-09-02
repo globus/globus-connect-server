@@ -49,13 +49,38 @@ sub setup_server()
     return $rc == 0;
 }
 
-sub is_gridftp_running()
+sub is_gridftp_running_initscript()
 {
     my @cmd = ("/etc/init.d/globus-gridftp-server", "status");
     my $rc = diagsystem(@cmd);
 
     return $rc == 0;
 }
+
+sub is_gridftp_running_systemd()
+{
+    my @cmd = ("systemctl", "status", "globus-gridftp-server");
+    my $rc = diagsystem(@cmd);
+
+    return $rc == 0;
+}
+
+sub command_exists($)
+{
+    my @cmd = ("command", "-v", $_[0]);
+    my $rc = diagsystem(@cmd);
+
+    return $rc == 0;
+}
+sub is_gridftp_running()
+{
+    if (command_exists("systemctl")) {
+        return is_gridftp_running_systemd();
+    } else {
+        return is_gridftp_running_initscript();
+    }
+}
+
 
 sub cleanup()
 {

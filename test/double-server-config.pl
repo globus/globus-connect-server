@@ -93,11 +93,11 @@ my $endpoint;
 if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
     my $random = int(1000000*rand());
     $endpoint = "DOUBLE_$random";
-    $server = "DOUBLE_$random";
 } else {
     $endpoint = "DOUBLE_$ENV{TEST_ENDPOINT_SUFFIX}";
 }
-my $server = $endpoint;
+my $server = "$endpoint.globus.org";
+$server =~ s/_/-/g;
 
 # Test Step #1:
 # Create endpoint

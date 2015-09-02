@@ -28,9 +28,9 @@ my $api = GlobusTransferAPIClient->new();
 
 # Prepare
 my $endpoint;
+my $random = int(1000000*rand());
 
 if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
-    my $random = int(1000000*rand());
     $endpoint = "RESET$random";
 } else {
     $endpoint = "RESET_$ENV{TEST_ENDPOINT_SUFFIX}";

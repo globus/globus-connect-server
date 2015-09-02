@@ -1,3 +1,19 @@
+# Copyright 2012-2015 University of Chicago
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+from __future__ import absolute_import
+
 import os
 import pkgutil
 from subprocess import Popen, PIPE
@@ -23,7 +39,7 @@ def install_signing_policy(signing_policy, cadir, ca_hash):
             ca_signing_policy_file.close()
 
     try:
-        old_umask = os.umask(0133)
+        old_umask = os.umask(0o133)
 
         go_ca_signing_file = open(
                 os.path.join(cadir, ca_hash+".signing_policy"), "w")
@@ -57,7 +73,7 @@ def install_ca_cert(cert, cadir, ca_hash=None):
         ca_hash = get_certificate_hash_from_data(cert)
 
     try:
-        old_umask = os.umask(0133)
+        old_umask = os.umask(0o133)
 
         go_ca_certfile = open(os.path.join(cadir, ca_hash+'.0'), "w")
         try:
@@ -160,4 +176,4 @@ def openssl_version():
     version = out.split()[1]
     return int(version.split(".")[0])
     
-
+# vim: filetype=python:

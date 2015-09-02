@@ -1,11 +1,11 @@
 Name:           globus-connect-server
-Version:        4.0.18
+Version:        4.0.19
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
 
 %global transferapi_name globusonline-transfer-api-client
-%global transferapi_version 0.10.15
+%global transferapi_version 0.10.16
 Group:          System Environment/Libraries
 License:        ASL 2.0
 URL:            http://www.globus.org/
@@ -120,15 +120,15 @@ Globus Connect Server Web
 
 %build
 cd %{transferapi_name}-%{transferapi_version}
-python setup.py build
+%{python} setup.py build
 cd ..
-python_exe="`%{python} -c 'import sys; print sys.executable'`"
+python_exe="`%{python} -c 'import sys; print(sys.executable)'`"
 
 for templ in templates/*; do
     sed -e "s|@PYTHON@|$python_exe|g" \
         -e "s|@libdir@|%{_libdir}|g" < "$templ" > `basename "$templ" .in`
 done
-python setup.py build
+%{python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -211,6 +211,12 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Wed Sep 2 2015 Globus Toolkit <support@globus.org> 4.0.19-1
+- Upgrade to transferapi version 0.10.16
+- Replace obsolescent endpoint_update calls
+- Changes for python3 compatibility
+- Add is-this-the-latest-version? check
+
 * Mon Jun 01 2015 Globus Toolkit <support@globus.org> 4.0.18-1
 - Fix typo
 

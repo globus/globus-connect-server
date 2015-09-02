@@ -130,18 +130,10 @@ sub deactivate_endpoint($)
             $json->{code} eq 'NotActivated';
 }
 
-if(!(-e "/usr/lib/libglobus_xio_udt_driver.so.0") &&
-    !(-e "/usr/lib64/libglobus_xio_udt_driver.so.0"))
-{
-    plan tests => 1;
-    ok(1, "no_udt_skipping_test");
-    exit(0);
-}
-
 # Prepare
-my $endpoint = "TRANSFER$random";
+my $random = int(1000000*rand());
+my $endpoint;
 if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
-    my $random = int(1000000*rand());
     $endpoint = "TRANSFER_$random";
 } else {
     $endpoint = "TRANSFER_$ENV{TEST_ENDPOINT_SUFFIX}";

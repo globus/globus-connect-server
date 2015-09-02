@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#! /usr/bin/python
 
-# Copyright 2012-2013 University of Chicago
+# Copyright 2012-2015 University of Chicago
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+from __future__ import print_function, absolute_import
 
 import copy
 import getopt
@@ -46,9 +48,9 @@ class IO(gcmu.GCMU):
         self.service = "globus-gridftp-server"
 
         if not os.path.exists(self.etc_gridftp_d):
-            os.makedirs(self.etc_gridftp_d, 0755)
+            os.makedirs(self.etc_gridftp_d, 0o755)
         if not os.path.exists(self.var_gridftp_d):
-            os.makedirs(self.var_gridftp_d, 0755)
+            os.makedirs(self.var_gridftp_d, 0o755)
 
     def is_local(self):
         return self.is_local_gridftp()
@@ -69,13 +71,13 @@ class IO(gcmu.GCMU):
         self.restart(**kwargs)
         self.enable(**kwargs)
         self.bind_to_endpoint(**kwargs)
-        print "Configured GridFTP server to run on " \
-            + self.conf.get_gridftp_server()
-        print "Server DN: " + security.get_certificate_subject(
-                self.conf.get_security_certificate_file())
-        print "Using Authentication Method " + \
-            self.conf.get_security_identity_method()
-        print "Configured Endpoint " + self.conf.get_endpoint_name()
+        print("Configured GridFTP server to run on " \
+            + self.conf.get_gridftp_server())
+        print("Server DN: " + security.get_certificate_subject(
+                self.conf.get_security_certificate_file()))
+        print("Using Authentication Method " + \
+            self.conf.get_security_identity_method())
+        print("Configured Endpoint " + self.conf.get_endpoint_name())
         self.logger.debug("EXIT: IO.setup()")
 
     def configure_credential(self, **kwargs):
@@ -244,7 +246,7 @@ server
         conf_file = file(conf_file_name, "w")
         try:
             sharing_dn = self.conf.get_gridftp_sharing_dn()
-	    conf_file.write("sharing_dn\t\"%s\"\n" % \
+            conf_file.write("sharing_dn\t\"%s\"\n" % \
                 sharing_dn)
             sharing_rp = self.conf.get_gridftp_sharing_restrict_paths()
             if sharing_rp is not None:
@@ -555,23 +557,20 @@ server
         if kwargs.get("delete"):
             try:
                 self.api.endpoint_delete(endpoint_name)
-            except TransferAPIError, e:
+            except TransferAPIError as e:
                 if e.status_code != 404:
                     raise e
         else:
             (status_code, status_reason, data) = \
                 self.api.endpoint(endpoint_name)
-            servers_filtered = [x for x in data[u'DATA'] \
-                if x[u'hostname'] != None and
-                   x[u'hostname'] != \
-                       u'relay-disconnected.globusonline.org' and \
-                   x[u'uri'] != gcmu.to_unicode(server)]
-            data[u'DATA'] = servers_filtered
-            try:
-                self.api.endpoint_update(endpoint_name, data)
-            except TransferAPIError, e:
-                if e.status_code != 404:
-                    raise e
+            for sdata in data['DATA']:
+                if sdata.get(gcmu.to_unicode('uri')) == gcmu.to_unicode(server):
+                    sid = sdata[gcmu.to_unicode('id')]
+                    try:
+                        self.api.endpoint_server_delete(endpoint_name, sid)
+                    except TransferAPIError as e:
+                        if e.status_code != 404:
+                            raise e
 
     def bind_to_endpoint(self, **kwargs):
         """
@@ -640,51 +639,75 @@ server
             oauth_server = gcmu.to_unicode(oauth_server)
 
         new_gridftp_server = {
-                u'DATA_TYPE': u'server',
-                u'uri': gcmu.to_unicode(server),
-                u'scheme': gcmu.to_unicode(scheme),
-                u'hostname': gcmu.to_unicode(hostname),
-                u'port': port,
-                u'is_connected': True,
-                u'subject': gcmu.to_unicode(security.get_certificate_subject(self.conf.get_security_certificate_file())),
-                u'update': True,
+                gcmu.to_unicode('DATA_TYPE'): gcmu.to_unicode('server'),
+                gcmu.to_unicode('scheme'): gcmu.to_unicode(scheme),
+                gcmu.to_unicode('hostname'): gcmu.to_unicode(hostname),
+                gcmu.to_unicode('port'): port,
+                gcmu.to_unicode('subject'): gcmu.to_unicode(security.get_certificate_subject(self.conf.get_security_certificate_file()))
         }
 
         try:
+            new_endpoint = {
+                'DATA_TYPE': 'endpoint'
+            }
             (status_code, status_reason, data) = \
                 self.api.endpoint(endpoint_name)
-            old_default_dir = data.get("default_directory")
-            changed = False
-            if old_default_dir is None or \
-                    old_default_dir != endpoint_default_dir:
+            default_directory_key = gcmu.to_unicode('default_directory')
+            public_key = gcmu.to_unicode('public')
+            myproxy_server_key = gcmu.to_unicode('myproxy_server')
+            myproxy_dn_key = gcmu.to_unicode('myproxy_dn')
+            oauth_server_key = gcmu.to_unicode('oauth_server')
+            hostname_key = gcmu.to_unicode('hostname')
+            id_key = gcmu.to_unicode('id')
+            data_key = gcmu.to_unicode('DATA')
+
+            # Update any changed endpoint-level metadata
+            if data.get(default_directory_key) != endpoint_default_dir:
                 self.logger.debug("Changing default_directory on endpoint " \
-                    "from [%(old)s] to [%(new)s]" % {
-                            'old': str(old_default_dir),
-                            'new': endpoint_default_dir
-                    })
-                data[u'default_directory'] = \
+                    "to [%(new)s]" % { 'new': endpoint_default_dir })
+                new_endpoint[default_directory_key] = \
                         gcmu.to_unicode(endpoint_default_dir)
 
-            old_public = data.get('public')
-            if old_public is not None and old_public != endpoint_public:
-                data[u'public'] = endpoint_public
+            if data.get(public_key) != endpoint_public:
+                self.logger.debug("Changing public to " + str(endpoint_public))
+                new_endpoint[public_key] = endpoint_public
 
-            if kwargs.get("reset"):
-                servers_filtered = [new_gridftp_server]
-            else:
-                servers_filtered = [x for x in data[u'DATA'] \
-                    if x[u'hostname'] != None and
-                       x[u'hostname'] != \
-                            u'relay-disconnected.globusonline.org' and \
-                       x[u'uri'] != gcmu.to_unicode(server)]
-                servers_filtered.append(new_gridftp_server)
-            data[u'DATA'] = servers_filtered
-            data[u'myproxy_server'] = myproxy_server
-            data[u'myproxy_dn'] = myproxy_dn
-            data[u'oauth_server'] = oauth_server
+            if data.get(myproxy_server_key) != myproxy_server:
+                self.logger.debug("Changing myproxy_server to " + str(myproxy_server))
+                new_endpoint[myproxy_server_key] = myproxy_server
 
-            self.api.endpoint_update(endpoint_name, data)
-        except TransferAPIError, e:
+            if data.get(myproxy_dn_key) != myproxy_dn:
+                self.logger.debug("Changing myproxy_dn to " + str(myproxy_dn))
+                new_endpoint[myproxy_dn_key] = myproxy_dn
+
+            if data.get(oauth_server_key) != oauth_server:
+                self.logger.debug("Changing oauth_server to " + str(oauth_server))
+                new_endpoint[oauth_server_key] = oauth_server
+
+            if len(new_endpoint.keys()) > 1:
+                self.logger.debug("Updating endpoint")
+                (status_code, status, data) = \
+                    self.api.endpoint_update(endpoint_name, new_endpoint)
+                self.logger.debug("endpoint update result: " + str(status_code))
+
+            (status_code, status_reason, data) = \
+                    self.api.endpoint_server_list(endpoint_name)
+            self.logger.debug("Existing endpoint server list: " + 
+                    str(data.get(data_key, [])))
+            for server_item in data.get(data_key, []):
+                self.logger.debug("existing server for endpoint: " +
+                        str(server_item.get(hostname_key, "")))
+                this_server_hostname = server_item.get(hostname_key)
+                this_server_id = server_item.get(id_key)
+                if kwargs.get('reset') or \
+                        this_server_hostname == gcmu.to_unicode(hostname):
+                    self.logger.debug("deleting server entry for " +
+                            str(this_server_hostname) + " with id  " +
+                            str(this_server_id))
+                    self.api.endpoint_server_delete(endpoint_name,
+                            this_server_id)
+            self.api.endpoint_server_add(endpoint_name, new_gridftp_server)
+        except TransferAPIError as e:
             if e.status_code == 404:
                 self.logger.debug("endpoint %s does not exist, creating" 
                         %(endpoint_name))
@@ -695,14 +718,14 @@ server
                             default_directory = endpoint_default_dir,
                             public = endpoint_public,
                             is_globus_connect = False,
-                            hostname=new_gridftp_server[u'hostname'],
-                            scheme=new_gridftp_server[u'scheme'],
-                            port=new_gridftp_server[u'port'],
-                            subject=new_gridftp_server[u'subject'],
+                            hostname=new_gridftp_server['hostname'],
+                            scheme=new_gridftp_server['scheme'],
+                            port=new_gridftp_server['port'],
+                            subject=new_gridftp_server['subject'],
                             myproxy_server=myproxy_server,
                             myproxy_dn=myproxy_dn,
                             oauth_server=oauth_server)
-                except TransferAPIError, e:
+                except TransferAPIError as e:
                     self.logger.error("endpoint create failed: %s" % \
                         (e.message))
                     self.errorcount += 1

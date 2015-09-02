@@ -140,9 +140,9 @@ if ($hostname !~ /\./)
 {
     $hostname = (POSIX::uname())[1];
 }
-my $endpoint_name = "OAUTH_OPTIONS_$random";
+my $random = int(1000000*rand());
+my $endpoint_name;
 if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
-    my $random = int(1000000*rand());
     $endpoint_name = "OAUTH_OPTIONS_$random";
 } else {
     $endpoint_name = "OAUTH_OPTIONS_$ENV{TEST_ENDPOINT_SUFFIX}";

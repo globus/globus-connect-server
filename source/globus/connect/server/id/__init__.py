@@ -1,5 +1,6 @@
-#!/usr/bin/python
-# Copyright 2012-2013 University of Chicago
+#! /usr/bin/python
+
+# Copyright 2012-2015 University of Chicago
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +13,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+from __future__ import print_function, absolute_import
+
 """
 Configure a MyProxy server for use with Globus
 
@@ -25,16 +29,15 @@ import string
 import shutil
 import sys
 
-__path__ = pkgutil.extend_path(__path__, __name__)
-
 import globus.connect.security as security
 import globus.connect.server as gcmu
 
 from globusonline.transfer.api_client import TransferAPIClient
 from globusonline.transfer.api_client import TransferAPIError
-from urlparse import urlparse
 
 from subprocess import Popen, PIPE
+
+__path__ = pkgutil.extend_path(__path__, __name__)
 
 class ID(gcmu.GCMU):
     """
@@ -55,8 +58,8 @@ class ID(gcmu.GCMU):
         self.logger.debug("ENTER: ID.setup()")
 
         if not self.is_local_myproxy():
-            print "Using MyProxy server on " \
-                + str(self.conf.get_myproxy_server())
+            print("Using MyProxy server on " \
+                + str(self.conf.get_myproxy_server()))
             self.logger.debug("No MyProxy configured for this host")
             return
 
@@ -75,12 +78,12 @@ class ID(gcmu.GCMU):
         cadir = self.conf.get_myproxy_ca_directory()
         cert_path = os.path.join(cadir, "cacert.pem")
 
-        print "Configured MyProxy server on " \
-            + self.conf.get_myproxy_server() + ":7512"
-        print "CA DN: " + security.get_certificate_subject(cert_path)
+        print("Configured MyProxy server on " \
+            + self.conf.get_myproxy_server() + ":7512")
+        print("CA DN: " + security.get_certificate_subject(cert_path))
         myproxy_dn = self.get_myproxy_dn_from_server()
         if myproxy_dn is not None:
-            print "Service DN: " + myproxy_dn
+            print("Service DN: " + myproxy_dn)
 
         self.logger.debug("EXIT: ID.setup()")
         
@@ -146,7 +149,7 @@ class ID(gcmu.GCMU):
         trustdir = self.conf.get_security_trusted_certificate_directory()
         if trustdir is not None:
             if not os.path.exists(trustdir):
-                os.makedirs(trustdir, 0755)
+                os.makedirs(trustdir, 0o755)
 
             cert_path = os.path.join(cadir, "cacert.pem")
             signing_policy_path = os.path.join(cadir, "signing-policy")
@@ -158,9 +161,9 @@ class ID(gcmu.GCMU):
                 trustdir, cahash + ".signing_policy")
 
             shutil.copyfile(signing_policy_path, installed_signing_policy)
-            os.chmod(installed_signing_policy, 0644)
+            os.chmod(installed_signing_policy, 0o644)
             shutil.copyfile(cert_path, installed_cert_path)
-            os.chmod(installed_cert_path, 0644)
+            os.chmod(installed_cert_path, 0o644)
 
         self.myproxy_ca_config = """
                 certificate_issuer_cert "%(cadir)s/cacert.pem"
@@ -202,14 +205,14 @@ class ID(gcmu.GCMU):
         mapapp_template = pkgutil.get_data(
                 "globus.connect.server", "mapapp-template")
 
-        old_umask = os.umask(022)
+        old_umask = os.umask(0o22)
         mapapp_file = file(mapapp, "w")
         try:
             mapapp_file.write(mapapp_template % { 'dn': dn })
         finally:
             mapapp_file.close()
         os.umask(old_umask)
-        os.chmod(mapapp, 0755)
+        os.chmod(mapapp, 0o755)
 
         self.myproxy_mapapp_config = "certificate_mapapp " + mapapp + "\n"
 
@@ -232,7 +235,7 @@ class ID(gcmu.GCMU):
                 """
 
     def write_myproxy_conf(self):
-        old_mask = os.umask(077)
+        old_mask = os.umask(0o77)
         conffile = file(self.conf.get_myproxy_config_file(), "w")
         try:
             if self.myproxy_cred_repo_config is not None:
@@ -252,9 +255,9 @@ class ID(gcmu.GCMU):
         etc_myproxy_d = self.conf.get_etc_myproxy_d()
 
         if not os.path.exists(var_myproxy_d):
-            os.makedirs(var_myproxy_d, 0755)
+            os.makedirs(var_myproxy_d, 0o755)
         if not os.path.exists(etc_myproxy_d):
-            os.makedirs(etc_myproxy_d, 0755)
+            os.makedirs(etc_myproxy_d, 0o755)
 
         conf_file_name = os.path.join(var_myproxy_d, "globus-connect-server")
         conf_link_name = os.path.join(etc_myproxy_d, "globus-connect-server")
@@ -269,7 +272,7 @@ class ID(gcmu.GCMU):
                 "store")
 
             if not os.path.exists(store):
-                os.makedirs(store, 0700)
+                os.makedirs(store, 0o700)
             if self.conf.get_myproxy_use_pam_login():
                 conf_file.write("export MYPROXY_USER=root\n")
             conf_file.write("export X509_CERT_DIR=\"%s\"\n" % \

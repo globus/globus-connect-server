@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#! /usr/bin/python
 
-# Copyright 2012-2013 University of Chicago
+# Copyright 2012-2015 University of Chicago
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+from __future__ import print_function, absolute_import
+
 """Remove GridFTP, MyProxy, and OAuth configuration and remove it from a Globus
 endpoint
 
@@ -67,18 +70,17 @@ import sys
 import time
 import traceback
 
-from globus.connect.server import get_api
+from globus.connect.server import get_api, is_latest_version
 from globusonline.transfer.api_client import TransferAPIClient
-from globus.connect.server.io import IO
 from globus.connect.server.id import ID
 from globus.connect.server.web import Web
 from globus.connect.server.configfile import ConfigFile
 
 def usage(short=False, outstream=sys.stdout):
     if short:
-        print >>outstream, short_usage
+        print(short_usage, file=outstream)
     else:
-        print >>outstream, __doc__
+        print(__doc__, file=outstream)
 
 if __name__ == "__main__":
     try:
@@ -89,15 +91,16 @@ if __name__ == "__main__":
         root = "/"
         delete = False
         try:
-            opts, arg = getopt.getopt(sys.argv[1:], "hc:vr:d",
-                    ["help", "config-file=", "verbose", "root=", "delete-endpoint"])
-        except getopt.GetoptError, e:
-            print >>sys.stderr, "Invalid option " + e.opt
+            opts, arg = getopt.getopt(sys.argv[1:], "hc:vr:df",
+                    ["help", "config-file=", "verbose", "root=",
+                     "delete-endpoint", "force"])
+        except getopt.GetoptError as e:
+            print("Invalid option " + e.opt, file=sys.stderr)
             usage(short=True, outstream=sys.stderr)
             sys.exit(1)
         
         if len(arg) > 0:
-            print >>sys.stderr, "Unexpected argument(s) " + " ".join(arg)
+            print("Unexpected argument(s) " + " ".join(arg), file=sys.stderr)
             sys.exit(1)
 
         for (o, val) in opts:
@@ -112,27 +115,31 @@ if __name__ == "__main__":
                 root = val
             elif o in ['-d', '--delete-endpoint']:
                 delete = True
+            elif o in ['-f', '--force']:
+                force = True
             else:
-                print >>sys.stderr, "Unknown option %s" %(o)
+                print("Unknown option %s" %(o), file=sys.stderr)
                 sys.exit(1)
 
-        os.umask(022)
+        is_latest_version(force)
+
+        os.umask(0o22)
         conf = ConfigFile(config_file=conf_filename, root=root)
         api = get_api(conf)
-        io = IO(config_obj=conf, api=api, debug=debug)
+        ioobj = globus.connect.server.io.IO(config_obj=conf, api=api, debug=debug)
         id = ID(config_obj=conf, api=api, debug=debug)
         web = Web(config_obj=conf, api=api, debug=debug)
         web.cleanup()
-        io.cleanup(delete=delete)
+        ioobj.cleanup(delete=delete)
         id.cleanup()
-    except KeyboardInterrupt, e:
-        print "Aborting..."
+    except KeyboardInterrupt as e:
+        print("Aborting...")
         sys.exit(1)
-    except Exception, e:
+    except Exception as e:
         if debug:
             traceback.print_exc(file=sys.stderr)
         else:
-            print str(e)
+            print(str(e))
         sys.exit(1)
 
 # vim: filetype=python:

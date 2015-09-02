@@ -165,8 +165,8 @@ plan tests => 27;
 
 # Prepare
 my $endpoint_name;
+my $random = int(1000000*rand());
 if ($ENV{TEST_ENDPOINT_SUFFIX} eq '') {
-    my $random = int(1000000*rand());
     $endpoint_name = "GRIDFTP_OPTIONS_$random";
 } else {
     $endpoint_name = "GRIDFTP_OPTIONS_$ENV{TEST_ENDPOINT_SUFFIX}";

@@ -1,4 +1,4 @@
-# Copyright 2012-2013 University of Chicago
+# Copyright 2012-2015 University of Chicago
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import print_function, absolute_import
+
 import copy
 import logging
 import os
@@ -22,42 +24,53 @@ import re
 import shutil
 import socket
 import ssl
+import stat
 import sys
 import tempfile
 import time
-import urllib
+
+try:
+    from urllib.request import urlopen
+    from urllib.parse import urlparse
+except ImportError:
+    from urlparse import urlparse
+    from urllib import urlopen
+
 import uuid
 
-import globus.connect.security
 import globusonline.transfer.api_client
 import globusonline.transfer.api_client.verified_https
 from globusonline.transfer.api_client import TransferAPIClient, ClientError
 from globusonline.transfer.api_client.goauth import get_access_token, GOCredentialsError
 import globusonline.transfer.api_client.goauth
 
+import globus.connect.security
 from globus.connect.security.fetchcreds import FetchCreds
-from urlparse import urlparse
+
 from subprocess import Popen, PIPE
+
+LATEST_VERSION_URI = "http://toolkit.globus.org/ftppub/gt6/packages/GLOBUS_CONNECT_SERVER_LATEST"
 
 __path__ = pkgutil.extend_path(__path__, __name__)
 
 def to_unicode(data):
     """
-    Coerce any type to unicode, assuming utf-8 encoding for strings.
+    Coerce any string to unicode, assuming utf-8 encoding for strings.
     """
-    if isinstance(data, unicode):
-        return data
-    if isinstance(data, str):
-        return unicode(data, "utf-8")
+    if sys.version_info < (3,):
+        if isinstance(data, unicode):
+            return data
+        else:
+            return unicode(data, 'utf-8')
     else:
-        return unicode(data)
+        return str(data)
 
 def is_ec2():
     url = 'http://169.254.169.254/latest/meta-data/'
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = urllib.urlopen(url).read()
+        value = urlopen(url).read()
     except IOError:
         pass
 
@@ -76,11 +89,11 @@ def public_name():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = urllib.urlopen(url).read()
+        value = urlopen(url).read()
     except IOError:
         pass
 
-    if value is not None and "404 - Not Found" in value:
+    if value is not None and (("404 - Not Found" in value) or value == ""):
         value = None
 
     if value is None:
@@ -98,7 +111,7 @@ def public_ip():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = urllib.urlopen(url).read()
+        value = urlopen(url).read()
     except IOError:
         pass
 
@@ -117,7 +130,7 @@ def is_private_ip(name):
     else:
         try:
             addr = socket.gethostbyname(name)
-        except Exception, e:
+        except Exception as e:
             return True
     octets = [int(x) for x in addr.split(".")]
     return (octets[0] == 10 or \
@@ -161,7 +174,7 @@ def is_local_service(name):
 def get_api(conf):
     username = conf.get_go_username()
     if username is None:
-        print "Globus Username: ",
+        print("Globus Username: ", end=' ')
         username = sys.stdin.readline().strip()
     password = conf.get_go_password()
     if password is None:
@@ -191,7 +204,7 @@ def get_api(conf):
         
     socket.setdefaulttimeout(300)
 
-    for tries in xrange(0,10):
+    for tries in range(0,10):
         try:
             auth_result = get_access_token(
                     username=username,
@@ -199,12 +212,12 @@ def get_api(conf):
                     ca_certs=nexus_cert)
             if auth_result is not None:
                 break
-        except ssl.SSLError, e:
+        except ssl.SSLError as e:
             if "timed out" not in str(e):
                 raise e
             time.sleep(30)
-        except GOCredentialsError, e:
-            print "Globus Username: ",
+        except GOCredentialsError as e:
+            print("Globus Username: ", end=' ')
             username = sys.stdin.readline().strip()
             password = getpass.getpass("Globus Password: ")
 
@@ -219,12 +232,12 @@ def get_api(conf):
         def wrapper(*args, **kwargs):
             last_exception = None
             res = None
-            for tries in xrange(0, 10):
+            for tries in range(0, 10):
                 try:
                     res = fun(*args, **kwargs)
                     last_exception = None
                     break
-                except ssl.SSLError, e:
+                except ssl.SSLError as e:
                     if "timed out" not in str(e):
                         raise e
                     last_exception = e
@@ -239,17 +252,17 @@ def get_api(conf):
         def wrapper(*args, **kwargs):
             last_exception = None
             res = None
-            for tries in xrange(0, 10):
+            for tries in range(0, 10):
                 try:
                     res = create_fun(*args, **kwargs)
                     last_exception = None
                     break
-                except ssl.SSLError, e:
+                except ssl.SSLError as e:
                     if "timed out" not in str(e):
                         raise e
                     last_exception = e
                     time.sleep(30)
-                except ClientError, e:
+                except ClientError as e:
                     if e.status_code == 409: # Conflict -- already created
                         return endpoint_fun(args[0])
                     last_exception = e
@@ -267,6 +280,31 @@ def get_api(conf):
 
     return api
 
+def is_latest_version(force=False):
+    data_version = pkgutil.get_data("globus.connect.server", "version").strip()
+    published_version = urlopen(LATEST_VERSION_URI).read().strip()
+
+    fieldshift = 1000
+
+    data_version_value = 0
+    published_version_value = 0
+
+    for field in [int(x) for x in data_version.split(".", 2)]:
+        data_version_value = data_version_value * fieldshift + field
+    for field in [int(x) for x in published_version.split(".", 2)]:
+        published_version_value = published_version_value * fieldshift + field
+
+    if data_version_value < published_version_value:
+        message = \
+            "A newer version (%s) of globus-connect-server is available.\n" \
+            "Please upgrade before running this script." % (published_version)
+        if not force:
+            raise Exception(message)
+        else:
+            print("WARNING: " + message, file=sys.stderr)
+        return False
+    return True
+    
 class GCMU(object):
     logger = logging.getLogger("globus.connect.server.GCMU")
     handler = logging.StreamHandler()
@@ -297,7 +335,7 @@ class GCMU(object):
         default_dir = os.path.join(self.conf.root, self.conf.DEFAULT_DIR)
         if not os.path.exists(default_dir):
             self.logger.debug("Creating directory: " + default_dir)
-            os.makedirs(default_dir, 0755)
+            os.makedirs(default_dir, 0o755)
 
         self.errorcount = 0
 
@@ -367,9 +405,9 @@ class GCMU(object):
 
                 for dirname in [os.path.dirname(cert), os.path.dirname(key)]: 
                     if not os.path.exists(dirname):
-                        os.makedirs(dirname, 0755)
+                        os.makedirs(dirname, 0o755)
 
-                old_umask = os.umask(0133)
+                old_umask = os.umask(0o133)
                 cfp = open(cert, "w")
                 try:
                     self.logger.debug("Writing certificate to disk")
@@ -378,7 +416,7 @@ class GCMU(object):
                     cfp.close()
                 os.umask(old_umask)
 
-                old_umask = os.umask(0177)
+                old_umask = os.umask(0o177)
                 cfp = open(key, "w")
                 try:
                     self.logger.debug("Writing key to disk")
@@ -411,7 +449,7 @@ class GCMU(object):
         self.logger.debug("ENTER: GCMU.configure_trust_roots()")
         certdir = self.conf.get_security_trusted_certificate_directory()
         if not os.path.exists(certdir):
-            os.makedirs(certdir, 0755)
+            os.makedirs(certdir, 0o755)
 
         # Install Globus Connect Relay CA
         relay_cert = pkgutil.get_data(
@@ -536,7 +574,7 @@ class GCMU(object):
                             cilogon_ca + '.r0',
                         'cilogon_hash': cilogon_hash
                     })
-                    os.chmod(cilogon_crl_cron_path, 0755)
+                    os.chmod(cilogon_crl_cron_path, 0o755)
                 finally:
                     cilogon_crl_cron_file.close()
         self.logger.debug("EXIT: GCMU.configure_trust_roots()")
