@@ -1,4 +1,4 @@
-globus-connect-server (4.0.20-1) unstable; urgency=low
+globus-connect-server (4.0.21-1) unstable; urgency=low
 
   * Upgrade to transferapi version 0.10.16
   * Replace obsolescent endpoint_update calls

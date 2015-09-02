@@ -126,7 +126,7 @@ if __name__ == "__main__":
         os.umask(0o22)
         conf = ConfigFile(config_file=conf_filename, root=root)
         api = get_api(conf)
-        ioobj = globus.connect.server.io.IO(config_obj=conf, api=api, debug=debug)
+        ioobj = IO(config_obj=conf, api=api, debug=debug)
         id = ID(config_obj=conf, api=api, debug=debug)
         web = Web(config_obj=conf, api=api, debug=debug)
         web.cleanup()
