@@ -67,7 +67,7 @@ sub is_gridftp_running_systemd()
 
 sub command_exists($)
 {
-    my @cmd = ("command", "-v", $_[0]);
+    my @cmd = ("sh", "-c", "command -v $_[0]");
     my $rc = diagsystem(@cmd);
 
     return $rc == 0;
