@@ -1,3 +1,9 @@
+globus-connect-server (4.0.23-1) unstable; urgency=low
+
+  * Use retries in transferapi instead of forcing our own
+
+ -- Globus Toolkit <support@globus.org>  Fri, 04 Sep 2015 11:39:34 -0400
+
 globus-connect-server (4.0.22-1) unstable; urgency=low
 
   * Upgrade to transferapi version 0.10.16
