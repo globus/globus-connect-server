@@ -299,6 +299,7 @@ class ConfigFile(configparser.ConfigParser):
                         "University of Missouri System",
                         "University of Nebraska-Lincoln",
                         "University of North Carolina at Chapel Hill",
+                        "University of North Carolina At Charlotte",
                         "University of Notre Dame",
                         "University of Oregon",
                         "University of Pennsylvania",

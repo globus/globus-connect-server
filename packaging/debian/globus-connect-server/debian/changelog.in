@@ -1,3 +1,9 @@
+globus-connect-server (4.0.24-1+gt6.@distro@) @distro@; urgency=low
+
+  * Add UNC-Charlotte to CILogon regex
+
+ -- Globus Toolkit <support@globus.org>  Fri, 04 Sep 2015 11:39:34 -0400
+
 globus-connect-server (4.0.23-2+gt6.@distro@) @distro@; urgency=low
 
   * Use retries in transferapi instead of forcing our own

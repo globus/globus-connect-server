@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.23
+Version:        4.0.24
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon Nov 16 2015 Globus Toolkit <support@globus.org> 4.0.24-1
+- Add UNC-Charlotte to CILogon regex
+
 * Fri Sep 4 2015 Globus Toolkit <support@globus.org> 4.0.23-1
 - Use retries in transferapi instead of forcing our own
 
