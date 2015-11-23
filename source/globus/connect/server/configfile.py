@@ -89,6 +89,7 @@ class ConfigFile(configparser.ConfigParser):
     SHARING_GROUPS_DENY_OPTION = "SharingGroupsDeny"
     DEFAULT_SHARING_DN = "/C=US/O=Globus Consortium/OU=Globus Online/OU=Transfer User/CN=__transfer__"
     UDT_OPTION = "AllowUDT"
+    REQUIRE_ENCRYPT_OPTION = "RequireEncryption"
     EXTRA_ARG_OPTION = "ExtraArgs"
 
     # [MyProxy]
@@ -389,6 +390,10 @@ class ConfigFile(configparser.ConfigParser):
             },
             UDT_OPTION.lower(): {
                 "option": UDT_OPTION,
+                "expression": BOOLEAN_PATTERN
+            },
+            REQUIRE_ENCRYPT_OPTION.lower(): {
+                "option": REQUIRE_ENCRYPT_OPTION,
                 "expression": BOOLEAN_PATTERN
             },
             EXTRA_ARG_OPTION.lower(): {
@@ -918,6 +923,15 @@ class ConfigFile(configparser.ConfigParser):
                     ConfigFile.GRIDFTP_SECTION,
                     ConfigFile.UDT_OPTION)
         return udt_enabled
+
+    def get_gridftp_encrypt(self):
+        require_encrypt = False
+        if self.has_option(ConfigFile.GRIDFTP_SECTION,
+                ConfigFile.REQUIRE_ENCRYPT_OPTION):
+            require_encrypt = self.getboolean(
+                    ConfigFile.GRIDFTP_SECTION,
+                    ConfigFile.REQUIRE_ENCRYPT_OPTION)
+        return require_encrypt
 
     def get_gridftp_extra_arg(self):
         extra_arg = None

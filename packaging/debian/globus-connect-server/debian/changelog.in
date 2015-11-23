@@ -1,3 +1,9 @@
+globus-connect-server (4.0.25-1+gt6.@distro@) @distro@; urgency=low
+
+  * Add RequireEncryption GridFTP configuration
+
+ -- Globus Toolkit <support@globus.org>  Mon, 23 Nov 2015 15:42:22 -0400
+
 globus-connect-server (4.0.24-1+gt6.@distro@) @distro@; urgency=low
 
   * Add UNC-Charlotte to CILogon regex

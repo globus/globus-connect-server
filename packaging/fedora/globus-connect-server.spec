@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.24
+Version:        4.0.26
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -80,7 +80,7 @@ Requires:       myproxy
 Requires:       gsi-openssh
 Requires:       gsi-openssh-clients
 Requires:       globus-gsi-cert-utils-progs
-Requires:       globus-gridftp-server-progs >= 7.22
+Requires:       globus-gridftp-server-progs >= 9.3
 Requires:       globus-gass-copy-progs
 Requires:       globus-gss-assist-progs
 Requires:       globus-callout >= 2.4
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon Nov 23 2015 Globus Toolkit <support@globus.org> 4.0.25-1
+- Add RequireEncryption GridFTP configuration 
+
 * Mon Nov 16 2015 Globus Toolkit <support@globus.org> 4.0.24-1
 - Add UNC-Charlotte to CILogon regex
 

@@ -207,6 +207,9 @@ server
                conf_file.write("allow_udt 1\n")
                conf_file.write("threads 1\n")
 
+            if self.conf.get_gridftp_encrypt():
+                conf_file.write("encrypt_data 1\n")
+
             extra_arg = self.conf.get_gridftp_extra_arg()
             if extra_arg is not None:
                conf_file.write(extra_arg + "\n")
