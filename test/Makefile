@@ -1,4 +1,4 @@
-VERSION = 0.34
+VERSION = 0.35
 DIST_STAGING = globus_connect_server_test-$(VERSION)
 DIST_FILE = $(DIST_STAGING).tar.gz
 

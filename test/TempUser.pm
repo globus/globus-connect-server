@@ -54,7 +54,7 @@ sub create_user(;$$)
     }
     $salt .= $chars[rand @chars] for 1..2;
     $crypted = crypt($random_pass, $salt);
-    $rc = system("useradd", $random_user, "-m", "-p", $crypted);
+    $rc = system("useradd", $random_user, "-m", "-p", $crypted, "-s", "/bin/sh");
 
     if ($rc != 0)
     {
