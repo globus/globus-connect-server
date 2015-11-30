@@ -233,7 +233,13 @@ def get_api(conf):
 
 def is_latest_version(force=False):
     data_version = pkgutil.get_data("globus.connect.server", "version").strip()
-    published_version = urlopen(LATEST_VERSION_URI).read().strip()
+
+    try:
+        published_version = urlopen(LATEST_VERSION_URI).read().strip()
+    except IOError as e:
+        print("Unable to get version info from: " + LATEST_VERSION_URI + \
+              "\n" + str(e) + "\nSkipping version check.", file=sys.stderr)
+        return False
 
     fieldshift = 1000
 
