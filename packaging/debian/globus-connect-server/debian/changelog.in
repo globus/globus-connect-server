@@ -1,3 +1,9 @@
+globus-connect-server (4.0.26-1+gt6.@distro@) @distro@; urgency=low
+
+  * Catch exceptions when attempting to check version file
+
+ -- Globus Toolkit <support@globus.org>  Mon, 30 Nov 2015 11:56:36 -0500
+
 globus-connect-server (4.0.25-1+gt6.@distro@) @distro@; urgency=low
 
   * Add RequireEncryption GridFTP configuration
