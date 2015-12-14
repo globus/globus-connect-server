@@ -14,8 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import print_function, absolute_import
-
 """Clean up MyProxy OAuth server configuration
 
 globus-connect-server-web-cleanup [-h|--help]
@@ -42,6 +40,8 @@ The following options are available:
                                     configuration files that
                                     globus-connect-server-web-cleanup writes
 """
+
+from __future__ import print_function, absolute_import
 
 short_usage = """globus-connect-server-web-cleanup [-h|--help]
 globus-connect-server-web-cleanup {-c FILENAME|--config-file=FILENAME}

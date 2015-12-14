@@ -14,8 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import print_function, absolute_import
-
 """Remove Globus-related MyProxy server configuration
 
 globus-connect-server-id-cleanup [-h|--help]
@@ -45,6 +43,8 @@ The following options are available:
                                 configuration files that
                                 globus-connect-server-id-cleanup writes
 """
+
+from __future__ import print_function, absolute_import
 
 short_usage = """globus-connect-server-id-cleanup [-h|--help]
 globus-connect-server-id-cleanup {-c FILENAME|--config-file=FILENAME}

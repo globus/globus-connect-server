@@ -14,8 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import print_function, absolute_import
-
 """Configure a GridFTP server and registers it as a Globus endpoint
 
 globus-connect-server-io-setup [-h|--help]
@@ -60,6 +58,9 @@ The following options are available:
 -s, --reset-endpoint            Remove all other GridFTP servers from this
                                 endpoint before adding this one
 """
+
+from __future__ import print_function, absolute_import
+
 
 short_usage = """globus-connect-server-io-setup [-h|--help]
 globus-connect-server-io-setup {-c FILENAME|--config-file=FILENAME}

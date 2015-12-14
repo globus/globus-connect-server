@@ -14,8 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import print_function, absolute_import
-
 """Configure a MyProxy server for use with Globus
 
 globus-connect-server-id-setup [-h|--help]
@@ -49,6 +47,8 @@ The following options are available:
                                 configuration files that
                                 globus-connect-server-id-setup writes
 """
+
+from __future__ import print_function, absolute_import
 
 short_usage = """globus-connect-server-id-setup [-h|--help]
 globus-connect-server-id-setup {-c FILENAME|--config-file=FILENAME}

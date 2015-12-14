@@ -14,11 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import print_function, absolute_import
-
-if __name__ == "__main__" and __package__ is None:
-    __package__ = "globus.connect.server"
-
 """Configure a MyProxy, OAuth, and GridFTP server and create a Globus endpoint
 
 globus-connect-server-setup [-h|--help]
@@ -58,6 +53,11 @@ The following options are available:
                                     globus-connect-server-io-setup writes
 -s, --reset-endpoint                Remove all other GridFTP servers from this
                                     endpoint before adding this one"""
+
+from __future__ import print_function, absolute_import
+
+if __name__ == "__main__" and __package__ is None:
+    __package__ = "globus.connect.server"
 
 short_usage = """globus-connect-server-setup [-h|--help]
 globus-connect-server-setup {-c FILENAME|--config-file=FILENAME}

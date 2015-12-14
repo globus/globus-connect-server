@@ -1,3 +1,9 @@
+globus-connect-server (4.0.27-1+gt6.@distro@) @distro@; urgency=low
+
+  * Relocate imports to allow --help to work
+
+ -- Globus Toolkit <support@globus.org>  Mon, 14 Dec 2015 14:27:10 -0500
+
 globus-connect-server (4.0.26-1+gt6.@distro@) @distro@; urgency=low
 
   * Catch exceptions when attempting to check version file

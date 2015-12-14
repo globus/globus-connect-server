@@ -14,8 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import print_function, absolute_import
-
 """Remove GridFTP, MyProxy, and OAuth configuration and remove it from a Globus
 endpoint
 
@@ -53,6 +51,8 @@ The following options are available:
                                     globus-connect-server-io-cleanup writes
 -d, --delete-endpoint               Delete the Globus endpoint
 """
+
+from __future__ import print_function, absolute_import
 
 short_usage = """globus-connect-server-cleanup [-h|--help]
 globus-connect-server-cleanup {-c FILENAME|--config-file=FILENAME}
