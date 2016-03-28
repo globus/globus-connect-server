@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.27
+Version:        4.0.28
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon Mar 28 2016 Globus Toolkit <support@globus.org> 4.0.28-1
+- Add Princeton University to CILogon IdP list
+
 * Mon Dec 14 2015 Globus Toolkit <support@globus.org> 4.0.27-1
 - Relocate imports to allow --help to work
 

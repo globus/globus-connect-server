@@ -245,6 +245,7 @@ class ConfigFile(configparser.ConfigParser):
                         "Old Dominion University",
                         "Penn State",
                         "Pomona College",
+                        "Princeton University",
                         "ProtectNetwork",
                         "Purdue University Main Campus",
                         "Reed College",
