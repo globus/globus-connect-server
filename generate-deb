@@ -1,0 +1,63 @@
+#! /bin/sh
+
+create_source_dist()
+(
+    cd source
+    python setup.py sdist 1>&2
+    gcs_version=$(cat globus/connect/server/version)
+    cd "$OLDPWD"
+    mv source/dist/globus_connect_server-${gcs_version}.tar.gz .
+    echo globus_connect_server-${gcs_version}.tar.gz
+)
+
+download_transferapi()
+(
+    api_version=0.10.18
+    api_tarball="globusonline-transfer-api-client-${api_version}.tar.gz"
+    api_url="https://pypi.python.org/packages/99/5d/ea1edc300385f6ebe330004833331477d76edfde2ee466815640a20e53e2/${api_tarball}"
+
+    curl -LOs "${api_url}"
+    echo "$api_tarball"
+)
+
+unpack_sources()
+(
+    gcs_source="$1"
+    transferapi_source="$2"
+    build_dir="$3"
+
+    rm -rf "${build_dir}"
+    mkdir -p "${build_dir}/transferapiclient"
+
+    tar --strip 1 -C "${build_dir}" -zxf "${gcs_source}"
+    tar --strip 1 -C "${build_dir}/transferapiclient" -zxf "${transferapi_source}"
+)
+
+debianize()
+(
+    packaging_dir="$1"
+    build_dir="$2"
+    changelog="${build_dir}/debian/changelog"
+    cp -R ${packaging_dir}/debian/globus-connect-server/debian ${build_dir}/debian
+    sed -e "s/@distro@/$(lsb_release -cs)/g" \
+            < "${changelog}.in" \
+            > "${changelog}"
+)
+
+build_packages()
+(
+    build_dir="$1"
+
+    cd "${build_dir}"
+    dpkg-buildpackage -uc -b
+
+)
+
+# MAIN
+build_dir="build/globus-connect-server"
+
+source_dist="$(create_source_dist)"
+transferapi_tarball="$(download_transferapi)"
+unpack_sources "$source_dist" "$transferapi_tarball" "${build_dir}"
+debianize "$(dirname "$0")/packaging" "${build_dir}"
+build_packages "${build_dir}"

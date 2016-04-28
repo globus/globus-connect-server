@@ -1,5 +1,14 @@
 globus-connect-server (4.0.28-1+gt6.@distro@) @distro@; urgency=low
 
+  * Change method for acquiring host certificates
+  * Replace expiring Globus Connect CA
+  * Change user prompt to Globus ID:
+  * strip @globusid.org if present in username
+
+ -- Globus Toolkit <support@globus.org>  Thu, 28 Apr 2016 08:37:33 -0400
+
+globus-connect-server (4.0.28-1+gt6.@distro@) @distro@; urgency=low
+
   * Add Princeton University to CILogon IdP list
 
  -- Globus Toolkit <support@globus.org>  Mon, 28 Mar 2016 16:30:22 -0500

@@ -45,7 +45,6 @@ from globusonline.transfer.api_client.goauth import get_access_token, GOCredenti
 import globusonline.transfer.api_client.goauth
 
 import globus.connect.security
-from globus.connect.security.fetchcreds import FetchCreds
 
 from subprocess import Popen, PIPE
 
@@ -174,11 +173,14 @@ def is_local_service(name):
 def get_api(conf):
     username = conf.get_go_username()
     if username is None:
-        print("Globus Username: ", end=' ')
+        print("Globus Id: ", end=' ')
         username = sys.stdin.readline().strip()
+        atglobusidorg = username.rfind("@globusid.org")
+        if atglobusidorg != -1:
+           username = username[:atglobusidorg]
     password = conf.get_go_password()
     if password is None:
-        password = getpass.getpass("Globus Password: ")
+        password = getpass.getpass("Password: ")
 
     auth_result = None
 
@@ -341,24 +343,14 @@ class GCMU(object):
                     os.remove(key)
 
             if (not os.path.exists(cert)) or (not os.path.exists(key)):
-                self.logger.debug("Fetching credential from relay")
-                # create dummy endpoint to get a setup_key
-                dummy_endpoint_name = "gcmu-temp-" + str(uuid.uuid4())
-                (status_code, status_reason, data) = self.api.endpoint_create(
-                    dummy_endpoint_name,
-                    public = False, is_globus_connect = True)
-                setup_key = data['globus_connect_setup_key']
-                self.api.endpoint_delete(dummy_endpoint_name)
+                self.logger.debug("Fetching certificate and key from globus")
 
-                relay = "relay.globusonline.org"
-                if self.conf.get_go_instance() == "Test":
-                    relay = "cli.test.globusonline.org"
-
-                self.logger.debug("Fetching key from relay " + relay)
-                fetcher = FetchCreds(debug=self.debug, server=relay)
-
-                (cert_data, key_data) = fetcher.get_cert_and_key(setup_key)
-
+                (code, msg, j) = self.api.post('/private/endpoint_cert','')
+                if code != 200:
+                    raise Exception("Unable to receive credential: %s %s" % (code, msg))
+                self.logger.debug("endpoint_cert_json = " + str(j))
+                cert_data = j['cert']
+                key_data = j['key']
 
                 for dirname in [os.path.dirname(cert), os.path.dirname(key)]: 
                     if not os.path.exists(dirname):
@@ -395,7 +387,7 @@ class GCMU(object):
         """
         Configure the certificate trust roots for services. The different
         certificates that may be put into place are:
-        - Globus Connect Relay CA
+        - Globus Connect Server CA
         - MyProxy CA
         - CILogon CA
 
@@ -408,17 +400,18 @@ class GCMU(object):
         if not os.path.exists(certdir):
             os.makedirs(certdir, 0o755)
 
-        # Install Globus Connect Relay CA
-        relay_cert = pkgutil.get_data(
+        # Install the Globus Connect Server CA
+        gcs_ca_cert = pkgutil.get_data(
                 "globus.connect.security",
-                "go-ca-cert.pem")
-        relay_signing_policy = pkgutil.get_data(
+                "go-ca3.pem")
+        gcs_ca_signing_policy = pkgutil.get_data(
                 "globus.connect.security",
-                "go-ca-cert.signing_policy")
+                "go-ca3.signing_policy")
         globus.connect.security.install_ca(
                 certdir,
-                relay_cert,
-                relay_signing_policy)
+                gcs_ca_cert,
+                gcs_ca_signing_policy)
+
         # Install New Globus Online CA and intermediate CA signing policy
         # if sharing is enabled
         if self.conf.get_gridftp_sharing():
