@@ -1,4 +1,4 @@
-globus-connect-server (4.0.28-1+gt6.@distro@) @distro@; urgency=low
+globus-connect-server (4.0.29-1+gt6.@distro@) @distro@; urgency=low
 
   * Change method for acquiring host certificates
   * Replace expiring Globus Connect CA
