@@ -332,7 +332,7 @@ class GCMU(object):
         cert = self.conf.get_security_certificate_file()
         key = self.conf.get_security_key_file()
         go_ca3_cert = pkgutil.get_data("globus.connect.security", "go-ca3.pem")
-        go_ca3_hash = get_certificate_hash_from_data(go_ca3_cert)
+        go_ca3_hash = globus.connect.security.get_certificate_hash_from_data(go_ca3_cert)
 
         go_ca3_file = os.path.join(
                 self.conf.get_security_trusted_certificate_directory(),

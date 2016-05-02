@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.30
+Version:        4.0.31
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,7 +211,7 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
-* Mon May 02 2016 Globus Toolkit <support@globus.org> 4.0.30-1
+* Mon May 02 2016 Globus Toolkit <support@globus.org> 4.0.31-1
 - Detect if the new go-ca3 is missing, and if so request a new cert when
   doing setup
 
