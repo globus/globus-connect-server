@@ -89,7 +89,7 @@ def install_ca(cadir, ca_cert=None, ca_signing_policy=None, ca_hash=None):
     The ca_cert and ca_signing_policy parameters can be either paths to
     the files containing the data or the data itself.  If the ca_hash is not
     specified, it is determined from the certificate data.  If the certificate
-    and policy aren't specified, the default go-ca-cert is from the package is
+    and policy aren't specified, the default go-ca3 is from the package is
     used.
     """
     if cadir == None:
@@ -109,10 +109,10 @@ def install_ca(cadir, ca_cert=None, ca_signing_policy=None, ca_hash=None):
             ca_signing_policy_file.close()
 
     if ca_cert is None:
-        ca_cert = pkgutil.get_data("globus.connect.security", "go-ca-cert.pem")
+        ca_cert = pkgutil.get_data("globus.connect.security", "go-ca3.pem")
     if ca_signing_policy is None:
         ca_signing_policy = pkgutil.get_data(
-                "globus.connect.security", "go-ca-cert.signing_policy")
+                "globus.connect.security", "go-ca3.signing_policy")
 
     if ca_hash is None:
         ca_hash = get_certificate_hash_from_data(ca_cert)

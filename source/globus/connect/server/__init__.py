@@ -199,7 +199,7 @@ def get_api(conf):
         api_ca = os.path.join(
                 os.path.dirname(
                         globus.connect.security.__file__),
-                        "go-ca-cert.pem")
+                        "go-ca3.pem")
         globusonline.transfer.api_client.verified_https.match_hostname = \
                 lambda cert, hostname: True
         base_url = "https://transfer.test.api.globusonline.org/" + globusonline.transfer.api_client.API_VERSION
@@ -331,10 +331,17 @@ class GCMU(object):
         self.logger.debug("ENTER: GCMU.configure_credential()")
         cert = self.conf.get_security_certificate_file()
         key = self.conf.get_security_key_file()
+        go_ca3_cert = pkgutil.get_data("globus.connect.security", "go-ca3.pem")
+        go_ca3_hash = get_certificate_hash_from_data(go_ca3_cert)
+
+        go_ca3_file = os.path.join(
+                self.conf.get_security_trusted_certificate_directory(),
+                go_ca3_hash)
 
         if self.conf.get_security_fetch_credential_from_relay():
             if kwargs.get('force') or \
-                    (not os.path.exists(cert)) or (not os.path.exists(key)):
+                    (not os.path.exists(cert)) or (not os.path.exists(key)) or \
+                    (not os.path.exists(go_ca3_hash + ".0")):
                 if os.path.exists(cert):
                     self.logger.debug("Removing old certificate file")
                     os.remove(cert)
@@ -549,7 +556,7 @@ class GCMU(object):
         # Remove Globus Connect Relay CA
         relay_cert = pkgutil.get_data(
                 "globus.connect.security",
-                "go-ca-cert.pem")
+                "go-ca3.pem")
 
         hashes.append(globus.connect.security.get_certificate_hash_from_data(
                 relay_cert))

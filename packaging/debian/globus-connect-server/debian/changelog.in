@@ -1,3 +1,10 @@
+globus-connect-server (4.0.30-1+gt6.@distro@) @distro@; urgency=low
+
+  * Detect if the new go-ca3 is missing, and if so request a new cert when
+    doing setup
+
+ -- Globus Toolkit <support@globus.org>  Mon, 02 May 2016 11:48:36 -0400
+
 globus-connect-server (4.0.29-1+gt6.@distro@) @distro@; urgency=low
 
   * Change method for acquiring host certificates
