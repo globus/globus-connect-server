@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.31
+Version:        4.0.32
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,10 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Tue May 10 2016 Globus Toolkit <support@globus.org> 4.0.32-1
+- Don't attempt to fetch myproxy keys when it isn't configured.
+- Soften required upgrade message
+
 * Mon May 02 2016 Globus Toolkit <support@globus.org> 4.0.31-1
 - Detect if the new go-ca3 is missing, and if so request a new cert when
   doing setup

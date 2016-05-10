@@ -241,7 +241,7 @@ def is_latest_version(force=False):
     except IOError as e:
         print("Unable to get version info from: " + LATEST_VERSION_URI + \
               "\n" + str(e) + "\nSkipping version check.", file=sys.stderr)
-        return False
+        return True
 
     fieldshift = 1000
 
@@ -256,7 +256,8 @@ def is_latest_version(force=False):
     if data_version_value < published_version_value:
         message = \
             "A newer version (%s) of globus-connect-server is available.\n" \
-            "Please upgrade before running this script." % (published_version)
+            "Please upgrade before running this script (or temporarily use \n" \
+            "-force to proceed)." % (published_version)
         if not force:
             raise Exception(message)
         else:

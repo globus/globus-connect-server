@@ -629,7 +629,7 @@ server
         else:
             myproxy_server = self.conf.get_myproxy_server()
             myproxy_dn = self.conf.get_myproxy_dn()
-            if myproxy_dn is None:
+            if myproxy_dn is None and myproxy_server is not None:
                 myproxy_dn = self.get_myproxy_dn_from_server()
 
         if myproxy_server is not None:
