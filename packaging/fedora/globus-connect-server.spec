@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.32
+Version:        4.0.33
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Thu May 12 2016 Globus Toolkit <support@globus.org> 4.0.33-1
+- Verify CILogon IdP against automatically updated list
+
 * Tue May 10 2016 Globus Toolkit <support@globus.org> 4.0.32-1
 - Don't attempt to fetch myproxy keys when it isn't configured.
 - Soften required upgrade message

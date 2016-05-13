@@ -12,16 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import absolute_import
+from __future__ import print_function, absolute_import
 
 import copy
 import globus.connect.server as gcmu
 import os
 import re
+import pkgutil
+import sys
+import requests
+import xml.etree.ElementTree as etree
 try:
     import configparser
 except ImportError:
     import ConfigParser as configparser
+
+IDPLIST_XML_URL = 'https://cilogon.org/include/idplist.xml'
+IDPLIST_XML_FILE = 'cilogon-idplist.xml'
 
 class ConfigFile(configparser.ConfigParser):
     GLOBUS_SECTION = "Globus"
@@ -179,153 +186,9 @@ class ConfigFile(configparser.ConfigParser):
                 "option": GRIDMAP_OPTION,
                 "expression": r"^/.*$"
             },
-            # Current as aof 2014-10-28
             CILOGON_IDENTITY_PROVIDER_OPTION.lower(): {
                 "option": CILOGON_IDENTITY_PROVIDER_OPTION,
-                "expression": r"^(" + \
-                    "|".join([
-                        "Argonne National Laboratory",
-                        "Arizona State University",
-                        "Auburn University",
-                        "Bloomsburg University of Pennsylvania",
-                        "Boise State University",
-                        "Boston University",
-                        "Brookhaven National Laboratory",
-                        "Brown University",
-                        "California Institute of Technology",
-                        "California State Polytechnic University, Pomona",
-                        "California State University, Fresno",
-                        "California State University, Fullerton",
-                        "Carleton College",
-                        "Carnegie Mellon University",
-                        "Case Western Reserve University",
-                        "Clemson University",
-                        "Colorado School of Mines",
-                        "Colorado State University",
-                        "Columbia University",
-                        "Cornell University",
-                        "Duke University",
-                        "Emory University",
-                        "ESnet",
-                        "Florida Atlantic University",
-                        "Florida International University",
-                        "George Mason University",
-                        "Georgetown University",
-                        "Georgia Institute of Technology",
-                        "Google",
-                        "Goucher College",
-                        "GPN (Great Plains Network)",
-                        "Indiana University",
-                        "Indiana University of Pennsylvania",
-                        "Internet2",
-                        "Iowa State University",
-                        "Johns Hopkins",
-                        "Kansas State University",
-                        "Lawrence Berkeley National Laboratory",
-                        "Lehigh University",
-                        "LIGO Scientific Collaboration",
-                        "Louisiana State University",
-                        "Loyola University Maryland",
-                        "LTERN (Long Term Ecological Research Network)",
-                        "Marine Biological Laboratory",
-                        "Massachusetts Institute of Technology",
-                        "MCNC",
-                        "Medical University of South Carolina",
-                        "Michigan State University",
-                        "Montana State University - Bozeman",
-                        "Moss Landing Marine Laboratories",
-                        "National Institutes of Health",
-                        "New York University",
-                        "North Carolina State University",
-                        "Northwestern University",
-                        "Oak Ridge National Laboratory",
-                        "Ohio State University",
-                        "Ohio Technology Consortium (OH-TECH)",
-                        "Oklahoma State University System",
-                        "Old Dominion University",
-                        "Penn State",
-                        "Pomona College",
-                        "Princeton University",
-                        "ProtectNetwork",
-                        "Purdue University Main Campus",
-                        "Reed College",
-                        "Rice University",
-                        "Rockefeller University",
-                        "Rutgers, The State University of New Jersey",
-                        "San Diego State University",
-                        "Southern Illinois University",
-                        "Southern Methodist University",
-                        "Stevens Institute of Technology",
-                        "Stony Brook University",
-                        "Syracuse University",
-                        "Texas A &amp; M University",
-                        "Texas State University - San Marcos",
-                        "Texas Tech University",
-                        "The Broad Institute of MIT and Harvard",
-                        "The George Washington University",
-                        "The University of Arizona",
-                        "Towson University",
-                        "Tufts University",
-                        "University At Albany, State University of New York",
-                        "University of Alabama, The",
-                        "University of Alabama at Birmingham",
-                        "University of Arkansas",
-                        "University of California, Davis",
-                        "University of California, San Francisco",
-                        "University of California, Santa Cruz",
-                        "University of California-Los Angeles",
-                        "University of California - Office of the President",
-                        "University of California-San Diego",
-                        "University of Central Florida",
-                        "University of Chicago",
-                        "University of Cincinnati Main Campus",
-                        "University of Colorado at Boulder",
-                        "University of Dayton",
-                        "University of Delaware",
-                        "University of Florida",
-                        "University of Hawaii",
-                        "University of Houston Libraries",
-                        "University of Illinois at Chicago",
-                        "University of Illinois At Springfield",
-                        "University of Illinois at Urbana-Champaign",
-                        "University of Iowa",
-                        "University of Kansas",
-                        "University of Kansas Medical Center",
-                        "University of Maryland Baltimore",
-                        "University of Maryland Baltimore County",
-                        "University of Maryland College Park",
-                        "University of Massachusetts Amherst",
-                        "University of Michigan",
-                        "University of Minnesota",
-                        "University of Mississippi",
-                        "University of Missouri System",
-                        "University of Nebraska-Lincoln",
-                        "University of North Carolina at Chapel Hill",
-                        "University of North Carolina At Charlotte",
-                        "University of Notre Dame",
-                        "University of Oregon",
-                        "University of Pennsylvania",
-                        "University of Pittsburgh",
-                        "University of South Carolina",
-                        "University of South Florida",
-                        "University of Tennessee",
-                        "University of Texas at Austin",
-                        "University of Texas at Dallas",
-                        "University of Texas System",
-                        "University of Utah",
-                        "University of Vermont",
-                        "University of Virginia",
-                        "University of Washington",
-                        "University of Wisconsin-Madison",
-                        "University of Wisconsin-Milwaukee",
-                        "Utah State University",
-                        "Vanderbilt University",
-                        "Virginia Polytechnic Institute and State University",
-                        "Weill Cornell Medical College",
-                        "Western Michigan University",
-                        "West Virginia University",
-                        "Wheaton College (MA)",
-                        "Yale University"]) + r")$"
+                "expression": r"^.*$"
             }
         },
         GRIDFTP_SECTION: {
@@ -500,6 +363,7 @@ class ConfigFile(configparser.ConfigParser):
         finally:
             config_fp.close()
         self.validate(config_file)
+        self.validate_cilogon_identity_provider()
 
     def validate(self, config_file):
         for section in self.sections():
@@ -522,6 +386,48 @@ class ConfigFile(configparser.ConfigParser):
                     raise Exception("Invalid value for " 
                             + optname + " in " + "[" + section + "] section of "
                             + config_file + ": " + val)
+
+    def validate_cilogon_identity_provider(self):
+        found = False
+        valid = False
+        updated = False
+        cilogon_idp = self.get_security_cilogon_identity_provider()
+        if cilogon_idp is not None:
+            idpdata = pkgutil.get_data(
+                'globus.connect.security', IDPLIST_XML_FILE)
+            idplist_xml = etree.fromstring(idpdata)
+            while True:
+                idp_xml = idplist_xml.find('./idp[Organization_Name="%s"]'
+                    % cilogon_idp)
+                if idp_xml is not None:
+                    found = True
+                    rands = idp_xml.find('RandS')
+                    if rands is not None and rands.text == '1':
+                        valid = True
+                    else:
+                        whitelist = idp_xml.find('Whitelisted')
+                        if whitelist is not None and whitelist.text == '1':
+                            valid = True
+                if valid or updated:
+                    break
+
+                # if not found or valid, check current idp list
+                try:
+                    r = requests.get(IDPLIST_XML_URL, stream=True)
+                    cilogon_xml = etree.parse(r.raw)
+                    updated = True
+                except:
+                    break
+
+            if not found:
+                raise Exception("Invalid value for %s: unknown organization %s" %
+                    (ConfigFile.CILOGON_IDENTITY_PROVIDER_OPTION, cilogon_idp))
+            elif not valid:
+                print("\nWARNING: You have configured a known CILogon "      \
+                    "identity provider, but CILogon indicates that the "     \
+                    "identity provider does not support the ePPN extension " \
+                    "required by Globus.  Please contact your identity "     \
+                    "provider administrator.\n", file=sys.stderr)
 
     def __get_list(self, section, option, maxsplit = 0):
         if not self.has_option(section, option):

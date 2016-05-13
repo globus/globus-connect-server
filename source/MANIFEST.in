@@ -7,5 +7,6 @@ include globus-connect-server.conf
 include globus/connect/security/*.pem
 include globus/connect/security/*.signing_policy
 include globus/connect/security/cilogon-crl-fetch
+include globus/connect/security/cilogon-idplist.xml
 include globus/connect/server/mapapp-template
 include globus/connect/server/version

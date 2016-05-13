@@ -1,0 +1,3477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idps>
+  <idp entityID="https://saml.adu.edu">
+    <Organization_Name>Adventist University of Health Sciences</Organization_Name>
+    <Home_Page>http://adu.edu/</Home_Page>
+    <Technical_Name>Technical Support</Technical_Name>
+    <Technical_Address>saml.tech@my.adu.edu</Technical_Address>
+    <Administrative_Name>Administrative Support</Administrative_Name>
+    <Administrative_Address>saml.admin@my.adu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibidp.hancockcollege.edu/idp/shibboleth">
+    <Organization_Name>Allan Hancock Joint Community College District</Organization_Name>
+    <Home_Page>http://hancockcollege.edu/</Home_Page>
+    <Technical_Name>Ron Kewish</Technical_Name>
+    <Technical_Address>rkewish@hancockcollege.edu</Technical_Address>
+    <Administrative_Name>Carol Moore</Administrative_Name>
+    <Administrative_Address>cmoore@hancockcollege.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.allegheny.edu/idp/shibboleth">
+    <Organization_Name>Allegheny College</Organization_Name>
+    <Home_Page>http://www.allegheny.edu/</Home_Page>
+    <Technical_Name>Doug Tomer</Technical_Name>
+    <Technical_Address>dtomer@allegheny.edu</Technical_Address>
+    <Administrative_Name>Doug Tomer</Administrative_Name>
+    <Administrative_Address>dtomer@allegheny.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.american.edu/idp/shibboleth">
+    <Organization_Name>American University</Organization_Name>
+    <Home_Page>http://www.american.edu/index1.html</Home_Page>
+    <Technical_Name>Saeed Pater-Rov</Technical_Name>
+    <Technical_Address>paterrov@american.edu</Technical_Address>
+    <Administrative_Name>Eric Weakland</Administrative_Name>
+    <Administrative_Address>eric@american.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.aub.edu.lb/idp/shibboleth">
+    <Organization_Name>American University of Beirut</Organization_Name>
+    <Home_Page>http://www.aub.edu.lb/</Home_Page>
+    <Technical_Name>Shibboleth Techincal Team</Technical_Name>
+    <Technical_Address>Shibboleth@aub.edu.lb</Technical_Address>
+    <Administrative_Name>Mona Assi</Administrative_Name>
+    <Administrative_Address>monassi@aub.edu.lb</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.aus.edu/idp/shibboleth">
+    <Organization_Name>American University of Sharjah</Organization_Name>
+    <Home_Page>http://www.aus.edu/</Home_Page>
+    <Technical_Name>IdP Support Team</Technical_Name>
+    <Technical_Address>idp_support@aus.edu</Technical_Address>
+    <Administrative_Name>IdP Support Team</Administrative_Name>
+    <Administrative_Address>idp_support@aus.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.ameslab.gov/idp/shibboleth">
+    <Organization_Name>Ames Laboratory</Organization_Name>
+    <Home_Page>http://www.ameslab.gov/</Home_Page>
+    <Technical_Name>Chris Strasburg</Technical_Name>
+    <Technical_Address>cstras@ameslab.gov</Technical_Address>
+    <Administrative_Name>Diane Denadel</Administrative_Name>
+    <Administrative_Address>ddenadel@ameslab.gov</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibidp.amherst.edu/idp/shibboleth">
+    <Organization_Name>Amherst College</Organization_Name>
+    <Home_Page>http://www.amherst.edu</Home_Page>
+    <Technical_Name>Rob Ansaldo</Technical_Name>
+    <Technical_Address>rlansaldo@amherst.edu</Technical_Address>
+    <Administrative_Name>John Manly</Administrative_Name>
+    <Administrative_Address>jwmanly@amherst.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://identityprovider.anl.gov/idp/shibboleth">
+    <Organization_Name>Argonne National Laboratory</Organization_Name>
+    <Home_Page>http://www.anl.gov/</Home_Page>
+    <Technical_Name>Doug Engert</Technical_Name>
+    <Technical_Address>deengert@anl.gov</Technical_Address>
+    <Administrative_Name>John Volmer</Administrative_Name>
+    <Administrative_Address>volmer@anl.gov</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:asu.edu">
+    <Organization_Name>Arizona State University</Organization_Name>
+    <Home_Page>http://www.asu.edu/</Home_Page>
+    <Technical_Name>UTO EDNA Team</Technical_Name>
+    <Technical_Address>ednateam@asu.edu</Technical_Address>
+    <Administrative_Name>Jack Hsu</Administrative_Name>
+    <Administrative_Address>Jack.Hsu@asu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://webauth.auburn.edu/idp/shibboleth">
+    <Organization_Name>Auburn University</Organization_Name>
+    <Home_Page>http://www.auburn.edu/</Home_Page>
+    <Technical_Name>Brian Anderson</Technical_Name>
+    <Technical_Address>anderbr@auburn.edu</Technical_Address>
+    <Administrative_Name>Brian Anderson</Administrative_Name>
+    <Administrative_Address>anderbr@auburn.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.augsburg.edu/simplesaml/saml2/idp/metadata.php">
+    <Organization_Name>Augsburg College</Organization_Name>
+    <Home_Page>http://www.augsburg.edu/</Home_Page>
+    <Technical_Name>Josef Fortier</Technical_Name>
+    <Technical_Address>fortier@augsburg.edu</Technical_Address>
+    <Administrative_Name>Matthew Schornstein</Administrative_Name>
+    <Administrative_Address>schornst@augsburg.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shfed.augusta.edu/idp/shibboleth">
+    <Organization_Name>Augusta University</Organization_Name>
+    <Home_Page>http://www.augusta.edu/</Home_Page>
+    <Technical_Name>Andrew Smith</Technical_Name>
+    <Technical_Address>andsmith@augusta.edu</Technical_Address>
+    <Administrative_Name>Chris Peavler</Administrative_Name>
+    <Administrative_Address>cpeavler@augusta.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.apu.edu/shibboleth">
+    <Organization_Name>Azusa Pacific University</Organization_Name>
+    <Home_Page>http://www.apu.edu/</Home_Page>
+    <Technical_Name>Joshua Riffle</Technical_Name>
+    <Technical_Address>jriffle@apu.edu</Technical_Address>
+  </idp>
+  <idp entityID="http://shibboleth.bsu.edu/sso">
+    <Organization_Name>Ball State University</Organization_Name>
+    <Home_Page>http://cms.bsu.edu/</Home_Page>
+    <Technical_Name>Alex Chalmers</Technical_Name>
+    <Technical_Address>abchalmers@bsu.edu</Technical_Address>
+    <Administrative_Name>Todd Meister</Administrative_Name>
+    <Administrative_Address>tmeister@bsu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibidp.bates.edu/idp/shibboleth">
+    <Organization_Name>Bates College</Organization_Name>
+    <Home_Page>http://www.bates.edu/</Home_Page>
+    <Technical_Name>Bates NetAdmin</Technical_Name>
+    <Technical_Address>netadmin@bates.edu</Technical_Address>
+    <Administrative_Name>Bates NetAdmin</Administrative_Name>
+    <Administrative_Address>netadmin@bates.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://fedidp.bcm.edu/idp/shibboleth">
+    <Organization_Name>Baylor College of Medicine</Organization_Name>
+    <Home_Page>http://www.bcm.edu/</Home_Page>
+    <Technical_Name>Abigail Burton</Technical_Name>
+    <Technical_Address>afburton@bcm.edu</Technical_Address>
+    <Administrative_Name>Abigail Burton</Administrative_Name>
+    <Administrative_Address>afburton@bcm.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth-2.baylor.edu/idp/shibboleth">
+    <Organization_Name>Baylor University</Organization_Name>
+    <Home_Page>http://www.baylor.edu/</Home_Page>
+    <Technical_Name>Tommy Roberson</Technical_Name>
+    <Technical_Address>tommy_roberson@baylor.edu</Technical_Address>
+    <Administrative_Name>Becky King</Administrative_Name>
+    <Administrative_Address>becky_king@baylor.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://secure.binghamton.edu/idp/shibboleth">
+    <Organization_Name>Binghamton University</Organization_Name>
+    <Home_Page>http://www.binghamton.edu/</Home_Page>
+    <Technical_Name>Frank Saraceno</Technical_Name>
+    <Technical_Address>saraceno@binghamton.edu</Technical_Address>
+    <Administrative_Name>Frank Saraceno</Administrative_Name>
+    <Administrative_Address>saraceno@binghamton.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibidp.bloomu.edu/idp/shibboleth">
+    <Organization_Name>Bloomsburg University of Pennsylvania</Organization_Name>
+    <Home_Page>http://www.bloomu.edu/</Home_Page>
+    <Technical_Name>Vincent Kozlek</Technical_Name>
+    <Technical_Address>idp-admin@bloomu.edu</Technical_Address>
+    <Administrative_Name>Vincent Kozlek</Administrative_Name>
+    <Administrative_Address>idp-admin@bloomu.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.boisestate.edu/idp/shibboleth">
+    <Organization_Name>Boise State University</Organization_Name>
+    <Home_Page>http://boisestate.edu/</Home_Page>
+    <Technical_Name>Gary Kincaid</Technical_Name>
+    <Technical_Address>gkincaid@boisestate.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.bc.edu/idp/shibboleth">
+    <Organization_Name>Boston College</Organization_Name>
+    <Home_Page>http://www.bc.edu/</Home_Page>
+    <Technical_Name>BC IAM Technical Team</Technical_Name>
+    <Technical_Address>itsstaff.iam.technical@bc.edu</Technical_Address>
+    <Administrative_Name>BC IAM Administrative Team</Administrative_Name>
+    <Administrative_Address>itsstaff.iam.administrative@bc.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib.bu.edu/idp/shibboleth">
+    <Organization_Name>Boston University</Organization_Name>
+    <Home_Page>http://www.bu.edu/</Home_Page>
+    <Technical_Name>BU IT Help Center</Technical_Name>
+    <Technical_Address>ithelp@bu.edu</Technical_Address>
+    <Administrative_Name>BU IT Help Center</Administrative_Name>
+    <Administrative_Address>ithelp@bu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://webapp.bgsu.edu/idp/shibboleth">
+    <Organization_Name>Bowling Green State University</Organization_Name>
+    <Home_Page>http://www.bgsu.edu/</Home_Page>
+    <Technical_Name>BGSU Technical Computing Support</Technical_Name>
+    <Technical_Address>unix-admin-c@bgsu.edu</Technical_Address>
+    <Administrative_Name>BGSU Technical Computing Support</Administrative_Name>
+    <Administrative_Address>unix-admin-b@bgsu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.brandeis.edu/idp/shibboleth">
+    <Organization_Name>Brandeis University</Organization_Name>
+    <Home_Page>http://www.brandeis.edu/</Home_Page>
+    <Technical_Name>Ian Rifkin</Technical_Name>
+    <Technical_Address>irifkin@brandeis.edu</Technical_Address>
+    <Administrative_Name>Josh Wilson</Administrative_Name>
+    <Administrative_Address>jwilson@brandeis.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.bridgewater.edu/simplesaml">
+    <Organization_Name>Bridgewater College</Organization_Name>
+    <Home_Page>http://www.bridgewater.edu/</Home_Page>
+    <Technical_Name>charles frank</Technical_Name>
+    <Technical_Address>cfrank@bridgewater.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shib.byu.edu/idp/shibboleth">
+    <Organization_Name>Brigham Young University</Organization_Name>
+    <Home_Page>http://www.byu.edu/index.html</Home_Page>
+    <Technical_Name>Dan McNeece</Technical_Name>
+    <Technical_Address>dbm8@byu.edu</Technical_Address>
+    <Administrative_Name>Doug Walker</Administrative_Name>
+    <Administrative_Address>djw5@byu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.bnl.gov/idp/shibboleth">
+    <Organization_Name>Brookhaven National Laboratory</Organization_Name>
+    <Home_Page>http://www.bnl.gov/world/</Home_Page>
+    <Technical_Name>David Cortijo</Technical_Name>
+    <Technical_Address>dcortijo@bnl.gov</Technical_Address>
+    <Administrative_Name>David Cortijo</Administrative_Name>
+    <Administrative_Address>dcortijo@bnl.gov</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.brown.edu/idp/shibboleth">
+    <Organization_Name>Brown University</Organization_Name>
+    <Home_Page>http://www.brown.edu/</Home_Page>
+    <Technical_Name>Brown University Shibboleth Administrator</Technical_Name>
+    <Technical_Address>CIS-EAS-IdMgmt@brown.edu</Technical_Address>
+    <Administrative_Name>Brown University Identity Management</Administrative_Name>
+    <Administrative_Address>CIS-EAS-IdMgmt@brown.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.brynmawr.edu/idp/shibboleth">
+    <Organization_Name>Bryn Mawr College</Organization_Name>
+    <Home_Page>https://www.brynmawr.edu/</Home_Page>
+    <Technical_Name>Andrew Chiarello</Technical_Name>
+    <Technical_Address>achiarello@brynmawr.edu</Technical_Address>
+    <Administrative_Name>David Bertagni</Administrative_Name>
+    <Administrative_Address>dbertagni@brynmawr.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib.bucknell.edu/idp/shibboleth">
+    <Organization_Name>Bucknell University</Organization_Name>
+    <Home_Page>http://www.bucknell.edu/</Home_Page>
+    <Technical_Name>Bucknell Systems</Technical_Name>
+    <Technical_Address>systems@bucknell.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.bucks.edu/idp/shibboleth">
+    <Organization_Name>Bucks County Community College</Organization_Name>
+    <Home_Page>http://www.bucks.edu/</Home_Page>
+    <Technical_Name>Brant Steen</Technical_Name>
+    <Technical_Address>brant.steen@bucks.edu</Technical_Address>
+    <Administrative_Name>Brant Steen</Administrative_Name>
+    <Administrative_Address>brant.steen@bucks.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.caltech.edu/idp/shibboleth">
+    <Organization_Name>California Institute of Technology</Organization_Name>
+    <Home_Page>http://www.caltech.edu/</Home_Page>
+    <Technical_Name>Zailo Leite</Technical_Name>
+    <Technical_Address>zleite@caltech.edu</Technical_Address>
+    <Administrative_Name>RuthAnne Bevier</Administrative_Name>
+    <Administrative_Address>ruthanne@caltech.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://cma-shibboleth.csum.edu/idp/shibboleth">
+    <Organization_Name>California Maritime Academy</Organization_Name>
+    <Home_Page>http://www.csum.edu/</Home_Page>
+    <Technical_Name>Walter Abarca</Technical_Name>
+    <Technical_Address>ITchange@csum.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.calpoly.edu/idp/shibboleth">
+    <Organization_Name>California Polytechnic State University-San Luis Obispo</Organization_Name>
+    <Home_Page>http://www.calpoly.edu/</Home_Page>
+    <Technical_Name>Identity Management Team</Technical_Name>
+    <Technical_Address>identity-management@calpoly.edu</Technical_Address>
+    <Administrative_Name>Dan Malone</Administrative_Name>
+    <Administrative_Address>dmalone@calpoly.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.cpp.edu/idp/shibboleth">
+    <Organization_Name>California State Polytechnic University, Pomona</Organization_Name>
+    <Home_Page>http://www.cpp.edu/</Home_Page>
+    <Technical_Name>Paul Henson</Technical_Name>
+    <Technical_Address>henson@cpp.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib.csub.edu/idp/shibboleth">
+    <Organization_Name>California State University, Bakersfield</Organization_Name>
+    <Home_Page>http://www.csub.edu/</Home_Page>
+    <Technical_Name>Network Operations Center</Technical_Name>
+    <Technical_Address>netops@csub.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://mckinley.csuci.edu/idp/shibboleth">
+    <Organization_Name>California State University, Channel Islands</Organization_Name>
+    <Home_Page>http://www.csuci.edu/</Home_Page>
+    <Technical_Name>Peter Scamardo</Technical_Name>
+    <Technical_Address>peter.scamardo@csuci.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shibboleth.csuchico.edu/idp/shibboleth">
+    <Organization_Name>California State University, Chico</Organization_Name>
+    <Home_Page>http://www.csuchico.edu/</Home_Page>
+    <Technical_Name>David Fuhs</Technical_Name>
+    <Technical_Address>dfuhs@csuchico.edu</Technical_Address>
+    <Administrative_Name>Andy Miller</Administrative_Name>
+    <Administrative_Address>lamiller@csuchico.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.csudh.edu/idp/shibboleth">
+    <Organization_Name>California State University, Dominguez Hills</Organization_Name>
+    <Home_Page>http://www.csudh.edu/</Home_Page>
+    <Administrative_Name>Edgar Lazarian</Administrative_Name>
+    <Administrative_Address>elazarian@csudh.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://vince.csueastbay.edu/idp/shibboleth">
+    <Organization_Name>California State University, East Bay</Organization_Name>
+    <Home_Page>http://www20.csueastbay.edu/</Home_Page>
+    <Technical_Name>Matt Collins</Technical_Name>
+    <Technical_Address>matt.collins@csueastbay.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shib-idp.its.csufresno.edu/idp/shibboleth">
+    <Organization_Name>California State University, Fresno</Organization_Name>
+    <Home_Page>http://www.csufresno.edu/</Home_Page>
+    <Technical_Name>Mike Garvey</Technical_Name>
+    <Technical_Address>mikeg@csufresno.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibboleth.fullerton.edu/idp/shibboleth">
+    <Organization_Name>California State University, Fullerton</Organization_Name>
+    <Home_Page>http://www.fullerton.edu/</Home_Page>
+    <Technical_Name>James O'Dell</Technical_Name>
+    <Technical_Address>jodell@fullerton.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://its-shib.its.csulb.edu/idp/shibboleth">
+    <Organization_Name>California State University, Long Beach</Organization_Name>
+    <Home_Page>http://www.csulb.edu/</Home_Page>
+    <Technical_Name>Jesse Santana</Technical_Name>
+    <Technical_Address>jsantana@csulb.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.calstatela.edu/idp/shibboleth">
+    <Organization_Name>California State University, Los Angeles</Organization_Name>
+    <Home_Page>http://www.calstatela.edu/</Home_Page>
+    <Technical_Name>David Ng</Technical_Name>
+    <Technical_Address>dng3@cslanet.calstatela.edu</Technical_Address>
+    <Administrative_Name>Sheryl Okuno</Administrative_Name>
+    <Administrative_Address>seng@calstatela.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://sso.csumb.edu/idp/shibboleth">
+    <Organization_Name>California State University, Monterey Bay</Organization_Name>
+    <Home_Page>http://csumb.edu/</Home_Page>
+    <Technical_Name>Isaac Davis-King</Technical_Name>
+    <Technical_Address>idavis-king@csumb.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:csun.edu">
+    <Organization_Name>California State University, Northridge</Organization_Name>
+    <Home_Page>http://www.csun.edu/</Home_Page>
+    <Technical_Name>Kevin Krzewinski</Technical_Name>
+    <Technical_Address>kevin.krzewinski@csun.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp-co.calstate.edu/idp/shibboleth">
+    <Organization_Name>California State University, Office of the Chancellor</Organization_Name>
+    <Home_Page>http://www.calstate.edu/</Home_Page>
+    <Technical_Name>Marcus Mizushima</Technical_Name>
+    <Technical_Address>iamadmin@calstate.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.csus.edu/idp/shibboleth">
+    <Organization_Name>California State University, Sacramento</Organization_Name>
+    <Home_Page>http://www.csus.edu/</Home_Page>
+    <Administrative_Name>Brennan Pike</Administrative_Name>
+    <Administrative_Address>idm@csus.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.csusb.edu/idp/shibboleth">
+    <Organization_Name>California State University, San Bernardino</Organization_Name>
+    <Home_Page>http://www.csusb.edu/</Home_Page>
+    <Technical_Name>Sunny Lin</Technical_Name>
+    <Technical_Address>slin@csusb.edu</Technical_Address>
+    <Administrative_Name>Javier Torner</Administrative_Name>
+    <Administrative_Address>jtorner@csusb.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.csusm.edu/idp/shibboleth">
+    <Organization_Name>California State University, San Marcos</Organization_Name>
+    <Home_Page>http://www.csusm.edu/</Home_Page>
+    <Technical_Name>Diane Petersen</Technical_Name>
+    <Technical_Address>kai@csusm.edu</Technical_Address>
+    <Administrative_Name>April Grommo</Administrative_Name>
+    <Administrative_Address>agrommo@csusm.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.csustan.edu/idp/shibboleth">
+    <Organization_Name>California State University, Stanislaus</Organization_Name>
+    <Home_Page>http://www.csustan.edu/</Home_Page>
+    <Technical_Name>Chris Wincentsen</Technical_Name>
+    <Technical_Address>CWincentsen@csustan.edu</Technical_Address>
+    <Administrative_Name>Corey Cardoza</Administrative_Name>
+    <Administrative_Address>CCardoza@csustan.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib.calu.edu/idp/shibboleth">
+    <Organization_Name>California University of Pennsylvania</Organization_Name>
+    <Home_Page>http://www.calu.edu/</Home_Page>
+    <Technical_Name>Donna Wright</Technical_Name>
+    <Technical_Address>utechrequests@calu.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://gateway.capella.edu/FIM/sps/capella_saml2_idp/saml20">
+    <Organization_Name>Capella University</Organization_Name>
+    <Home_Page>http://www.capella.edu/</Home_Page>
+    <Technical_Name>Angie Shand</Technical_Name>
+    <Technical_Address>Angie.Shand@capella.edu</Technical_Address>
+  </idp>
+  <idp entityID="http://sso.sandburg.edu/adfs/services/trust">
+    <Organization_Name>Carl Sandburg College</Organization_Name>
+    <Home_Page>http://www.sandburg.edu/</Home_Page>
+    <Technical_Name>Robert W. Stevens</Technical_Name>
+    <Technical_Address>rstevens@sandburg.edu</Technical_Address>
+    <Administrative_Name>Linda Lee</Administrative_Name>
+    <Administrative_Address>llee@sandburg.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:carleton.edu">
+    <Organization_Name>Carleton College</Organization_Name>
+    <Home_Page>http://www.carleton.edu/</Home_Page>
+    <Technical_Name>Rich Graves</Technical_Name>
+    <Technical_Address>rgraves@carleton.edu</Technical_Address>
+    <Administrative_Name>Candyce Lelm</Administrative_Name>
+    <Administrative_Address>clelm@carleton.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.cmu.edu/idp/shibboleth">
+    <Organization_Name>Carnegie Mellon University</Organization_Name>
+    <Home_Page>http://www.cmu.edu/</Home_Page>
+    <Technical_Name>Shibboleth Support Team</Technical_Name>
+    <Technical_Address>shibboleth-team@andrew.cmu.edu</Technical_Address>
+    <Administrative_Name>Jeffrey Eaton</Administrative_Name>
+    <Administrative_Address>jeaton@cmu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://identity.andrew.cmu.edu/idp/shibboleth">
+    <Organization_Name>Carnegie Mellon University Tartan-ConnectID for Guests</Organization_Name>
+    <Home_Page>http://www.cmu.edu/</Home_Page>
+    <Technical_Name>Shibboleth Support Team</Technical_Name>
+    <Technical_Address>shibboleth-team@andrew.cmu.edu</Technical_Address>
+    <Administrative_Name>Deborah Schill</Administrative_Name>
+    <Administrative_Address>dschill@cmu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:case.edu">
+    <Organization_Name>Case Western Reserve University</Organization_Name>
+    <Home_Page>http://www.cwru.edu/</Home_Page>
+    <Technical_Name>Jeremy Smith</Technical_Name>
+    <Technical_Address>jeremy.smith@case.edu</Technical_Address>
+    <Administrative_Name>David Kovacic</Administrative_Name>
+    <Administrative_Address>david.kovacic@case.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.cedarville.edu/idp/shibboleth">
+    <Organization_Name>Cedarville University</Organization_Name>
+    <Home_Page>http://www.cedarville.edu/</Home_Page>
+    <Administrative_Name>David Rotman</Administrative_Name>
+    <Administrative_Address>rotmand@cedarville.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.crl.edu/idp/shibboleth">
+    <Organization_Name>Center for Research Libraries</Organization_Name>
+    <Home_Page>http://www.crl.edu/</Home_Page>
+    <Technical_Name>Ashma Shrestha</Technical_Name>
+    <Technical_Address>ashrestha@crl.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shibidp.cpcc.edu/idp/shibboleth">
+    <Organization_Name>Central Piedmont Community College</Organization_Name>
+    <Home_Page>http://www.cpcc.edu/</Home_Page>
+    <Technical_Name>Matt Rubright</Technical_Name>
+    <Technical_Address>matt.rubright@cpcc.edu</Technical_Address>
+    <Administrative_Name>Kenneth Ingle</Administrative_Name>
+    <Administrative_Address>ken.ingle@cpcc.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.cwu.edu/idp/shibboleth">
+    <Organization_Name>Central Washington University</Organization_Name>
+    <Home_Page>http://www.cwu.edu/</Home_Page>
+    <Technical_Name>CWU Identity Provider Administrators</Technical_Name>
+    <Technical_Address>idp-admins@networks.cwu.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://auth.chaminade.edu/idp/shibboleth">
+    <Organization_Name>Chaminade University of Honolulu</Organization_Name>
+    <Home_Page>http://www.chaminade.edu/</Home_Page>
+    <Administrative_Name>Kyle Johnson</Administrative_Name>
+    <Administrative_Address>kyle.johnson@chaminade.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://access.research.cchmc.org/fed/idp/metadata">
+    <Organization_Name>Cincinnati Children's Hospital Medical Center</Organization_Name>
+    <Home_Page>http://www.cincinnatichildrens.org/</Home_Page>
+    <Technical_Name>Nicholas Hunt</Technical_Name>
+    <Technical_Address>nicholas.hunt@cchmc.org</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.cirrusidentity.com/idp">
+    <Organization_Name>Cirrus Identity, Inc.</Organization_Name>
+    <Home_Page>http://cirrusidentity.com/</Home_Page>
+    <Technical_Name>Patrick Radtke</Technical_Name>
+    <Technical_Address>support@cirrusidentity.com</Technical_Address>
+  </idp>
+  <idp entityID="https://webauth.cmc.edu/idp/shibboleth">
+    <Organization_Name>Claremont McKenna College</Organization_Name>
+    <Home_Page>http://www.cmc.edu/</Home_Page>
+    <Technical_Name>Jeremy Whaley</Technical_Name>
+    <Technical_Address>jwhaley@cmc.edu</Technical_Address>
+    <Administrative_Name>Jeremy Whaley</Administrative_Name>
+    <Administrative_Address>jwhaley@cmc.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.clarion.edu/idp">
+    <Organization_Name>Clarion University</Organization_Name>
+    <Home_Page>http://www.clarion.edu/</Home_Page>
+    <Technical_Name>Michael Phillips</Technical_Name>
+    <Technical_Address>mphillips@clarion.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:clemson.edu">
+    <Organization_Name>Clemson University</Organization_Name>
+    <Home_Page>http://www.clemson.edu</Home_Page>
+    <Technical_Name>Barry Johnson</Technical_Name>
+    <Technical_Address>hbj@clemson.edu</Technical_Address>
+    <Administrative_Name>Barry Johnson</Administrative_Name>
+    <Administrative_Address>hbj@clemson.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib1.coastal.edu/idp/shibboleth">
+    <Organization_Name>Coastal Carolina University</Organization_Name>
+    <Home_Page>http://www.coastal.edu/</Home_Page>
+    <Technical_Name>Mike Richter</Technical_Name>
+    <Technical_Address>mrichter@coastal.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shibboleth.coconino.edu/idp/shibboleth">
+    <Organization_Name>Coconino County Community College</Organization_Name>
+    <Home_Page>http://www.coconino.edu</Home_Page>
+  </idp>
+  <idp entityID="https://idp.colby.edu/idp/shibboleth">
+    <Organization_Name>Colby College</Organization_Name>
+    <Home_Page>http://www.colby.edu/</Home_Page>
+    <Administrative_Name>Colby College ITS Shibboleth</Administrative_Name>
+    <Administrative_Address>shibboleth@colby.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.wm.edu/idp/shibboleth">
+    <Organization_Name>College of William and Mary</Organization_Name>
+    <Home_Page>http://www.wm.edu/</Home_Page>
+    <Technical_Name>Eric Myers</Technical_Name>
+    <Technical_Address>emmyer@wm.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shibboleth-idp.collegenet.com/idp/shibboleth">
+    <Organization_Name>CollegeNET, Inc.</Organization_Name>
+    <Home_Page>http://collegenet.com/</Home_Page>
+    <Administrative_Name>CollegeNET IT Administrator</Administrative_Name>
+    <Administrative_Address>admins@collegenet.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.mines.edu/idp/shibboleth">
+    <Organization_Name>Colorado School of Mines</Organization_Name>
+    <Home_Page>http://www.mines.edu/</Home_Page>
+    <Technical_Name>Matthew B. Brookover</Technical_Name>
+    <Technical_Address>mbrookov@mines.edu</Technical_Address>
+    <Administrative_Name>Michael Erickson</Administrative_Name>
+    <Administrative_Address>erickson@mines.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibidp.colostate.edu/idp/shibboleth">
+    <Organization_Name>Colorado State University</Organization_Name>
+    <Home_Page>http://www.colostate.edu/</Home_Page>
+    <Technical_Name>Randy Miotke</Technical_Name>
+    <Technical_Address>shibboleth@colostate.edu</Technical_Address>
+    <Administrative_Name>Scott Baily</Administrative_Name>
+    <Administrative_Address>shibboleth@colostate.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:columbia.edu">
+    <Organization_Name>Columbia University</Organization_Name>
+    <Home_Page>http://www.columbia.edu/</Home_Page>
+    <Technical_Name>Andrew Johnston</Technical_Name>
+    <Technical_Address>andrew@columbia.edu</Technical_Address>
+    <Administrative_Name>Identity and Access Management Group</Administrative_Name>
+    <Administrative_Address>iam-group@columbia.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib.ccbcmd.edu/idp/shibboleth">
+    <Organization_Name>Community College of Baltimore County</Organization_Name>
+    <Home_Page>http://www.ccbcmd.edu/</Home_Page>
+    <Technical_Name>Ben Thompson</Technical_Name>
+    <Technical_Address>bthompson@ccbcmd.edu</Technical_Address>
+    <Administrative_Name>System Engineering</Administrative_Name>
+    <Administrative_Address>systemsengineering@ccbcmd.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://heimdall.comodo.net/idp/shibboleth">
+    <Organization_Name>Comodo CA Ltd.</Organization_Name>
+    <Home_Page>http://www.comodo.com</Home_Page>
+    <Technical_Name>Vladimir Markevich</Technical_Name>
+    <Technical_Address>vladimir.markevich@comodo.com</Technical_Address>
+    <Administrative_Name>Grigoriy Sandu</Administrative_Name>
+    <Administrative_Address>grigoriy.sandu@comodo.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://cas.conncoll.edu/idp/shibboleth">
+    <Organization_Name>Connecticut College</Organization_Name>
+    <Home_Page>http://www.conncoll.edu/</Home_Page>
+    <Technical_Name>Andrew Tillinghast</Technical_Name>
+    <Technical_Address>atilling@conncoll.edu</Technical_Address>
+    <Administrative_Name>Jean Dailey</Administrative_Name>
+    <Administrative_Address>jdailey@conncoll.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.4cd.edu/idp/shibboleth">
+    <Organization_Name>Contra Costa Community College District</Organization_Name>
+    <Home_Page>http://www.4cd.edu/default.aspx</Home_Page>
+    <Technical_Name>Fred Tahan</Technical_Name>
+    <Technical_Address>ftahan@4cd.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.cmccd.edu/idp/shibboleth">
+    <Organization_Name>Copper Mountain Community College District</Organization_Name>
+    <Home_Page>http://www.cmccd.edu/</Home_Page>
+    <Technical_Name>Jeremy S. Jones</Technical_Name>
+    <Technical_Address>jjones@cmccd.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://oba.coppin.edu/idp/shibboleth">
+    <Organization_Name>Coppin State University</Organization_Name>
+    <Home_Page>http://coppin.edu/</Home_Page>
+    <Technical_Name>Thomas R. Smith, III</Technical_Name>
+    <Technical_Address>trsmith@coppin.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shibidp.cit.cornell.edu/idp/shibboleth">
+    <Organization_Name>Cornell University</Organization_Name>
+    <Home_Page>http://www.cornell.edu/</Home_Page>
+    <Technical_Name>Hong Ye</Technical_Name>
+    <Technical_Address>hy93@cornell.edu</Technical_Address>
+    <Administrative_Name>Steve Edgar</Administrative_Name>
+    <Administrative_Address>se10@cornell.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://auth.creighton.edu/idp/shibboleth">
+    <Organization_Name>Creighton University</Organization_Name>
+    <Home_Page>http://www.creighton.edu/</Home_Page>
+    <Technical_Name>Bryan McLaughlin</Technical_Name>
+    <Technical_Address>security_team@creighton.edu</Technical_Address>
+    <Administrative_Name>Bryan McLaughlin</Administrative_Name>
+    <Administrative_Address>bmclaughlin@creighton.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:dartmouth.edu">
+    <Organization_Name>Dartmouth College</Organization_Name>
+    <Home_Page>http://www.dartmouth.edu/</Home_Page>
+    <Technical_Name>Dartmouth Helpdesk</Technical_Name>
+    <Technical_Address>help@dartmouth.edu</Technical_Address>
+    <Administrative_Name>Jonathan Crossett</Administrative_Name>
+    <Administrative_Address>Jonathan.Crossett@dartmouth.edu</Administrative_Address>
+  </idp>
+  <idp entityID="http://sso.davidson.edu/adfs/services/trust">
+    <Organization_Name>Davidson College</Organization_Name>
+    <Home_Page>http://www3.davidson.edu/cms/</Home_Page>
+    <Technical_Name>John Robbins</Technical_Name>
+    <Technical_Address>jorobbins@davidson.edu</Technical_Address>
+    <Administrative_Name>Rob Smith</Administrative_Name>
+    <Administrative_Address>rosmith@davidson.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.davidsonccc.edu/idp/shibboleth">
+    <Organization_Name>Davidson County Community College</Organization_Name>
+    <Home_Page>http://www.davidsonccc.edu/</Home_Page>
+    <Technical_Name>Donald Beck</Technical_Name>
+    <Technical_Address>donald_beck@davidsonccc.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:davie.k12.nc.us">
+    <Organization_Name>Davie County Schools</Organization_Name>
+    <Home_Page>http://www.davie.k12.nc.us/Admin/index.cfm</Home_Page>
+    <Technical_Name>Eddie Greene</Technical_Name>
+    <Technical_Address>greenee@davie.k12.nc.us</Technical_Address>
+    <Administrative_Name>Butch Rooney</Administrative_Name>
+    <Administrative_Address>rooneyb@davie.k12.nc.us</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.delval.edu/idp/shibboleth">
+    <Organization_Name>Delaware Valley University</Organization_Name>
+    <Home_Page>http://www.delval.edu/</Home_Page>
+    <Technical_Name>Charles Scally</Technical_Name>
+    <Technical_Address>charles.scally@delval.edu</Technical_Address>
+    <Administrative_Name>Michael Davis</Administrative_Name>
+    <Administrative_Address>michael.davis@delval.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.drew.edu/nidp/saml2/metadata">
+    <Organization_Name>Drew University</Organization_Name>
+    <Home_Page>http://www.drew.edu/</Home_Page>
+    <Technical_Name>E. Axel Larsson</Technical_Name>
+    <Technical_Address>elarsson@drew.edu</Technical_Address>
+    <Administrative_Name>E. Axel Larsson</Administrative_Name>
+    <Administrative_Address>elarsson@drew.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:duke.edu">
+    <Organization_Name>Duke University</Organization_Name>
+    <Home_Page>http://www.duke.edu/</Home_Page>
+    <Technical_Name>Shilen Patel</Technical_Name>
+    <Technical_Address>idmstech@duke.edu</Technical_Address>
+    <Administrative_Name>Shilen Patel</Administrative_Name>
+    <Administrative_Address>idmstech@duke.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://saml.dpsnc.net/idp/shibboleth">
+    <Organization_Name>Durham Public Schools</Organization_Name>
+    <Home_Page>http://dpsnc.net/</Home_Page>
+    <Technical_Name>Qasim Lone</Technical_Name>
+    <Technical_Address>qasim.lone@dpsnc.net</Technical_Address>
+    <Administrative_Name>Corwin Armstrong</Administrative_Name>
+    <Administrative_Address>corwin.armstrong@dpsnc.net</Administrative_Address>
+  </idp>
+  <idp entityID="https://sso.ecu.edu/idp/shibboleth">
+    <Organization_Name>East Carolina University</Organization_Name>
+    <Home_Page>http://www.ecu.edu/</Home_Page>
+    <Administrative_Name>Jeremiah Stuever</Administrative_Name>
+    <Administrative_Address>stueverj@ecu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="http://login.ewu.edu/adfs/services/trust">
+    <Organization_Name>Eastern Washington University</Organization_Name>
+    <Home_Page>http://www.ewu.edu/</Home_Page>
+    <Technical_Name>John Gasper</Technical_Name>
+    <Technical_Address>jgasper@ewu.edu</Technical_Address>
+    <Administrative_Name>John Gasper</Administrative_Name>
+    <Administrative_Address>jgasper@ewu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.eup.edinboro.edu/idp/shibboleth">
+    <Organization_Name>Edinboro University of Pennsylvania</Organization_Name>
+    <Home_Page>http://www.edinboro.edu/</Home_Page>
+    <Technical_Name>Ralph Boyles</Technical_Name>
+    <Technical_Address>boyles@edinboro.edu</Technical_Address>
+    <Administrative_Name>Ralph Boyles</Administrative_Name>
+    <Administrative_Address>boyles@edinboro.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.educause.edu/idp/shibboleth">
+    <Organization_Name>EDUCAUSE</Organization_Name>
+    <Home_Page>http://www.educause.edu/</Home_Page>
+    <Technical_Name>Alex Chaux</Technical_Name>
+    <Technical_Address>achaux@educause.edu</Technical_Address>
+    <Administrative_Name>EDUCAUSE IT Administrative Support</Administrative_Name>
+    <Administrative_Address>ITinfo@educause.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.elon.edu/idp/shibboleth">
+    <Organization_Name>Elon University</Organization_Name>
+    <Home_Page>http://www.elon.edu/home/</Home_Page>
+    <Technical_Name>Greg Colby</Technical_Name>
+    <Technical_Address>gcolby@elon.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://duo.emerson.edu/dag/saml2/idp/metadata.php">
+    <Organization_Name>Emerson College</Organization_Name>
+    <Home_Page>http://www.emerson.edu/</Home_Page>
+    <Technical_Name>Bryce Riner</Technical_Name>
+    <Technical_Address>bryce_riner@emerson.edu</Technical_Address>
+    <Administrative_Name>Francis Frain</Administrative_Name>
+    <Administrative_Address>Francis_Frain@emerson.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://login.emory.edu/idp/shibboleth">
+    <Organization_Name>Emory University</Organization_Name>
+    <Home_Page>http://www.emory.edu/</Home_Page>
+    <Technical_Name>Peter Day</Technical_Name>
+    <Technical_Address>peter.day@emory.edu</Technical_Address>
+    <Administrative_Name>John Ellis</Administrative_Name>
+    <Administrative_Address>john.ellis@emory.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.es.net/idp/shibboleth">
+    <Organization_Name>ESnet</Organization_Name>
+    <Home_Page>http://www.es.net/</Home_Page>
+    <Technical_Name>Dhiva Muruganantham</Technical_Name>
+    <Technical_Address>dhiva@es.net</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.fnal.gov/idp/shibboleth">
+    <Organization_Name>Fermi National Accelerator Laboratory</Organization_Name>
+    <Home_Page>http://www.fnal.gov/</Home_Page>
+    <Technical_Name>Olga Terlyga</Technical_Name>
+    <Technical_Address>terlyga@fnal.gov</Technical_Address>
+    <Administrative_Name>Al Lilianstrom</Administrative_Name>
+    <Administrative_Address>lilstrom@fnal.gov</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.fau.edu/idp/shibboleth">
+    <Organization_Name>Florida Atlantic University</Organization_Name>
+    <Home_Page>http://www.fau.edu/</Home_Page>
+    <Technical_Name>Frank Rodriguez</Technical_Name>
+    <Technical_Address>frodrig6@fau.edu</Technical_Address>
+    <Administrative_Name>Rhian Resnick</Administrative_Name>
+    <Administrative_Address>rresnick@fau.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://fiuidp.fiu.edu/idp/shibboleth">
+    <Organization_Name>Florida International University</Organization_Name>
+    <Home_Page>http://www.fiu.edu</Home_Page>
+    <Technical_Name>Shibboleth Admin</Technical_Name>
+    <Technical_Address>idpadmins@fiu.edu</Technical_Address>
+    <Administrative_Name>anu chirinos</Administrative_Name>
+    <Administrative_Address>anu@fiu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib.its.fsu.edu/idp/shibboleth">
+    <Organization_Name>Florida State University</Organization_Name>
+    <Home_Page>http://www.fsu.edu/</Home_Page>
+    <Technical_Name>Chuck Kemeny</Technical_Name>
+    <Technical_Address>ckemeny@admin.fsu.edu</Technical_Address>
+    <Administrative_Name>Diane Higgins</Administrative_Name>
+    <Administrative_Address>dhiggins@fsu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib.fortlewis.edu/idp/shibboleth">
+    <Organization_Name>Fort Lewis College</Organization_Name>
+    <Home_Page>http://explore.fortlewis.edu/</Home_Page>
+    <Technical_Name>Gary Maxwell</Technical_Name>
+    <Technical_Address>maxwell_g@fortlewis.edu</Technical_Address>
+    <Administrative_Name>James Bodine</Administrative_Name>
+    <Administrative_Address>bodine_j@fortlewis.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://login.fandm.edu/idp/shibboleth">
+    <Organization_Name>Franklin &amp; Marshall College</Organization_Name>
+    <Home_Page>http://www.fandm.edu/</Home_Page>
+    <Technical_Name>Todd Higgins</Technical_Name>
+    <Technical_Address>thiggins@fandm.edu</Technical_Address>
+    <Administrative_Name>Alan Sutter</Administrative_Name>
+    <Administrative_Address>alan.sutter@fandm.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://wpkfl-shibidp.fullsail.com/idp/shibboleth">
+    <Organization_Name>Full Sail University</Organization_Name>
+    <Home_Page>http://www.fullsail.com/</Home_Page>
+    <Technical_Name>Zach Segal</Technical_Name>
+    <Technical_Address>zsegal@fullsail.com</Technical_Address>
+    <Administrative_Name>Zach Segal</Administrative_Name>
+    <Administrative_Address>zsegal@fullsail.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://sonny.furman.edu/idp">
+    <Organization_Name>Furman University</Organization_Name>
+    <Home_Page>http://www2.furman.edu/</Home_Page>
+    <Technical_Name>Clayton Burton</Technical_Name>
+    <Technical_Address>clayton.burton@furman.edu</Technical_Address>
+    <Administrative_Name>Randy Dill</Administrative_Name>
+    <Administrative_Address>randy.dill@furman.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.gallaudet.edu/idp/shibboleth">
+    <Organization_Name>Gallaudet University</Organization_Name>
+    <Home_Page>http://www.gallaudet.edu/</Home_Page>
+    <Technical_Name>Hatim Vali</Technical_Name>
+    <Technical_Address>hatim.vali@gallaudet.edu</Technical_Address>
+    <Administrative_Name>Earl Parks</Administrative_Name>
+    <Administrative_Address>earl.parks@gallaudet.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.gmu.edu/idp/shibboleth">
+    <Organization_Name>George Mason University</Organization_Name>
+    <Home_Page>http://www.gmu.edu/</Home_Page>
+    <Technical_Name>Tracy Holt</Technical_Name>
+    <Technical_Address>holt@gmu.edu</Technical_Address>
+    <Administrative_Name>Wally Grotophorst</Administrative_Name>
+    <Administrative_Address>wallyg@gmu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibb-idp.georgetown.edu/idp/shibboleth">
+    <Organization_Name>Georgetown University</Organization_Name>
+    <Home_Page>http://www.georgetown.edu/</Home_Page>
+    <Technical_Name>Suresh Veliveli</Technical_Name>
+    <Technical_Address>es-collaboration@georgetown.edu</Technical_Address>
+    <Administrative_Name>Marty Johnson</Administrative_Name>
+    <Administrative_Address>es-collaboration@georgetown.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.gatech.edu/idp/shibboleth">
+    <Organization_Name>Georgia Institute of Technology</Organization_Name>
+    <Home_Page>http://www.gatech.edu/</Home_Page>
+    <Technical_Name>Robert Viduya</Technical_Name>
+    <Technical_Address>robert.viduya@oit.gatech.edu</Technical_Address>
+    <Administrative_Name>Eric Buckhalt</Administrative_Name>
+    <Administrative_Address>eric.buckhalt@oit.gatech.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp2.gru.edu:8443/nidp/saml2/metadata">
+    <Organization_Name>Georgia Regents University</Organization_Name>
+    <Home_Page>http://www.gru.edu/</Home_Page>
+    <Technical_Name>Danny Blair</Technical_Name>
+    <Technical_Address>dblair@gru.edu</Technical_Address>
+    <Administrative_Name>Doogie Howser</Administrative_Name>
+    <Administrative_Address>dhowser@gru.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.gsu.edu/idp/shibboleth">
+    <Organization_Name>Georgia State University</Organization_Name>
+    <Home_Page>http://www.gsu.edu/</Home_Page>
+    <Technical_Name>Joel Burke</Technical_Name>
+    <Technical_Address>burke@gsu.edu</Technical_Address>
+    <Administrative_Name>Ron Reddish</Administrative_Name>
+    <Administrative_Address>rreddish@gsu.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://identity.gettysburg.edu/idp/shibboleth">
+    <Organization_Name>Gettysburg College</Organization_Name>
+    <Home_Page>http://www.gettysburg.edu/</Home_Page>
+    <Technical_Name>Eric Yurick</Technical_Name>
+    <Technical_Address>netmaint@gettysburg.edu</Technical_Address>
+    <Administrative_Name>Michael Hayden</Administrative_Name>
+    <Administrative_Address>netmaint@gettysburg.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.goodwin.edu/idp/saml">
+    <Organization_Name>Goodwin College</Organization_Name>
+    <Home_Page>http://www.goodwin.edu/default_flash.asp</Home_Page>
+    <Technical_Name>Simon Lee</Technical_Name>
+    <Technical_Address>simon@9starresearch.com</Technical_Address>
+    <Administrative_Name>Marilyn Nowlan</Administrative_Name>
+    <Administrative_Address>Mnowlan@goodwin.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.goucher.edu/idp/shibboleth">
+    <Organization_Name>Goucher College</Organization_Name>
+    <Home_Page>http://goucher.edu/</Home_Page>
+    <Technical_Name>Rob Pfeffer</Technical_Name>
+    <Technical_Address>rpfeffer@goucher.edu</Technical_Address>
+    <Administrative_Name>Rob Pfeffer</Administrative_Name>
+    <Administrative_Address>rpfeffer@goucher.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.greatplains.net/idp/shibboleth">
+    <Organization_Name>GPN (Great Plains Network)</Organization_Name>
+    <Home_Page>http://www.greatplains.net</Home_Page>
+    <Technical_Name>Kate Adams</Technical_Name>
+    <Technical_Address>kate@greatplains.net</Technical_Address>
+    <Administrative_Name>Greg Monaco</Administrative_Name>
+    <Administrative_Address>greg@greatplains.net</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="http://caotwvadfs202.halogensoftware.com/adfs/services/trust">
+    <Organization_Name>Halogen Software Inc.</Organization_Name>
+    <Home_Page>http://www.halogensoftware.com/</Home_Page>
+    <Administrative_Name>Chris Hiscock</Administrative_Name>
+    <Administrative_Address>chiscock@halogensoftware.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.hamilton.edu/idp/shibboleth">
+    <Organization_Name>Hamilton College</Organization_Name>
+    <Home_Page>http://www.hamilton.edu/</Home_Page>
+    <Technical_Name>David Swartz</Technical_Name>
+    <Technical_Address>dswartz@hamilton.edu</Technical_Address>
+    <Administrative_Name>David Smallen</Administrative_Name>
+    <Administrative_Address>dsmallen@hamilton.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://sso.hsc.edu/adfs/services/trust">
+    <Organization_Name>Hampden-Sydney College</Organization_Name>
+    <Home_Page>http://www.hsc.edu/</Home_Page>
+    <Technical_Name>Tom Raisbeck</Technical_Name>
+    <Technical_Address>traisbeck@sycomtech.com</Technical_Address>
+    <Administrative_Name>Todd Pugh</Administrative_Name>
+    <Administrative_Address>tpugh@hsc.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.hampshire.edu/idp/shibboleth">
+    <Organization_Name>Hampshire College</Organization_Name>
+    <Home_Page>http://www.hampshire.edu/</Home_Page>
+    <Technical_Name>Chris Kitzmiller</Technical_Name>
+    <Technical_Address>ckitzmiller@hampshire.edu</Technical_Address>
+    <Administrative_Name>Josiah Erikson</Administrative_Name>
+    <Administrative_Address>wjeNS@hampshire.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://fed.huit.harvard.edu/idp/shibboleth">
+    <Organization_Name>Harvard University</Organization_Name>
+    <Home_Page>http://www.harvard.edu/</Home_Page>
+    <Technical_Name>IdP Support Team</Technical_Name>
+    <Technical_Address>idp_support@harvard.edu</Technical_Address>
+    <Administrative_Name>IdP Support Team</Administrative_Name>
+    <Administrative_Address>idp_support@harvard.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://login.hmc.edu/idp/shibboleth">
+    <Organization_Name>Harvey Mudd College</Organization_Name>
+    <Home_Page>http://www.hmc.edu/</Home_Page>
+    <Technical_Name>Mitch Shacklett</Technical_Name>
+    <Technical_Address>mshacklett@hmc.edu</Technical_Address>
+    <Administrative_Name>Cindy Abercrombie</Administrative_Name>
+    <Administrative_Address>cabercrombie@hmc.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:humboldt.edu">
+    <Organization_Name>Humboldt State University</Organization_Name>
+    <Home_Page>http://www.humboldt.edu/</Home_Page>
+    <Technical_Name>Peter Johnson</Technical_Name>
+    <Technical_Address>peter.johnson@humboldt.edu</Technical_Address>
+    <Administrative_Name>Mark Hendricks</Administrative_Name>
+    <Administrative_Address>mark.hendricks@humboldt.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://login.icermali.org/idp/shibboleth">
+    <Organization_Name>ICER - Mali</Organization_Name>
+    <Home_Page>http://www.nih.gov/</Home_Page>
+    <Technical_Name>NIAID ICER VRO Technical Support</Technical_Name>
+    <Technical_Address>icer-vro-support@list.nih.gov</Technical_Address>
+    <Administrative_Name>NIAID ICER VRO Administrative Support</Administrative_Name>
+    <Administrative_Address>icer-vro-admin@list.nih.gov</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.iceruganda.org/idp/shibboleth">
+    <Organization_Name>ICER - Uganda</Organization_Name>
+    <Home_Page>http://www.nih.gov/</Home_Page>
+    <Technical_Name>NIAID ICER VRO Technical Support</Technical_Name>
+    <Technical_Address>icer-vro-support@list.nih.gov</Technical_Address>
+    <Administrative_Name>NIAID ICER VRO Administrative Support</Administrative_Name>
+    <Administrative_Address>icer-vro-admin@list.nih.gov</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.incommonfederation.org/idp/shibboleth">
+    <Organization_Name>InCommon Operations</Organization_Name>
+    <Home_Page>http://www.incommon.org</Home_Page>
+  </idp>
+  <idp entityID="urn:mace:incommon:iu.edu">
+    <Organization_Name>Indiana University</Organization_Name>
+    <Home_Page>http://www.indiana.edu/</Home_Page>
+    <Technical_Name>Support Center</Technical_Name>
+    <Technical_Address>ithelp@iu.edu</Technical_Address>
+    <Administrative_Name>Support Center</Administrative_Name>
+    <Administrative_Address>ithelp@iu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://webso.iup.edu/idp/shibboleth">
+    <Organization_Name>Indiana University of Pennsylvania</Organization_Name>
+    <Home_Page>http://www.iup.edu/</Home_Page>
+    <Technical_Name>Craig Pluchinsky</Technical_Name>
+    <Technical_Address>tsc-sysadmin@iup.edu</Technical_Address>
+    <Administrative_Name>Paul Grieggs</Administrative_Name>
+    <Administrative_Address>pmgriegg@iup.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.ias.edu/idp/shibboleth">
+    <Organization_Name>Institute for Advanced Study</Organization_Name>
+    <Home_Page>http://www.ias.edu/</Home_Page>
+    <Technical_Name>Federated Authentication Support Team</Technical_Name>
+    <Technical_Address>idptech@ias.edu</Technical_Address>
+    <Administrative_Name>Jeffrey Berliner</Administrative_Name>
+    <Administrative_Address>idpadmin@ias.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:internet2.edu">
+    <Organization_Name>Internet2</Organization_Name>
+    <Home_Page>http://www.internet2.edu</Home_Page>
+    <Technical_Name>Technical Support</Technical_Name>
+    <Technical_Address>techsupport@internet2.edu</Technical_Address>
+    <Administrative_Name>Technical Support</Administrative_Name>
+    <Administrative_Address>techsupport@internet2.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.iastate.edu/shibboleth">
+    <Organization_Name>Iowa State University</Organization_Name>
+    <Home_Page>http://www.iastate.edu/</Home_Page>
+    <Technical_Name>Iowa State University Shibboleth Technical Team</Technical_Name>
+    <Technical_Address>shibboleth@iastate.edu</Technical_Address>
+    <Administrative_Name>Iowa State University InCommon Admins</Administrative_Name>
+    <Administrative_Address>incommon-admins@iastate.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:jmu.edu">
+    <Organization_Name>James Madison University</Organization_Name>
+    <Home_Page>http://www.jmu.edu/</Home_Page>
+    <Technical_Name>Unix/Linux Group</Technical_Name>
+    <Technical_Address>linuxteam@jmu.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:johnshopkins.edu">
+    <Organization_Name>Johns Hopkins</Organization_Name>
+    <Home_Page>http://www.jhu.edu/</Home_Page>
+    <Technical_Name>Etan Weintraub</Technical_Name>
+    <Technical_Address>eweintra@jhmi.edu</Technical_Address>
+    <Administrative_Name>Andrew Baldwin</Administrative_Name>
+    <Administrative_Address>andrew.baldwin@jhu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://signin.k-state.edu/idp/shibboleth">
+    <Organization_Name>Kansas State University</Organization_Name>
+    <Home_Page>http://www.ksu.edu/</Home_Page>
+    <Technical_Name>Technical Support Team</Technical_Name>
+    <Technical_Address>idm-dev-l@ksu.edu</Technical_Address>
+    <Administrative_Name>Office of Administrative Support</Administrative_Name>
+    <Administrative_Address>caffey@ksu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.kenyon.edu/idp/shibboleth">
+    <Organization_Name>Kenyon College</Organization_Name>
+    <Home_Page>http://www.kenyon.edu/</Home_Page>
+    <Technical_Name>Jared Hoffman</Technical_Name>
+    <Technical_Address>hoffmanj@kenyon.edu</Technical_Address>
+    <Administrative_Name>Niranjan Davray</Administrative_Name>
+    <Administrative_Address>davrayn@kenyon.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.kutztown.edu/idp/shibboleth">
+    <Organization_Name>Kutztown University of Pennsylvania</Organization_Name>
+    <Home_Page>http://www.kutztown.edu/</Home_Page>
+    <Technical_Name>Richard Miller</Technical_Name>
+    <Technical_Address>idpadmin@kutztown.edu</Technical_Address>
+    <Administrative_Name>Mitch Freed</Administrative_Name>
+    <Administrative_Address>idpadmin@kutztown.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:lafayette.edu">
+    <Organization_Name>Lafayette College</Organization_Name>
+    <Home_Page>http://www.lafayette.edu/</Home_Page>
+    <Technical_Name>Janemarie Duh</Technical_Name>
+    <Technical_Address>berryj@lafayette.edu</Technical_Address>
+    <Administrative_Name>John O'Keefe</Administrative_Name>
+    <Administrative_Address>okeefej@lafayette.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.ltcc.edu/idp/shibboleth">
+    <Organization_Name>Lake Tahoe Community College</Organization_Name>
+    <Home_Page>http://ltcc.edu/</Home_Page>
+    <Technical_Name>Bill Abiko</Technical_Name>
+    <Technical_Address>abiko@ltcc.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:lbl.gov">
+    <Organization_Name>Lawrence Berkeley National Laboratory</Organization_Name>
+    <Home_Page>http://www.lbl.gov/</Home_Page>
+    <Technical_Name>Greg Haverkamp</Technical_Name>
+    <Technical_Address>gahaverkamp@lbl.gov</Technical_Address>
+    <Administrative_Name>Identity Management Team</Administrative_Name>
+    <Administrative_Address>idm@lbl.gov</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.cc.lehigh.edu/sso/saml2/idp/metadata.php">
+    <Organization_Name>Lehigh University</Organization_Name>
+    <Home_Page>http://www.lehigh.edu/</Home_Page>
+    <Technical_Name>Dan Schwartz</Technical_Name>
+    <Technical_Address>das1@lehigh.edu</Technical_Address>
+    <Administrative_Name>Keith Hartranft</Administrative_Name>
+    <Administrative_Address>kkh288@lehigh.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.ligo.org/idp/shibboleth">
+    <Organization_Name>LIGO Scientific Collaboration</Organization_Name>
+    <Home_Page>http://www.ligo.caltech.edu/</Home_Page>
+    <Technical_Name>Scott Koranda</Technical_Name>
+    <Technical_Address>scott.koranda@ligo.org</Technical_Address>
+    <Administrative_Name>Warren Anderson</Administrative_Name>
+    <Administrative_Address>warren.anderson@ligo.org</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.lhup.edu/idp/shibboleth">
+    <Organization_Name>Lock Haven University</Organization_Name>
+    <Home_Page>http://www.lhup.edu/</Home_Page>
+    <Technical_Name>Lock Haven University IT Department</Technical_Name>
+    <Technical_Address>idp@lhup.edu</Technical_Address>
+    <Administrative_Name>Lock Haven University IT Department</Administrative_Name>
+    <Administrative_Address>idp@lhup.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.longsight.com/idp/shibboleth">
+    <Organization_Name>Longsight</Organization_Name>
+    <Home_Page>http://www.longsight.com/</Home_Page>
+    <Technical_Name>Sam Ottenhoff</Technical_Name>
+    <Technical_Address>sam@longsight.com</Technical_Address>
+    <Administrative_Name>Longsight Operations</Administrative_Name>
+    <Administrative_Address>operations@longsight.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://webauth.shib.lsu.edu/idp/shibboleth">
+    <Organization_Name>Louisiana State University</Organization_Name>
+    <Home_Page>http://www.lsu.edu</Home_Page>
+    <Technical_Name>Shibboleth Technical</Technical_Name>
+    <Technical_Address>security@lsu.edu</Technical_Address>
+    <Administrative_Name>Shibboleth Administrator</Administrative_Name>
+    <Administrative_Address>security@lsu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibprodapp.loyola.edu/idp/shibboleth">
+    <Organization_Name>Loyola University Maryland</Organization_Name>
+    <Home_Page>http://www.loyola.edu/</Home_Page>
+    <Technical_Name>James McCartin</Technical_Name>
+    <Technical_Address>jmccartin@loyola.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibidp.luc.edu/idp/shibboleth">
+    <Organization_Name>Loyola University of Chicago</Organization_Name>
+    <Home_Page>http://www.luc.edu/</Home_Page>
+    <Technical_Name>ITS</Technical_Name>
+    <Technical_Address>dns-admin@luc.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.mbl.edu/idp/shibboleth">
+    <Organization_Name>Marine Biological Laboratory</Organization_Name>
+    <Home_Page>http://www.mbl.edu</Home_Page>
+    <Technical_Name>Kent Nasveschuk</Technical_Name>
+    <Technical_Address>knasveschuk@mbl.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.marshall.edu/idp/shibboleth">
+    <Organization_Name>Marshall University</Organization_Name>
+    <Home_Page>http://www.marshall.edu</Home_Page>
+    <Technical_Name>Systems Team</Technical_Name>
+    <Technical_Address>systems@marshall.edu</Technical_Address>
+    <Administrative_Name>Edward Aractingi</Administrative_Name>
+    <Administrative_Address>aractingi1@marshall.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:mit.edu">
+    <Organization_Name>Massachusetts Institute of Technology</Organization_Name>
+    <Home_Page>http://web.mit.edu/</Home_Page>
+    <Technical_Name>Touchstone Support</Technical_Name>
+    <Technical_Address>touchstone-support@mit.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="http://login.mayo.edu/adfs/services/trust">
+    <Organization_Name>Mayo Clinic</Organization_Name>
+    <Home_Page>http://www.mayo.edu/</Home_Page>
+    <Technical_Name>Shawn Brandt</Technical_Name>
+    <Technical_Address>brandt.shawn@mayo.edu</Technical_Address>
+    <Administrative_Name>Troy Wirth</Administrative_Name>
+    <Administrative_Address>wirth.troy@mayo.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib.mcnallysmith.edu/idp/shibboleth">
+    <Organization_Name>McNally Smith College</Organization_Name>
+    <Home_Page>http://mcnallysmith.edu/</Home_Page>
+    <Technical_Name>Nick Kaihoi</Technical_Name>
+    <Technical_Address>nick.kaihoi@mcnallysmith.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:mcnc.org">
+    <Organization_Name>MCNC</Organization_Name>
+    <Home_Page>http://www.mcnc.org/</Home_Page>
+    <Technical_Name>Steve Thorpe</Technical_Name>
+    <Technical_Address>thorpe@mcnc.org</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:musc.edu">
+    <Organization_Name>Medical University of South Carolina</Organization_Name>
+    <Home_Page>http://www.musc.edu/</Home_Page>
+    <Technical_Name>Richard Gadsden</Technical_Name>
+    <Technical_Address>gadsden@musc.edu</Technical_Address>
+    <Administrative_Name>Shibboleth IDP Group</Administrative_Name>
+    <Administrative_Address>shibidp@musc.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://thelonious.campusguard.com/idp/shibboleth">
+    <Organization_Name>Merchant Preservation Services</Organization_Name>
+    <Home_Page>http://www.campusguard.com/</Home_Page>
+    <Technical_Name>Edward Ko</Technical_Name>
+    <Technical_Address>edko@campusguard.com</Technical_Address>
+    <Administrative_Name>Owen Davies</Administrative_Name>
+    <Administrative_Address>odavies@campusguard.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://webauth.meredith.edu/idp/shibboleth">
+    <Organization_Name>Meredith College</Organization_Name>
+    <Home_Page>http://www.meredith.edu/</Home_Page>
+    <Technical_Name>Victor Fayed</Technical_Name>
+    <Technical_Address>techservices@meredith.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.merit.edu">
+    <Organization_Name>Merit Network, Inc.</Organization_Name>
+    <Home_Page>http://www.merit.edu/</Home_Page>
+    <Technical_Name>IT Operations</Technical_Name>
+    <Technical_Address>it-ops@merit.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:muohio.edu">
+    <Organization_Name>Miami University</Organization_Name>
+    <Home_Page>http://www.muohio.edu/</Home_Page>
+    <Technical_Name>Dirk Tepe</Technical_Name>
+    <Technical_Address>tepeds@muohio.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:msu.edu">
+    <Organization_Name>Michigan State University</Organization_Name>
+    <Home_Page>http://www.msu.edu/home/</Home_Page>
+    <Technical_Name>John Callaghan</Technical_Name>
+    <Technical_Address>jpc@msu.edu</Technical_Address>
+    <Administrative_Name>Mike Bosko</Administrative_Name>
+    <Administrative_Address>mdb@msu.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.millersville.edu/idp/shibboleth">
+    <Organization_Name>Millersville University of Pennsylvania</Organization_Name>
+    <Home_Page>http://www.millersville.edu/</Home_Page>
+    <Technical_Name>Keith Wenz</Technical_Name>
+    <Technical_Address>Keith.Wenz@millersville.edu</Technical_Address>
+    <Administrative_Name>Veronica Longenecker</Administrative_Name>
+    <Administrative_Address>Veronica.Longenecker@millersville.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.its.msstate.edu/idp/shibboleth">
+    <Organization_Name>Mississippi State University</Organization_Name>
+    <Home_Page>http://www.msstate.edu/</Home_Page>
+    <Technical_Name>MSU ITS Network Services</Technical_Name>
+    <Technical_Address>ns@its.msstate.edu</Technical_Address>
+    <Administrative_Name>Timothy Griffin</Administrative_Name>
+    <Administrative_Address>timothy.griffin@msstate.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.montana.edu/idp/shibboleth">
+    <Organization_Name>Montana State University - Bozeman</Organization_Name>
+    <Home_Page>http://www.montana.edu/</Home_Page>
+    <Technical_Name>Mike Hall</Technical_Name>
+    <Technical_Address>mhall@montana.edu</Technical_Address>
+    <Administrative_Name>Adam Edelman</Administrative_Name>
+    <Administrative_Address>aedelman@montana.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="http://adfs.morgan.edu/adfs/services/trust">
+    <Organization_Name>Morgan State University</Organization_Name>
+    <Home_Page>http://www.morgan.edu/</Home_Page>
+    <Technical_Name>Tom Raisbeck</Technical_Name>
+    <Technical_Address>TRaisbeck@sycomtech.com</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:mlml.calstate.edu">
+    <Organization_Name>Moss Landing Marine Laboratories</Organization_Name>
+    <Home_Page>http://www.mlml.calstate.edu/</Home_Page>
+    <Technical_Name>Marcus M. Mizushima</Technical_Name>
+    <Technical_Address>iamadmin@calstate.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://junebug.mcc.edu/idp/shibboleth">
+    <Organization_Name>Mott Community College</Organization_Name>
+    <Home_Page>http://www.mcc.edu/</Home_Page>
+    <Technical_Name>Marc Smith</Technical_Name>
+    <Technical_Address>marc.smith@mcc.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.mtholyoke.edu/idp/shibboleth">
+    <Organization_Name>Mount Holyoke College</Organization_Name>
+    <Home_Page>http://www.mtholyoke.edu/</Home_Page>
+    <Technical_Name>Jeremy Maryott</Technical_Name>
+    <Technical_Address>jmaryott@mtholyoke.edu</Technical_Address>
+    <Administrative_Name>Ron Peterson</Administrative_Name>
+    <Administrative_Address>rpeterso@mtholyoke.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:nih.gov">
+    <Organization_Name>National Institutes of Health</Organization_Name>
+    <Home_Page>http://www.nih.gov/</Home_Page>
+    <Technical_Name>NIH Federation Request</Technical_Name>
+    <Technical_Address>NIHFederationRequest@mail.nih.gov</Technical_Address>
+    <Administrative_Name>NIH Login Team</Administrative_Name>
+    <Administrative_Address>CITIAMNIHLoginTeam@mail.nih.gov</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://identity.research.gov/sso">
+    <Organization_Name>National Science Foundation</Organization_Name>
+    <Home_Page>http://www.nsf.gov/</Home_Page>
+    <Technical_Name>Srinivas Antham</Technical_Name>
+    <Technical_Address>santham@associates.nsf.gov</Technical_Address>
+    <Administrative_Name>Jay Savand</Administrative_Name>
+    <Administrative_Address>jsavand@associates.nsf.gov</Administrative_Address>
+  </idp>
+  <idp entityID="https://id.nps.edu/idp/shibboleth">
+    <Organization_Name>Naval Postgraduate School</Organization_Name>
+    <Home_Page>http://www.nps.navy.mil/</Home_Page>
+    <Technical_Name>NPS Webmaster</Technical_Name>
+    <Technical_Address>webmaster@nps.edu</Technical_Address>
+    <Administrative_Name>NPS Webmaster</Administrative_Name>
+    <Administrative_Address>webmaster@nps.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://saml.nelnet.net">
+    <Organization_Name>Nelnet Business Solutions</Organization_Name>
+    <Home_Page>http://www.nelnet.net/</Home_Page>
+    <Technical_Name>Todd Bryant</Technical_Name>
+    <Technical_Address>todd.bryant@nelnet.net</Technical_Address>
+    <Administrative_Name>Todd Bryant</Administrative_Name>
+    <Administrative_Address>todd.bryant@nelnet.net</Administrative_Address>
+  </idp>
+  <idp entityID="https://webauth.njit.edu/idp/shibboleth">
+    <Organization_Name>New Jersey Institute of Technology</Organization_Name>
+    <Home_Page>http://www.njit.edu/</Home_Page>
+    <Technical_Name>University Information Systems</Technical_Name>
+    <Technical_Address>uis-systems@njit.edu</Technical_Address>
+    <Administrative_Name>University Information Systems</Administrative_Name>
+    <Administrative_Address>uis-systems@njit.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:nyu.edu">
+    <Organization_Name>New York University</Organization_Name>
+    <Home_Page>http://www.nyu.edu/</Home_Page>
+    <Technical_Name>Tracy Edappara</Technical_Name>
+    <Technical_Address>tte3@nyu.edu</Technical_Address>
+    <Administrative_Name>Gary Chapman</Administrative_Name>
+    <Administrative_Address>gwc1@nyu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:ncsu.edu">
+    <Organization_Name>North Carolina State University</Organization_Name>
+    <Home_Page>http://www.ncsu.edu/</Home_Page>
+    <Technical_Name>NC State Shibboleth Support Team</Technical_Name>
+    <Technical_Address>shibboleth-help@ncsu.edu</Technical_Address>
+    <Administrative_Name>NC State Shibboleth Support Team</Administrative_Name>
+    <Administrative_Address>shibboleth-help@ncsu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.ndsu.edu/idp/shibboleth">
+    <Organization_Name>North Dakota State University Main Campus</Organization_Name>
+    <Home_Page>http://www.ndsu.edu/</Home_Page>
+    <Administrative_Name>NDSU Help Desk</Administrative_Name>
+    <Administrative_Address>ndsu.helpdesk@ndsu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://neuidmsso.neu.edu/idp/shibboleth">
+    <Organization_Name>Northeastern University</Organization_Name>
+    <Home_Page>http://www.northeastern.edu/</Home_Page>
+    <Technical_Name>Samuel Abromowitz</Technical_Name>
+    <Technical_Address>is-isos-idm@neu.edu</Technical_Address>
+    <Administrative_Name>Kevin Legget</Administrative_Name>
+    <Administrative_Address>k.legget@neu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:nau.edu">
+    <Organization_Name>Northern Arizona University</Organization_Name>
+    <Home_Page>http://home.nau.edu/</Home_Page>
+    <Technical_Name>Christopher Michels</Technical_Name>
+    <Technical_Address>christopher.michels@nau.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.niu.edu/idp/shibboleth">
+    <Organization_Name>Northern Illinois University</Organization_Name>
+    <Home_Page>http://www.niu.edu/index.html</Home_Page>
+    <Technical_Name>David Gersic</Technical_Name>
+    <Technical_Address>dgersic@niu.edu</Technical_Address>
+    <Administrative_Name>David Gersic</Administrative_Name>
+    <Administrative_Address>dgersic@niu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:nmu.edu">
+    <Organization_Name>Northern Michigan University</Organization_Name>
+    <Home_Page>http://www.nmu.edu</Home_Page>
+    <Technical_Name>Karl Mulder</Technical_Name>
+    <Technical_Address>kmulder@nmu.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:northwestern.edu">
+    <Organization_Name>Northwestern University</Organization_Name>
+    <Home_Page>http://www.northwestern.edu/</Home_Page>
+    <Technical_Name>Xiaoxia Dong</Technical_Name>
+    <Technical_Address>x-dong@northwestern.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.ornl.gov/idp">
+    <Organization_Name>Oak Ridge National Laboratory</Organization_Name>
+    <Home_Page>http://www.ornl.gov/</Home_Page>
+    <Technical_Name>Bruce Wilson</Technical_Name>
+    <Technical_Address>wilsonbe@ornl.gov</Technical_Address>
+    <Administrative_Name>Bruce Wilson</Administrative_Name>
+    <Administrative_Address>wilsonbe@ornl.gov</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:osu.edu">
+    <Organization_Name>Ohio State University</Organization_Name>
+    <Home_Page>http://www.osu.edu/</Home_Page>
+    <Technical_Name>Authentication Support</Technical_Name>
+    <Technical_Address>webauth-admin@lists.service.ohio-state.edu</Technical_Address>
+    <Administrative_Name>Authentication Support</Administrative_Name>
+    <Administrative_Address>webauth-admin@lists.service.ohio-state.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.oar.net/idp/shibboleth">
+    <Organization_Name>Ohio Technology Consortium (OH-TECH)</Organization_Name>
+    <Home_Page>http://oh-tech.org/</Home_Page>
+    <Technical_Name>Alan Edmonds</Technical_Name>
+    <Technical_Address>edmonds@oh-tech.org</Technical_Address>
+    <Administrative_Name>Mark Beadles</Administrative_Name>
+    <Administrative_Address>mbeadles@oar.net</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:ohio.edu">
+    <Organization_Name>Ohio University Main Campus</Organization_Name>
+    <Home_Page>http://www.ohiou.edu/</Home_Page>
+    <Technical_Name>Mikio Olin</Technical_Name>
+    <Technical_Address>olin@ohio.edu</Technical_Address>
+    <Administrative_Name>Renee Perry</Administrative_Name>
+    <Administrative_Address>perryr1@ohio.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:ohiolink.edu">
+    <Organization_Name>OhioLink</Organization_Name>
+    <Home_Page>http://www.ohiolink.edu</Home_Page>
+    <Technical_Name>Alan Edmonds</Technical_Name>
+    <Technical_Address>edmonds@oar.net</Technical_Address>
+    <Administrative_Name>Mark Beadles</Administrative_Name>
+    <Administrative_Address>mbeadles@oar.net</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.okstate.edu/idp/shibboleth">
+    <Organization_Name>Oklahoma State University System</Organization_Name>
+    <Home_Page>http://osu.okstate.edu/</Home_Page>
+    <Technical_Name>Shawn Harpe</Technical_Name>
+    <Technical_Address>shawn.harpe@okstate.edu</Technical_Address>
+    <Administrative_Name>Tina Meier</Administrative_Name>
+    <Administrative_Address>tina.meier@okstate.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:odu.edu">
+    <Organization_Name>Old Dominion University</Organization_Name>
+    <Home_Page>http://web.odu.edu/</Home_Page>
+    <Technical_Name>Todd Dergenski</Technical_Name>
+    <Technical_Address>tdergens@odu.edu</Technical_Address>
+    <Administrative_Name>Todd Dergenski</Administrative_Name>
+    <Administrative_Address>tdergens@odu.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://www.ohsu.edu/idp/shibboleth">
+    <Organization_Name>Oregon Health &amp; Science University</Organization_Name>
+    <Home_Page>http://www.ohsu.edu/</Home_Page>
+    <Technical_Name>Denny Hyde</Technical_Name>
+    <Technical_Address>hyded@ohsu.edu</Technical_Address>
+    <Administrative_Name>Sean Vanderheiden</Administrative_Name>
+    <Administrative_Address>vanderhe@ohsu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://login.oregonstate.edu/idp/shibboleth">
+    <Organization_Name>Oregon State University</Organization_Name>
+    <Home_Page>http://www.oregonstate.edu/</Home_Page>
+    <Technical_Name>IAM Team</Technical_Name>
+    <Technical_Address>iamteam@oregonstate.edu</Technical_Address>
+    <Administrative_Name>IAM Team</Administrative_Name>
+    <Administrative_Address>iamteam@oregonstate.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.otis.edu/idp/shibboleth">
+    <Organization_Name>Otis College of Art and Design</Organization_Name>
+    <Home_Page>http://www.otis.edu/</Home_Page>
+    <Technical_Name>Otis Help Desk</Technical_Name>
+    <Technical_Address>helpdesk@otis.edu</Technical_Address>
+    <Administrative_Name>Matthew Ballard</Administrative_Name>
+    <Administrative_Address>mballard@otis.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.pace.edu/idp/shibboleth">
+    <Organization_Name>Pace University</Organization_Name>
+    <Home_Page>http://www.pace.edu/</Home_Page>
+    <Technical_Name>Lauren Valiente</Technical_Name>
+    <Technical_Address>lvaliente@pace.edu</Technical_Address>
+    <Administrative_Name>Donna Scarano</Administrative_Name>
+    <Administrative_Address>dscarano@pace.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://cumin.plu.edu/idp/shibboleth">
+    <Organization_Name>Pacific Lutheran University</Organization_Name>
+    <Home_Page>http://www.plu.edu/</Home_Page>
+    <Technical_Name>netadmin</Technical_Name>
+    <Technical_Address>netadmin@plu.edu</Technical_Address>
+    <Administrative_Name>David Allen</Administrative_Name>
+    <Administrative_Address>allendp@plu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://sso.pacificu.edu/idp/shibboleth">
+    <Organization_Name>Pacific University</Organization_Name>
+    <Home_Page>http://www.pacificu.edu/</Home_Page>
+    <Technical_Name>Brandon M. Browning</Technical_Name>
+    <Technical_Address>browning@pacificu.edu</Technical_Address>
+    <Administrative_Name>Ted Krupicka</Administrative_Name>
+    <Administrative_Address>tedk@pacificu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.parchment.com/idp/shibboleth">
+    <Organization_Name>Parchment, Inc.</Organization_Name>
+    <Home_Page>http://www.parchment.com/</Home_Page>
+    <Technical_Name>John Scanlon</Technical_Name>
+    <Technical_Address>jscanlon@parchment.com</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.pccc.edu/idp/shibboleth">
+    <Organization_Name>Passaic County Community College</Organization_Name>
+    <Home_Page>http://pccc.edu</Home_Page>
+    <Technical_Name>David Zambrano</Technical_Name>
+    <Technical_Address>david@pccc.edu</Technical_Address>
+    <Administrative_Name>Bob Mondelli</Administrative_Name>
+    <Administrative_Address>bob@pccc.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:psu.edu">
+    <Organization_Name>Penn State</Organization_Name>
+    <Home_Page>http://www.psu.edu/</Home_Page>
+    <Technical_Name>Mark Miller</Technical_Name>
+    <Technical_Address>max@psu.edu</Technical_Address>
+    <Administrative_Name>Andrea Harrington</Administrative_Name>
+    <Administrative_Address>avh3@psu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.pct.edu/idp/shibboleth">
+    <Organization_Name>Pennsylvania College of Technology</Organization_Name>
+    <Home_Page>http://www.pct.edu/</Home_Page>
+    <Technical_Name>Robert Belles</Technical_Name>
+    <Technical_Address>robert.belles@pct.edu</Technical_Address>
+    <Administrative_Name>Mike Rae</Administrative_Name>
+    <Administrative_Address>mrae@pct.edu</Administrative_Address>
+  </idp>
+  <idp entityID="http://adfs.philau.edu/adfs/services/trust">
+    <Organization_Name>Philadelphia University</Organization_Name>
+    <Home_Page>http://www.philau.edu/</Home_Page>
+    <Technical_Name>Network and Systems</Technical_Name>
+    <Technical_Address>oit-networking-d@philau.edu</Technical_Address>
+    <Administrative_Name>Network and Systems</Administrative_Name>
+    <Administrative_Address>oit-networking-d@philau.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.pima.edu/idp/shibboleth">
+    <Organization_Name>Pima County Community College District</Organization_Name>
+    <Home_Page>http://www.pima.edu/</Home_Page>
+    <Technical_Name>Erik Jerue</Technical_Name>
+    <Technical_Address>ejerue@pima.edu</Technical_Address>
+    <Administrative_Name>Chris Bonhorst</Administrative_Name>
+    <Administrative_Address>cbonhorst@pima.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://metadata.pingdemo.com">
+    <Organization_Name>Ping Identity Corporation</Organization_Name>
+    <Home_Page>http://www.pingid.com/</Home_Page>
+    <Technical_Name>Hans Zandbelt</Technical_Name>
+    <Technical_Address>hzandbelt@pingidentity.com</Technical_Address>
+    <Administrative_Name>Hans Zandbelt</Administrative_Name>
+    <Administrative_Address>hzandbelt@pingidentity.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://websso.pomona.edu/">
+    <Organization_Name>Pomona College</Organization_Name>
+    <Home_Page>http://www.pomona.edu/</Home_Page>
+    <Technical_Name>Abbie Lennox</Technical_Name>
+    <Technical_Address>abeba.lennox@pomona.edu</Technical_Address>
+    <Administrative_Name>Abbie Lennox</Administrative_Name>
+    <Administrative_Address>abeba.lennox@pomona.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.pdx.edu/idp/shibboleth">
+    <Organization_Name>Portland State University</Organization_Name>
+    <Home_Page>http://www.pdx.edu/</Home_Page>
+    <Technical_Name>PSU Unix Team</Technical_Name>
+    <Technical_Address>cis-unix@pdx.edu</Technical_Address>
+    <Administrative_Name>PSU IAM Team</Administrative_Name>
+    <Administrative_Address>cis-iam@pdx.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.princeton.edu/idp/shibboleth">
+    <Organization_Name>Princeton University</Organization_Name>
+    <Home_Page>http://www.princeton.edu/index.shtml</Home_Page>
+    <Technical_Name>Security and Data Protection</Technical_Name>
+    <Technical_Address>sdp@princeton.edu</Technical_Address>
+    <Administrative_Name>Steven Niedzwiecki</Administrative_Name>
+    <Administrative_Address>steven@princeton.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://alumidp.princeton.edu/idp/shibboleth">
+    <Organization_Name>Princeton University Alumni</Organization_Name>
+    <Home_Page>http://www.princeton.edu/index.shtml</Home_Page>
+    <Technical_Name>Security and Data Protection</Technical_Name>
+    <Technical_Address>sdp@princeton.edu</Technical_Address>
+    <Administrative_Name>Steven Niedzwiecki</Administrative_Name>
+    <Administrative_Address>steven@princeton.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:idp.protectnetwork.org">
+    <Organization_Name>ProtectNetwork</Organization_Name>
+    <Home_Page>http://www.protectnetwork.org</Home_Page>
+    <Technical_Name>Tech Support</Technical_Name>
+    <Technical_Address>incommon@protectnetwork.org</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.purdue.edu/idp/shibboleth">
+    <Organization_Name>Purdue University Main Campus</Organization_Name>
+    <Home_Page>http://www.purdue.edu/</Home_Page>
+    <Technical_Name>Purdue Identity and Access Management Office</Technical_Name>
+    <Technical_Address>accounts@purdue.edu</Technical_Address>
+    <Administrative_Name>Purdue Identity and Access Management Office</Administrative_Name>
+    <Administrative_Address>accounts@purdue.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.radford.edu/idp/shibboleth">
+    <Organization_Name>Radford University</Organization_Name>
+    <Home_Page>http://www.radford.edu/</Home_Page>
+    <Administrative_Name>Todd Joyce</Administrative_Name>
+    <Administrative_Address>tjoyce@radford.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:ramapo.edu">
+    <Organization_Name>Ramapo College of New Jersey</Organization_Name>
+    <Home_Page>http://www.ramapo.edu/</Home_Page>
+    <Technical_Name>Support Admin</Technical_Name>
+    <Technical_Address>sso-admin@ramapo.edu</Technical_Address>
+    <Administrative_Name>Richard Then</Administrative_Name>
+    <Administrative_Address>sso-admin@ramapo.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.reed.edu/idp/shibboleth">
+    <Organization_Name>Reed College</Organization_Name>
+    <Home_Page>http://reed.edu/</Home_Page>
+    <Technical_Name>Ben Poliakoff</Technical_Name>
+    <Technical_Address>benp@reed.edu</Technical_Address>
+    <Administrative_Name>Marianne Colgrove</Administrative_Name>
+    <Administrative_Address>mcolgrov@reed.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.regis.edu">
+    <Organization_Name>Regis University</Organization_Name>
+    <Home_Page>http://regis.edu/</Home_Page>
+    <Technical_Name>Jerry Perez</Technical_Name>
+    <Technical_Address>jperez@regis.edu</Technical_Address>
+    <Administrative_Name>Erich Delcamp</Administrative_Name>
+    <Administrative_Address>edelcamp@regis.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib-idp.rpi.edu/idp/shibboleth">
+    <Organization_Name>Rensselaer Polytechnic Institute</Organization_Name>
+    <Home_Page>http://www.rpi.edu/</Home_Page>
+    <Technical_Name>Alan Powell</Technical_Name>
+    <Technical_Address>powela@rpi.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.rhodes.edu/idp/shibboleth">
+    <Organization_Name>Rhodes College</Organization_Name>
+    <Home_Page>http://www.rhodes.edu/</Home_Page>
+    <Technical_Name>Doug Walker</Technical_Name>
+    <Technical_Address>walkerd@rhodes.edu</Technical_Address>
+    <Administrative_Name>Richie Trenthem</Administrative_Name>
+    <Administrative_Address>trenthem@rhodes.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.rice.edu/idp/shibboleth">
+    <Organization_Name>Rice University</Organization_Name>
+    <Home_Page>http://www.rice.edu/</Home_Page>
+    <Technical_Name>Paul Engle</Technical_Name>
+    <Technical_Address>pengle@rice.edu</Technical_Address>
+    <Administrative_Name>Dean Lane</Administrative_Name>
+    <Administrative_Address>dlane@rice.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://rushib.rockefeller.edu/idp/shibboleth">
+    <Organization_Name>Rockefeller University</Organization_Name>
+    <Home_Page>http://www.rockefeller.edu/</Home_Page>
+    <Technical_Name>Chris Vancil</Technical_Name>
+    <Technical_Address>chrisv@rockefeller.edu</Technical_Address>
+    <Administrative_Name>Anne Duffy</Administrative_Name>
+    <Administrative_Address>anne@rockefeller.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:rock.k12.nc.us">
+    <Organization_Name>Rockingham County Schools</Organization_Name>
+    <Home_Page>http://www.rock.k12.nc.us/rockingham/site/default.asp</Home_Page>
+    <Technical_Name>Wanda Goins</Technical_Name>
+    <Technical_Address>wgoins@rock.k12.nc.us</Technical_Address>
+    <Administrative_Name>Kacey Sensenich</Administrative_Name>
+    <Administrative_Address>ksensenich@rock.k12.nc.us</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib4.rowan.edu/idp/shibboleth">
+    <Organization_Name>Rowan University</Organization_Name>
+    <Home_Page>http://www.rowan.edu/</Home_Page>
+    <Technical_Name>Josh Grochowski</Technical_Name>
+    <Technical_Address>grochowski@rowan.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.cloud.rsmart.com/saml">
+    <Organization_Name>RSmart</Organization_Name>
+    <Home_Page>http://www.rsmart.com/</Home_Page>
+    <Technical_Name>Technical Support</Technical_Name>
+    <Technical_Address>support@rsmart.com</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:rutgers.edu">
+    <Organization_Name>Rutgers, The State University of New Jersey</Organization_Name>
+    <Home_Page>http://www.rutgers.edu/</Home_Page>
+    <Technical_Name>Charles Hedrick</Technical_Name>
+    <Technical_Address>hedrick@rutgers.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.stmarys-ca.edu/idp/shibboleth">
+    <Organization_Name>Saint Mary's College of California</Organization_Name>
+    <Home_Page>http://www.stmarys-ca.edu/</Home_Page>
+    <Technical_Name>Ruben Reyes</Technical_Name>
+    <Technical_Address>rbr3@stmarys-ca.edu</Technical_Address>
+    <Administrative_Name>Frank Pinkela</Administrative_Name>
+    <Administrative_Address>fpinkela@stmarys-ca.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.salisbury.edu/idp/shibboleth">
+    <Organization_Name>Salisbury University</Organization_Name>
+    <Home_Page>http://www.salisbury.edu/</Home_Page>
+    <Technical_Name>Shibboleth Support</Technical_Name>
+    <Technical_Address>shibsupport@salisbury.edu</Technical_Address>
+    <Administrative_Name>Shibboleth Support</Administrative_Name>
+    <Administrative_Address>shibsupport@salisbury.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://authidp.shsu.edu/idp/shibboleth">
+    <Organization_Name>Sam Houston State University</Organization_Name>
+    <Home_Page>http://www.shsu.edu/</Home_Page>
+    <Technical_Name>Marc Barber</Technical_Name>
+    <Technical_Address>marc.barber@shsu.edu</Technical_Address>
+    <Administrative_Name>Jacob Chandler</Administrative_Name>
+    <Administrative_Address>chandler@shsu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.sdsu.edu/idp/shibboleth">
+    <Organization_Name>San Diego State University</Organization_Name>
+    <Home_Page>http://www.sdsu.edu/</Home_Page>
+    <Technical_Name>Marcus Jeffers</Technical_Name>
+    <Technical_Address>mjeffers@mail.sdsu.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.sfsu.edu/idp/shibboleth">
+    <Organization_Name>San Francisco State University</Organization_Name>
+    <Home_Page>http://www.sfsu.edu/</Home_Page>
+    <Technical_Name>Supakit Kiatrungrit</Technical_Name>
+    <Technical_Address>supakitk@sfsu.edu</Technical_Address>
+    <Administrative_Name>Joellen Fung</Administrative_Name>
+    <Administrative_Address>jfung@sfsu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp01.sjsu.edu/idp/shibboleth">
+    <Organization_Name>San Jose State University</Organization_Name>
+    <Home_Page>http://www.sjsu.edu/</Home_Page>
+    <Technical_Name>Atul Pala</Technical_Name>
+    <Technical_Address>atul.pala@sjsu.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.sbcc.edu/idp/shibboleth">
+    <Organization_Name>Santa Barbara City College</Organization_Name>
+    <Home_Page>http://www.sbcc.edu/</Home_Page>
+    <Technical_Name>Michael Ghens</Technical_Name>
+    <Technical_Address>mghens@sbcc.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://webauth.scrippscollege.edu/idp/shibboleth">
+    <Organization_Name>Scripps College</Organization_Name>
+    <Home_Page>http://www.scrippscollege.edu/</Home_Page>
+    <Technical_Name>Jeff Sessler</Technical_Name>
+    <Technical_Address>jeff@scrippscollege.edu</Technical_Address>
+    <Administrative_Name>Jeff Sessler</Administrative_Name>
+    <Administrative_Address>jeff@scrippscollege.edu</Administrative_Address>
+  </idp>
+  <idp entityID="http://idp.devsnc.com/openam">
+    <Organization_Name>ServiceNow</Organization_Name>
+    <Home_Page>http://www.servicenow.com</Home_Page>
+    <Technical_Name>Wallace Peng</Technical_Name>
+    <Technical_Address>wallace.peng@servicenow.com</Technical_Address>
+    <Administrative_Name>Aamir Siddiqui</Administrative_Name>
+    <Administrative_Address>aamir.siddiqui@servicenow.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.shi.com">
+    <Organization_Name>SHI International Corporation</Organization_Name>
+    <Home_Page>http://shi.com/</Home_Page>
+    <Technical_Name>Ken Kapes</Technical_Name>
+    <Technical_Address>ken_kapes@shi.com</Technical_Address>
+    <Administrative_Name>Kurt Schreckengost</Administrative_Name>
+    <Administrative_Address>Kurt_Schreckengost@shi.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.ship.edu/idp/shibboleth">
+    <Organization_Name>Shippensburg University of Pennsylvania</Organization_Name>
+    <Home_Page>http://ship.edu/</Home_Page>
+    <Technical_Name>Shippensburg University Computing Technologies Center</Technical_Name>
+    <Technical_Address>idp@ship.edu</Technical_Address>
+    <Administrative_Name>Shippensburg University Computing Technologies Center</Administrative_Name>
+    <Administrative_Address>idp@ship.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://certify.skidmore.edu/idp/shibboleth">
+    <Organization_Name>Skidmore College</Organization_Name>
+    <Home_Page>http://www.skidmore.edu</Home_Page>
+    <Technical_Name>Adam Michael Jones</Technical_Name>
+    <Technical_Address>amjones@skidmore.edu</Technical_Address>
+    <Administrative_Name>Jeffrey A. Clark</Administrative_Name>
+    <Administrative_Address>jclark@skidmore.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.sru.edu/idp/shibboleth">
+    <Organization_Name>Slippery Rock University of Pennsylvania</Organization_Name>
+    <Home_Page>http://www.sru.edu/</Home_Page>
+    <Technical_Name>Henry Magusiak</Technical_Name>
+    <Technical_Address>henry.magusiak@sru.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://login.smith.edu/idp/shibboleth">
+    <Organization_Name>Smith College</Organization_Name>
+    <Home_Page>http://www.smith.edu/</Home_Page>
+    <Technical_Name>Karla Borecky</Technical_Name>
+    <Technical_Address>kborecky@smith.edu</Technical_Address>
+    <Administrative_Name>Eric Brewer</Administrative_Name>
+    <Administrative_Address>ebrewer@smith.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.si.edu/idp/shibboleth">
+    <Organization_Name>Smithsonian Institution</Organization_Name>
+    <Home_Page>http://www.si.edu/</Home_Page>
+    <Technical_Name>Alex Aveta</Technical_Name>
+    <Technical_Address>AvetaA@si.edu</Technical_Address>
+    <Administrative_Name>Jeffrey McAvoy</Administrative_Name>
+    <Administrative_Address>mcavoyj@si.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.sonoma.edu/shibboleth">
+    <Organization_Name>Sonoma State University</Organization_Name>
+    <Home_Page>http://www.sonoma.edu/</Home_Page>
+    <Technical_Name>IDP Administrator</Technical_Name>
+    <Technical_Address>idp-admin@sonoma.edu</Technical_Address>
+    <Administrative_Name>Geoff Cirullo</Administrative_Name>
+    <Administrative_Address>cirullo@sonoma.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://icarus.sdstate.edu/idp/shibboleth">
+    <Organization_Name>South Dakota State University</Organization_Name>
+    <Home_Page>http://www3.sdstate.edu/</Home_Page>
+    <Technical_Name>Gary Christensen</Technical_Name>
+    <Technical_Address>Gary.Christensen@sdstate.edu</Technical_Address>
+    <Administrative_Name>Kevin Brandt</Administrative_Name>
+    <Administrative_Address>Kevin.Brandt@sdstate.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib-idp.siu.edu/idp/shibboleth">
+    <Organization_Name>Southern Illinois University</Organization_Name>
+    <Home_Page>http://www.siu.edu/</Home_Page>
+    <Technical_Name>SIUC Shibboleth Tech</Technical_Name>
+    <Technical_Address>shib-support@siu.edu</Technical_Address>
+    <Administrative_Name>SIUC Shibboleth Admin</Administrative_Name>
+    <Administrative_Address>shib-support@siu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.smu.edu/idp/shibboleth">
+    <Organization_Name>Southern Methodist University</Organization_Name>
+    <Home_Page>http://www.smu.edu/</Home_Page>
+    <Technical_Name>Tommy Doan</Technical_Name>
+    <Technical_Address>tdoan@smu.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib.sou.edu/idp/shibboleth">
+    <Organization_Name>Southern Oregon University</Organization_Name>
+    <Home_Page>http://www.sou.edu/</Home_Page>
+    <Technical_Name>David Whipp</Technical_Name>
+    <Technical_Address>whipp@sou.edu</Technical_Address>
+    <Administrative_Name>Brad Christ</Administrative_Name>
+    <Administrative_Address>christb@sou.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://login.stolaf.edu/idp/shibboleth">
+    <Organization_Name>St. Olaf College</Organization_Name>
+    <Home_Page>http://stolaf.edu/</Home_Page>
+    <Technical_Name>St. Olaf Systems Team</Technical_Name>
+    <Technical_Address>root@stolaf.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:stanford.edu">
+    <Organization_Name>Stanford University</Organization_Name>
+    <Home_Page>http://www.stanford.edu/</Home_Page>
+    <Technical_Name>Shibboleth Support</Technical_Name>
+    <Technical_Address>shibboleth-team@lists.stanford.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:starkstate.edu">
+    <Organization_Name>Stark State College of Technology</Organization_Name>
+    <Home_Page>http://www.starkstate.edu/</Home_Page>
+    <Technical_Name>Geoff Starnes</Technical_Name>
+    <Technical_Address>gstarnes@starkstate.edu</Technical_Address>
+    <Administrative_Name>Geoff Starnes</Administrative_Name>
+    <Administrative_Address>gstarnes@starkstate.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:stevens.edu">
+    <Organization_Name>Stevens Institute of Technology</Organization_Name>
+    <Home_Page>http://www.stevens.edu/sit/</Home_Page>
+    <Technical_Name>Stevens InCommon Admin</Technical_Name>
+    <Technical_Address>incommonadmin@stevens.edu</Technical_Address>
+    <Administrative_Name>Stevens InCommon Admin</Administrative_Name>
+    <Administrative_Address>incommonadmin@stevens.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://secure.stevenson.edu/idp/shibboleth">
+    <Organization_Name>Stevenson University</Organization_Name>
+    <Home_Page>http://stevenson.edu/</Home_Page>
+    <Technical_Name>Shibboleth Admin</Technical_Name>
+    <Technical_Address>shibadmin@stevenson.edu</Technical_Address>
+    <Administrative_Name>Shibboleth Admin</Administrative_Name>
+    <Administrative_Address>shibadmin@stevenson.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:stonybrook.edu">
+    <Organization_Name>Stony Brook University</Organization_Name>
+    <Home_Page>http://www.sunysb.edu/</Home_Page>
+    <Technical_Name>Brian Heller</Technical_Name>
+    <Technical_Address>Brian.Heller@stonybrook.edu</Technical_Address>
+    <Administrative_Name>Sanjay Kapur</Administrative_Name>
+    <Administrative_Address>Sanjay.Kapur@stonybrook.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.brockport.edu/idp/shibboleth">
+    <Organization_Name>SUNY College at Brockport</Organization_Name>
+    <Home_Page>http://www.brockport.edu</Home_Page>
+    <Technical_Name>IDM Team</Technical_Name>
+    <Technical_Address>helpdesk@brockport.edu</Technical_Address>
+    <Administrative_Name>IDM Team</Administrative_Name>
+    <Administrative_Address>helpdesk@brockport.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.esc.edu/idp/shibboleth">
+    <Organization_Name>SUNY Empire State College</Organization_Name>
+    <Home_Page>http://www.esc.edu/</Home_Page>
+    <Technical_Name>Adam Cross</Technical_Name>
+    <Technical_Address>adam.cross@esc.edu</Technical_Address>
+    <Administrative_Name>AJ Lacomba</Administrative_Name>
+    <Administrative_Address>aj.lacomba@esc.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://incommon.sunycnse.com/idp/shibboleth">
+    <Organization_Name>SUNY Polytechnic Institute</Organization_Name>
+    <Home_Page>http://www.sunyit.edu/</Home_Page>
+    <Technical_Name>Kyle Rosher</Technical_Name>
+    <Technical_Address>krosher@sunycnse.com</Technical_Address>
+    <Administrative_Name>Ralph Gartner</Administrative_Name>
+    <Administrative_Address>rgartner@sunycnse.com</Administrative_Address>
+  </idp>
+  <idp entityID="https://sid.swarthmore.edu/idp/shibboleth">
+    <Organization_Name>Swarthmore College</Organization_Name>
+    <Home_Page>http://www.swarthmore.edu/</Home_Page>
+    <Technical_Name>Shibboleth Admin</Technical_Name>
+    <Technical_Address>shib-admin@swarthmore.edu</Technical_Address>
+    <Administrative_Name>Glenn Stauffer</Administrative_Name>
+    <Administrative_Address>stauffer@swarthmore.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.symplicity.com/idp/shibboleth">
+    <Organization_Name>Symplicity Corporation</Organization_Name>
+    <Home_Page>http://www.symplicity.com</Home_Page>
+    <Technical_Name>shib@symplicity.com</Technical_Name>
+    <Technical_Address>shib@symplicity.com</Technical_Address>
+  </idp>
+  <idp entityID="https://shibidp.syr.edu/idp/shibboleth">
+    <Organization_Name>Syracuse University</Organization_Name>
+    <Home_Page>http://www.syr.edu/</Home_Page>
+    <Technical_Name>Steve Leonard</Technical_Name>
+    <Technical_Address>sleonard@syr.edu</Technical_Address>
+    <Administrative_Name>Cynthia Hoalcraft</Administrative_Name>
+    <Administrative_Address>clhoalcr@syr.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://fim.temple.edu/idp/shibboleth">
+    <Organization_Name>Temple University</Organization_Name>
+    <Home_Page>http://www.temple.edu/</Home_Page>
+    <Technical_Name>Office of Identity and Access Management</Technical_Name>
+    <Technical_Address>oiam@temple.edu</Technical_Address>
+    <Administrative_Name>Jorj Bauer</Administrative_Name>
+    <Administrative_Address>jorj@temple.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:tamu.edu">
+    <Organization_Name>Texas A &amp; M University</Organization_Name>
+    <Home_Page>http://www.tamu.edu/</Home_Page>
+    <Technical_Name>Xavier Chapa</Technical_Name>
+    <Technical_Address>unix-admin@tamu.edu</Technical_Address>
+    <Administrative_Name>Xavier Chapa</Administrative_Name>
+    <Administrative_Address>unix-admin@tamu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.tamucc.edu/idp/shibboleth">
+    <Organization_Name>Texas A&amp;M University-Corpus Christi</Organization_Name>
+    <Home_Page>http://www.tamucc.edu/</Home_Page>
+    <Technical_Name>Phil Hale</Technical_Name>
+    <Technical_Address>Phil.Hale@tamucc.edu</Technical_Address>
+    <Administrative_Name>Edward Evans</Administrative_Name>
+    <Administrative_Address>Edward.Evans@tamucc.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://authentic.txstate.edu/idp/shibboleth">
+    <Organization_Name>Texas State University - San Marcos</Organization_Name>
+    <Home_Page>http://www.txstate.edu/</Home_Page>
+    <Technical_Name>Dan Owen</Technical_Name>
+    <Technical_Address>do13@txstate.edu</Technical_Address>
+    <Administrative_Name>Dan Owen</Administrative_Name>
+    <Administrative_Address>do13@txstate.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.shibboleth.ttu.edu/idp/shibboleth">
+    <Organization_Name>Texas Tech University</Organization_Name>
+    <Home_Page>http://www.ttu.edu/</Home_Page>
+    <Technical_Name>Telecommunications Network Systems</Technical_Name>
+    <Technical_Address>nis@ttu.edu</Technical_Address>
+    <Administrative_Name>Telecommunications Network Systems</Administrative_Name>
+    <Administrative_Address>nis@ttu.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibboleth.twu.edu/idp/shibboleth">
+    <Organization_Name>Texas Woman's University</Organization_Name>
+    <Home_Page>http://www.twu.edu/</Home_Page>
+    <Technical_Name>Svetlana Galuzinschii</Technical_Name>
+    <Technical_Address>sgaluzinschii@twu.edu</Technical_Address>
+    <Administrative_Name>Julie Muller</Administrative_Name>
+    <Administrative_Address>jmuller@twu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.broadinstitute.org/idp/shibboleth">
+    <Organization_Name>The Broad Institute of MIT and Harvard</Organization_Name>
+    <Home_Page>http://www.broadinstitute.org/</Home_Page>
+    <Technical_Name>InCommon Admin</Technical_Name>
+    <Technical_Address>incommon@broadinstitute.org</Technical_Address>
+    <Administrative_Name>InCommon Admin</Administrative_Name>
+    <Administrative_Address>incommon@broadinstitute.org</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.wooster.edu/idp/shibboleth">
+    <Organization_Name>The College of Wooster</Organization_Name>
+    <Home_Page>http://www.wooster.edu/</Home_Page>
+    <Technical_Name>Vince DiScipio</Technical_Name>
+    <Technical_Address>vdiscipio@wooster.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://singlesignon.gwu.edu/idp/shibboleth">
+    <Organization_Name>The George Washington University</Organization_Name>
+    <Home_Page>http://www.gwu.edu/</Home_Page>
+    <Technical_Name>Dhinakaran Thamanan Ramaian (Dhina)</Technical_Name>
+    <Technical_Address>dhina@gwu.edu</Technical_Address>
+    <Administrative_Name>Dhinakaran Thamanan Ramaian (Dhina)</Administrative_Name>
+    <Administrative_Address>dhina@gwu.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.juilliard.edu/idp/shibboleth">
+    <Organization_Name>The Juilliard School</Organization_Name>
+    <Home_Page>http://www.juilliard.edu/</Home_Page>
+    <Technical_Name>Jeremy Pinquist</Technical_Name>
+    <Technical_Address>jpinquist@juilliard.edu</Technical_Address>
+    <Administrative_Name>Tunde Giwa</Administrative_Name>
+    <Administrative_Address>tgiwa@juilliard.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:buffalo.edu">
+    <Organization_Name>The State University of New York at Buffalo</Organization_Name>
+    <Home_Page>http://www.buffalo.edu/</Home_Page>
+    <Technical_Name>EIS Auth Support</Technical_Name>
+    <Technical_Address>auth-support@buffalo.edu</Technical_Address>
+    <Administrative_Name>EIS Auth Support</Administrative_Name>
+    <Administrative_Address>auth-support@buffalo.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:arizona.edu">
+    <Organization_Name>The University of Arizona</Organization_Name>
+    <Home_Page>http://www.arizona.edu/</Home_Page>
+    <Technical_Name>UITS Systems Integration &amp; Architecture</Technical_Name>
+    <Technical_Address>uits-sia@list.arizona.edu</Technical_Address>
+    <Administrative_Name>Gary Windham</Administrative_Name>
+    <Administrative_Address>gary.windham@arizona.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.memphis.edu/idp/shibboleth">
+    <Organization_Name>The University of Memphis</Organization_Name>
+    <Home_Page>http://www.memphis.edu/</Home_Page>
+    <Technical_Name>Patrick Hood</Technical_Name>
+    <Technical_Address>pchood@memphis.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.umt.edu/idp/shibboleth">
+    <Organization_Name>The University of Montana</Organization_Name>
+    <Home_Page>http://www.umt.edu/</Home_Page>
+    <Technical_Name>Josh O'Dowd</Technical_Name>
+    <Technical_Address>josh.odowd@umontana.edu</Technical_Address>
+    <Administrative_Name>Gary Trethewey</Administrative_Name>
+    <Administrative_Address>gary.trethewey@umontana.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://jidp.jlab.org/idp/shibboleth">
+    <Organization_Name>Thomas Jefferson National Accelerator Facility</Organization_Name>
+    <Home_Page>http://education.jlab.org/index.php</Home_Page>
+    <Technical_Name>Marty Wise</Technical_Name>
+    <Technical_Address>wise@jlab.org</Technical_Address>
+    <Administrative_Name>Marty Wise</Administrative_Name>
+    <Administrative_Address>wise@jlab.org</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib.towson.edu/idp/shibboleth">
+    <Organization_Name>Towson University</Organization_Name>
+    <Home_Page>http://towson.edu/</Home_Page>
+    <Technical_Name>Shibboleth Technical Issues</Technical_Name>
+    <Technical_Address>shib@towson.edu</Technical_Address>
+    <Administrative_Name>Shibboleth Technical Issues</Administrative_Name>
+    <Administrative_Address>shib@towson.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib-idp.tufts.edu/idp/shibboleth">
+    <Organization_Name>Tufts University</Organization_Name>
+    <Home_Page>http://www.tufts.edu/</Home_Page>
+    <Technical_Name>George Turner</Technical_Name>
+    <Technical_Address>george.turner@tufts.edu</Technical_Address>
+    <Administrative_Name>ESS</Administrative_Name>
+    <Administrative_Address>ESS@tufts.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.tulane.edu/idp/shibboleth">
+    <Organization_Name>Tulane University</Organization_Name>
+    <Home_Page>http://www.tulane.edu/</Home_Page>
+    <Technical_Name>Carlos Le</Technical_Name>
+    <Technical_Address>cle3@tulane.edu</Technical_Address>
+    <Administrative_Name>Leo Tran</Administrative_Name>
+    <Administrative_Address>ldtran@tulane.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.unicon.net/idp/shibboleth">
+    <Organization_Name>Unicon, Inc.</Organization_Name>
+    <Home_Page>http://www.unicon.net/</Home_Page>
+    <Technical_Name>IdP Administrator</Technical_Name>
+    <Technical_Address>idp-admin@unicon.net</Technical_Address>
+    <Administrative_Name>John Lewis</Administrative_Name>
+    <Administrative_Address>jlewis@unicon.net</Administrative_Address>
+  </idp>
+  <idp entityID="https://weblogin.albany.edu/shibboleth/idp2">
+    <Organization_Name>University At Albany, State University of New York</Organization_Name>
+    <Home_Page>http://www.albany.edu/</Home_Page>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://id.uakron.edu/idp/shibboleth">
+    <Organization_Name>University of Akron, Main Campus, The</Organization_Name>
+    <Home_Page>http://www.uakron.edu/</Home_Page>
+    <Technical_Name>Shib Tech</Technical_Name>
+    <Technical_Address>shibtech@uakron.edu</Technical_Address>
+    <Administrative_Name>Shib Admin</Administrative_Name>
+    <Administrative_Address>shibadmin@uakron.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:uab.edu">
+    <Organization_Name>University of Alabama at Birmingham</Organization_Name>
+    <Home_Page>http://www.uab.edu/</Home_Page>
+    <Technical_Name>Landy Manderson</Technical_Name>
+    <Technical_Address>landy@uab.edu</Technical_Address>
+    <Administrative_Name>Robert Cloud</Administrative_Name>
+    <Administrative_Address>recloud@uab.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.uah.edu/idp/shibboleth">
+    <Organization_Name>University of Alabama in Huntsville</Organization_Name>
+    <Home_Page>http://www.uah.edu/</Home_Page>
+    <Technical_Name>William Eubank</Technical_Name>
+    <Technical_Address>william.eubank@uah.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.ua.edu/idp/shibboleth">
+    <Organization_Name>University of Alabama, The</Organization_Name>
+    <Home_Page>http://www.ua.edu/</Home_Page>
+    <Technical_Name>Deborah Crocker</Technical_Name>
+    <Technical_Address>deborah.crocker@ua.edu</Technical_Address>
+    <Administrative_Name>Scott Montgomery</Administrative_Name>
+    <Administrative_Address>smontgomery@ua.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:alaska.edu">
+    <Organization_Name>University of Alaska Statewide System</Organization_Name>
+    <Home_Page>http://www.alaska.edu/</Home_Page>
+    <Technical_Name>Identity &amp; Access Management</Technical_Name>
+    <Technical_Address>IAM@Alaska.edu</Technical_Address>
+    <Administrative_Name>David Bantz</Administrative_Name>
+    <Administrative_Address>Q@Alaska.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.uark.edu/idp/shibboleth">
+    <Organization_Name>University of Arkansas</Organization_Name>
+    <Home_Page>http://www.uark.edu/</Home_Page>
+    <Technical_Name>System Administrator</Technical_Name>
+    <Technical_Address>root@uark.edu</Technical_Address>
+    <Administrative_Name>Security</Administrative_Name>
+    <Administrative_Address>security@uark.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibboleth.uams.edu/idp/shibboleth">
+    <Organization_Name>University of Arkansas for Medical Sciences</Organization_Name>
+    <Home_Page>http://www.uams.edu/</Home_Page>
+    <Technical_Name>Keith A. Powell</Technical_Name>
+    <Technical_Address>kapowell@uams.edu</Technical_Address>
+    <Administrative_Name>Steve W. Cochran</Administrative_Name>
+    <Administrative_Address>CochranStephenW@uams.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.uaex.edu/idp/shibboleth">
+    <Organization_Name>University of Arkansas, Cooperative Extension Service</Organization_Name>
+    <Home_Page>http://www.uaex.edu/</Home_Page>
+    <Technical_Name>Diana Morian</Technical_Name>
+    <Technical_Address>dmorian@uaex.edu</Technical_Address>
+    <Administrative_Name>Sam Boyster</Administrative_Name>
+    <Administrative_Address>sboyster@uaex.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.ubalt.edu/idp/shibboleth">
+    <Organization_Name>University of Baltimore</Organization_Name>
+    <Home_Page>http://www.ubalt.edu/</Home_Page>
+    <Technical_Name>George Weitzel</Technical_Name>
+    <Technical_Address>gweitzel@ubalt.edu</Technical_Address>
+    <Administrative_Name>George Weitzel</Administrative_Name>
+    <Administrative_Address>gweitzel@ubalt.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.bridgeport.edu/idp/shibboleth">
+    <Organization_Name>University of Bridgeport</Organization_Name>
+    <Home_Page>http://bridgeport.edu/</Home_Page>
+    <Technical_Name>UB SysAdmin Group</Technical_Name>
+    <Technical_Address>sysadmin@bridgeport.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:ucop.edu">
+    <Organization_Name>University of California - Office of the President</Organization_Name>
+    <Home_Page>http://www.ucop.edu/welcome.html</Home_Page>
+    <Technical_Name>Munish Malik</Technical_Name>
+    <Technical_Address>aig@ucop.edu</Technical_Address>
+    <Administrative_Name>Paul Weiss</Administrative_Name>
+    <Administrative_Address>Paul.Weiss@ucop.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibboleth.uchastings.edu/idp/shibboleth">
+    <Organization_Name>University of California Hastings College of the Law</Organization_Name>
+    <Home_Page>http://www.uchastings.edu/</Home_Page>
+    <Technical_Name>Ronald Proschan</Technical_Name>
+    <Technical_Address>proschan@uchastings.edu</Technical_Address>
+    <Administrative_Name>Ronald Proschan</Administrative_Name>
+    <Administrative_Address>proschan@uchastings.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:berkeley.edu">
+    <Organization_Name>University of California, Berkeley</Organization_Name>
+    <Home_Page>http://www.berkeley.edu/</Home_Page>
+    <Technical_Name>Jeff McCullough</Technical_Name>
+    <Technical_Address>jeffmc@berkeley.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:ucdavis.edu">
+    <Organization_Name>University of California, Davis</Organization_Name>
+    <Home_Page>http://www.ucdavis.edu/</Home_Page>
+    <Technical_Name>EAIS Shibboleth Group</Technical_Name>
+    <Technical_Address>shibadmin@ucdavis.edu</Technical_Address>
+    <Administrative_Name>EAIS Shibboleth Group</Administrative_Name>
+    <Administrative_Address>shibadmin@ucdavis.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:ucmerced.edu">
+    <Organization_Name>University of California, Merced</Organization_Name>
+    <Home_Page>http://www.ucmerced.edu/</Home_Page>
+    <Technical_Name>John Kamminga</Technical_Name>
+    <Technical_Address>jkamminga@ucmerced.edu</Technical_Address>
+    <Administrative_Name>Greg Fellin</Administrative_Name>
+    <Administrative_Address>gfellin@ucmerced.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:ucr.edu">
+    <Organization_Name>University of California, Riverside</Organization_Name>
+    <Home_Page>http://www.ucr.edu/</Home_Page>
+    <Technical_Name>UCR Shibboleth Administrators</Technical_Name>
+    <Technical_Address>shibboleth@ucr.edu</Technical_Address>
+    <Administrative_Name>UCR Shibboleth Administrators</Administrative_Name>
+    <Administrative_Address>shibboleth@ucr.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:ucsf.edu">
+    <Organization_Name>University of California, San Francisco</Organization_Name>
+    <Home_Page>http://www.ucsf.edu/</Home_Page>
+    <Technical_Name>Susil Rayamajhi</Technical_Name>
+    <Technical_Address>susil.rayamajhi@ucsf.edu</Technical_Address>
+    <Administrative_Name>Kevin Dale</Administrative_Name>
+    <Administrative_Address>kevin.dale@ucsf.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:ucsc.edu">
+    <Organization_Name>University of California, Santa Cruz</Organization_Name>
+    <Home_Page>http://www.ucsc.edu</Home_Page>
+    <Technical_Name>Jeffrey Crawford</Technical_Name>
+    <Technical_Address>jeffreyc@ucsc.edu</Technical_Address>
+    <Administrative_Name>Kari Robertson</Administrative_Name>
+    <Administrative_Address>kari@ucsc.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:uci.edu">
+    <Organization_Name>University of California-Irvine</Organization_Name>
+    <Home_Page>http://www.uci.edu/</Home_Page>
+    <Technical_Name>Chris Peters</Technical_Name>
+    <Technical_Address>cjpeters@uci.edu</Technical_Address>
+    <Administrative_Name>Brian Roode</Administrative_Name>
+    <Administrative_Address>bgroode@uci.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:ucla.edu">
+    <Organization_Name>University of California-Los Angeles</Organization_Name>
+    <Home_Page>http://www.ucla.edu/</Home_Page>
+    <Technical_Name>Warren Leung</Technical_Name>
+    <Technical_Address>wleung@it.ucla.edu</Technical_Address>
+    <Administrative_Name>Albert Wu</Administrative_Name>
+    <Administrative_Address>albertwu@ucla.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:ucsd.edu">
+    <Organization_Name>University of California-San Diego</Organization_Name>
+    <Home_Page>http://www.ucsd.edu/</Home_Page>
+    <Technical_Name>Shibboleth/IDM Support</Technical_Name>
+    <Technical_Address>shibsupport@ucsd.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:ucsb.edu">
+    <Organization_Name>University of California-Santa Barbara</Organization_Name>
+    <Home_Page>http://www.ucsb.edu/</Home_Page>
+    <Technical_Name>Identity Services Operations</Technical_Name>
+    <Technical_Address>sysadmin@identity.ucsb.edu</Technical_Address>
+    <Administrative_Name>Matthew Dunham</Administrative_Name>
+    <Administrative_Address>matthew.dunham@ucsb.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp-prod.cc.ucf.edu/idp/shibboleth">
+    <Organization_Name>University of Central Florida</Organization_Name>
+    <Home_Page>http://www.ucf.edu/</Home_Page>
+    <Technical_Name>Tim Larson</Technical_Name>
+    <Technical_Address>tim@ucf.edu</Technical_Address>
+    <Administrative_Name>Jim Ennis</Administrative_Name>
+    <Administrative_Address>jim@ucf.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:uchicago.edu">
+    <Organization_Name>University of Chicago</Organization_Name>
+    <Home_Page>http://www.uchicago.edu/</Home_Page>
+    <Technical_Name>David Langenberg</Technical_Name>
+    <Technical_Address>davel@uchicago.edu</Technical_Address>
+    <Administrative_Name>Tom Barton</Administrative_Name>
+    <Administrative_Address>tbarton@uchicago.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.uc.edu/idp/shibboleth">
+    <Organization_Name>University of Cincinnati Main Campus</Organization_Name>
+    <Home_Page>http://www.uc.edu/</Home_Page>
+    <Technical_Name>Matthew Hartman</Technical_Name>
+    <Technical_Address>eaigroup@ucmail.uc.edu</Technical_Address>
+    <Administrative_Name>Gary Grafe</Administrative_Name>
+    <Administrative_Address>grafegw@ucmail.uc.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://fedauth.colorado.edu/idp/shibboleth">
+    <Organization_Name>University of Colorado at Boulder</Organization_Name>
+    <Home_Page>http://www.colorado.edu/</Home_Page>
+    <Technical_Name>Marwan Shaher</Technical_Name>
+    <Technical_Address>shibboleth@colorado.edu</Technical_Address>
+    <Administrative_Name>Kerry Havens</Administrative_Name>
+    <Administrative_Address>shibboleth@colorado.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://passport.ucdenver.edu/oam/fed">
+    <Organization_Name>University of Colorado Denver</Organization_Name>
+    <Home_Page>http://www.ucdenver.edu/</Home_Page>
+    <Technical_Name>Chris Edmundson</Technical_Name>
+    <Technical_Address>chris.edmundson@ucdenver.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shibboleth.uconn.edu/idp/shibboleth">
+    <Organization_Name>University of Connecticut</Organization_Name>
+    <Home_Page>http://www.uconn.edu/</Home_Page>
+    <Technical_Name>Marc Jones</Technical_Name>
+    <Technical_Address>marc.jones@uconn.edu</Technical_Address>
+    <Administrative_Name>Marc Jones</Administrative_Name>
+    <Administrative_Address>marc.jones@uconn.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:udayton.edu">
+    <Organization_Name>University of Dayton</Organization_Name>
+    <Home_Page>http://www.udayton.edu/</Home_Page>
+    <Technical_Name>Shibboleth IdP Support</Technical_Name>
+    <Technical_Address>shibadmin@udayton.edu</Technical_Address>
+    <Administrative_Name>Shibboleth IdP Support</Administrative_Name>
+    <Administrative_Address>shibadmin@udayton.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibboleth.nss.udel.edu/idp/shibboleth">
+    <Organization_Name>University of Delaware</Organization_Name>
+    <Home_Page>http://www.udel.edu/</Home_Page>
+    <Technical_Name>Fraser S. Gutteridge</Technical_Name>
+    <Technical_Address>blue@udel.edu</Technical_Address>
+    <Administrative_Name>Daniel J. Grim</Administrative_Name>
+    <Administrative_Address>grim@udel.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.ufl.edu/idp/shibboleth">
+    <Organization_Name>University of Florida</Organization_Name>
+    <Home_Page>http://www.ufl.edu/</Home_Page>
+    <Technical_Name>Eli Ben-Shoshan</Technical_Name>
+    <Technical_Address>ebs@ufl.edu</Technical_Address>
+    <Administrative_Name>Warren Curry</Administrative_Name>
+    <Administrative_Address>whcurry@ufl.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.cc.uga.edu/idp/shibboleth">
+    <Organization_Name>University of Georgia</Organization_Name>
+    <Home_Page>http://www.uga.edu</Home_Page>
+    <Technical_Name>Keith Martin</Technical_Name>
+    <Technical_Address>keith.martin@uga.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.hawaii.edu/idp/shibboleth">
+    <Organization_Name>University of Hawaii</Organization_Name>
+    <Home_Page>http://www.hawaii.edu/</Home_Page>
+    <Technical_Name>UH ITS Identity and Access Management</Technical_Name>
+    <Technical_Address>its-iam-help@lists.hawaii.edu</Technical_Address>
+    <Administrative_Name>Michael Hodges</Administrative_Name>
+    <Administrative_Address>mhodges@hawaii.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://fedidp.uh.edu/idp/shibboleth">
+    <Organization_Name>University of Houston</Organization_Name>
+    <Home_Page>http://www.uh.edu/</Home_Page>
+    <Technical_Name>Sonny Nguyen</Technical_Name>
+    <Technical_Address>snguye2@central.uh.edu</Technical_Address>
+    <Administrative_Name>Keith Martin</Administrative_Name>
+    <Administrative_Address>KMartin@central.uh.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.lib.uh.edu/idp/shibboleth">
+    <Organization_Name>University of Houston Libraries</Organization_Name>
+    <Home_Page>http://info.lib.uh.edu/</Home_Page>
+    <Technical_Name>Robert Spragg</Technical_Name>
+    <Technical_Address>rspragg@uh.edu</Technical_Address>
+    <Administrative_Name>Robert Spragg</Administrative_Name>
+    <Administrative_Address>rspragg@uh.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.uhd.edu/idp/shibboleth">
+    <Organization_Name>University of Houston-Downtown</Organization_Name>
+    <Home_Page>http://www.uhd.edu/</Home_Page>
+    <Technical_Name>Vince Esquivel</Technical_Name>
+    <Technical_Address>esquivelv@uhd.edu</Technical_Address>
+    <Administrative_Name>Grace Davila</Administrative_Name>
+    <Administrative_Address>davilag@uhd.edu</Administrative_Address>
+  </idp>
+  <idp entityID="http://sts.uidaho.edu/adfs/services/trust">
+    <Organization_Name>University of Idaho</Organization_Name>
+    <Home_Page>http://www.uidaho.edu/</Home_Page>
+    <Technical_Name>Systems Team</Technical_Name>
+    <Technical_Address>systems@uidaho.edu</Technical_Address>
+    <Administrative_Name>Security Office</Administrative_Name>
+    <Administrative_Address>its-security@uidaho.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.uic.edu/shibboleth">
+    <Organization_Name>University of Illinois at Chicago</Organization_Name>
+    <Home_Page>http://www.uic.edu/index.html/</Home_Page>
+    <Technical_Name>Roberto Ullfig</Technical_Name>
+    <Technical_Address>rullfig@uic.edu</Technical_Address>
+    <Administrative_Name>Allen Randall</Administrative_Name>
+    <Administrative_Address>wallenr@uic.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://uisshibb1.uis.edu/idp/shibboleth">
+    <Organization_Name>University of Illinois At Springfield</Organization_Name>
+    <Home_Page>http://www.uis.edu/</Home_Page>
+    <Technical_Name>Tulio Llosa</Technical_Name>
+    <Technical_Address>tllos1@uis.edu</Technical_Address>
+    <Administrative_Name>Tulio Llosa</Administrative_Name>
+    <Administrative_Address>tllos1@uis.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:uiuc.edu">
+    <Organization_Name>University of Illinois at Urbana-Champaign</Organization_Name>
+    <Home_Page>http://www.uiuc.edu/index.html</Home_Page>
+    <Technical_Name>Shibboleth Identity Provider Service Management Team</Technical_Name>
+    <Technical_Address>shibboleth-mgr@illinois.edu</Technical_Address>
+    <Administrative_Name>Shibboleth Identity Provider Service Management Team</Administrative_Name>
+    <Administrative_Address>shibboleth-mgr@illinois.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:uiowa.edu">
+    <Organization_Name>University of Iowa</Organization_Name>
+    <Home_Page>http://www.uiowa.edu/</Home_Page>
+    <Technical_Name>University of Iowa Federation Requests</Technical_Name>
+    <Technical_Address>iowa-federation-requests@uiowa.edu</Technical_Address>
+    <Administrative_Name>ITS DNA Identity Services</Administrative_Name>
+    <Administrative_Address>its-dna-identity-services@uiowa.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibidp.ku.edu/idp/shibboleth">
+    <Organization_Name>University of Kansas</Organization_Name>
+    <Home_Page>http://www.ku.edu/</Home_Page>
+    <Technical_Name>Information Technology System Integration</Technical_Name>
+    <Technical_Address>itsi@ku.edu</Technical_Address>
+    <Administrative_Name>InCommon Admin</Administrative_Name>
+    <Administrative_Address>incommon-admin@ku.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://cas.kumc.edu/idp/shibboleth">
+    <Organization_Name>University of Kansas Medical Center</Organization_Name>
+    <Home_Page>http://www.kumc.edu/</Home_Page>
+    <Technical_Name>Mark Miltenberger</Technical_Name>
+    <Technical_Address>mmiltenberger@kumc.edu</Technical_Address>
+    <Administrative_Name>Steve Selaya</Administrative_Name>
+    <Administrative_Address>sselaya@kumc.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://ukidp.uky.edu/idp/shibboleth">
+    <Organization_Name>University of Kentucky</Organization_Name>
+    <Home_Page>http://www.uky.edu/</Home_Page>
+    <Technical_Name>John Walker</Technical_Name>
+    <Technical_Address>jawalk00@uky.edu</Technical_Address>
+    <Administrative_Name>Wayne Beech</Administrative_Name>
+    <Administrative_Address>wayne@uky.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.louisville.edu/idp">
+    <Organization_Name>University of Louisville</Organization_Name>
+    <Home_Page>http://louisville.edu/</Home_Page>
+    <Technical_Name>Derick Hill</Technical_Name>
+    <Technical_Address>dwhill06@exchange.louisville.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.maine.edu/idp/shibboleth">
+    <Organization_Name>University of Maine System</Organization_Name>
+    <Home_Page>http://www.maine.edu/</Home_Page>
+    <Technical_Name>Drew Northup</Technical_Name>
+    <Technical_Address>drew.northup@maine.edu</Technical_Address>
+    <Administrative_Name>John Grover</Administrative_Name>
+    <Administrative_Address>jgrover@maine.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://webauth.umaryland.edu/idp/shibboleth">
+    <Organization_Name>University of Maryland Baltimore</Organization_Name>
+    <Home_Page>http://www.umaryland.edu/</Home_Page>
+    <Technical_Name>Brian Coats</Technical_Name>
+    <Technical_Address>bscoats@umaryland.edu</Technical_Address>
+    <Administrative_Name>Brian Coats</Administrative_Name>
+    <Administrative_Address>bscoats@umaryland.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:umbc.edu">
+    <Organization_Name>University of Maryland Baltimore County</Organization_Name>
+    <Home_Page>http://www.umbc.edu/</Home_Page>
+    <Technical_Name>Jason Griego</Technical_Name>
+    <Technical_Address>jcgriego@umbc.edu</Technical_Address>
+    <Administrative_Name>Paul Riddle</Administrative_Name>
+    <Administrative_Address>paulr@umbc.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:umd.edu">
+    <Organization_Name>University of Maryland College Park</Organization_Name>
+    <Home_Page>http://www.umd.edu/</Home_Page>
+    <Technical_Name>John Pfeifer</Technical_Name>
+    <Technical_Address>shibboleth@umd.edu</Technical_Address>
+    <Administrative_Name>David Barks</Administrative_Name>
+    <Administrative_Address>dbarks@umd.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.umuc.edu/idp/shibboleth">
+    <Organization_Name>University Of Maryland University College</Organization_Name>
+    <Home_Page>http://www.umuc.edu/</Home_Page>
+    <Technical_Name>Peter Friedman</Technical_Name>
+    <Technical_Address>Peter.Friedman@umuc.edu</Technical_Address>
+    <Administrative_Name>Server Operations Group</Administrative_Name>
+    <Administrative_Address>SOP@umuc.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.umassd.edu/idp/shibboleth">
+    <Organization_Name>University of Massachusetts - Dartmouth</Organization_Name>
+    <Home_Page>http://www.umassd.edu/</Home_Page>
+    <Administrative_Name>Craig R. Oliveira</Administrative_Name>
+    <Administrative_Address>coliveira@umassd.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://webauth.umass.edu/idp/shibboleth">
+    <Organization_Name>University of Massachusetts Amherst</Organization_Name>
+    <Home_Page>http://www.umass.edu/</Home_Page>
+    <Technical_Name>Identity Management</Technical_Name>
+    <Technical_Address>shibboleth@oit.umass.edu</Technical_Address>
+    <Administrative_Name>Identity Management</Administrative_Name>
+    <Administrative_Address>shibboleth@oit.umass.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://vm-shibboleth.umb.edu/idp/shibboleth">
+    <Organization_Name>University of Massachusetts Boston</Organization_Name>
+    <Home_Page>http://umb.edu/</Home_Page>
+    <Technical_Name>leonard kroll</Technical_Name>
+    <Technical_Address>leonard.kroll@umb.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shibboleth.umassmed.edu/idp/shibboleth">
+    <Organization_Name>University of Massachusetts Medical School</Organization_Name>
+    <Home_Page>http://www.umassmed.edu</Home_Page>
+    <Technical_Name>Hosted Services</Technical_Name>
+    <Technical_Address>HostedServices-Windows@umassmed.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://caneid.miami.edu/idp/shibboleth">
+    <Organization_Name>University of Miami</Organization_Name>
+    <Home_Page>http://www.miami.edu/</Home_Page>
+    <Technical_Name>Anil Kadiyala</Technical_Name>
+    <Technical_Address>akadiyala@miami.edu</Technical_Address>
+    <Administrative_Name>Anil Kadiyala</Administrative_Name>
+    <Administrative_Address>akadiyala@miami.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibboleth.umich.edu/idp/shibboleth">
+    <Organization_Name>University of Michigan</Organization_Name>
+    <Home_Page>http://www.umich.edu/</Home_Page>
+    <Technical_Name>Liam Hoekenga</Technical_Name>
+    <Technical_Address>shibboleth@umich.edu</Technical_Address>
+    <Administrative_Name>DePriest Dockins</Administrative_Name>
+    <Administrative_Address>shibboleth@umich.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:umn.edu">
+    <Organization_Name>University of Minnesota</Organization_Name>
+    <Home_Page>http://www1.umn.edu/twincities/</Home_Page>
+    <Technical_Name>University of Minnesota Identity Management</Technical_Name>
+    <Technical_Address>idm@umn.edu</Technical_Address>
+    <Administrative_Name>Kevin O'Rourke</Administrative_Name>
+    <Administrative_Address>kor@umn.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://umshibp.olemiss.edu/idp/shibboleth">
+    <Organization_Name>University of Mississippi</Organization_Name>
+    <Home_Page>http://www.olemiss.edu/</Home_Page>
+    <Technical_Name>Daksh Chauhan</Technical_Name>
+    <Technical_Address>daksh@olemiss.edu</Technical_Address>
+    <Administrative_Name>Daksh Chauhan</Administrative_Name>
+    <Administrative_Address>daksh@olemiss.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib-idp.umsystem.edu/idp/shibboleth">
+    <Organization_Name>University of Missouri System</Organization_Name>
+    <Home_Page>http://umsystem.edu/</Home_Page>
+    <Technical_Name>UM System Shibboleth Technical Contact</Technical_Name>
+    <Technical_Address>shib-tech@umsystem.edu</Technical_Address>
+    <Administrative_Name>UM System Shibboleth Administration</Administrative_Name>
+    <Administrative_Address>shib-admin@umsystem.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://fed.nebraska.edu/idp/shibboleth">
+    <Organization_Name>University of Nebraska</Organization_Name>
+    <Home_Page>http://www.nebraska.edu/</Home_Page>
+    <Technical_Name>CSN IDM</Technical_Name>
+    <Technical_Address>csnidm@nebraska.edu</Technical_Address>
+    <Administrative_Name>CSN IDM</Administrative_Name>
+    <Administrative_Address>csnidm@nebraska.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://auth.unomaha.edu/idp">
+    <Organization_Name>University of Nebraska at Omaha</Organization_Name>
+    <Home_Page>http://www.unomaha.edu/</Home_Page>
+    <Administrative_Name>Help Desk</Administrative_Name>
+    <Administrative_Address>unohelpdesk@unomaha.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.unmc.edu/idp/shibboleth">
+    <Organization_Name>University of Nebraska Medical Center</Organization_Name>
+    <Home_Page>http://www.unmc.edu/</Home_Page>
+    <Technical_Name>Matt Callaway</Technical_Name>
+    <Technical_Address>mscallaway@unmc.edu</Technical_Address>
+    <Administrative_Name>Lee Trant</Administrative_Name>
+    <Administrative_Address>ltrant@unmc.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib.unl.edu/idp/shibboleth">
+    <Organization_Name>University of Nebraska-Lincoln</Organization_Name>
+    <Home_Page>http://www.unl.edu</Home_Page>
+    <Administrative_Name>Paul Erickson</Administrative_Name>
+    <Administrative_Address>phe@unl.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp2.unr.edu/idp/shibboleth">
+    <Organization_Name>University of Nevada, Reno</Organization_Name>
+    <Home_Page>http://www.unr.edu/</Home_Page>
+    <Technical_Name>Cole Griggs</Technical_Name>
+    <Technical_Address>csgriggs@unr.edu</Technical_Address>
+    <Administrative_Name>Jeff Springer</Administrative_Name>
+    <Administrative_Address>jeffs@unr.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.unlv.edu/FIM/sps/MyShib/saml20">
+    <Organization_Name>University of Nevada-Las Vegas</Organization_Name>
+    <Home_Page>http://www.unlv.edu/</Home_Page>
+    <Technical_Name>Bob Fournier</Technical_Name>
+    <Technical_Address>bob.fournier@unlv.edu</Technical_Address>
+    <Administrative_Name>Don Diener</Administrative_Name>
+    <Administrative_Address>don.diener@unlv.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://unmpidp.unm.edu/idp/shibboleth">
+    <Organization_Name>University of New Mexico</Organization_Name>
+    <Home_Page>http://www.unm.edu/</Home_Page>
+    <Technical_Name>Jared Galbraith</Technical_Name>
+    <Technical_Address>jagalb@unm.edu</Technical_Address>
+    <Administrative_Name>Chuck Phillips</Administrative_Name>
+    <Administrative_Address>chuckp@unm.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:unc.edu">
+    <Organization_Name>University of North Carolina at Chapel Hill</Organization_Name>
+    <Home_Page>http://www.unc.edu/</Home_Page>
+    <Technical_Name>UNC Identity Management</Technical_Name>
+    <Technical_Address>idman@unc.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://webauth.uncc.edu/idp/shibboleth">
+    <Organization_Name>University of North Carolina At Charlotte</Organization_Name>
+    <Home_Page>http://www.uncc.edu</Home_Page>
+    <Technical_Name>Enterprise Web Services</Technical_Name>
+    <Technical_Address>EnterpriseWebServices-group@uncc.edu</Technical_Address>
+    <Administrative_Name>Enterprise Web Services</Administrative_Name>
+    <Administrative_Address>EnterpriseWebServices-group@uncc.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://prdidp.uncg.edu/idp/shibboleth">
+    <Organization_Name>University of North Carolina at Greensboro</Organization_Name>
+    <Home_Page>http://www.uncg.edu/</Home_Page>
+    <Technical_Name>Robert Gorrell</Technical_Name>
+    <Technical_Address>rwgorrel@uncg.edu</Technical_Address>
+    <Administrative_Name>Susan Hensley</Administrative_Name>
+    <Administrative_Address>sshensle@uncg.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sso.unt.edu/idp/shibboleth">
+    <Organization_Name>University of North Texas System</Organization_Name>
+    <Home_Page>http://untsystem.edu/</Home_Page>
+    <Technical_Name>UNT System Directory Services Team</Technical_Name>
+    <Technical_Address>shibboleth@untsystem.edu</Technical_Address>
+    <Administrative_Name>Yancey Yeargan</Administrative_Name>
+    <Administrative_Address>shibboleth@untsystem.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://adfs.unco.edu/adfs/services/trust">
+    <Organization_Name>University of Northern Colorado</Organization_Name>
+    <Home_Page>http://www.unco.edu/</Home_Page>
+    <Technical_Name>ID Management Group</Technical_Name>
+    <Technical_Address>ID.Management@unco.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shib.uni.edu/idp/shibboleth">
+    <Organization_Name>University of Northern Iowa</Organization_Name>
+    <Home_Page>http://www.uni.edu/</Home_Page>
+    <Technical_Name>Aaron Thompson</Technical_Name>
+    <Technical_Address>aaron.thompson@uni.edu</Technical_Address>
+    <Administrative_Name>Steve Moon</Administrative_Name>
+    <Administrative_Address>steve.moon@uni.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:unoh.edu">
+    <Organization_Name>University of Northwestern Ohio</Organization_Name>
+    <Home_Page>http://unoh.edu/</Home_Page>
+    <Technical_Name>Jeremy Brinkman</Technical_Name>
+    <Technical_Address>jbrinkman@unoh.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://login.nd.edu/idp/shibboleth">
+    <Organization_Name>University of Notre Dame</Organization_Name>
+    <Home_Page>http://www.nd.edu/</Home_Page>
+    <Technical_Name>OIT Identity Management</Technical_Name>
+    <Technical_Address>eds@nd.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib.ou.edu/idp/shibboleth">
+    <Organization_Name>University of Oklahoma</Organization_Name>
+    <Home_Page>http://www.ou.edu/</Home_Page>
+    <Technical_Name>Pat Amburn</Technical_Name>
+    <Technical_Address>pat-amburn@ouhsc.edu</Technical_Address>
+    <Administrative_Name>David Horton</Administrative_Name>
+    <Administrative_Address>david-horton@ouhsc.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.uoregon.edu/idp/shibboleth">
+    <Organization_Name>University of Oregon</Organization_Name>
+    <Home_Page>http://www.uoregon.edu/</Home_Page>
+    <Technical_Name>IDM Technical Support</Technical_Name>
+    <Technical_Address>idmsupport@uoregon.edu</Technical_Address>
+    <Administrative_Name>IDM Administrative Support</Administrative_Name>
+    <Administrative_Address>idmsupport@uoregon.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.pennkey.upenn.edu/idp/shibboleth">
+    <Organization_Name>University of Pennsylvania</Organization_Name>
+    <Home_Page>http://www.upenn.edu/</Home_Page>
+    <Technical_Name>UPenn WebLogin Support</Technical_Name>
+    <Technical_Address>weblogin-help@isc.upenn.edu</Technical_Address>
+    <Administrative_Name>UPenn WebLogin Support</Administrative_Name>
+    <Administrative_Address>weblogin-help@isc.upenn.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.pitt.edu/idp/shibboleth">
+    <Organization_Name>University of Pittsburgh</Organization_Name>
+    <Home_Page>http://www.pitt.edu/</Home_Page>
+    <Technical_Name>Technology Help Desk</Technical_Name>
+    <Technical_Address>helpdesk@pitt.edu</Technical_Address>
+    <Administrative_Name>Christopher Keslar</Administrative_Name>
+    <Administrative_Address>crk4@pitt.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.pugetsound.edu/idp/shibboleth">
+    <Organization_Name>University of Puget Sound</Organization_Name>
+    <Home_Page>http://www.pugetsound.edu/</Home_Page>
+    <Technical_Name>Mark Young</Technical_Name>
+    <Technical_Address>myoung@pugetsound.edu</Technical_Address>
+    <Administrative_Name>Mark Young</Administrative_Name>
+    <Administrative_Address>myoung@pugetsound.edu</Administrative_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:richmond.edu">
+    <Organization_Name>University of Richmond</Organization_Name>
+    <Home_Page>http://www.richmond.edu</Home_Page>
+    <Technical_Name>Greg Miller</Technical_Name>
+    <Technical_Address>gmiller@richmond.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shib.rio.edu/idp/shibboleth">
+    <Organization_Name>University of Rio Grande</Organization_Name>
+    <Home_Page>http://www.rio.edu/</Home_Page>
+    <Technical_Name>Rio Grande Technical Support</Technical_Name>
+    <Technical_Address>support@rio.edu</Technical_Address>
+    <Administrative_Name>Kingsley Meyer</Administrative_Name>
+    <Administrative_Address>kmeyer@rio.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib2.its.rochester.edu/idp/shibboleth">
+    <Organization_Name>University of Rochester</Organization_Name>
+    <Home_Page>http://www.rochester.edu/</Home_Page>
+    <Technical_Name>Sean Singh</Technical_Name>
+    <Technical_Address>sean.singh@rochester.edu</Technical_Address>
+    <Administrative_Name>Lisa Sprague</Administrative_Name>
+    <Administrative_Address>lisa.sprague@rochester.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:sc.edu">
+    <Organization_Name>University of South Carolina</Organization_Name>
+    <Home_Page>http://www.sc.edu/</Home_Page>
+    <Technical_Name>Bill Crayton</Technical_Name>
+    <Technical_Address>bcrayton@sc.edu</Technical_Address>
+    <Administrative_Name>Bill Crayton</Administrative_Name>
+    <Administrative_Address>bcrayton@sc.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://usd-shibboleth.usd.edu/idp/shibboleth">
+    <Organization_Name>University of South Dakota</Organization_Name>
+    <Home_Page>http://www.usd.edu/</Home_Page>
+    <Technical_Name>Kyle Kelly</Technical_Name>
+    <Technical_Address>Kyle.Kelly@usd.edu</Technical_Address>
+    <Administrative_Name>John Flack</Administrative_Name>
+    <Administrative_Address>John.Flack@usd.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:usf.edu">
+    <Organization_Name>University of South Florida</Organization_Name>
+    <Home_Page>http://www.usf.edu/</Home_Page>
+    <Technical_Name>Eric Pierce</Technical_Name>
+    <Technical_Address>epierce@usf.edu</Technical_Address>
+    <Administrative_Name>Randy Smith</Administrative_Name>
+    <Administrative_Address>rwsmith@usf.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:usc.edu">
+    <Organization_Name>University of Southern California</Organization_Name>
+    <Home_Page>http://www.usc.edu/</Home_Page>
+    <Technical_Name>Shibboleth Admin</Technical_Name>
+    <Technical_Address>shib-admin-l@usc.edu</Technical_Address>
+    <Administrative_Name>Asbed Bedrossian</Administrative_Name>
+    <Administrative_Address>asbed@usc.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.utk.edu/idp/shibboleth">
+    <Organization_Name>University of Tennessee</Organization_Name>
+    <Home_Page>http://www.utk.edu</Home_Page>
+    <Technical_Name>Will Richardson</Technical_Name>
+    <Technical_Address>wkrich@utk.edu</Technical_Address>
+    <Administrative_Name>Melissa Wauford</Administrative_Name>
+    <Administrative_Address>mwauford@utk.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.uta.edu/idp/shibboleth">
+    <Organization_Name>University of Texas at Arlington</Organization_Name>
+    <Home_Page>http://www.uta.edu/</Home_Page>
+    <Technical_Name>UTA Shibboleth Administrators</Technical_Name>
+    <Technical_Address>shibboleth-admin@uta.edu</Technical_Address>
+    <Administrative_Name>Jason Hardy</Administrative_Name>
+    <Administrative_Address>hardy@uta.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.its.utexas.edu/idp/shibboleth">
+    <Organization_Name>University of Texas at Austin</Organization_Name>
+    <Home_Page>http://www.utexas.edu/</Home_Page>
+    <Technical_Name>U.T. Austin Shibboleth Team</Technical_Name>
+    <Technical_Address>shibboleth@utlists.utexas.edu</Technical_Address>
+    <Administrative_Name>U.T. Austin Shibboleth Team</Administrative_Name>
+    <Administrative_Address>shibboleth@utlists.utexas.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib.utb.edu/idp/shibboleth">
+    <Organization_Name>University of Texas At Brownsville</Organization_Name>
+    <Home_Page>http://www.utb.edu</Home_Page>
+    <Technical_Name>Hermilo Deluze</Technical_Name>
+    <Technical_Address>Hermilo.Deluze1@utb.edu</Technical_Address>
+    <Administrative_Name>Abel De La Garza</Administrative_Name>
+    <Administrative_Address>Abel.DeLaGarza@utb.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.utdallas.edu/idp/shibboleth">
+    <Organization_Name>University of Texas at Dallas</Organization_Name>
+    <Home_Page>http://www.utdallas.edu/</Home_Page>
+    <Technical_Name>UT Dallas Info Security</Technical_Name>
+    <Technical_Address>infosecurity@utdallas.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib2.utep.edu/idp/shibboleth">
+    <Organization_Name>University of Texas at El Paso</Organization_Name>
+    <Home_Page>http://www.utep.edu/</Home_Page>
+    <Technical_Name>Information Security Office</Technical_Name>
+    <Technical_Address>security@utep.edu</Technical_Address>
+    <Administrative_Name>Gerard Cochrane</Administrative_Name>
+    <Administrative_Address>gdcochrane@utep.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://sso.it.utsa.edu/idp/shibboleth">
+    <Organization_Name>University of Texas at San Antonio</Organization_Name>
+    <Home_Page>http://www.utsa.edu/</Home_Page>
+    <Technical_Name>Mark McCoy</Technical_Name>
+    <Technical_Address>mark.mccoy@utsa.edu</Technical_Address>
+    <Administrative_Name>Anthony Espinoza</Administrative_Name>
+    <Administrative_Address>anthony.espinoza@utsa.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.uttyler.edu/idp/shibboleth">
+    <Organization_Name>University of Texas At Tyler</Organization_Name>
+    <Home_Page>http://www.uttyler.edu/</Home_Page>
+  </idp>
+  <idp entityID="https://shib-idp2.uth.tmc.edu/idp/shibboleth">
+    <Organization_Name>University of Texas Health Science Center At Houston</Organization_Name>
+    <Home_Page>http://www.uth.tmc.edu/</Home_Page>
+    <Technical_Name>Fagon Istre</Technical_Name>
+    <Technical_Address>Fagon.M.Istre@uth.tmc.edu</Technical_Address>
+    <Administrative_Name>IdM Support</Administrative_Name>
+    <Administrative_Address>idm-support@utsystem.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib.uthscsa.edu/idp/shibboleth">
+    <Organization_Name>University of Texas Health Science Center At San Antonio</Organization_Name>
+    <Home_Page>http://www.uthscsa.edu</Home_Page>
+    <Technical_Name>Brian Purcell</Technical_Name>
+    <Technical_Address>purcell@uthscsa.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://infp-shib-01.uthct.edu/idp/shibboleth">
+    <Organization_Name>University of Texas Health Science Center At Tyler</Organization_Name>
+    <Home_Page>http://www.uthct.edu/</Home_Page>
+    <Technical_Name>David Nettleton</Technical_Name>
+    <Technical_Address>david.nettleton@uthct.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shib.mdanderson.org/idp/shibboleth">
+    <Organization_Name>University of Texas M.D. Anderson Cancer Center</Organization_Name>
+    <Home_Page>http://www.mdanderson.org/</Home_Page>
+    <Technical_Name>MDACC IdM Support</Technical_Name>
+    <Technical_Address>idm@mdanderson.org</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.utmb.edu/idp/shibboleth">
+    <Organization_Name>University of Texas Medical Branch At Galveston</Organization_Name>
+    <Home_Page>http://www.utmb.edu</Home_Page>
+    <Technical_Name>Rich Thomas</Technical_Name>
+    <Technical_Address>rcthomas@utmb.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shibb.utpb.edu/idp/shibboleth">
+    <Organization_Name>University of Texas of the Permian Basin</Organization_Name>
+    <Home_Page>http://www.utpb.edu/</Home_Page>
+    <Technical_Name>SSO Support</Technical_Name>
+    <Technical_Address>sso_support@utpb.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.utrgv.edu/idp/shibboleth">
+    <Organization_Name>University of Texas Rio Grande Valley</Organization_Name>
+    <Home_Page>http://www.utrgv.edu</Home_Page>
+    <Technical_Name>William Ewing</Technical_Name>
+    <Technical_Address>bewing@utsystem.edu</Technical_Address>
+    <Administrative_Name>William Ewing</Administrative_Name>
+    <Administrative_Address>bewing@utsystem.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib2.swmed.edu/idp/shibboleth">
+    <Organization_Name>University of Texas Southwestern Medical Center at Dallas</Organization_Name>
+    <Home_Page>http://www3.utsouthwestern.edu/</Home_Page>
+    <Technical_Name>Peter Smith</Technical_Name>
+    <Technical_Address>Peter.Smith@UTSouthwestern.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.utsystem.edu/idp/shibboleth">
+    <Organization_Name>University of Texas System</Organization_Name>
+    <Home_Page>http://www.utsystem.edu/</Home_Page>
+    <Technical_Name>Network Admin</Technical_Name>
+    <Technical_Address>netadmin@utsystem.edu</Technical_Address>
+    <Administrative_Name>Paul Caskey</Administrative_Name>
+    <Administrative_Address>pcaskey@utsystem.edu</Administrative_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp1.utpa.edu/idp/shibboleth">
+    <Organization_Name>University of Texas-Pan American</Organization_Name>
+    <Home_Page>http://www.utpa.edu/</Home_Page>
+    <Technical_Name>Jaime Nunez</Technical_Name>
+    <Technical_Address>jnunez@utpa.edu</Technical_Address>
+    <Administrative_Name>Frank Zecca</Administrative_Name>
+    <Administrative_Address>zecca@utpa.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.udc.edu/idp/shibboleth">
+    <Organization_Name>University of the District of Columbia</Organization_Name>
+    <Home_Page>http://www.udc.edu</Home_Page>
+    <Technical_Name>Hakeem Fahm</Technical_Name>
+    <Technical_Address>hfahm@udc.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idp.utulsa.edu/idp/shibboleth">
+    <Organization_Name>University of Tulsa</Organization_Name>
+    <Home_Page>http://www.utulsa.edu/</Home_Page>
+    <Technical_Name>University of Tulsa Web Services</Technical_Name>
+    <Technical_Address>cloud-services@utulsa.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:utah.edu">
+    <Organization_Name>University of Utah</Organization_Name>
+    <Home_Page>http://www.utah.edu/</Home_Page>
+    <Technical_Name>Robert Roll</Technical_Name>
+    <Technical_Address>Robert.Roll@Utah.Edu</Technical_Address>
+    <Administrative_Name>Caprice Post</Administrative_Name>
+    <Administrative_Address>Caprice.Post@Utah.Edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.uvm.edu/idp/shibboleth">
+    <Organization_Name>University of Vermont</Organization_Name>
+    <Home_Page>http://www.uvm.edu/</Home_Page>
+    <Technical_Name>Systems Architecture and Administration</Technical_Name>
+    <Technical_Address>saa@uvm.edu</Technical_Address>
+    <Administrative_Name>Security Officer</Administrative_Name>
+    <Administrative_Address>security@uvm.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:virginia.edu">
+    <Organization_Name>University of Virginia</Organization_Name>
+    <Home_Page>http://www.virginia.edu/</Home_Page>
+    <Technical_Name>Hamp Carruth</Technical_Name>
+    <Technical_Address>ehc@Virginia.EDU</Technical_Address>
+    <Administrative_Name>UVa InCommon Admin</Administrative_Name>
+    <Administrative_Address>incommon-admin@virginia.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="urn:mace:incommon:washington.edu">
+    <Organization_Name>University of Washington</Organization_Name>
+    <Home_Page>http://www.washington.edu/</Home_Page>
+    <Technical_Name>IAM Technical Support</Technical_Name>
+    <Technical_Address>iam-support@uw.edu</Technical_Address>
+    <Administrative_Name>IAM Administrative Support</Administrative_Name>
+    <Administrative_Address>iam-support@uw.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.uwf.edu/idp/shibboleth">
+    <Organization_Name>University of West Florida</Organization_Name>
+    <Home_Page>http://uwf.edu/</Home_Page>
+    <Technical_Name>Justin Andrews</Technical_Name>
+    <Technical_Address>jandrews@uwf.edu</Technical_Address>
+    <Administrative_Name>Melanie Haveard</Administrative_Name>
+    <Administrative_Address>mhaveard@uwf.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://login.uwec.edu/idp/shibboleth">
+    <Organization_Name>University of Wisconsin - Eau Claire</Organization_Name>
+    <Home_Page>http://www.uwec.edu/</Home_Page>
+    <Technical_Name>Eric R. Olson</Technical_Name>
+    <Technical_Address>olsoner@uwec.edu</Technical_Address>
+    <Administrative_Name>Eric J. Stevens</Administrative_Name>
+    <Administrative_Address>stevenej@uwec.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://uwgb.edu/idp">
+    <Organization_Name>University of Wisconsin - Green Bay</Organization_Name>
+    <Home_Page>http://www.uwgb.edu/</Home_Page>
+    <Technical_Name>Patrick Goggins</Technical_Name>
+    <Technical_Address>gogginsp@uwgb.edu</Technical_Address>
+    <Administrative_Name>David Kieper</Administrative_Name>
+    <Administrative_Address>kieperd@uwgb.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib1.uwplatt.edu/idp/shibboleth">
+    <Organization_Name>University of Wisconsin - Platteville</Organization_Name>
+    <Home_Page>http://www.uwplatt.edu/</Home_Page>
+    <Technical_Name>Mike Perkins</Technical_Name>
+    <Technical_Address>perkinsm@uwplatt.edu</Technical_Address>
+    <Administrative_Name>Mike Sherer</Administrative_Name>
+    <Administrative_Address>sherer@uwplatt.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://smidp.uwstout.edu/idp/shibboleth">
+    <Organization_Name>University of Wisconsin - Stout</Organization_Name>
+    <Home_Page>http://www.uwstout.edu/</Home_Page>
+    <Technical_Name>Darren Hoyland</Technical_Name>
+    <Technical_Address>tnst@uwstout.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:uww.edu">
+    <Organization_Name>University of Wisconsin - Whitewater</Organization_Name>
+    <Home_Page>http://www.uww.edu/</Home_Page>
+    <Technical_Name>Nicholas A Ciesinski</Technical_Name>
+    <Technical_Address>ciesinsn@uww.edu</Technical_Address>
+    <Administrative_Name>Nicholas A Ciesinski</Administrative_Name>
+    <Administrative_Address>ciesinsn@uww.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.uwex.uwc.edu/idp">
+    <Organization_Name>University of Wisconsin Colleges and Extension</Organization_Name>
+    <Home_Page>http://www.uwex.uwc.edu/</Home_Page>
+    <Technical_Name>Jeff Matthias</Technical_Name>
+    <Technical_Address>Jeff.Matthias@uwex.uwc.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://netid.uwosh.edu/idp/shibboleth">
+    <Organization_Name>University of Wisconsin Oshkosh</Organization_Name>
+    <Home_Page>http://www.uwosh.edu/</Home_Page>
+  </idp>
+  <idp entityID="https://login.wisc.edu/idp/shibboleth">
+    <Organization_Name>University of Wisconsin-Madison</Organization_Name>
+    <Home_Page>http://www.wisc.edu/</Home_Page>
+    <Technical_Name>NetID Login Service</Technical_Name>
+    <Technical_Address>tech@login.wisc.edu</Technical_Address>
+    <Administrative_Name>Chris Holsman</Administrative_Name>
+    <Administrative_Address>cholsman@doit.wisc.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.uwm.edu/idp/shibboleth">
+    <Organization_Name>University of Wisconsin-Milwaukee</Organization_Name>
+    <Home_Page>http://www.uwm.edu/</Home_Page>
+    <Technical_Name>Mat Houser</Technical_Name>
+    <Technical_Address>mhouser@uwm.edu</Technical_Address>
+    <Administrative_Name>Chris Spadanuda</Administrative_Name>
+    <Administrative_Address>cspada@uwm.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://falconidp.uwrf.edu/idp/shibboleth">
+    <Organization_Name>University of Wisconsin-River Falls</Organization_Name>
+    <Home_Page>http://www.uwrf.edu/</Home_Page>
+    <Technical_Name>Robert Rust</Technical_Name>
+    <Technical_Address>dots@uwrf.edu</Technical_Address>
+    <Administrative_Name>Jason Winget</Administrative_Name>
+    <Administrative_Address>dots@uwrf.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.uwyo.edu/idp/shibboleth">
+    <Organization_Name>University of Wyoming</Organization_Name>
+    <Home_Page>http://www.uwyo.edu/</Home_Page>
+    <Technical_Name>Tom Wilson</Technical_Name>
+    <Technical_Address>thomas.wilson@uwyo.edu</Technical_Address>
+    <Administrative_Name>Robert Morrison</Administrative_Name>
+    <Administrative_Address>Robert.Morrison@uwyo.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shibboleth.usu.edu/idp/shibboleth">
+    <Organization_Name>Utah State University</Organization_Name>
+    <Home_Page>http://www.usu.edu/</Home_Page>
+    <Technical_Name>USU IT Technical</Technical_Name>
+    <Technical_Address>tech.contact@usu.edu</Technical_Address>
+    <Administrative_Name>USU IT Administrative</Administrative_Name>
+    <Administrative_Address>admin.contact@usu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://shib.uvu.edu/idp/shibboleth">
+    <Organization_Name>Utah Valley University</Organization_Name>
+    <Home_Page>http://www.uvu.edu</Home_Page>
+    <Technical_Name>Daniel Hutchison</Technical_Name>
+    <Technical_Address>daniel.hutchison@uvu.edu</Technical_Address>
+    <Administrative_Name>Ray Walker</Administrative_Name>
+    <Administrative_Address>ray.walker@uvu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://vushib-idp.vanderbilt.edu/idp/Shibboleth">
+    <Organization_Name>Vanderbilt University</Organization_Name>
+    <Home_Page>http://www.vanderbilt.edu/</Home_Page>
+    <Technical_Name>Lee Brewer</Technical_Name>
+    <Technical_Address>Lee.Brewer@vanderbilt.edu</Technical_Address>
+    <Administrative_Name>VUIT IDEV</Administrative_Name>
+    <Administrative_Address>mis_idis@list.vanderbilt.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://myid.vsc.edu/idp/shibboleth">
+    <Organization_Name>Vermont State Colleges</Organization_Name>
+    <Home_Page>http://www.vsc.edu/</Home_Page>
+    <Technical_Name>John Schrader</Technical_Name>
+    <Technical_Address>john.schrader@vsc.edu</Technical_Address>
+    <Administrative_Name>Richard Blood</Administrative_Name>
+    <Administrative_Address>rick.blood@vsc.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.vcu.edu/idp/shibboleth">
+    <Organization_Name>Virginia Commonwealth University</Organization_Name>
+    <Home_Page>http://www.vcu.edu/</Home_Page>
+    <Technical_Name>L T Harris</Technical_Name>
+    <Technical_Address>tsmiddleware@vcu.edu</Technical_Address>
+  </idp>
+  <idp entityID="http://adfs.directory.vccs.edu/adfs/services/trust">
+    <Organization_Name>Virginia Community College System</Organization_Name>
+    <Home_Page>http://www.vccs.edu/</Home_Page>
+    <Technical_Name>Matthew Lawson</Technical_Name>
+    <Technical_Address>mlawson@vccs.edu</Technical_Address>
+  </idp>
+  <idp entityID="urn:mace:incommon:vt.edu">
+    <Organization_Name>Virginia Polytechnic Institute and State University</Organization_Name>
+    <Home_Page>http://www.vt.edu/</Home_Page>
+    <Technical_Name>Marvin Addison</Technical_Name>
+    <Technical_Address>shib-admin@vt.edu</Technical_Address>
+    <Administrative_Name>Mary Dunker</Administrative_Name>
+    <Administrative_Address>dunker@vt.edu</Administrative_Address>
+    <Silver>1</Silver>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://vsu-pbslive-01v.vsu.edu/idp/shibboleth">
+    <Organization_Name>Virginia State University</Organization_Name>
+    <Home_Page>http://www.vsu.edu/pages/1.asp</Home_Page>
+    <Technical_Name>Robert Schnettler</Technical_Name>
+    <Technical_Address>rschnettler@vsu.edu</Technical_Address>
+    <Administrative_Name>Tessa Perry</Administrative_Name>
+    <Administrative_Address>tperry@vsu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://webauth.wfunet.wfu.edu/saml/saml2/idp/metadata.php">
+    <Organization_Name>Wake Forest University</Organization_Name>
+    <Home_Page>http://www.wfu.edu/</Home_Page>
+    <Technical_Name>IS SAML Admin</Technical_Name>
+    <Technical_Address>is-saml-admin@wfu.edu</Technical_Address>
+    <Administrative_Name>IS SAML Admin</Administrative_Name>
+    <Administrative_Address>is-saml-admin@wfu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://incommon.waketech.edu/idp/shibboleth">
+    <Organization_Name>Wake Tech Community College</Organization_Name>
+    <Home_Page>http://www.waketech.edu/</Home_Page>
+  </idp>
+  <idp entityID="https://shibidp.wsu.edu/idp/shibboleth">
+    <Organization_Name>Washington State University</Organization_Name>
+    <Home_Page>http://www.wsu.edu/</Home_Page>
+    <Technical_Name>IAM Team</Technical_Name>
+    <Technical_Address>its.iam@wsu.edu</Technical_Address>
+    <Administrative_Name>IAM Team</Administrative_Name>
+    <Administrative_Address>its.iam@wsu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://login.wustl.edu/idp/shibboleth">
+    <Organization_Name>Washington University in St. Louis</Organization_Name>
+    <Home_Page>http://www.wustl.edu/</Home_Page>
+    <Technical_Name>Ken Koch</Technical_Name>
+    <Technical_Address>Ken.Koch@wustl.edu</Technical_Address>
+    <Administrative_Name>Daniel Zweifel</Administrative_Name>
+    <Administrative_Address>danz@wustl.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.weber.edu/idp">
+    <Organization_Name>Weber State University</Organization_Name>
+    <Home_Page>http://www.weber.edu/</Home_Page>
+    <Technical_Name>Systems Admin Services</Technical_Name>
+    <Technical_Address>sysadmin@weber.edu</Technical_Address>
+    <Administrative_Name>Jonathan Karras</Administrative_Name>
+    <Administrative_Address>jonathankarras@weber.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib.med.cornell.edu/idp/shibboleth">
+    <Organization_Name>Weill Cornell Medical College</Organization_Name>
+    <Home_Page>http://www.med.cornell.edu/</Home_Page>
+    <Technical_Name>Tom McMahon</Technical_Name>
+    <Technical_Address>tom2010@med.cornell.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.qatar-weill.cornell.edu/idp/shibboleth">
+    <Organization_Name>Weill Cornell Medical College in Qatar</Organization_Name>
+    <Home_Page>http://www.qatar-med.cornell.edu/</Home_Page>
+    <Technical_Name>Sam Agnew</Technical_Name>
+    <Technical_Address>saa2012@qatar-med.cornell.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shib.wit.edu/idp/shibboleth">
+    <Organization_Name>Wentworth Institute of Technology</Organization_Name>
+    <Home_Page>http://www.wit.edu/</Home_Page>
+    <Technical_Name>Justin Sabourin</Technical_Name>
+    <Technical_Address>sabourinj@wit.edu</Technical_Address>
+    <Administrative_Name>Justin Ragsdale</Administrative_Name>
+    <Administrative_Address>ragsdalej@wit.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibboleth.wesleyan.edu/idp/shibboleth">
+    <Organization_Name>Wesleyan University</Organization_Name>
+    <Home_Page>http://www.wesleyan.edu/</Home_Page>
+    <Technical_Name>Unix Systems</Technical_Name>
+    <Technical_Address>unix_admins@wesleyan.edu</Technical_Address>
+    <Administrative_Name>Karen Waren</Administrative_Name>
+    <Administrative_Address>its@wesleyan.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibidp.wcupa.edu/idp/shibboleth">
+    <Organization_Name>West Chester University of Pennsylvania</Organization_Name>
+    <Home_Page>http://wcupa.edu/</Home_Page>
+    <Technical_Name>Rashed Kabir</Technical_Name>
+    <Technical_Address>rkabir@wcupa.edu</Technical_Address>
+    <Administrative_Name>Frank Piscitello</Administrative_Name>
+    <Administrative_Address>fpiscitello@wcupa.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.wvu.edu/idp/shibboleth">
+    <Organization_Name>West Virginia University</Organization_Name>
+    <Home_Page>http://www.wvu.edu/</Home_Page>
+    <Technical_Name>Christopher Boyer</Technical_Name>
+    <Technical_Address>ckboyer@mail.wvu.edu</Technical_Address>
+    <Administrative_Name>Sara Bishop</Administrative_Name>
+    <Administrative_Address>sabishop@mail.wvu.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://judge.wcu.edu/idp/shibboleth">
+    <Organization_Name>Western Carolina University</Organization_Name>
+    <Home_Page>http://www.wcu.edu/</Home_Page>
+    <Technical_Name>Joshua Bright</Technical_Name>
+    <Technical_Address>jbright@wcu.edu</Technical_Address>
+    <Administrative_Name>Joshua Bright</Administrative_Name>
+    <Administrative_Address>jbright@wcu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.wmich.edu/idp/shibboleth">
+    <Organization_Name>Western Michigan University</Organization_Name>
+    <Home_Page>http://www.wmich.edu/</Home_Page>
+    <Technical_Name>WMU OIT Shibboleth Authentication Support</Technical_Name>
+    <Technical_Address>oit-shibadmin@wmich.edu</Technical_Address>
+    <Administrative_Name>WMU OIT Shibboleth Authentication Support</Administrative_Name>
+    <Administrative_Address>oit-shibadmin@wmich.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://sidp.wwu.edu/idp/shibboleth">
+    <Organization_Name>Western Washington University</Organization_Name>
+    <Home_Page>http://www.wwu.edu/</Home_Page>
+    <Technical_Name>Tim McLaughlin</Technical_Name>
+    <Technical_Address>tim.mclaughlin@wwu.edu</Technical_Address>
+    <Administrative_Name>Linc Nesheim</Administrative_Name>
+    <Administrative_Address>linc.nesheim@wwu.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib.wheatonma.edu/idp/shibboleth">
+    <Organization_Name>Wheaton College (MA)</Organization_Name>
+    <Home_Page>http://www.wheatoncollege.edu/</Home_Page>
+    <Technical_Name>Brian Gibson</Technical_Name>
+    <Technical_Address>incommon@wheatoncollege.edu</Technical_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.wpunj.edu/idp/shibboleth">
+    <Organization_Name>William Paterson University</Organization_Name>
+    <Home_Page>http://www.wpunj.edu/</Home_Page>
+    <Technical_Name>Technical Support</Technical_Name>
+    <Technical_Address>shibb_tech@wpunj.edu</Technical_Address>
+    <Administrative_Name>Administrative Support</Administrative_Name>
+    <Administrative_Address>shibb_admin@wpunj.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://idp.williams.edu/idp/shibboleth">
+    <Organization_Name>Williams College</Organization_Name>
+    <Home_Page>http://www.williams.edu/</Home_Page>
+    <Technical_Name>Ashley Frost</Technical_Name>
+    <Technical_Address>afrost@williams.edu</Technical_Address>
+    <Administrative_Name>Ashley Frost</Administrative_Name>
+    <Administrative_Address>afrost@williams.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shibidp.whoi.edu/idp/shibboleth">
+    <Organization_Name>Woods Hole Oceanographic Institution</Organization_Name>
+    <Home_Page>http://www.whoi.edu/</Home_Page>
+    <Technical_Name>Greg Pike</Technical_Name>
+    <Technical_Address>gpike@whoi.edu</Technical_Address>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://idp.wpi.edu/idp/shibboleth">
+    <Organization_Name>Worcester Polytechnic Institute</Organization_Name>
+    <Home_Page>http://www.wpi.edu/</Home_Page>
+    <Technical_Name>Jesse Banning</Technical_Name>
+    <Technical_Address>jbanning@wpi.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://auth.yale.edu/idp/shibboleth">
+    <Organization_Name>Yale University</Organization_Name>
+    <Home_Page>http://www.yale.edu/</Home_Page>
+    <Technical_Name>Identity Management Team</Technical_Name>
+    <Technical_Address>idm.techsupport@panlists.yale.edu</Technical_Address>
+    <Administrative_Name>Identity Management Team</Administrative_Name>
+    <Administrative_Address>idm.techsupport@panlists.yale.edu</Administrative_Address>
+    <RandS>1</RandS>
+    <Whitelisted>1</Whitelisted>
+  </idp>
+  <idp entityID="https://qagateway.capella.edu/FIM/sps/CAPLA_SAML2_IDP/saml20">
+    <Organization_Name>ztest_Capella University</Organization_Name>
+    <Home_Page>http://www.capella.edu/</Home_Page>
+    <Technical_Name>Angie Shand</Technical_Name>
+    <Technical_Address>Angie.Shand@capella.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://shibboleth-dev-v.musc.edu/shibboleth-idp">
+    <Organization_Name>ztest_Medical University of South Carolina</Organization_Name>
+    <Home_Page>http://www.musc.edu/</Home_Page>
+    <Technical_Name>Richard Gadsden</Technical_Name>
+    <Technical_Address>gadsden@musc.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://idpStaging.miamioh.edu/idp/shibboleth">
+    <Organization_Name>zTEST_MUOhioIdP</Organization_Name>
+    <Home_Page>http://www.muohio.edu/</Home_Page>
+    <Technical_Name>Don Kidd</Technical_Name>
+    <Technical_Address>dkidd@miamioh.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://cas.cgcent.miami.edu/idp/shibboleth">
+    <Organization_Name>zTest_University of Miami</Organization_Name>
+    <Home_Page>http://www.miami.edu/</Home_Page>
+    <Technical_Name>Anil Kadiyala</Technical_Name>
+    <Technical_Address>akadiyala@miami.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://passport-dev.pitt.edu/idp/shibboleth">
+    <Organization_Name>zTest_University of Pittsburgh Test IdP</Organization_Name>
+    <Home_Page>http://www.pitt.edu/</Home_Page>
+    <Technical_Name>Anthony Jones</Technical_Name>
+    <Technical_Address>abj@pitt.edu</Technical_Address>
+    <Administrative_Name>Anthony Jones</Administrative_Name>
+    <Administrative_Address>abj@pitt.edu</Administrative_Address>
+  </idp>
+  <idp entityID="https://shib-pprd.middleware.vt.edu">
+    <Organization_Name>zTEST_VTIdP</Organization_Name>
+    <Home_Page>http://www.vt.edu/</Home_Page>
+    <Technical_Name>Marvin Addison</Technical_Name>
+    <Technical_Address>serac@vt.edu</Technical_Address>
+  </idp>
+  <idp entityID="https://logintest.wustl.edu/idp/shibboleth">
+    <Organization_Name>zTest_Washington University in St. Louis</Organization_Name>
+    <Home_Page>http://www.wustl.edu/</Home_Page>
+    <Technical_Name>Ken Koch</Technical_Name>
+    <Technical_Address>ken.koch@wustl.edu</Technical_Address>
+    <Administrative_Name>Daniel Zweifel</Administrative_Name>
+    <Administrative_Address>DanZ@wustl.edu</Administrative_Address>
+  </idp>
+</idps>

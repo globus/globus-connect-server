@@ -17,7 +17,7 @@
 from distutils.core import setup
 import os
 
-version = "4.0.32"
+version = "4.0.33"
 
 versionfile_path = os.path.join("globus","connect","server", "version")
 oldversion = None
@@ -53,7 +53,8 @@ setup(name = 'globus_connect_server',
         'globus.connect.security': [
                 '*.pem',
                 '*.signing_policy',
-                'cilogon-crl-fetch'],
+                'cilogon-crl-fetch',
+                'cilogon-idplist.xml'],
         'globus.connect.server': [
                 'mapapp-template',
                 'version'
