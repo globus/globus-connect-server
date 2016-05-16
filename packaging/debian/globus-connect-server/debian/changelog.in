@@ -1,3 +1,9 @@
+globus-connect-server (4.0.35-1+gt6.@distro@) @distro@; urgency=low
+
+  * Fix IdP list download 
+
+ -- Globus Toolkit <support@globus.org>  Mon, 16 May 2016 16:54:50 -0500
+
 globus-connect-server (4.0.34-1+gt6.@distro@) @distro@; urgency=low
 
   * Add OS/Arch to usage stats

@@ -418,7 +418,7 @@ class ConfigFile(configparser.ConfigParser):
                 # if not found or valid, check current idp list
                 try:
                     r = urllib2.urlopen(IDPLIST_XML_URL)
-                    cilogon_xml = etree.parse(r.read())
+                    idplist_xml = etree.fromstring(r.read())
                     updated = True
                 except:
                     break

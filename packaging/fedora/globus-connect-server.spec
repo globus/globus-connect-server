@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.34
+Version:        4.0.35
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon May 16 2016 Globus Toolkit <support@globus.org> 4.0.35-1
+- Fix IdP list download
+
 * Mon May 16 2016 Globus Toolkit <support@globus.org> 4.0.34-1
 - Add OS/Arch to usage stats
 
