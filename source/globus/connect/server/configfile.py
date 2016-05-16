@@ -20,7 +20,11 @@ import os
 import re
 import pkgutil
 import sys
-import requests
+try:
+	import urllib2
+except:
+	import urllib.request as urllib2
+
 import xml.etree.ElementTree as etree
 try:
     import configparser
@@ -413,8 +417,8 @@ class ConfigFile(configparser.ConfigParser):
 
                 # if not found or valid, check current idp list
                 try:
-                    r = requests.get(IDPLIST_XML_URL, stream=True)
-                    cilogon_xml = etree.parse(r.raw)
+                    r = urllib2.urlopen(IDPLIST_XML_URL)
+                    cilogon_xml = etree.parse(r.read())
                     updated = True
                 except:
                     break

@@ -141,12 +141,26 @@ class IO(gcmu.GCMU):
 
         conf_file = file(conf_file_name, "w")
         try:
+            dist = platform.dist()
+            arch = platform.architecture()
+            dist_string_parts = []
+            if dist[0] != "":
+                dist_string_parts.append(dist[0])
+            if dist[1] != "":
+                dist_string_parts.append(dist[1])
+            if arch[0] != "":
+                dist_string_parts.append(arch[0])
+            dist_string = "-".join(dist_string_parts)
             version = pkgutil.get_data(
                 "globus.connect.server",
                 "version")
             if version:
-                conf_file.write("version_tag GCS-%s" % (version))
-                conf_file.write("usage_stats_id GCS-%s" % (version))
+                version = version.strip()
+                conf_file.write("version_tag GCS-%s\n" % (version))
+                if dist_string != "":
+                    conf_file.write("usage_stats_id GCS-%s+%s\n" % (version, dist_string))
+                else:
+                    conf_file.write("usage_stats_id GCS-%s\n" % (version))
             if ":" in server:
                 port = int(server.split(":")[1])
                 conf_file.write("port %d\n" % port)
