@@ -1,3 +1,9 @@
+globus-connect-server (4.0.36-1+gt6.@distro@) @distro@; urgency=low
+
+  * Fix IdP verification on older versions of python
+
+ -- Globus Toolkit <support@globus.org>  Thu, 26 May 2016 13:20:32 -0500
+
 globus-connect-server (4.0.35-1+gt6.@distro@) @distro@; urgency=low
 
   * Fix IdP list download 

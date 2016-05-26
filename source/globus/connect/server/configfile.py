@@ -401,17 +401,20 @@ class ConfigFile(configparser.ConfigParser):
                 'globus.connect.security', IDPLIST_XML_FILE)
             idplist_xml = etree.fromstring(idpdata)
             while True:
-                idp_xml = idplist_xml.find('./idp[Organization_Name="%s"]'
-                    % cilogon_idp)
-                if idp_xml is not None:
-                    found = True
-                    rands = idp_xml.find('RandS')
-                    if rands is not None and rands.text == '1':
-                        valid = True
-                    else:
-                        whitelist = idp_xml.find('Whitelisted')
-                        if whitelist is not None and whitelist.text == '1':
+                idps = idplist_xml.findall('idp')
+                for idp in idps:
+                    org = idp.find('Organization_Name')
+                    if org is not None and org.text == cilogon_idp:
+                        found = True
+                        rands = idp.find('RandS')
+                        if rands is not None and rands.text == '1':
                             valid = True
+                        else:
+                            wl = idp.find('Whitelisted')
+                            if wl is not None and wl.text == '1':
+                                valid = True
+                        break
+
                 if valid or updated:
                     break
 

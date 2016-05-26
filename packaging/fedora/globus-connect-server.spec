@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.35
+Version:        4.0.36
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -211,6 +211,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Thu May 26 2016 Globus Toolkit <support@globus.org> 4.0.36-1
+- Fix IdP verification on older versions of python
+
 * Mon May 16 2016 Globus Toolkit <support@globus.org> 4.0.35-1
 - Fix IdP list download
 
