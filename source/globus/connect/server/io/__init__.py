@@ -368,6 +368,7 @@ server
             logrotate_file.write("/var/log/gridftp.log {\n")
             logrotate_file.write("   rotate 4\n")
             logrotate_file.write("   weekly\n")
+            logrotate_file.write("   missingok\n")
             logrotate_file.write("   compress\n")
             logrotate_file.write("   create 644 root root\n")
             logrotate_file.write("   postrotate\n")
