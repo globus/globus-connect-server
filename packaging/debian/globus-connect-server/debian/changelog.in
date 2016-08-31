@@ -1,4 +1,4 @@
-globus-connect-server (4.0.36-1+gt6.@distro@) @distro@; urgency=low
+globus-connect-server (4.0.37-1+gt6.@distro@) @distro@; urgency=low
 
   * Don't change From "Globus Id" to "Globus Username" in prompt
 
