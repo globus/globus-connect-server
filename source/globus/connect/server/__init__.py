@@ -219,7 +219,7 @@ def get_api(conf):
                 raise e
             time.sleep(30)
         except GOCredentialsError as e:
-            print("Globus Username: ", end=' ')
+            print("Globus Id: ", end=' ')
             username = sys.stdin.readline().strip()
             password = getpass.getpass("Globus Password: ")
 

@@ -1,5 +1,11 @@
 globus-connect-server (4.0.36-1+gt6.@distro@) @distro@; urgency=low
 
+  * Don't change From "Globus Id" to "Globus Username" in prompt
+
+ -- Globus Toolkit <support@globus.org>  Tue, 30 Aug 2016 12:58:59 -0400
+
+globus-connect-server (4.0.36-1+gt6.@distro@) @distro@; urgency=low
+
   * Fix IdP verification on older versions of python
 
  -- Globus Toolkit <support@globus.org>  Thu, 26 May 2016 13:20:32 -0500

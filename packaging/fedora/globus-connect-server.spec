@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.36
+Version:        4.0.37
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -12,12 +12,18 @@ URL:            http://www.globus.org/
 Source:         %{_name}-%{version}.tar.gz
 Source1:        %{transferapi_name}-%{transferapi_version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+%if %{?suse_version}%{!?suse_version:0} < 1315
 BuildArch:      noarch
+%endif
 
 %if "%{?rhel}" == "5"
 %global python  python26
 %else
 %global python  python
+%endif
+
+%if %{?suse_version}%{!?suse_version:0} >= 1315
+BuildRequires:  fdupes
 %endif
 
 BuildRequires:  %{python}
@@ -141,6 +147,11 @@ cd ..
 
 test -x /usr/lib/rpm/brp-python-bytecompile && \
     /usr/lib/rpm/brp-python-bytecompile "${python_exe}"
+%if %{?suse_version}%{!?suse_version:0} >= 1315
+%fdupes $RPM_BUILD_ROOT/usr/lib/python2.7/site-packages/globus
+%fdupes $RPM_BUILD_ROOT%{_libdir}/globus-connect-server/
+%endif
+    
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -211,6 +222,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Tue Aug 30 2016 Globus Toolkit <support@globus.org> 4.0.37-1
+- Don't change From "Globus Id" to "Globus Username" in prompt
+
 * Thu May 26 2016 Globus Toolkit <support@globus.org> 4.0.36-1
 - Fix IdP verification on older versions of python
 
