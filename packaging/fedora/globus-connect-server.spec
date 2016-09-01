@@ -1,6 +1,6 @@
 Name:           globus-connect-server
 Version:        4.0.37
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
 
@@ -44,7 +44,6 @@ Globus Connect Server
 
 %package common
 Requires:	%{python}
-Requires:       globus-openssl-module
 Obsoletes:      gcmu
 Obsoletes:      globus-connect-multiuser
 Obsoletes:      globus-connect-multiuser-common
@@ -98,7 +97,6 @@ Requires:       globus-callout >= 2.4
 Requires:       globus-gridmap-verify-myproxy-callout >= 1.2
 Requires:       globus-gridmap-eppn-callout >= 0.4
 %endif
-Requires:       globus-gsi-credential >= 5.6
 Requires:       globus-connect-server-common = %{version}
 Summary:        Globus Connect Server I/O for GridFTP configuration
 Group:          System Environment/Libraries
@@ -228,7 +226,7 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
-* Thu Sep  1 2016 Globus Toolkit <support@globus.org> 4.0.37-2
+* Thu Sep  1 2016 Globus Toolkit <support@globus.org> 4.0.37-3
 - Update dependencies for SLES 12
 
 * Tue Aug 30 2016 Globus Toolkit <support@globus.org> 4.0.37-1
