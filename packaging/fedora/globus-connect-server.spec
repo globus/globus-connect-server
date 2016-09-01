@@ -1,6 +1,6 @@
 Name:           globus-connect-server
 Version:        4.0.37
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
 
@@ -89,9 +89,15 @@ Requires:       globus-gsi-cert-utils-progs
 Requires:       globus-gridftp-server-progs >= 9.3
 Requires:       globus-gass-copy-progs
 Requires:       globus-gss-assist-progs
+%if %{?suse_version}%{!?suse_version:0} >= 1315
+Requires:       libglobus_callout0 >= 2.4
+Requires:       libglobus_gridmap_verify_myproxy_callout >= 1.2
+Requires:       libglobus_gridmap_eppn_callout >= 0.4
+%else
 Requires:       globus-callout >= 2.4
 Requires:       globus-gridmap-verify-myproxy-callout >= 1.2
 Requires:       globus-gridmap-eppn-callout >= 0.4
+%endif
 Requires:       globus-gsi-credential >= 5.6
 Requires:       globus-connect-server-common = %{version}
 Summary:        Globus Connect Server I/O for GridFTP configuration
@@ -222,6 +228,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Thu Sep  1 2016 Globus Toolkit <support@globus.org> 4.0.37-2
+- Update dependencies for SLES 12
+
 * Tue Aug 30 2016 Globus Toolkit <support@globus.org> 4.0.37-1
 - Don't change From "Globus Id" to "Globus Username" in prompt
 
