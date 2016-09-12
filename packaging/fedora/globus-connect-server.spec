@@ -1,6 +1,6 @@
 Name:           globus-connect-server
-Version:        4.0.37
-Release:        3%{?dist}
+Version:        4.0.38
+Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
 
@@ -226,6 +226,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon Sep 12 2016 Globus Toolkit <support@globus.org> 4.0.38-1
+- Fix RHEL 7.2 platform name matching
+
 * Thu Sep  1 2016 Globus Toolkit <support@globus.org> 4.0.37-3
 - Update dependencies for SLES 12
 

@@ -1,5 +1,11 @@
 globus-connect-server (4.0.37-1+gt6.@distro@) @distro@; urgency=low
 
+  * Fix RHEL 7.2 platform name matching
+
+ -- Globus Toolkit <support@globus.org>  Mon, 12 Sep 2016 14:43:53 -0400
+
+globus-connect-server (4.0.37-1+gt6.@distro@) @distro@; urgency=low
+
   * Don't change From "Globus Id" to "Globus Username" in prompt
 
  -- Globus Toolkit <support@globus.org>  Tue, 30 Aug 2016 12:58:59 -0400

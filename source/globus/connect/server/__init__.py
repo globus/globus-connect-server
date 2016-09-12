@@ -815,6 +815,7 @@ class GCMU(object):
 
         if name.startswith('CentOS') \
                 or name == 'RedHat' \
+                or name.startswith('Red Hat') \
                 or name.startswith("Scientific") \
                 or name == 'Fedora' \
                 or name.startswith("SUSE"):
@@ -839,6 +840,7 @@ class GCMU(object):
 
         if name.startswith('CentOS') \
                 or name == 'RedHat' \
+                or name.startswith('Red Hat') \
                 or name.startswith("Scientific") \
                 or name == 'Fedora' \
                 or name.startswith("SUSE"):
