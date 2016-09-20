@@ -1,8 +1,9 @@
-globus-connect-server (4.0.40-1+gt6.@distro@) @distro@; urgency=low
+globus-connect-server (4.0.41-1+gt6.@distro@) @distro@; urgency=low
 
   * Update SUSE vhost configuration
+  * Fix get() got an unexpected keyword argument 'raw'
 
- -- Globus Toolkit <support@globus.org>  Tue, 20 Sep 2016 11:19:13 -0400
+ -- Globus Toolkit <support@globus.org>  Tue, 20 Sep 2016 14:02:53 -0400
 
 globus-connect-server (4.0.39-1+gt6.@distro@) @distro@; urgency=low
 

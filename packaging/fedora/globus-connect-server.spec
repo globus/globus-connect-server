@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.40
+Version:        4.0.41
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -226,8 +226,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
-* Tue Sep 20 2016 Globus Toolkit <support@globus.org> 4.0.40-1
+* Tue Sep 20 2016 Globus Toolkit <support@globus.org> 4.0.41-1
 - Update SUSE vhost configuration
+- Fix get() got an unexpected keyword argument 'raw'
 
 * Mon Sep 12 2016 Globus Toolkit <support@globus.org> 4.0.39-1
 - Merge pull #5 (Add missingok to logrotate)
