@@ -306,7 +306,18 @@ class Web(gcmu.GCMU):
                 touched.close()
         elif self.dist_type == 'suse':
             if not os.path.exists(_suse_ssl_conf):
-                shutil.copy(_suse_ssl_template, _suse_ssl_conf)
+                vhost_template = file(_suse_ssl_template, "r")
+                vhost_conf = file(_suse_ssl_conf, "w")
+
+                for line in vhost_template:
+                    if re.match(r"^\s*SSLCertificateFile", line) is not None:
+                        vhost_conf.write("\tSSLCertificateFile /etc/apache2/ssl.crt/server.crt\n")
+                    elif re.match(r"^\s*SSLCertificateKeyFile", line) is not None:
+                        vhost_conf.write("\tSSLCertificateKeyFile /etc/apache2/ssl.key/server.key\n")
+                    else:
+                        vhost_conf.write(line)
+                vhost_template.close()
+                vhost_conf.close()
                 touched = file(_created_vhost_conf, "w")
                 touched.close()
 
