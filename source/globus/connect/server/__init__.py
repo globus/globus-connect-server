@@ -228,6 +228,7 @@ def get_api(conf):
             goauth=auth_result.token,
             base_url=base_url,
             server_ca_file=api_ca,
+            timeout=300.0,
             max_attempts=10)
     api.password = password
 

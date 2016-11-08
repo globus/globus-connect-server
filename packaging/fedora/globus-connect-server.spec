@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.41
+Version:        4.0.42
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -226,6 +226,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon Nov 07 2016 Globus Toolkit <support@globus.org> 4.0.42-1
+- Set Transfer API Client timeout
+
 * Tue Sep 20 2016 Globus Toolkit <support@globus.org> 4.0.41-1
 - Update SUSE vhost configuration
 - Fix get() got an unexpected keyword argument 'raw'
