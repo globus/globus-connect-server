@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.42
+Version:        4.0.43
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -226,6 +226,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Wed Nov 09 2016 Globus Toolkit <support@globus.org> 4.0.43-1
+- Fix upgrade workaround message
+
 * Mon Nov 07 2016 Globus Toolkit <support@globus.org> 4.0.42-1
 - Set Transfer API Client timeout
 

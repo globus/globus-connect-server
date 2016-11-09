@@ -1,3 +1,9 @@
+globus-connect-server (4.0.43-1+gt6.@distro@) @distro@; urgency=low
+
+  * Fix upgrade workaround message
+
+ -- Globus Toolkit <support@globus.org>  Wed, 09 Nov 2016 12:17:28 -0500
+
 globus-connect-server (4.0.42-1+gt6.@distro@) @distro@; urgency=low
 
   * Set Transfer API Client timeout

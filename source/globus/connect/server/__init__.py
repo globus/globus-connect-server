@@ -258,7 +258,7 @@ def is_latest_version(force=False):
         message = \
             "A newer version (%s) of globus-connect-server is available.\n" \
             "Please upgrade before running this script (or temporarily use \n" \
-            "-force to proceed)." % (published_version)
+            "--force to proceed)." % (published_version)
         if not force:
             raise Exception(message)
         else:
