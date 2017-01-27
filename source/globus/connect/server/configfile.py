@@ -46,10 +46,16 @@ class ConfigFile(configparser.ConfigParser):
     PASSWORD_OPTION = "Password"
     GLOBUS_INSTANCE_OPTION = "Instance"
     GLOBUS_INSTANCE_PRODUCTION = "Production"
+    GLOBUS_INSTANCE_STAGING = "Staging"
     GLOBUS_INSTANCE_TEST = "Test"
+    GLOBUS_INSTANCE_SANDBOX = "Sandbox"
     GLOBUS_INSTANCES = [
             GLOBUS_INSTANCE_PRODUCTION,
-            GLOBUS_INSTANCE_TEST ]
+            GLOBUS_INSTANCE_STAGING,
+            GLOBUS_INSTANCE_TEST,
+            GLOBUS_INSTANCE_SANDBOX,
+    ]
+
 
     # [Endpoint]
     NAME_OPTION = "Name"
@@ -137,8 +143,7 @@ class ConfigFile(configparser.ConfigParser):
             GLOBUS_INSTANCE_OPTION.lower(): {
                 "option": GLOBUS_INSTANCE_OPTION,
                 "expression": r"^(" + \
-                    "|".join([GLOBUS_INSTANCE_PRODUCTION,
-                            GLOBUS_INSTANCE_TEST]) + r")$"
+                    "|".join(GLOBUS_INSTANCES) + r")$"
             }
         },
         ENDPOINT_SECTION: {

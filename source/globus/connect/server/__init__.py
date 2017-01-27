@@ -189,21 +189,19 @@ def get_api(conf):
     api_ca = None
     base_url = globusonline.transfer.api_client.DEFAULT_BASE_URL
     
-    if go_instance == "Test":
+    if go_instance != "Production":
         globusonline.transfer.api_client.goauth.HOST = \
-                "graph.api.test.globuscs.info"
+                "nexus.api.%s.globuscs.info" % (go_instance)
+        base_url = \
+                "https://transfer.%s.api.globusonline.org/%s" \
+                % (go_instance, globusonline.transfer.api_client.API_VERSION)
         nexus_cert = os.path.join(
                 os.path.dirname(
                         globus.connect.security.__file__),
-                        "graph.api.test.globuscs.info.pem")
-        api_ca = os.path.join(
-                os.path.dirname(
-                        globus.connect.security.__file__),
-                        "go-ca3.pem")
+                        "lets_encrypt_fullchain.pem")
+        api_cert = nexus_cert
         globusonline.transfer.api_client.verified_https.match_hostname = \
                 lambda cert, hostname: True
-        base_url = "https://transfer.test.api.globusonline.org/" + globusonline.transfer.api_client.API_VERSION
-        
     socket.setdefaulttimeout(300)
 
     for tries in range(0,10):
