@@ -120,9 +120,8 @@ class ID(gcmu.GCMU):
         if cadir is not None and not os.path.exists(cadir):
             ca_subject = self.conf.get_myproxy_ca_subject_dn()
             if ca_subject is None:
-                ca_subject = security.get_certificate_subject(
-                        self.conf.get_security_certificate_file(),
-                        nameopt='RFC2253')
+                ca_subject = "cn={0}, o=Globus Connect Server".format(
+                    self.conf.get_myproxy_server())
             try:
                 args = [ 
                     'grid-ca-create',

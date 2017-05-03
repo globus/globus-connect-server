@@ -727,7 +727,8 @@ class GCMU(object):
             if server_dn_match is not None:
                 server_dn = server_dn_match.groups()[0]
             if server_ca_dn is None or server_ca_dn == '/C=US/O=Globus Consortium/CN=Globus Connect CA':
-                server_ca_dn = server_dn
+                server_ca_dn = "/O=Globus Connect Server/CN={0}".format(
+                    self.conf.get_myproxy_server())
             shutil.rmtree(temppath, ignore_errors=True)
             self.logger.debug("MyProxy CA DN is " + str(server_ca_dn))
             self.__myproxy_ca_dn = server_ca_dn
