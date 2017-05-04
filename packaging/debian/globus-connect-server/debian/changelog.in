@@ -1,9 +1,10 @@
-globus-connect-server (4.0.44-1+gt6.@distro@) @distro@; urgency=low
+globus-connect-server (4.0.45-1+gt6.@distro@) @distro@; urgency=low
 
   * Change MyProxy CA cert naming convention to allow easier establishment of
     trust between io and id nodes
+  * Update Globus Connect CA name in myproxy ca dn detection code
 
- -- Globus Toolkit <support@globus.org>  Wed, 03 May 2017 14:01:22 -0400
+ -- Globus Toolkit <support@globus.org>  Thu, 04 May 2017 09:11:29 -0400
 
 globus-connect-server (4.0.43-1+gt6.@distro@) @distro@; urgency=low
 

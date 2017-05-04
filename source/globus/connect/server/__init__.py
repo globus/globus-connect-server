@@ -726,7 +726,11 @@ class GCMU(object):
                 server_ca_dn = server_ca_dn_match.groups()[1]
             if server_dn_match is not None:
                 server_dn = server_dn_match.groups()[0]
-            if server_ca_dn is None or server_ca_dn == '/C=US/O=Globus Consortium/CN=Globus Connect CA':
+            if (server_ca_dn is None 
+                    or server_ca_dn
+                    == '/C=US/O=Globus Consortium/CN=Globus Connect CA' 
+                    or server_ca_dn
+                    == '/C=US/O=Globus Consortium/CN=Globus Connect CA 3'):
                 server_ca_dn = "/O=Globus Connect Server/CN={0}".format(
                     self.conf.get_myproxy_server())
             shutil.rmtree(temppath, ignore_errors=True)
