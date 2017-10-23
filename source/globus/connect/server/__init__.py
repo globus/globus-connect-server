@@ -48,7 +48,7 @@ import globus.connect.security
 
 from subprocess import Popen, PIPE
 
-LATEST_VERSION_URI = "http://toolkit.globus.org/ftppub/gt6/packages/GLOBUS_CONNECT_SERVER_LATEST"
+LATEST_VERSION_URI = "https://downloads.globus.org/toolkit/gt6/packages/GLOBUS_CONNECT_SERVER_LATEST"
 
 __path__ = pkgutil.extend_path(__path__, __name__)
 
