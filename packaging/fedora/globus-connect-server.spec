@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.45
+Version:        4.0.46
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -226,6 +226,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon Dec 12 2017 Globus Toolkit <support@globus.org> 4.0.46-1
+- Fix DN parsing for openssl 1.1.x
+
 * Thu May 04 2017 Globus Toolkit <support@globus.org> 4.0.45-1
 - Change MyProxy CA cert naming convention to allow easier establishment
   of trust between io and id nodes

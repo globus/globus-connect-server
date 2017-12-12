@@ -133,6 +133,9 @@ def get_certificate_subject(cert_file_path, nameopt=''):
     if nameopt != '':
         args.append('-nameopt')
         args.append(nameopt)
+    else:
+        args.append('-nameopt')
+        args.append('rfc2253,-dn_rev')
     proc = Popen(args, stdout=PIPE, stderr=PIPE)
     (out, err) = proc.communicate()
     returncode = proc.returncode
@@ -141,7 +144,11 @@ def get_certificate_subject(cert_file_path, nameopt=''):
         raise Exception("Error " + str(returncode) +
                         " getting certificate subject from " +
                         cert_file_path + "\n" + err)
-    subject = out[9:].strip()
+    subject = out.replace("subject=", "", 1).strip()
+
+    if nameopt == '':
+        components = subject.split(',')
+        subject = '/' + '/'.join(components)
 
     return subject
 

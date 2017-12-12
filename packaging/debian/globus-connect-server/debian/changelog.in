@@ -1,3 +1,9 @@
+globus-connect-server (4.0.46-1+gt6.@distro@) @distro@; urgency=low
+
+  * Fix DN parsing for openssl 1.1.x
+
+ -- Globus Toolkit <support@globus.org>  Mon, 12 Dec 2017 12:00:41 -0500
+
 globus-connect-server (4.0.45-1+gt6.@distro@) @distro@; urgency=low
 
   * Change MyProxy CA cert naming convention to allow easier establishment of
