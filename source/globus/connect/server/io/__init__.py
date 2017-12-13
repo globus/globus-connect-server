@@ -217,6 +217,10 @@ server
             if rp is not None:
                 conf_file.write("restrict_paths %s\n" % rp)
 
+            rps = self.conf.get_gridftp_restrict_paths_symlinks()
+            if rps is not None:
+                conf_file.write("rp_symlinks %s\n" % rps)
+
             if self.conf.get_gridftp_udt():
                conf_file.write("allow_udt 1\n")
                conf_file.write("threads 1\n")

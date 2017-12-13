@@ -96,6 +96,7 @@ class ConfigFile(configparser.ConfigParser):
     OUTGOING_PORT_RANGE_OPTION= "OutgoingPortRange"
     DATA_INTERFACE_OPTION = "DataInterface"
     RESTRICT_PATHS_OPTION = "RestrictPaths"
+    RESTRICT_PATHS_SYMLINKS_OPTION = "RestrictPathsSymlinks"
     SHARING_OPTION = "Sharing"
     SHARING_DN_OPTION = "SharingDN"
     SHARING_RESTRICT_PATHS_OPTION = "SharingRestrictPaths"
@@ -228,6 +229,10 @@ class ConfigFile(configparser.ConfigParser):
             RESTRICT_PATHS_OPTION.lower(): {
                 "option": RESTRICT_PATHS_OPTION,
                 "expression": r"^((R|RW|N).*)?$"
+            },
+            RESTRICT_PATHS_SYMLINKS_OPTION.lower(): {
+                "option": RESTRICT_PATHS_SYMLINKS_OPTION,
+                "expression": r"^.*$"
             },
             SHARING_OPTION.lower(): {
                 "option": SHARING_OPTION,
@@ -750,6 +755,17 @@ class ConfigFile(configparser.ConfigParser):
             if restrict_paths == '':
                 restrict_paths = None
         return restrict_paths
+
+    def get_gridftp_restrict_paths_symlinks(self):
+        restrict_paths_s = None
+        if self.has_option(ConfigFile.GRIDFTP_SECTION,
+                    ConfigFile.RESTRICT_PATHS_OPTION_SYMLINKS):
+            restrict_paths_s = self.get(
+                    ConfigFile.GRIDFTP_SECTION,
+                    ConfigFile.RESTRICT_PATHS_OPTION_SYMLINKS)
+            if restrict_paths_s == '':
+                restrict_paths_s = None
+        return restrict_paths_s
 
     def get_gridftp_sharing(self):
         sharing_enabled = False
