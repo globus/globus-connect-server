@@ -414,10 +414,6 @@ class ConfigFile(configparser.ConfigParser):
                         rands = idp.find('RandS')
                         if rands is not None and rands.text == '1':
                             valid = True
-                        else:
-                            wl = idp.find('Whitelisted')
-                            if wl is not None and wl.text == '1':
-                                valid = True
                         break
 
                 if valid or updated:
@@ -437,9 +433,13 @@ class ConfigFile(configparser.ConfigParser):
             elif not valid:
                 print("\nWARNING: You have configured a known CILogon "      \
                     "identity provider, but CILogon indicates that the "     \
-                    "identity provider does not support the ePPN extension " \
-                    "required by Globus.  Please contact your identity "     \
-                    "provider administrator.\n", file=sys.stderr)
+                    "identity provider does not support the Research & "     \
+                    "Scholarship attributes, which includes the ePPN "       \
+                    "extension required by Globus. If the identity "         \
+                    "provider is known to support the ePPN extension, "      \
+                    "this warning may be disregarded. The page "             \
+                    "https://cilogon.org/testidp/ provides additional "      \
+                    "troubleshooting information.\n", file=sys.stderr)
 
     def __get_list(self, section, option, maxsplit = 0):
         if not self.has_option(section, option):
