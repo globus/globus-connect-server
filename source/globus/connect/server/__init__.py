@@ -52,6 +52,19 @@ LATEST_VERSION_URI = "https://downloads.globus.org/toolkit/gt6/packages/GLOBUS_C
 
 __path__ = pkgutil.extend_path(__path__, __name__)
 
+
+def _urlopen_with_retries(url, retries=3):
+    """retry IOErrors `retries` many times, no wait/sleep"""
+    while retries > 1:
+        retries -= 1
+        try:
+            return urlopen(url)
+        except IOError:
+            pass
+    # last time, with no handler
+    return urlopen(url)
+
+
 def to_unicode(data):
     """
     Coerce any string to unicode, assuming utf-8 encoding for strings.
@@ -69,7 +82,7 @@ def is_ec2():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = urlopen(url).read()
+        value = _urlopen_with_retries(url).read()
     except IOError:
         pass
 
@@ -88,7 +101,7 @@ def public_name():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = urlopen(url).read()
+        value = _urlopen_with_retries(url).read()
     except IOError:
         pass
 
@@ -110,7 +123,7 @@ def public_ip():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = urlopen(url).read()
+        value = _urlopen_with_retries(url).read()
     except IOError:
         pass
 
@@ -236,7 +249,7 @@ def is_latest_version(force=False):
     data_version = pkgutil.get_data("globus.connect.server", "version").strip()
 
     try:
-        published_version = urlopen(LATEST_VERSION_URI).read().strip()
+        published_version = _urlopen_with_retries(LATEST_VERSION_URI).read().strip()
     except IOError as e:
         print("Unable to get version info from: " + LATEST_VERSION_URI + \
               "\n" + str(e) + "\nSkipping version check.", file=sys.stderr)
