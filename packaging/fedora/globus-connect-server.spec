@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.46
+Version:        4.0.47
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -226,6 +226,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon Apr 9 2018 Globus Toolkit <support@globus.org> 4.0.47-1
+- Update CILogon IdP list
+
 * Mon Dec 12 2017 Globus Toolkit <support@globus.org> 4.0.46-1
 - Fix DN parsing for openssl 1.1.x
 

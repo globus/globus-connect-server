@@ -1,3 +1,9 @@
+globus-connect-server (4.0.47-1+gt6.@distro@) @distro@; urgency=low
+
+  * Update CILogon IdP list
+
+ -- Globus Toolkit <support@globus.org>  Mon, 9 Apr 2018 14:11:33 -0500
+
 globus-connect-server (4.0.46-1+gt6.@distro@) @distro@; urgency=low
 
   * Fix DN parsing for openssl 1.1.x
