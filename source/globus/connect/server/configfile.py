@@ -759,10 +759,10 @@ class ConfigFile(configparser.ConfigParser):
     def get_gridftp_restrict_paths_symlinks(self):
         restrict_paths_s = None
         if self.has_option(ConfigFile.GRIDFTP_SECTION,
-                    ConfigFile.RESTRICT_PATHS_OPTION_SYMLINKS):
+                    ConfigFile.RESTRICT_PATHS_SYMLINKS_OPTION):
             restrict_paths_s = self.get(
                     ConfigFile.GRIDFTP_SECTION,
-                    ConfigFile.RESTRICT_PATHS_OPTION_SYMLINKS)
+                    ConfigFile.RESTRICT_PATHS_SYMLINKS_OPTION)
             if restrict_paths_s == '':
                 restrict_paths_s = None
         return restrict_paths_s
