@@ -86,7 +86,7 @@ def is_ec2():
     except IOError:
         pass
 
-    if value is not None and "404 - Not Found" in value:
+    if value is not None and re.search(r"404 - (File or directory )*(n|N)ot (f|F)ound", value):
         value = None
 
     return value is not None
