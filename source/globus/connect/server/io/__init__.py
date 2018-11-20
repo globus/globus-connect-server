@@ -487,7 +487,7 @@ server
         try:
             cadir = self.conf.get_security_trusted_certificate_directory()
             idp = self.conf.get_security_cilogon_identity_provider()
-
+            dn_prefix = self.conf.get_security_cilogon_dn_prefix()
             ca = pkgutil.get_data(
                     "globus.connect.security",
                     "cilogon-basic.pem")
@@ -505,7 +505,7 @@ server
                     (os.path.join(cadir, cahash + ".0")))
             conf_file.write(
                     "GLOBUS_MYPROXY_AUTHORIZED_DN=" +
-                    "\"/DC=org/DC=cilogon/C=US/O=%s\"\n" % (idp))
+                    "\"%s/O=%s\"\n" % (dn_prefix, idp))
                     
             ca = pkgutil.get_data(
                     "globus.connect.security",
@@ -524,7 +524,7 @@ server
                     (os.path.join(cadir, cahash + ".0")))
             conf_file.write(
                     "GLOBUS_MYPROXY_AUTHORIZED_DN=" +
-                    "\"/DC=org/DC=cilogon/C=US/O=%s\"\n" % (idp))
+                    "\"%s/O=%s\"\n" % (dn_prefix, idp))
 
         finally:
             conf_file.close()

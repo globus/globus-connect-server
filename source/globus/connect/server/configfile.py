@@ -368,6 +368,7 @@ class ConfigFile(configparser.ConfigParser):
 
         configparser.ConfigParser.__init__(self, defaults)
         self.root = root
+        self.cilogon_dn_prefix = '/DC=org/DC=cilogon'
         if config_file is None:
             config_file = os.path.join("/", ConfigFile.DEFAULT_CONFIG_FILE)
         config_fp = open(config_file, "r")
@@ -419,6 +420,9 @@ class ConfigFile(configparser.ConfigParser):
                         rands = idp.find('RandS')
                         if rands is not None and rands.text == '1':
                             valid = True
+                        incommon = idp.find('Registered_By_InCommon')
+                        if incommon is not None and incommon.text == '1':
+                            self.cilogon_dn_prefix += '/C=US'
                         break
 
                 if valid or updated:
@@ -648,6 +652,9 @@ class ConfigFile(configparser.ConfigParser):
                 return ConfigFile.AUTHORIZATION_METHOD_MYPROXY_GRIDMAP_CALLOUT
         else:
             return authorization_method
+
+    def get_security_cilogon_dn_prefix(self):
+        return self.cilogon_dn_prefix
 
     def get_security_cilogon_identity_provider(self):
         cilogon_idp = None

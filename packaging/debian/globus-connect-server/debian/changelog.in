@@ -1,3 +1,10 @@
+globus-connect-server (4.0.50-1+gt6.@distro@) @distro@; urgency=low
+
+  * Support non-InCommon CILogon IdPs
+  * Update CILogon IdP list
+
+ -- Globus Toolkit <support@globus.org>  Tue, 20 Nov 2018 10:11:31 -0500
+
 globus-connect-server (4.0.49-1+gt6.@distro@) @distro@; urgency=low
   
   * Add retries to http downloads for version and ec2 checking.

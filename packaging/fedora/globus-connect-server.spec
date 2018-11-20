@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.49
+Version:        4.0.50
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -226,6 +226,10 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Tue Nov 20 2018 Globus Toolkit <support@globus.org> 4.0.50-1
+- Support non-InCommon CILogon IdPs
+- Update CILogon IdP list
+
 * Mon May 7 2018 Globus Toolkit <support@globus.org> 4.0.49-1
 - Add retries to http downloads for version and ec2 checking.
 - Fix ec2 checks not failing in Azure.
