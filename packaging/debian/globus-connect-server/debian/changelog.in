@@ -1,3 +1,9 @@
+globus-connect-server (4.0.51-1+gt6.@distro@) @distro@; urgency=low
+
+  * Fix for CILogon IdPs that do not support full R&S attributes
+
+ -- Globus Toolkit <support@globus.org>  Mon, 03 Dec 2018 17:01:43 -0500
+
 globus-connect-server (4.0.50-1+gt6.@distro@) @distro@; urgency=low
 
   * Support non-InCommon CILogon IdPs

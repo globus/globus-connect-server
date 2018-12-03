@@ -33,6 +33,7 @@ except ImportError:
 
 IDPLIST_XML_URL = 'https://cilogon.org/include/idplist.xml'
 IDPLIST_XML_FILE = 'cilogon-idplist.xml'
+CILOGON_DN_PREFIX = '/DC=org/DC=cilogon'
 
 class ConfigFile(configparser.ConfigParser):
     GLOBUS_SECTION = "Globus"
@@ -368,7 +369,7 @@ class ConfigFile(configparser.ConfigParser):
 
         configparser.ConfigParser.__init__(self, defaults)
         self.root = root
-        self.cilogon_dn_prefix = '/DC=org/DC=cilogon'
+        self.cilogon_dn_prefix = CILOGON_DN_PREFIX
         if config_file is None:
             config_file = os.path.join("/", ConfigFile.DEFAULT_CONFIG_FILE)
         config_fp = open(config_file, "r")
@@ -422,7 +423,7 @@ class ConfigFile(configparser.ConfigParser):
                             valid = True
                         incommon = idp.find('Registered_By_InCommon')
                         if incommon is not None and incommon.text == '1':
-                            self.cilogon_dn_prefix += '/C=US'
+                            self.cilogon_dn_prefix = CILOGON_DN_PREFIX + '/C=US'
                         break
 
                 if valid or updated:

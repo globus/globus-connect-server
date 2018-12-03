@@ -1,5 +1,5 @@
 Name:           globus-connect-server
-Version:        4.0.50
+Version:        4.0.51
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
@@ -226,6 +226,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Mon Dec 03 2018 Globus Toolkit <support@globus.org> 4.0.51-1
+- Fix for CILogon IdPs that do not support full R&S attributes
+
 * Tue Nov 20 2018 Globus Toolkit <support@globus.org> 4.0.50-1
 - Support non-InCommon CILogon IdPs
 - Update CILogon IdP list
