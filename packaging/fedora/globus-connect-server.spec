@@ -1,6 +1,6 @@
 Name:           globus-connect-server
 Version:        4.0.51
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
 
@@ -32,6 +32,10 @@ Requires:       globus-connect-server-common = %{version}
 Requires:       globus-connect-server-io = %{version}
 Requires:       globus-connect-server-id = %{version}
 Requires:       globus-connect-server-web = %{version}
+
+%if %{?fedora}%{!?fedora:0} >= 28 ||  %{?rhel}%{!?rhel:0} >= 6
+Requires:       crontabs
+%endif
 
 %description
 The Globus Toolkit is an open source software toolkit used for building Grid
@@ -226,6 +230,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Thu Jan 10 2019 Globus Toolkit <support@globus.org> 4.0.51-2
+- Add missing dependency on crontabs for RHEL-based systems
+
 * Mon Dec 03 2018 Globus Toolkit <support@globus.org> 4.0.51-1
 - Fix for CILogon IdPs that do not support full R&S attributes
 
