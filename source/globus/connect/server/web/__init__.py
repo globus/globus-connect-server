@@ -16,23 +16,14 @@
 
 from __future__ import print_function, absolute_import
 
-import copy
-import getopt
-import logging
 import os
-import pkgutil
 import platform
 import re
 import shutil
-import sys
-import uuid
 
-import globus.connect.security as security
 import globus.connect.server as gcmu
 
 from subprocess import Popen, PIPE
-from globusonline.transfer.api_client import TransferAPIClient
-from globusonline.transfer.api_client import TransferAPIError
 
 _enabled_mod_ssl = "/var/lib/globus-connect-server/enabled_mod_ssl"
 _enabled_mod_wsgi = "/var/lib/globus-connect-server/enabled_mod_wsgi"

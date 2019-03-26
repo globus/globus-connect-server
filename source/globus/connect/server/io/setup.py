@@ -70,17 +70,11 @@ globus-connect-server-io-setup {-c FILENAME|--config-file=FILENAME}
 """
 
 import getopt
-import getpass
 import os
-import socket
-import ssl
 import sys
-import time
 import traceback
 
 from globus.connect.server import get_api, is_latest_version
-from globusonline.transfer.api_client.goauth import get_access_token, GOCredentialsError
-from globusonline.transfer.api_client import TransferAPIClient
 from globus.connect.server.io import IO
 from globus.connect.server.configfile import ConfigFile
 

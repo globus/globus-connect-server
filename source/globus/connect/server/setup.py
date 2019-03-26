@@ -64,14 +64,11 @@ globus-connect-server-setup {-c FILENAME|--config-file=FILENAME}
                                {-v|--verbose}
                                {-r PATH|--root=PATH}
                                {-s|--reset-endpoint}"""
-import io
 import getopt
 import socket
 import os
 import sys
 import traceback
-
-import globus.connect.server
 
 from globus.connect.server.configfile import ConfigFile
 from globus.connect.server import get_api, is_latest_version

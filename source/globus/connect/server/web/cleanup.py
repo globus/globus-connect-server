@@ -53,11 +53,8 @@ import getopt
 import os
 import socket
 import sys
-import time
 import traceback
 
-from globusonline.transfer.api_client.goauth import get_access_token, GOCredentialsError
-from globusonline.transfer.api_client import TransferAPIClient
 from globus.connect.server import get_api, is_latest_version
 from globus.connect.server.web import Web
 from globus.connect.server.configfile import ConfigFile

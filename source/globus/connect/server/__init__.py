@@ -24,7 +24,6 @@ import re
 import shutil
 import socket
 import ssl
-import stat
 import sys
 import tempfile
 import time
@@ -36,11 +35,9 @@ except ImportError:
     from urlparse import urlparse
     from urllib import urlopen
 
-import uuid
-
 import globusonline.transfer.api_client
 import globusonline.transfer.api_client.verified_https
-from globusonline.transfer.api_client import TransferAPIClient, ClientError
+from globusonline.transfer.api_client import TransferAPIClient
 from globusonline.transfer.api_client.goauth import get_access_token, GOCredentialsError
 import globusonline.transfer.api_client.goauth
 
