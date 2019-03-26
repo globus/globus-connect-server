@@ -1,16 +1,17 @@
 Name:           globus-connect-server
-Version:        4.0.51
-Release:        2%{?dist}
+Version:        4.0.52
+Release:        1%{?dist}
 Summary:        Globus Connect Server
 %global _name %(tr - _ <<< %{name})
 
-%global transferapi_name globusonline-transfer-api-client
-%global transferapi_version 0.10.16
+%global         globus_sdk_name     globus-sdk
+%global         globus_sdk_version  1.7.1
 Group:          System Environment/Libraries
 License:        ASL 2.0
 URL:            http://www.globus.org/
 Source:         %{_name}-%{version}.tar.gz
-Source1:        %{transferapi_name}-%{transferapi_version}.tar.gz
+Source1:        %{globus_sdk_name}-%{globus_sdk_version}.tar.gz
+Patch0:         globus-sdk-1.7.1-remove_extras_require.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 %if %{?suse_version}%{!?suse_version:0} < 1315
 BuildArch:      noarch
@@ -54,6 +55,7 @@ Obsoletes:      globus-connect-multiuser-common
 Obsoletes:      globus-connect-multiuser-io
 Obsoletes:      globus-connect-multiuser-id
 Obsoletes:      globus-connect-multiuser-web
+Requires:       python-jwt
 Summary:        Globus Connect Server Common files
 Group:          System Environment/Libraries
 %description common
@@ -131,9 +133,10 @@ Globus Connect Server Web
 %prep
 %setup -q -n %{_name}-%{version}
 %setup -a 1 -D -T -n %{_name}-%{version}
+%patch0
 
 %build
-cd %{transferapi_name}-%{transferapi_version}
+cd %{globus_sdk_name}-%{globus_sdk_version}
 %{python} setup.py build
 cd ..
 python_exe="`%{python} -c 'import sys; print(sys.executable)'`"
@@ -147,7 +150,7 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir $RPM_BUILD_ROOT
-cd %{transferapi_name}-%{transferapi_version}
+cd %{globus_sdk_name}-%{globus_sdk_version}
 %{python} setup.py install --root $RPM_BUILD_ROOT --install-lib=%{_libdir}/%{name}
 cd ..
 %{python} setup.py install --root $RPM_BUILD_ROOT --prefix=/usr
@@ -230,6 +233,9 @@ if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
 fi
 
 %changelog
+* Tue Mar 26 2019 Globus Toolkit <support@globus.org> 4.0.52-1
+- Update to new Globus SDK in preparation for python3
+
 * Thu Jan 10 2019 Globus Toolkit <support@globus.org> 4.0.51-2
 - Add missing dependency on crontabs for RHEL-based systems
 
@@ -247,7 +253,7 @@ fi
 * Mon Apr 9 2018 Globus Toolkit <support@globus.org> 4.0.48-1
 - Update CILogon IdP list
 
-* Mon Dec 12 2017 Globus Toolkit <support@globus.org> 4.0.46-1
+* Tue Dec 12 2017 Globus Toolkit <support@globus.org> 4.0.46-1
 - Fix DN parsing for openssl 1.1.x
 
 * Thu May 04 2017 Globus Toolkit <support@globus.org> 4.0.45-1
@@ -334,7 +340,7 @@ fi
 - Add html version of documentation to source
 - Note managed endpoint configuration needed when enabling sharing
 
-* Tue Apr 23 2015 Globus Toolkit <support@globus.org> 4.0.16-1
+* Tue Apr 28 2015 Globus Toolkit <support@globus.org> 4.0.16-1
 - Use systemctl where available
 
 * Tue Mar 3 2015 Globus Toolkit <support@globus.org> 4.0.15-1

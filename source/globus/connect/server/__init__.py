@@ -28,18 +28,15 @@ import sys
 import tempfile
 import time
 
-try:
-    from urllib.request import urlopen
-    from urllib.parse import urlparse
-except ImportError:
-    from urlparse import urlparse
-    from urllib import urlopen
+from six.moves.urllib.request import urlopen
+from six.moves.urllib.parse import urlparse
 
-import globusonline.transfer.api_client
-import globusonline.transfer.api_client.verified_https
-from globusonline.transfer.api_client import TransferAPIClient
-from globusonline.transfer.api_client.goauth import get_access_token, GOCredentialsError
-import globusonline.transfer.api_client.goauth
+from globus_sdk import (
+    AccessTokenAuthorizer,
+    BasicAuthorizer,
+    GlobusAPIError,
+    TransferClient)
+from globus_sdk.base import BaseClient
 
 import globus.connect.security
 
@@ -195,50 +192,46 @@ def get_api(conf):
     auth_result = None
 
     go_instance = conf.get_go_instance()
-    nexus_cert = None
-    api_ca = None
-    base_url = globusonline.transfer.api_client.DEFAULT_BASE_URL
     
-    if go_instance != "Production":
-        globusonline.transfer.api_client.goauth.HOST = \
-                "nexus.api.%s.globuscs.info" % (go_instance)
-        base_url = \
-                "https://transfer.%s.api.globusonline.org/%s" \
-                % (go_instance, globusonline.transfer.api_client.API_VERSION)
-        nexus_cert = os.path.join(
-                os.path.dirname(
-                        globus.connect.security.__file__),
-                        "lets_encrypt_fullchain.pem")
-        api_cert = nexus_cert
-        globusonline.transfer.api_client.verified_https.match_hostname = \
-                lambda cert, hostname: True
     socket.setdefaulttimeout(300)
+
+    GOAUTH_PATH = "/goauth/token?grant_type=client_credentials"
 
     for tries in range(0,10):
         try:
-            auth_result = get_access_token(
-                    username=username,
-                    password=password,
-                    ca_certs=nexus_cert)
-            if auth_result is not None:
-                break
+            authorizer = BasicAuthorizer(username, password)
+            nexus_client = BaseClient('nexus', authorizer=authorizer)
+
+            response = nexus_client.get(GOAUTH_PATH)
+            access_token = response.data['access_token']
+        except GlobusAPIError as e:
+            if e.http_status == 403:
+                print("{}\nRetrying".format(e.message))
+                print("Globus Id: ", end=' ')
+                username = sys.stdin.readline().strip()
+                password = getpass.getpass("Globus Password: ")
+            else:
+                raise e
         except ssl.SSLError as e:
             if "timed out" not in str(e):
                 raise e
             time.sleep(30)
-        except GOCredentialsError as e:
-            print("Globus Id: ", end=' ')
-            username = sys.stdin.readline().strip()
-            password = getpass.getpass("Globus Password: ")
 
-    api = TransferAPIClient(
-            username=auth_result.username,
-            goauth=auth_result.token,
-            base_url=base_url,
-            server_ca_file=api_ca,
-            timeout=300.0,
-            max_attempts=10)
-    api.password = password
+    if go_instance == 'Production':
+        go_instance = 'default'
+
+    class TransferClientWithUserNameAndPassword(TransferClient):
+        def __init__(self, username=None, password=None, **kwargs):
+            self.username = username
+            self.password = password
+            super(TransferClientWithUserNameAndPassword, self).__init__(**kwargs)
+
+    api = TransferClientWithUserNameAndPassword(
+            username=username,
+            password=password,
+            authorizer=AccessTokenAuthorizer(access_token),
+            environment=go_instance,
+            timeout=300.0)
 
     return api
 
@@ -362,7 +355,10 @@ class GCMU(object):
             if (not os.path.exists(cert)) or (not os.path.exists(key)):
                 self.logger.debug("Fetching certificate and key from globus")
 
-                (code, msg, j) = self.api.post('/private/endpoint_cert','')
+                result = self.api.post('/private/endpoint_cert','')
+                code = result.http_status
+                msg = result.text
+                j = result.data
                 if code != 200:
                     raise Exception("Unable to receive credential: %s %s" % (code, msg))
                 self.logger.debug("endpoint_cert_json = " + str(j))
