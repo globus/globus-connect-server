@@ -459,7 +459,7 @@ class ConfigFile(configparser.ConfigParser):
         else:
             return [x.strip() for x in optstr.split(',')]
 
-    def get(self, section, option, raw=False, vars=None):
+    def get(self, section, option, raw=False, vars=None, fallback=configparser._UNSET):
         res_str = ''
         if self.has_option(section, option):
             res_str = configparser.ConfigParser.get(self, section, option, raw=raw, vars=vars)

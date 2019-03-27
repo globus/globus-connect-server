@@ -196,10 +196,11 @@ class ID(gcmu.GCMU):
                 os.path.join(cadir, "cacert.pem"))
 
         mapapp_template = pkgutil.get_data(
-                "globus.connect.server", "mapapp-template")
+                "globus.connect.server",
+                "mapapp-template").decode('utf8')
 
         old_umask = os.umask(0o22)
-        mapapp_file = file(mapapp, "w")
+        mapapp_file = open(mapapp, "w")
         try:
             mapapp_file.write(mapapp_template % { 'dn': dn })
         finally:
@@ -229,7 +230,7 @@ class ID(gcmu.GCMU):
 
     def write_myproxy_conf(self):
         old_mask = os.umask(0o77)
-        conffile = file(self.conf.get_myproxy_config_file(), "w")
+        conffile = open(self.conf.get_myproxy_config_file(), "w")
         try:
             if self.myproxy_cred_repo_config is not None:
                 conffile.write(self.myproxy_cred_repo_config)

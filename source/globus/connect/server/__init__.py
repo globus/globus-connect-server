@@ -76,7 +76,7 @@ def is_ec2():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = _urlopen_with_retries(url).read()
+        value = _urlopen_with_retries(url).read().decode('utf8')
     except IOError:
         pass
 
@@ -95,7 +95,7 @@ def public_name():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = _urlopen_with_retries(url).read()
+        value = _urlopen_with_retries(url).read().decode('utf8')
     except IOError:
         pass
 
@@ -117,7 +117,7 @@ def public_ip():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = _urlopen_with_retries(url).read()
+        value = _urlopen_with_retries(url).read().decode('utf8')
     except IOError:
         pass
 
@@ -236,10 +236,12 @@ def get_api(conf):
     return api
 
 def is_latest_version(force=False):
-    data_version = pkgutil.get_data("globus.connect.server", "version").strip()
+    data_version = pkgutil.get_data(
+        "globus.connect.server", "version").decode('utf8').strip()
 
     try:
-        published_version = _urlopen_with_retries(LATEST_VERSION_URI).read().strip()
+        published_version = _urlopen_with_retries(
+        LATEST_VERSION_URI).read().decode('utf8').strip()
     except IOError as e:
         print("Unable to get version info from: " + LATEST_VERSION_URI + \
               "\n" + str(e) + "\nSkipping version check.", file=sys.stderr)
@@ -416,10 +418,10 @@ class GCMU(object):
         # Install the Globus Connect Server CA
         gcs_ca_cert = pkgutil.get_data(
                 "globus.connect.security",
-                "go-ca3.pem")
+                "go-ca3.pem").decode('utf8')
         gcs_ca_signing_policy = pkgutil.get_data(
                 "globus.connect.security",
-                "go-ca3.signing_policy")
+                "go-ca3.signing_policy").decode('utf8')
         globus.connect.security.install_ca(
                 certdir,
                 gcs_ca_cert,
@@ -489,8 +491,10 @@ class GCMU(object):
                 env=pipe_env)
             (out, err) = myproxy_bootstrap.communicate()
             if out is not None:
+                out = out.decode('utf8')
                 self.logger.debug(out)
             if err is not None:
+                err = err.decode('utf8')
                 self.logger.warn(err)
             if myproxy_bootstrap.returncode != 0:
                 self.logger.debug("myproxy bootstrap returned " +
@@ -622,8 +626,10 @@ class GCMU(object):
                     env=pipe_env)
                 (out, err) = myproxy_bootstrap.communicate()
                 if out is not None:
+                    out = out.decode('utf8')
                     self.logger.debug(out)
                 if err is not None:
+                    err = err.decode('utf8')
                     self.logger.warn(err)
                 if myproxy_bootstrap.returncode != 0:
                     self.logger.debug("myproxy bootstrap returned " +
@@ -634,7 +640,7 @@ class GCMU(object):
                 shutil.rmtree(temppath, ignore_errors=True)
 
         for ca_hash in hashes:
-            ca_file = os.path.join(certdir, ca_hash+".0")
+            ca_file = os.path.join(certdir, ca_hash + ".0")
             signing_policy_file = os.path.join(
                     certdir,
                     ca_hash+".signing_policy")
@@ -687,6 +693,10 @@ class GCMU(object):
             myproxy_bootstrap = Popen(args, stdout=PIPE, stderr=PIPE, 
                 env=pipe_env)
             (out, err) = myproxy_bootstrap.communicate()
+            if out is not None:
+                out = out.decode('utf8')
+            if err is not None:
+                err = err.decode('utf8')
             server_dn_match = re.search("New trusted MyProxy server: (.*)", err)
             if server_dn_match is not None:
                 server_dn = server_dn_match.groups()[0]
@@ -724,6 +734,10 @@ class GCMU(object):
             myproxy_bootstrap = Popen(args, stdout=PIPE, stderr=PIPE, 
                 env=pipe_env)
             (out, err) = myproxy_bootstrap.communicate()
+            if out is not None:
+                out = out.decode('utf8')
+            if err is not None:
+                err = err.decode('utf8')
             server_dn_match = re.search(r"New trusted MyProxy server: (.*)", err)
             server_ca_dn_match = re.search(r"New trusted CA \(([0-9a-f\.]*)\): (.*)", err)
             server_ca_dn = None
@@ -774,6 +788,10 @@ class GCMU(object):
             disabler = Popen(service_disable, stdin=None,
                     stdout=PIPE, stderr=PIPE)
             (out, err) = disabler.communicate()
+            if out is not None:
+                out = out.decode('utf8')
+            if err is not None:
+                err = err.decode('utf8')
             if out is not None and out != "" and out != "\n":
                 self.logger.debug(out,)
             if err is not None and err != "" and err != "\n":
@@ -811,6 +829,10 @@ class GCMU(object):
             enabler = Popen(service_enable, stdin=None,
                     stdout=PIPE, stderr=PIPE)
             (out, err) = enabler.communicate()
+            if out is not None:
+                out = out.decode('utf8')
+            if err is not None:
+                err = err.decode('utf8')
             if out is not None and out != "" and out != "\n":
                 self.logger.debug(out,)
             if err is not None and err != "" and err != "\n":

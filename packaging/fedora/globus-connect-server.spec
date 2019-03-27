@@ -1,33 +1,44 @@
 Name:           globus-connect-server
+%global         _name %(tr - _ <<< %{name})
 Version:        4.0.52
 Release:        1%{?dist}
 Summary:        Globus Connect Server
-%global _name %(tr - _ <<< %{name})
 
-%global         globus_sdk_name     globus-sdk
+%if %{?rhel}%{!?rhel:0} == 6
+%global python  python3.4
+%global python3_pkgversion 34
+%else
+%global python  %__python3
+%endif
+%global         globus_sdk_name globus_sdk
 %global         globus_sdk_version  1.7.1
+%global         globus_sdk_wheel %{globus_sdk_name}-%{globus_sdk_version}-py2.py3-none-any.whl
 Group:          System Environment/Libraries
 License:        ASL 2.0
 URL:            http://www.globus.org/
 Source:         %{_name}-%{version}.tar.gz
-Source1:        %{globus_sdk_name}-%{globus_sdk_version}.tar.gz
-Patch0:         globus-sdk-1.7.1-remove_extras_require.diff
+Source1:        %{globus_sdk_wheel}
+%if %{?rhel}%{!?rhel:0} == 6
+%global         pyjwt PyJWT-1.7.1-py2.py3-none-any.whl
+Source2:        https://files.pythonhosted.org/packages/87/8b/6a9f14b5f781697e51259d81657e6048fd31a113229cf346880bb7545565/PyJWT-1.7.1-py2.py3-none-any.whl
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 %if %{?suse_version}%{!?suse_version:0} < 1315
 BuildArch:      noarch
 %endif
 
-%if "%{?rhel}" == "5"
-%global python  python26
-%else
-%global python  python
-%endif
 
 %if %{?suse_version}%{!?suse_version:0} >= 1315
 BuildRequires:  fdupes
 %endif
 
-BuildRequires:  %{python}
+BuildRequires:  python%{python3_pkgversion}
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-six
+BuildRequires:  python%{python3_pkgversion}-requests
+%if %{?rhel}%{!?rhel} != 6
+BuildRequires:  python%{python3_pkgversion}-jwt
+%endif
 
 Requires:       globus-connect-server-common = %{version}
 Requires:       globus-connect-server-io = %{version}
@@ -55,7 +66,6 @@ Obsoletes:      globus-connect-multiuser-common
 Obsoletes:      globus-connect-multiuser-io
 Obsoletes:      globus-connect-multiuser-id
 Obsoletes:      globus-connect-multiuser-web
-Requires:       python-jwt
 Summary:        Globus Connect Server Common files
 Group:          System Environment/Libraries
 %description common
@@ -132,34 +142,37 @@ Globus Connect Server Web
 
 %prep
 %setup -q -n %{_name}-%{version}
-%setup -a 1 -D -T -n %{_name}-%{version}
-%patch0
+
+%if %{?rhel}%{!?rhel:0} == 6
+%setup -a 2 -D -T -n %{_name}-%{version}
+%endif
 
 %build
-cd %{globus_sdk_name}-%{globus_sdk_version}
-%{python} setup.py build
-cd ..
-python_exe="`%{python} -c 'import sys; print(sys.executable)'`"
-
 for templ in templates/*; do
-    sed -e "s|@PYTHON@|$python_exe|g" \
+    sed -e "s|@PYTHON@|%{python}|g" \
         -e "s|@libdir@|%{_libdir}|g" < "$templ" > `basename "$templ" .in`
 done
 %{python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir $RPM_BUILD_ROOT
-cd %{globus_sdk_name}-%{globus_sdk_version}
-%{python} setup.py install --root $RPM_BUILD_ROOT --install-lib=%{_libdir}/%{name}
-cd ..
+mkdir -p $RPM_BUILD_ROOT%{_libdir}/%{name} 
+
+# No python3 pip in el.6, so just unzip the whl to the dest dir
+unzip -d $RPM_BUILD_ROOT%{_libdir}/%{name} %_sourcedir/%{globus_sdk_wheel}
+
+%if %{?rhel}%{!?rhel:0} == 6
+# No python3 pyjwt package on el6, unzip whl to the dest dir
+unzip -d $RPM_BUILD_ROOT%{_libdir}/%{name} %_sourcedir/%{pyjwt}
+%endif
+
 %{python} setup.py install --root $RPM_BUILD_ROOT --prefix=/usr
 %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
 
 test -x /usr/lib/rpm/brp-python-bytecompile && \
     /usr/lib/rpm/brp-python-bytecompile "${python_exe}"
 %if %{?suse_version}%{!?suse_version:0} >= 1315
-%fdupes $RPM_BUILD_ROOT/usr/lib/python2.7/site-packages/globus
+%fdupes $RPM_BUILD_ROOT/usr/lib/python%{python3_version}/site-packages/globus
 %fdupes $RPM_BUILD_ROOT%{_libdir}/globus-connect-server/
 %endif
     

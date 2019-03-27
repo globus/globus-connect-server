@@ -143,7 +143,7 @@ class IO(gcmu.GCMU):
 
         self.logger.debug("Creating gridftp configuration")
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             dist = platform.dist()
             arch = platform.architecture()
@@ -268,7 +268,7 @@ server
             self.logger.debug("GridFTP Sharing Disabled")
             return
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             sharing_dn = self.conf.get_gridftp_sharing_dn()
             conf_file.write("sharing_dn\t\"%s\"\n" % \
@@ -316,7 +316,7 @@ server
             self.logger.debug("Removing old trust roots configuration link")
             os.remove(conf_link_name)
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write("$X509_CERT_DIR \"%s\"\n" % (cadir))
             os.symlink(conf_file_name, conf_link_name)
@@ -360,7 +360,7 @@ server
         if os.path.lexists(conf_link_name):
             os.remove(conf_link_name)
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write("log_single /var/log/gridftp.log\n")
             conf_file.write("log_level ERROR,WARN\n")
@@ -371,7 +371,7 @@ server
         if os.path.lexists(self.logrotate_path):
             os.remove(self.logrotate_path)
 
-        logrotate_file = file(self.logrotate_path, "w")
+        logrotate_file = open(self.logrotate_path, "w")
         try:
             logrotate_file.write("/var/log/gridftp.log {\n")
             logrotate_file.write("   rotate 4\n")
@@ -390,7 +390,7 @@ server
     def configure_gridmap_verify_myproxy_callout(self, conf_file_name, conf_link_name, **kwargs):
         self.logger.debug("ENTER: configure_gridmap_verify_myproxy_callout()")
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write("$GSI_AUTHZ_CONF \"%s\"\n" % (
                 os.path.join(
@@ -477,7 +477,7 @@ server
     def configure_cilogon(self, conf_file_name, conf_link_name, **kwargs):
         self.logger.debug("ENTER: IO.configure_cilogon()")
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write(
                     "$GSI_AUTHZ_CONF \"%s\"\n" % self.conf.get_authz_config_file())
@@ -487,7 +487,7 @@ server
         finally:
             conf_file.close()
             
-        conf_file = file(self.conf.get_authz_config_file(), "w")
+        conf_file = open(self.conf.get_authz_config_file(), "w")
         try:
             cadir = self.conf.get_security_trusted_certificate_directory()
             idp = self.conf.get_security_cilogon_identity_provider()
@@ -538,7 +538,7 @@ server
     def configure_gridmap(self, conf_file_name, conf_link_name, **kwargs):
         self.logger.debug("ENTER: configure_gridmap()")
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write("$GRIDMAP \"%s\"\n" %(
                 self.conf.get_security_gridmap()))

@@ -33,7 +33,7 @@ def install_signing_policy(signing_policy, cadir, ca_hash):
         raise Exception("Invalid cadir parameter")
 
     if os.path.exists(signing_policy):
-        ca_signing_policy_file = file(signing_policy, "r")
+        ca_signing_policy_file = open(signing_policy, "r")
         try:
             signing_policy = ca_signing_policy_file.read()
         finally:
@@ -65,9 +65,9 @@ def install_ca_cert(cert, cadir, ca_hash=None):
         raise Exception("Invalid cadir parameter")
 
     if os.path.exists(cert):
-        ca_cert_file = file(cert, "r")
+        ca_cert_file = open(cert, "r")
         try:
-            cert = ca_cert_file.read()
+            cert = ca_cert_file.read().decode('utf8')
         finally:
             ca_cert_file.close()
 
@@ -79,6 +79,8 @@ def install_ca_cert(cert, cadir, ca_hash=None):
 
         go_ca_certfile = open(os.path.join(cadir, ca_hash+'.0'), "w")
         try:
+            if isinstance(cert, bytes):
+                cert = cert.decode('utf8')
             go_ca_certfile.write(cert)
         finally:
             go_ca_certfile.close()
@@ -99,13 +101,13 @@ def install_ca(cadir, ca_cert=None, ca_signing_policy=None, ca_hash=None):
         raise Exception("Invalid cadir parameter")
 
     if ca_cert is not None and os.path.exists(ca_cert):
-        ca_cert_file = file(ca_cert, "r")
+        ca_cert_file = open(ca_cert, "r")
         try:
             ca_cert = ca_cert_file.read()
         finally:
             ca_cert_file.close()
     if ca_signing_policy is not None and os.path.exists(ca_signing_policy):
-        ca_signing_policy_file = file(ca_signing_policy, "r")
+        ca_signing_policy_file = open(ca_signing_policy, "r")
         try:
             ca_signing_policy = ca_signing_policy_file.read()
         finally:
@@ -113,9 +115,11 @@ def install_ca(cadir, ca_cert=None, ca_signing_policy=None, ca_hash=None):
 
     if ca_cert is None:
         ca_cert = pkgutil.get_data("globus.connect.security", "go-ca3.pem")
+        ca_cert.decode('utf8')
     if ca_signing_policy is None:
         ca_signing_policy = pkgutil.get_data(
                 "globus.connect.security", "go-ca3.signing_policy")
+        ca_signing_policy.decode('utf8')
 
     if ca_hash is None:
         ca_hash = get_certificate_hash_from_data(ca_cert)
@@ -138,6 +142,10 @@ def get_certificate_subject(cert_file_path, nameopt=''):
         args.append('rfc2253,-dn_rev')
     proc = Popen(args, stdout=PIPE, stderr=PIPE)
     (out, err) = proc.communicate()
+    if out is not None:
+        out = out.decode('utf8')
+    if err is not None:
+        err = err.decode('utf8')
     returncode = proc.returncode
 
     if returncode != 0:
@@ -157,6 +165,10 @@ def get_certificate_hash(cert_file_path):
     args = ['openssl', 'x509', '-hash', '-in', cert_file_path, '-noout']
     proc = Popen(args, stdout=PIPE, stderr=PIPE)
     (out, err) = proc.communicate()
+    if out is not None:
+        out = out.decode('utf8')
+    if err is not None:
+        err = err.decode('utf8')
     returncode = proc.returncode
 
     if returncode != 0:
@@ -171,14 +183,16 @@ def get_certificate_hash(cert_file_path):
 def get_certificate_hash_from_data(cert_data):
     args = ['openssl', 'x509', '-hash', '-noout']
     proc = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    if isinstance(cert_data, str):
+        cert_data = cert_data.encode('utf8')
     (out, err) = proc.communicate(cert_data)
     returncode = proc.returncode
 
     if returncode != 0:
         raise Exception("Error " + str(returncode) +
                         " getting certificate subject from " +
-                        cert_data + "\n" + err)
-    hashval = out.strip()
+                        str(cert_data) + "\n" + err)
+    hashval = out.decode('utf8').strip()
 
     return hashval
 
@@ -187,6 +201,10 @@ def openssl_version():
     args = ['openssl', 'version']
     proc = Popen(args, stdin=None, stdout=PIPE, stderr=None)
     (out, err) = proc.communicate()
+    if out is not None:
+        out = out.decode('utf8')
+    if err is not None:
+        err = err.decode('utf8')
     version = out.split()[1]
     return int(version.split(".")[0])
 

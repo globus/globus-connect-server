@@ -159,7 +159,7 @@ class Web(gcmu.GCMU):
             args.append("graph.api.test.globuscs.info")
         self.logger.debug("executing " + " ".join(args))
         setup = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
-        (out, err) = setup.communicate(self.password)
+        (out, err) = setup.communicate(self.password.encode('utf8'))
         if out != "":
             self.logger.debug(out)
         if err != "":
@@ -177,7 +177,7 @@ class Web(gcmu.GCMU):
                     self.logger.debug(out)
                 if err != "":
                     self.logger.warn(err)
-                touched = file(_enabled_mod_ssl, "w")
+                touched = open(_enabled_mod_ssl, "w")
                 touched.close()
         elif self.dist_type == 'suse':
             modlist = Popen(["/sbin/yast2","http-server", "modules", "list"],
@@ -199,13 +199,13 @@ class Web(gcmu.GCMU):
                     self.logger.debug(out)
                 if err != "":
                     self.logger.warn(err)
-                touched = file(_enabled_mod_ssl, "w")
+                touched = open(_enabled_mod_ssl, "w")
                 touched.close()
             # Workaround inconsistent pid file naming in the init script
             if not (os.path.exists(_suse_pidfile_link_name) or
                     os.path.islink(_suse_pidfile_link_name)):
                 os.symlink(_suse_pidfile_real_name, _suse_pidfile_link_name)
-                touched = file(_created_pidfile_symlink, "w")
+                touched = open(_created_pidfile_symlink, "w")
                 touched.close()
 
     def enable_mod_wsgi(self, **kwargs):
@@ -220,7 +220,7 @@ class Web(gcmu.GCMU):
                     self.logger.debug(out)
                 if err != "":
                     self.logger.warn(err)
-                touched = file(_enabled_mod_wsgi, "w")
+                touched = open(_enabled_mod_wsgi, "w")
                 touched.close()
             if self.http_conf_dir == '/etc/apache2/conf-available' and not \
                     os.path.exists(
@@ -232,7 +232,7 @@ class Web(gcmu.GCMU):
                     self.logger.debug(out)
                 if err != "":
                     self.logger.warn(err)
-                touched = file(_enabled_myproxy_oauth_conf, "w")
+                touched = open(_enabled_myproxy_oauth_conf, "w")
                 touched.close()
 
         self.logger.debug("EXIT: Web.enable_mod_wsgi()")
@@ -293,12 +293,12 @@ class Web(gcmu.GCMU):
                 enabler = Popen(["/usr/sbin/a2ensite","default-ssl"],
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (stdout, stderr) = enabler.communicate()
-                touched = file(_enabled_default_ssl_site, "w")
+                touched = open(_enabled_default_ssl_site, "w")
                 touched.close()
         elif self.dist_type == 'suse':
             if not os.path.exists(_suse_ssl_conf):
-                vhost_template = file(_suse_ssl_template, "r")
-                vhost_conf = file(_suse_ssl_conf, "w")
+                vhost_template = open(_suse_ssl_template, "r")
+                vhost_conf = open(_suse_ssl_conf, "w")
 
                 for line in vhost_template:
                     if re.match(r"^\s*SSLCertificateFile", line) is not None:
@@ -309,7 +309,7 @@ class Web(gcmu.GCMU):
                         vhost_conf.write(line)
                 vhost_template.close()
                 vhost_conf.close()
-                touched = file(_created_vhost_conf, "w")
+                touched = open(_created_vhost_conf, "w")
                 touched.close()
 
             if not os.path.exists(_suse_ssl_cert):
@@ -320,7 +320,7 @@ class Web(gcmu.GCMU):
                     self.logger.debug(out)
                 if err != "":
                     self.logger.warn(err)
-                touched = file(_created_ssl_cert, "w")
+                touched = open(_created_ssl_cert, "w")
                 touched.close()
 
 
