@@ -1,0 +1,4 @@
+#! /usr/bin/dh-exec
+/usr/lib/*
+/usr/share/globus-connect-server-common
+/etc/globus-connect-server.conf

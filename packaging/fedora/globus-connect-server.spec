@@ -1,32 +1,55 @@
 Name:           globus-connect-server
-Version:        4.0.51
-Release:        2%{?dist}
+%global         _name %(tr - _ <<< %{name})
+Version:        4.0.52
+Release:        1%{?dist}
 Summary:        Globus Connect Server
-%global _name %(tr - _ <<< %{name})
 
-%global transferapi_name globusonline-transfer-api-client
-%global transferapi_version 0.10.16
+%if %{?rhel}%{!?rhel:0} == 6
+%global         __python3           /usr/bin/python3.4
+%global         python3_pkgversion  34
+%global         py3_build %{expand:\\\
+%{__python3} %{py_setup} %{?py_setup_args} build --executable="%{__python3} %{py_shbang_opts}" %{?*}
+}
+%global         py3_install %{expand:\\\
+%{__python3} %{py_setup} %{?py_setup_args} install -O1 --skip-build --root %{buildroot} %{?*}
+}
+%endif
+
+%global         globus_sdk_name globus_sdk
+%global         globus_sdk_version  1.7.1
+%global         globus_sdk_wheel %{globus_sdk_name}-%{globus_sdk_version}-py2.py3-none-any.whl
+
 Group:          System Environment/Libraries
 License:        ASL 2.0
 URL:            http://www.globus.org/
 Source:         %{_name}-%{version}.tar.gz
-Source1:        %{transferapi_name}-%{transferapi_version}.tar.gz
+Source1:        %{globus_sdk_wheel}
+
+
+
+%if %{?rhel}%{!?rhel:0} == 7
+BuildRequires:  python3-rpm-macros
+%endif
+
+%if %{?suse_version}%{!?suse_version:0} >= 1315
+BuildRequires:	python-rpm-macros
+%global		python3_pkgversion		3
+%endif
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 %if %{?suse_version}%{!?suse_version:0} < 1315
 BuildArch:      noarch
 %endif
 
-%if "%{?rhel}" == "5"
-%global python  python26
-%else
-%global python  python
-%endif
 
 %if %{?suse_version}%{!?suse_version:0} >= 1315
 BuildRequires:  fdupes
 %endif
 
-BuildRequires:  %{python}
+BuildRequires:  python%{python3_pkgversion}
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-six
+BuildRequires:  python%{python3_pkgversion}-requests
 
 Requires:       globus-connect-server-common = %{version}
 Requires:       globus-connect-server-io = %{version}
@@ -47,7 +70,6 @@ The %{name} package contains:
 Globus Connect Server
 
 %package common
-Requires:	%{python}
 Obsoletes:      gcmu
 Obsoletes:      globus-connect-multiuser
 Obsoletes:      globus-connect-multiuser-common
@@ -130,36 +152,28 @@ Globus Connect Server Web
 
 %prep
 %setup -q -n %{_name}-%{version}
-%setup -a 1 -D -T -n %{_name}-%{version}
 
 %build
-cd %{transferapi_name}-%{transferapi_version}
-%{python} setup.py build
-cd ..
-python_exe="`%{python} -c 'import sys; print(sys.executable)'`"
-
-for templ in templates/*; do
-    sed -e "s|@PYTHON@|$python_exe|g" \
-        -e "s|@libdir@|%{_libdir}|g" < "$templ" > `basename "$templ" .in`
-done
-%{python} setup.py build
+%py3_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir $RPM_BUILD_ROOT
-cd %{transferapi_name}-%{transferapi_version}
-%{python} setup.py install --root $RPM_BUILD_ROOT --install-lib=%{_libdir}/%{name}
-cd ..
-%{python} setup.py install --root $RPM_BUILD_ROOT --prefix=/usr
-%global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-common 
 
-test -x /usr/lib/rpm/brp-python-bytecompile && \
-    /usr/lib/rpm/brp-python-bytecompile "${python_exe}"
+# No python3 pip in el.6, so just unzip the whl to the dest dir
+unzip -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{globus_sdk_wheel}
+
+%py3_install
+
+# Set __python to __python3 to use it for byte-compiling private dependencies 
+# in %{_datadir}/%{name}-common in the post-{%}install scriptlet
+%global __python %__python3
+
 %if %{?suse_version}%{!?suse_version:0} >= 1315
-%fdupes $RPM_BUILD_ROOT/usr/lib/python2.7/site-packages/globus
-%fdupes $RPM_BUILD_ROOT%{_libdir}/globus-connect-server/
+/usr/lib/rpm/brp-python-bytecompile %{__python3}
+%fdupes $RPM_BUILD_ROOT/usr/lib/python%{python3_version}/site-packages/globus
+%fdupes $RPM_BUILD_ROOT%{_datadir}/%{name}-common
 %endif
-    
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -172,9 +186,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/globus-connect-server-cleanup*
 %files common
 %defattr(-,root,root,-)
-/usr/lib*/globus-connect-server/*
+%{_datadir}/globus-connect-server-common/*
 /usr/lib*/python*
-%dir /usr/lib*/globus-connect-server
+%dir %{_datadir}/globus-connect-server-common
 
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %files id
@@ -193,43 +207,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/globus-connect-server-web-cleanup
 %{_mandir}/man8/globus-connect-server-web-*
 
-%pre common
-
-# If we're upgrading from a system using the beta package name
-# "globus-connect-multiuser", move things over to the new names
-if [ -d %{_localstatedir}/lib/globus-connect-multiuser ] && \
-   [ ! -d %{_localstatedir}/lib/globus-connect-server ]; then
-    mv %{_localstatedir}/lib/globus-connect-multiuser \
-       %{_localstatedir}/lib/globus-connect-server 
-
-    for oldlink in %{_sysconfdir}/gridftp.d/globus-connect-multiuser* \
-                   %{_sysconfdir}/myproxy.d/globus-connect-multiuser*; do
-        if [ -L "$oldlink" ]; then
-            newlink="$(echo "$oldlink" | sed -e s/multiuser/server/)"
-            oldfile="$(readlink "$oldlink" | sed -e s/multiuser/server/)"
-            newfile="$(echo "$oldfile" | sed -e s/multiuser/server/g)"
-            sed -e "s/multiuser/server/g" < "$oldfile" > "$newfile"
-            rm -f "$oldfile" "$oldlink"
-            ln -s "$newfile" "$newlink"
-        fi
-    done
-    for oldfile in $(find %{_localstatedir}/lib/globus-connect-server -type f); do
-        if grep -q "multiuser" "$oldfile" ; then
-            sed -i.bak -e s/multiuser/server/g "$oldfile"
-        fi
-    done
-fi
-
-%post common
-if [ -f %{_sysconfdir}/globus-connect-multiuser.conf ]; then
-    echo "Copying globus-connect-multiuser.conf to globus-connect-server.conf"
-    cp %{_sysconfdir}/globus-connect-server.conf \
-       %{_sysconfdir}/globus-connect-server.conf.rpmnew
-    cp %{_sysconfdir}/globus-connect-multiuser.conf \
-       %{_sysconfdir}/globus-connect-server.conf
-fi
-
 %changelog
+* Tue Mar 26 2019 Globus Toolkit <support@globus.org> 4.0.52-1
+- Update to new Globus SDK, repackage using python3
+
 * Thu Jan 10 2019 Globus Toolkit <support@globus.org> 4.0.51-2
 - Add missing dependency on crontabs for RHEL-based systems
 
@@ -247,7 +228,7 @@ fi
 * Mon Apr 9 2018 Globus Toolkit <support@globus.org> 4.0.48-1
 - Update CILogon IdP list
 
-* Mon Dec 12 2017 Globus Toolkit <support@globus.org> 4.0.46-1
+* Tue Dec 12 2017 Globus Toolkit <support@globus.org> 4.0.46-1
 - Fix DN parsing for openssl 1.1.x
 
 * Thu May 04 2017 Globus Toolkit <support@globus.org> 4.0.45-1
@@ -334,7 +315,7 @@ fi
 - Add html version of documentation to source
 - Note managed endpoint configuration needed when enabling sharing
 
-* Tue Apr 23 2015 Globus Toolkit <support@globus.org> 4.0.16-1
+* Tue Apr 28 2015 Globus Toolkit <support@globus.org> 4.0.16-1
 - Use systemctl where available
 
 * Tue Mar 3 2015 Globus Toolkit <support@globus.org> 4.0.15-1

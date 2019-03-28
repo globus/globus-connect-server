@@ -70,17 +70,11 @@ globus-connect-server-io-setup {-c FILENAME|--config-file=FILENAME}
 """
 
 import getopt
-import getpass
 import os
-import socket
-import ssl
 import sys
-import time
 import traceback
 
 from globus.connect.server import get_api, is_latest_version
-from globusonline.transfer.api_client.goauth import get_access_token, GOCredentialsError
-from globusonline.transfer.api_client import TransferAPIClient
 from globus.connect.server.io import IO
 from globus.connect.server.configfile import ConfigFile
 
@@ -90,7 +84,7 @@ def usage(short=False, outstream=sys.stdout):
     else:
         print(__doc__, file=outstream)
 
-if __name__ == "__main__":
+def main():
     conf_filename = None
     api = None
     force = False
@@ -147,4 +141,5 @@ if __name__ == "__main__":
             print(str(e))
         sys.exit(1)
 
-# vim: filetype=python:
+if __name__ == "__main__":
+    main()

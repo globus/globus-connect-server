@@ -21,19 +21,13 @@ Configure a MyProxy server for use with Globus
 
 """
 
-import copy
-import logging
 import os
 import pkgutil
 import string
 import shutil
-import sys
 
 import globus.connect.security as security
 import globus.connect.server as gcmu
-
-from globusonline.transfer.api_client import TransferAPIClient
-from globusonline.transfer.api_client import TransferAPIError
 
 from subprocess import Popen, PIPE
 
@@ -134,6 +128,8 @@ class ID(gcmu.GCMU):
                     args.append('-force')
                 ca_create = Popen(args, stdout = PIPE, stderr = PIPE)
                 (out, err) = ca_create.communicate()
+                out = out.decode('utf8')
+                err = err.decode('utf8')
                 out = "".join(s for s in out if s in string.printable)
                 err = "".join(s for s in err if s in string.printable)
                 self.logger.debug("ca create output: " + out)
@@ -202,10 +198,11 @@ class ID(gcmu.GCMU):
                 os.path.join(cadir, "cacert.pem"))
 
         mapapp_template = pkgutil.get_data(
-                "globus.connect.server", "mapapp-template")
+                "globus.connect.server",
+                "mapapp-template").decode('utf8')
 
         old_umask = os.umask(0o22)
-        mapapp_file = file(mapapp, "w")
+        mapapp_file = open(mapapp, "w")
         try:
             mapapp_file.write(mapapp_template % { 'dn': dn })
         finally:
@@ -235,7 +232,7 @@ class ID(gcmu.GCMU):
 
     def write_myproxy_conf(self):
         old_mask = os.umask(0o77)
-        conffile = file(self.conf.get_myproxy_config_file(), "w")
+        conffile = open(self.conf.get_myproxy_config_file(), "w")
         try:
             if self.myproxy_cred_repo_config is not None:
                 conffile.write(self.myproxy_cred_repo_config)

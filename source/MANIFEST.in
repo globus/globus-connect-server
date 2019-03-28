@@ -1,8 +1,6 @@
 recursive-include globus *.py
+include requirements.txt
 include man/man8/*.8
-include templates/*.in
-include globus-connect-server-*setup
-include globus-connect-server-*cleanup
 include globus-connect-server.conf
 include globus/connect/security/*.pem
 include globus/connect/security/*.signing_policy

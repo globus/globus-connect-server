@@ -1,0 +1,42 @@
+diff -u -r globus-sdk-1.7.1.orig/setup.py globus-sdk-1.7.1/setup.py
+--- globus-sdk-1.7.1.orig/setup.py	2018-12-17 20:55:41.000000000 +0000
++++ globus-sdk-1.7.1/setup.py	2019-03-26 19:55:15.198245982 +0000
+@@ -40,38 +40,6 @@
+         "six>=1.10.0,<2.0.0",
+         "pyjwt[crypto]>=1.5.3,<2.0.0",
+     ],
+-    extras_require={
+-        # empty extra included to support older installs
+-        "jwt": [],
+-        # the development extra is for SDK developers only
+-        "development": [
+-            # drive testing with tox
+-            "tox>=3.5.3,<4.0",
+-            # linting
+-            "flake8>=3.0,<4.0",
+-            "isort>=4.3,<5.0",
+-            # black requires py3.6+
+-            'black==18.9b0;python_version>="3.6"',
+-            # flake-bugbear requires py3.5+
+-            'flake8-bugbear==18.8.0;python_version>="3.5"',
+-            # testing
+-            "pytest>=3.7.4,<4.0",
+-            "pytest-cov>=2.5.1,<3.0",
+-            "pytest-xdist>=1.22.5,<2.0",
+-            # mock on py2, py3.4 and py3.5
+-            # not just py2: py3 versions of mock don't all have the same
+-            # interface!
+-            'mock==2.0.0;python_version<"3.6"',
+-            # mocking HTTP responses
+-            "httpretty==0.9.5",
+-            # builds + uploads to pypi
+-            "twine==1.11.0",
+-            "wheel==0.31.1",
+-            # docs
+-            "sphinx==1.4.1",
+-            "guzzle_sphinx_theme==0.7.11",
+-        ],
+-    },
+     include_package_data=True,
+     keywords=["globus", "file transfer"],
+     classifiers=[

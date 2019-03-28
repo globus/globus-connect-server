@@ -62,16 +62,11 @@ globus-connect-server-cleanup {-c FILENAME|--config-file=FILENAME}
 """
 
 import getopt
-import getpass
 import os
-import socket
-import ssl
 import sys
-import time
 import traceback
 
 from globus.connect.server import get_api, is_latest_version
-from globusonline.transfer.api_client import TransferAPIClient
 from globus.connect.server.io import IO
 from globus.connect.server.id import ID
 from globus.connect.server.web import Web
@@ -83,7 +78,7 @@ def usage(short=False, outstream=sys.stdout):
     else:
         print(__doc__, file=outstream)
 
-if __name__ == "__main__":
+def main():
     try:
         conf_filename = None
         api = None
@@ -143,4 +138,5 @@ if __name__ == "__main__":
             print(str(e))
         sys.exit(1)
 
-# vim: filetype=python:
+if __name__ == "__main__":
+    main()

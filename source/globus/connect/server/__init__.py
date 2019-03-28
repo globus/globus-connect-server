@@ -24,33 +24,27 @@ import re
 import shutil
 import socket
 import ssl
-import stat
 import sys
 import tempfile
 import time
 
-try:
-    from urllib.request import urlopen
-    from urllib.parse import urlparse
-except ImportError:
-    from urlparse import urlparse
-    from urllib import urlopen
+sys.path.append('/usr/share/globus-connect-server-common')
 
-import uuid
+from six.moves.urllib.request import urlopen
+from six.moves.urllib.parse import urlparse
 
-import globusonline.transfer.api_client
-import globusonline.transfer.api_client.verified_https
-from globusonline.transfer.api_client import TransferAPIClient, ClientError
-from globusonline.transfer.api_client.goauth import get_access_token, GOCredentialsError
-import globusonline.transfer.api_client.goauth
+from globus_sdk import (
+    AccessTokenAuthorizer,
+    BasicAuthorizer,
+    GlobusAPIError,
+    TransferClient)
+from globus_sdk.base import BaseClient
 
 import globus.connect.security
 
 from subprocess import Popen, PIPE
 
 LATEST_VERSION_URI = "https://downloads.globus.org/toolkit/gt6/packages/GLOBUS_CONNECT_SERVER_LATEST"
-
-__path__ = pkgutil.extend_path(__path__, __name__)
 
 
 def _urlopen_with_retries(url, retries=3):
@@ -82,7 +76,7 @@ def is_ec2():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = _urlopen_with_retries(url).read()
+        value = _urlopen_with_retries(url).read().decode('utf8')
     except IOError:
         pass
 
@@ -101,7 +95,7 @@ def public_name():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = _urlopen_with_retries(url).read()
+        value = _urlopen_with_retries(url).read().decode('utf8')
     except IOError:
         pass
 
@@ -123,7 +117,7 @@ def public_ip():
     value = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = _urlopen_with_retries(url).read()
+        value = _urlopen_with_retries(url).read().decode('utf8')
     except IOError:
         pass
 
@@ -186,70 +180,68 @@ def is_local_service(name):
 def get_api(conf):
     username = conf.get_go_username()
     if username is None:
-        print("Globus Id: ", end=' ')
+        print('Globus Id: ', end=' ', flush=True)
         username = sys.stdin.readline().strip()
         atglobusidorg = username.rfind("@globusid.org")
         if atglobusidorg != -1:
            username = username[:atglobusidorg]
     password = conf.get_go_password()
     if password is None:
-        password = getpass.getpass("Password: ")
+        password = getpass.getpass("Globus Password: ")
 
     auth_result = None
 
     go_instance = conf.get_go_instance()
-    nexus_cert = None
-    api_ca = None
-    base_url = globusonline.transfer.api_client.DEFAULT_BASE_URL
     
-    if go_instance != "Production":
-        globusonline.transfer.api_client.goauth.HOST = \
-                "nexus.api.%s.globuscs.info" % (go_instance)
-        base_url = \
-                "https://transfer.%s.api.globusonline.org/%s" \
-                % (go_instance, globusonline.transfer.api_client.API_VERSION)
-        nexus_cert = os.path.join(
-                os.path.dirname(
-                        globus.connect.security.__file__),
-                        "lets_encrypt_fullchain.pem")
-        api_cert = nexus_cert
-        globusonline.transfer.api_client.verified_https.match_hostname = \
-                lambda cert, hostname: True
     socket.setdefaulttimeout(300)
+
+    GOAUTH_PATH = "/goauth/token?grant_type=client_credentials"
 
     for tries in range(0,10):
         try:
-            auth_result = get_access_token(
-                    username=username,
-                    password=password,
-                    ca_certs=nexus_cert)
-            if auth_result is not None:
-                break
+            authorizer = BasicAuthorizer(username, password)
+            nexus_client = BaseClient('nexus', authorizer=authorizer)
+
+            response = nexus_client.get(GOAUTH_PATH)
+            access_token = response.data['access_token']
+        except GlobusAPIError as e:
+            if e.http_status == 403:
+                print('{}\nRetrying'.format(e.message))
+                print('Globus Id: ', end=' ', flush=True)
+                username = sys.stdin.readline().strip()
+                password = getpass.getpass("Globus Password: ")
+            else:
+                raise e
         except ssl.SSLError as e:
             if "timed out" not in str(e):
                 raise e
             time.sleep(30)
-        except GOCredentialsError as e:
-            print("Globus Id: ", end=' ')
-            username = sys.stdin.readline().strip()
-            password = getpass.getpass("Globus Password: ")
 
-    api = TransferAPIClient(
-            username=auth_result.username,
-            goauth=auth_result.token,
-            base_url=base_url,
-            server_ca_file=api_ca,
-            timeout=300.0,
-            max_attempts=10)
-    api.password = password
+    if go_instance == 'Production':
+        go_instance = 'default'
+
+    class TransferClientWithUserNameAndPassword(TransferClient):
+        def __init__(self, username=None, password=None, **kwargs):
+            self.username = username
+            self.password = password
+            super(TransferClientWithUserNameAndPassword, self).__init__(**kwargs)
+
+    api = TransferClientWithUserNameAndPassword(
+            username=username,
+            password=password,
+            authorizer=AccessTokenAuthorizer(access_token),
+            environment=go_instance,
+            timeout=300.0)
 
     return api
 
 def is_latest_version(force=False):
-    data_version = pkgutil.get_data("globus.connect.server", "version").strip()
+    data_version = pkgutil.get_data(
+        "globus.connect.server", "version").decode('utf8').strip()
 
     try:
-        published_version = _urlopen_with_retries(LATEST_VERSION_URI).read().strip()
+        published_version = _urlopen_with_retries(
+        LATEST_VERSION_URI).read().decode('utf8').strip()
     except IOError as e:
         print("Unable to get version info from: " + LATEST_VERSION_URI + \
               "\n" + str(e) + "\nSkipping version check.", file=sys.stderr)
@@ -365,7 +357,10 @@ class GCMU(object):
             if (not os.path.exists(cert)) or (not os.path.exists(key)):
                 self.logger.debug("Fetching certificate and key from globus")
 
-                (code, msg, j) = self.api.post('/private/endpoint_cert','')
+                result = self.api.post('/private/endpoint_cert','')
+                code = result.http_status
+                msg = result.text
+                j = result.data
                 if code != 200:
                     raise Exception("Unable to receive credential: %s %s" % (code, msg))
                 self.logger.debug("endpoint_cert_json = " + str(j))
@@ -423,10 +418,10 @@ class GCMU(object):
         # Install the Globus Connect Server CA
         gcs_ca_cert = pkgutil.get_data(
                 "globus.connect.security",
-                "go-ca3.pem")
+                "go-ca3.pem").decode('utf8')
         gcs_ca_signing_policy = pkgutil.get_data(
                 "globus.connect.security",
-                "go-ca3.signing_policy")
+                "go-ca3.signing_policy").decode('utf8')
         globus.connect.security.install_ca(
                 certdir,
                 gcs_ca_cert,
@@ -496,8 +491,10 @@ class GCMU(object):
                 env=pipe_env)
             (out, err) = myproxy_bootstrap.communicate()
             if out is not None:
+                out = out.decode('utf8')
                 self.logger.debug(out)
             if err is not None:
+                err = err.decode('utf8')
                 self.logger.warn(err)
             if myproxy_bootstrap.returncode != 0:
                 self.logger.debug("myproxy bootstrap returned " +
@@ -517,7 +514,7 @@ class GCMU(object):
                         cilogon_ca + ".pem")
                 cilogon_signing_policy = pkgutil.get_data(
                         "globus.connect.security",
-                        cilogon_ca + ".signing_policy")
+                        cilogon_ca + ".signing_policy").decode('utf8')
 
                 globus.connect.security.install_ca(
                     certdir,
@@ -530,13 +527,13 @@ class GCMU(object):
 
                 cilogon_crl_script = pkgutil.get_data(
                         "globus.connect.security",
-                        "cilogon-crl-fetch")
+                        "cilogon-crl-fetch").decode('utf8')
 
                 cilogon_crl_cron_path = os.path.join(self.conf.root,
                         "etc/cron.hourly",
                         "globus-connect-server-" + cilogon_ca + "-crl")
 
-                cilogon_crl_cron_file = file(cilogon_crl_cron_path, "w")
+                cilogon_crl_cron_file = open(cilogon_crl_cron_path, "w")
                 try:
                     cilogon_crl_cron_file.write(cilogon_crl_script % {
                         'certdir': certdir,
@@ -629,8 +626,10 @@ class GCMU(object):
                     env=pipe_env)
                 (out, err) = myproxy_bootstrap.communicate()
                 if out is not None:
+                    out = out.decode('utf8')
                     self.logger.debug(out)
                 if err is not None:
+                    err = err.decode('utf8')
                     self.logger.warn(err)
                 if myproxy_bootstrap.returncode != 0:
                     self.logger.debug("myproxy bootstrap returned " +
@@ -641,7 +640,7 @@ class GCMU(object):
                 shutil.rmtree(temppath, ignore_errors=True)
 
         for ca_hash in hashes:
-            ca_file = os.path.join(certdir, ca_hash+".0")
+            ca_file = os.path.join(certdir, ca_hash + ".0")
             signing_policy_file = os.path.join(
                     certdir,
                     ca_hash+".signing_policy")
@@ -694,6 +693,10 @@ class GCMU(object):
             myproxy_bootstrap = Popen(args, stdout=PIPE, stderr=PIPE, 
                 env=pipe_env)
             (out, err) = myproxy_bootstrap.communicate()
+            if out is not None:
+                out = out.decode('utf8')
+            if err is not None:
+                err = err.decode('utf8')
             server_dn_match = re.search("New trusted MyProxy server: (.*)", err)
             if server_dn_match is not None:
                 server_dn = server_dn_match.groups()[0]
@@ -731,6 +734,10 @@ class GCMU(object):
             myproxy_bootstrap = Popen(args, stdout=PIPE, stderr=PIPE, 
                 env=pipe_env)
             (out, err) = myproxy_bootstrap.communicate()
+            if out is not None:
+                out = out.decode('utf8')
+            if err is not None:
+                err = err.decode('utf8')
             server_dn_match = re.search(r"New trusted MyProxy server: (.*)", err)
             server_ca_dn_match = re.search(r"New trusted CA \(([0-9a-f\.]*)\): (.*)", err)
             server_ca_dn = None
@@ -781,6 +788,10 @@ class GCMU(object):
             disabler = Popen(service_disable, stdin=None,
                     stdout=PIPE, stderr=PIPE)
             (out, err) = disabler.communicate()
+            if out is not None:
+                out = out.decode('utf8')
+            if err is not None:
+                err = err.decode('utf8')
             if out is not None and out != "" and out != "\n":
                 self.logger.debug(out,)
             if err is not None and err != "" and err != "\n":
@@ -818,6 +829,10 @@ class GCMU(object):
             enabler = Popen(service_enable, stdin=None,
                     stdout=PIPE, stderr=PIPE)
             (out, err) = enabler.communicate()
+            if out is not None:
+                out = out.decode('utf8')
+            if err is not None:
+                err = err.decode('utf8')
             if out is not None and out != "" and out != "\n":
                 self.logger.debug(out,)
             if err is not None and err != "" and err != "\n":

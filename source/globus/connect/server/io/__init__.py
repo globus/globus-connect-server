@@ -16,22 +16,16 @@
 
 from __future__ import print_function, absolute_import
 
-import copy
-import getopt
-import logging
 import os
 import pkgutil
 import platform
-import re
-import shutil
-import sys
-import uuid
 
 import globus.connect.security as security
 import globus.connect.server as gcmu
 
-from globusonline.transfer.api_client import TransferAPIClient
-from globusonline.transfer.api_client import TransferAPIError
+from six.moves import urllib_parse
+
+from globus_sdk import GlobusAPIError
 
 class IO(gcmu.GCMU):
     """
@@ -46,6 +40,16 @@ class IO(gcmu.GCMU):
         self.logrotate_path = os.path.join(self.logrotate_d,
                 "globus-connect-server")
         self.service = "globus-gridftp-server"
+        self.endpoint_id_file = self.conf.get_endpoint_id_file()
+        if os.path.exists(self.endpoint_id_file):
+            with open(self.endpoint_id_file, 'r') as f:
+                self.endpoint_xid = f.read().strip()
+        else:
+            self.endpoint_xid = ''
+
+        if self.endpoint_xid == '':
+            self.endpoint_xid = urllib_parse.quote(
+                self.conf.get_endpoint_name())
 
         if not os.path.exists(self.etc_gridftp_d):
             os.makedirs(self.etc_gridftp_d, 0o755)
@@ -77,7 +81,7 @@ class IO(gcmu.GCMU):
                 self.conf.get_security_certificate_file()))
         print("Using Authentication Method " + \
             self.conf.get_security_identity_method())
-        print("Configured Endpoint " + self.conf.get_endpoint_name())
+        print("Configured Endpoint " + self.endpoint_xid)
         self.logger.debug("EXIT: IO.setup()")
 
     def configure_credential(self, **kwargs):
@@ -139,7 +143,7 @@ class IO(gcmu.GCMU):
 
         self.logger.debug("Creating gridftp configuration")
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             dist = platform.dist()
             arch = platform.architecture()
@@ -264,7 +268,7 @@ server
             self.logger.debug("GridFTP Sharing Disabled")
             return
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             sharing_dn = self.conf.get_gridftp_sharing_dn()
             conf_file.write("sharing_dn\t\"%s\"\n" % \
@@ -312,7 +316,7 @@ server
             self.logger.debug("Removing old trust roots configuration link")
             os.remove(conf_link_name)
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write("$X509_CERT_DIR \"%s\"\n" % (cadir))
             os.symlink(conf_file_name, conf_link_name)
@@ -356,7 +360,7 @@ server
         if os.path.lexists(conf_link_name):
             os.remove(conf_link_name)
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write("log_single /var/log/gridftp.log\n")
             conf_file.write("log_level ERROR,WARN\n")
@@ -367,7 +371,7 @@ server
         if os.path.lexists(self.logrotate_path):
             os.remove(self.logrotate_path)
 
-        logrotate_file = file(self.logrotate_path, "w")
+        logrotate_file = open(self.logrotate_path, "w")
         try:
             logrotate_file.write("/var/log/gridftp.log {\n")
             logrotate_file.write("   rotate 4\n")
@@ -386,7 +390,7 @@ server
     def configure_gridmap_verify_myproxy_callout(self, conf_file_name, conf_link_name, **kwargs):
         self.logger.debug("ENTER: configure_gridmap_verify_myproxy_callout()")
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write("$GSI_AUTHZ_CONF \"%s\"\n" % (
                 os.path.join(
@@ -473,7 +477,7 @@ server
     def configure_cilogon(self, conf_file_name, conf_link_name, **kwargs):
         self.logger.debug("ENTER: IO.configure_cilogon()")
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write(
                     "$GSI_AUTHZ_CONF \"%s\"\n" % self.conf.get_authz_config_file())
@@ -483,7 +487,7 @@ server
         finally:
             conf_file.close()
             
-        conf_file = file(self.conf.get_authz_config_file(), "w")
+        conf_file = open(self.conf.get_authz_config_file(), "w")
         try:
             cadir = self.conf.get_security_trusted_certificate_directory()
             idp = self.conf.get_security_cilogon_identity_provider()
@@ -493,7 +497,7 @@ server
                     "cilogon-basic.pem")
             signing_policy = pkgutil.get_data(
                     "globus.connect.security",
-                    "cilogon-basic.signing_policy")
+                    "cilogon-basic.signing_policy").decode('utf8')
             cahash = security.get_certificate_hash_from_data(ca)
             security.install_ca(cadir, ca, signing_policy)
             # read from installed conf instead?
@@ -512,7 +516,7 @@ server
                     "cilogon-silver.pem")
             signing_policy = pkgutil.get_data(
                     "globus.connect.security",
-                    "cilogon-silver.signing_policy")
+                    "cilogon-silver.signing_policy").decode('utf8')
             cahash = security.get_certificate_hash_from_data(ca)
             security.install_ca(cadir, ca, signing_policy)
             # read from installed conf instead?
@@ -534,7 +538,7 @@ server
     def configure_gridmap(self, conf_file_name, conf_link_name, **kwargs):
         self.logger.debug("ENTER: configure_gridmap()")
 
-        conf_file = file(conf_file_name, "w")
+        conf_file = open(conf_file_name, "w")
         try:
             conf_file.write("$GRIDMAP \"%s\"\n" %(
                 self.conf.get_security_gridmap()))
@@ -560,7 +564,6 @@ server
         self.cleanup_logging()
         self.stop()
         self.disable()
-        endpoint_name = self.conf.get_endpoint_name()
         server = self.conf.get_gridftp_server()
         scheme = "gsiftp"
         port = 2811
@@ -578,20 +581,29 @@ server
 
         if kwargs.get("delete"):
             try:
-                self.api.endpoint_delete(endpoint_name)
-            except TransferAPIError as e:
-                if e.status_code != 404:
+                self.api.delete_endpoint(self.endpoint_xid)
+                if os.path.exists(self.endpoint_id_file):
+                    os.remove(self.endpoint_id_file)
+            except GlobusAPIError as e:
+                if e.http_status != 404:
                     raise e
         else:
-            (status_code, status_reason, data) = \
-                self.api.endpoint(endpoint_name)
+            try:
+                result = self.api.get_endpoint(self.endpoint_xid)
+                data = result.data
+            except GlobusAPIError as e:
+                if e.http_status != 404:
+                    raise e
+                data = {'DATA':[]}
+
             for sdata in data['DATA']:
-                if sdata.get(gcmu.to_unicode('uri')) == gcmu.to_unicode(server):
-                    sid = sdata[gcmu.to_unicode('id')]
+                if (sdata.get('uri') == gcmu.to_unicode(server)):
+                    sid = sdata['id']
                     try:
-                        self.api.endpoint_server_delete(endpoint_name, sid)
-                    except TransferAPIError as e:
-                        if e.status_code != 404:
+                        self.api.delete_endpoint_server(
+                            self.endpoint_xid, sid)
+                    except GlobusAPIError as e:
+                        if e.http_status != 404:
                             raise e
 
     def bind_to_endpoint(self, **kwargs):
@@ -603,19 +615,22 @@ server
         adding this one.
         """
         self.logger.debug("ENTER: IO.bind_to_endpoint()")
-        endpoint_name = self.conf.get_endpoint_name()
 
-        if endpoint_name is None:
+        if self.endpoint_xid is None:
             return
 
         if kwargs.get('force'):
             try:
                 self.logger.debug("Removing old endpoint definition")
-                self.api.endpoint_delete(endpoint_name)
+                self.api.endpoint_delete(self.endpoint_xid)
+                if os.path.exists(self.endpoint_id_file):
+                    os.remove(self.endpoint_id_file)
+                self.endpoint_xid = urllib_parse.quote(
+                    self.conf.get_endpoint_name())
             except:
                 pass
 
-        self.logger.debug("Configuring endpoint " + endpoint_name)
+        self.logger.debug("Configuring endpoint " + self.endpoint_xid)
         endpoint_public = self.conf.get_endpoint_public()
         endpoint_default_dir = self.conf.get_endpoint_default_dir()
 
@@ -672,30 +687,31 @@ server
             new_endpoint = {
                 'DATA_TYPE': 'endpoint'
             }
-            (status_code, status_reason, data) = \
-                self.api.endpoint(endpoint_name)
-            default_directory_key = gcmu.to_unicode('default_directory')
-            public_key = gcmu.to_unicode('public')
-            myproxy_server_key = gcmu.to_unicode('myproxy_server')
-            myproxy_dn_key = gcmu.to_unicode('myproxy_dn')
-            oauth_server_key = gcmu.to_unicode('oauth_server')
-            hostname_key = gcmu.to_unicode('hostname')
-            id_key = gcmu.to_unicode('id')
-            data_key = gcmu.to_unicode('DATA')
+            result = self.api.get_endpoint(self.endpoint_xid)
+            data = result.data
+            default_directory_key = 'default_directory'
+            public_key = 'public'
+            myproxy_server_key = 'myproxy_server'
+            myproxy_dn_key = 'myproxy_dn'
+            oauth_server_key = 'oauth_server'
+            hostname_key = 'hostname'
+            id_key = 'id'
+            data_key = 'DATA'
 
             # Update any changed endpoint-level metadata
             if data.get(default_directory_key) != endpoint_default_dir:
-                self.logger.debug("Changing default_directory on endpoint " \
-                    "to [%(new)s]" % { 'new': endpoint_default_dir })
-                new_endpoint[default_directory_key] = \
-                        gcmu.to_unicode(endpoint_default_dir)
+                self.logger.debug(
+                    "Changing default_directory on endpoint "
+                    "to [{}]".format(endpoint_default_dir))
+                new_endpoint[default_directory_key] = endpoint_default_dir
 
             if data.get(public_key) != endpoint_public:
                 self.logger.debug("Changing public to " + str(endpoint_public))
                 new_endpoint[public_key] = endpoint_public
 
             if data.get(myproxy_server_key) != myproxy_server:
-                self.logger.debug("Changing myproxy_server to " + str(myproxy_server))
+                self.logger.debug(
+                    "Changing myproxy_server to " + str(myproxy_server))
                 new_endpoint[myproxy_server_key] = myproxy_server
 
             if data.get(myproxy_dn_key) != myproxy_dn:
@@ -703,51 +719,66 @@ server
                 new_endpoint[myproxy_dn_key] = myproxy_dn
 
             if data.get(oauth_server_key) != oauth_server:
-                self.logger.debug("Changing oauth_server to " + str(oauth_server))
+                self.logger.debug(
+                    "Changing oauth_server to " + str(oauth_server))
                 new_endpoint[oauth_server_key] = oauth_server
 
             if len(new_endpoint.keys()) > 1:
                 self.logger.debug("Updating endpoint")
-                (status_code, status, data) = \
-                    self.api.endpoint_update(endpoint_name, new_endpoint)
-                self.logger.debug("endpoint update result: " + str(status_code))
+                result = self.api.update_endpoint(
+                    self.endpoint_xid, new_endpoint)
+                self.logger.debug("endpoint update result: {}".format(
+                    result.http_status))
+                self.logger.debug("endpoint update data: {}".format(
+                    result.data))
+                returned_id = result.data.get('resource', '').split('/')[-1]
+                if self.endpoint_xid != returned_id and returned_id != '':
+                    self._update_xid(returned_id)
 
-            (status_code, status_reason, data) = \
-                    self.api.endpoint_server_list(endpoint_name)
-            self.logger.debug("Existing endpoint server list: " + 
-                    str(data.get(data_key, [])))
+            result = self.api.endpoint_server_list(self.endpoint_xid)
+            data = result.data
+            self.logger.debug(
+                "Existing endpoint server list: "
+                + str(data.get(data_key, [])))
             for server_item in data.get(data_key, []):
-                self.logger.debug("existing server for endpoint: " +
-                        str(server_item.get(hostname_key, "")))
+                self.logger.debug(
+                    "existing server for endpoint: "
+                    + str(server_item.get(hostname_key, "")))
                 this_server_hostname = server_item.get(hostname_key)
                 this_server_id = server_item.get(id_key)
-                if kwargs.get('reset') or \
-                        this_server_hostname == gcmu.to_unicode(hostname):
-                    self.logger.debug("deleting server entry for " +
-                            str(this_server_hostname) + " with id  " +
-                            str(this_server_id))
-                    self.api.endpoint_server_delete(endpoint_name,
-                            this_server_id)
-            self.api.endpoint_server_add(endpoint_name, new_gridftp_server)
-        except TransferAPIError as e:
-            if e.status_code == 404:
-                self.logger.debug("endpoint %s does not exist, creating" 
-                        %(endpoint_name))
+                if (kwargs.get('reset')
+                        or this_server_hostname == gcmu.to_unicode(hostname)):
+                    self.logger.debug(
+                        "deleting server entry for "
+                        + str(this_server_hostname) + " with id  "
+                        + str(this_server_id))
+                    self.api.delete_endpoint_server(
+                        self.endpoint_xid, this_server_id)
+            self.api.add_endpoint_server(
+                self.endpoint_xid, new_gridftp_server)
+        except GlobusAPIError as e:
+            if e.http_status == 404:
+                self.logger.debug(
+                    "endpoint {} does not exist, creating" .format(
+                        self.endpoint_xid))
                 try:
-                    (status_code, status_reason, data) = \
-                        self.api.endpoint_create(
-                            endpoint_name,
-                            default_directory = endpoint_default_dir,
-                            public = endpoint_public,
-                            is_globus_connect = False,
+                    result = self.api.create_endpoint(dict(
+                        canonical_name=self.conf.get_endpoint_name(),
+                        default_directory=endpoint_default_dir,
+                        public=endpoint_public,
+                        is_globus_connect=False,
+                        DATA=[dict(
+                            DATA_TYPE="server",
                             hostname=new_gridftp_server['hostname'],
                             scheme=new_gridftp_server['scheme'],
                             port=new_gridftp_server['port'],
-                            subject=new_gridftp_server['subject'],
-                            myproxy_server=myproxy_server,
-                            myproxy_dn=myproxy_dn,
-                            oauth_server=oauth_server)
-                except TransferAPIError as e:
+                            subject=new_gridftp_server['subject'])],
+                        myproxy_server=myproxy_server,
+                        myproxy_dn=myproxy_dn,
+                        oauth_server=oauth_server))
+                    if self.endpoint_xid != result.data['id']:
+                        self._update_xid(result.data['id'])
+                except GlobusAPIError as e:
                     self.logger.error("endpoint create failed: %s" % \
                         (e.message))
                     self.errorcount += 1
@@ -755,5 +786,10 @@ server
                 self.logger.error("endpoint failed: %s" % (e.message))
                 self.errorcount += 1
         self.logger.debug("EXIT: IO.bind_to_endpoint()")
+
+    def _update_xid(self, xid):
+        with open(self.endpoint_id_file, 'w') as f:
+            f.write("{}\n".format(xid))
+        self.endpoint_xid = xid
 
 # vim: filetype=python:

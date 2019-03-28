@@ -20,10 +20,7 @@ import os
 import re
 import pkgutil
 import sys
-try:
-	import urllib2
-except:
-	import urllib.request as urllib2
+from six.moves.urllib.request import urlopen
 
 import xml.etree.ElementTree as etree
 try:
@@ -431,7 +428,7 @@ class ConfigFile(configparser.ConfigParser):
 
                 # if not found or valid, check current idp list
                 try:
-                    r = urllib2.urlopen(IDPLIST_XML_URL)
+                    r = urlopen(IDPLIST_XML_URL)
                     idplist_xml = etree.fromstring(r.read())
                     updated = True
                 except:
@@ -462,7 +459,7 @@ class ConfigFile(configparser.ConfigParser):
         else:
             return [x.strip() for x in optstr.split(',')]
 
-    def get(self, section, option, raw=False, vars=None):
+    def get(self, section, option, raw=False, vars=None, fallback=configparser._UNSET):
         res_str = ''
         if self.has_option(section, option):
             res_str = configparser.ConfigParser.get(self, section, option, raw=raw, vars=vars)
@@ -1085,6 +1082,10 @@ class ConfigFile(configparser.ConfigParser):
 
     def get_authz_config_file(self):
         return os.path.join(self.root, ConfigFile.DEFAULT_DIR, 'gsi-authz.conf')
+
+    def get_endpoint_id_file(self):
+        return os.path.join(
+            self.root, ConfigFile.DEFAULT_DIR, 'gcsv4-endpoint-id.txt')
 
     def get_etc_gridftp_d(self):
         return os.path.join(self.root, "etc", "gridftp.d")
