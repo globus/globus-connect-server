@@ -128,6 +128,8 @@ class ID(gcmu.GCMU):
                     args.append('-force')
                 ca_create = Popen(args, stdout = PIPE, stderr = PIPE)
                 (out, err) = ca_create.communicate()
+                out = out.decode('utf8')
+                err = err.decode('utf8')
                 out = "".join(s for s in out if s in string.printable)
                 err = "".join(s for s in err if s in string.printable)
                 self.logger.debug("ca create output: " + out)

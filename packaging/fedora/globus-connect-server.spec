@@ -31,10 +31,9 @@ Source1:        %{globus_sdk_wheel}
 BuildRequires:  python3-rpm-macros
 %endif
 
-%if %{?rhel}%{!?rhel:0} == 6
-%global         pyjwt       PyJWT-1.7.1-py2.py3-none-any.whl
-Source2:        https://files.pythonhosted.org/packages/87/8b/6a9f14b5f781697e51259d81657e6048fd31a113229cf346880bb7545565/PyJWT-1.7.1-py2.py3-none-any.whl
-
+%if %{?suse_version}%{!?suse_version:0} >= 1315
+BuildRequires:	python-rpm-macros
+%global		python3_pkgversion		3
 %endif
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -51,10 +50,6 @@ BuildRequires:  python%{python3_pkgversion}
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-six
 BuildRequires:  python%{python3_pkgversion}-requests
-
-%if %{?rhel}%{!?rhel} != 6
-BuildRequires:  python%{python3_pkgversion}-jwt
-%endif
 
 Requires:       globus-connect-server-common = %{version}
 Requires:       globus-connect-server-io = %{version}
@@ -168,11 +163,6 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-common
 # No python3 pip in el.6, so just unzip the whl to the dest dir
 unzip -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{globus_sdk_wheel}
 
-%if %{?rhel}%{!?rhel:0} == 6
-# No python3 pyjwt package on el6, unzip whl to the dest dir
-unzip -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{pyjwt}
-%endif
-
 %py3_install
 
 # Set __python to __python3 to use it for byte-compiling private dependencies 
@@ -180,6 +170,7 @@ unzip -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{pyjwt}
 %global __python %__python3
 
 %if %{?suse_version}%{!?suse_version:0} >= 1315
+/usr/lib/rpm/brp-python-bytecompile %{__python3}
 %fdupes $RPM_BUILD_ROOT/usr/lib/python%{python3_version}/site-packages/globus
 %fdupes $RPM_BUILD_ROOT%{_datadir}/%{name}-common
 %endif

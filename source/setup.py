@@ -86,7 +86,6 @@ setup(name='globus_connect_server',
         ]
     },
     install_requires=[
-        'pyjwt',
         'requests',
         'six',
     ],
