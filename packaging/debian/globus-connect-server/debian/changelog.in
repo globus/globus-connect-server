@@ -1,3 +1,9 @@
+globus-connect-server (4.0.52-1+gt6.@distro@) @distro@; urgency=low
+
+  * Convert to python3, update globus-sdk
+
+ -- Globus Toolkit <support@globus.org>  Wed, 27 Mar 2019 14:13:57 -0400
+
 globus-connect-server (4.0.51-1+gt6.@distro@) @distro@; urgency=low
 
   * Fix for CILogon IdPs that do not support full R&S attributes

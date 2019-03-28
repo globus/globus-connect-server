@@ -10,27 +10,41 @@ create_source_dist()
     echo globus_connect_server-${gcs_version}.tar.gz
 )
 
-download_transferapi()
+download_include_binaries()
 (
-    api_version=0.10.18
-    api_tarball="globusonline-transfer-api-client-${api_version}.tar.gz"
-    api_url="https://pypi.python.org/packages/99/5d/ea1edc300385f6ebe330004833331477d76edfde2ee466815640a20e53e2/${api_tarball}"
+    packaging_dir="$1"
+    include_binaries_file="${packaging_dir}/debian/globus-connect-server/debian/source/include-binaries"
+    binaries=""
 
-    curl -LOs "${api_url}"
-    echo "$api_tarball"
+    while read line; do
+	wheel="${line%%-*}"
+	wheel_version="${line#*-}"
+	wheel_version="${wheel_version%%-*}"
+	mkdir -p "$wheel"
+	pip download -q -d "$wheel" --no-deps "$wheel==$wheel_version"
+        if [ $? = 0 ]; then
+	    for f in "$wheel"/*; do
+	        mv "$f" .
+		echo "${f##*/}"
+	    done
+	fi
+	rmdir "$wheel"
+    done < "$include_binaries_file"
 )
 
 unpack_sources()
 (
     gcs_source="$1"
-    transferapi_source="$2"
+    include_binaries="$2"
     build_dir="$3"
 
     rm -rf "${build_dir}"
-    mkdir -p "${build_dir}/transferapiclient"
+    mkdir -p "${build_dir}"
 
     tar --strip 1 -C "${build_dir}" -zxf "${gcs_source}"
-    tar --strip 1 -C "${build_dir}/transferapiclient" -zxf "${transferapi_source}"
+    for binary in $include_binaries; do
+        cp "${binary}" "${build_dir}"
+    done
 )
 
 debianize()
@@ -57,7 +71,7 @@ build_packages()
 build_dir="build/globus-connect-server"
 
 source_dist="$(create_source_dist)"
-transferapi_tarball="$(download_transferapi)"
-unpack_sources "$source_dist" "$transferapi_tarball" "${build_dir}"
+include_binaries="$(download_include_binaries "$(dirname "$0")/packaging")"
+unpack_sources "$source_dist" "${include_binaries}" "${build_dir}"
 debianize "$(dirname "$0")/packaging" "${build_dir}"
 build_packages "${build_dir}"

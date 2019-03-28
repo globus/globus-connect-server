@@ -1,0 +1,5 @@
+#! /usr/bin/dh-exec
+usr/bin/globus-connect-server-setup
+usr/bin/globus-connect-server-cleanup
+usr/share/man/man8/globus-connect-server-setup*
+usr/share/man/man8/globus-connect-server-cleanup*

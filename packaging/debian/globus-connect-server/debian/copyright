@@ -1,9 +1,9 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: globus-connect-server
-Source: <http://www.globusonline.org/gcmu>
+Source: <https://docs.globus.org/globus-connect-server-installation-guide/>
 
 Files: *
-Copyright: 2012-2013 University of Chicago
+Copyright: 2012-2019 The University of Chicago
 License: Apache-2.0
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.

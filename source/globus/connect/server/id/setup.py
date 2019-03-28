@@ -71,7 +71,7 @@ def usage(short=False, outstream=sys.stdout):
     else:
         print(__doc__, file=outstream)
 
-if __name__ == "__main__":
+def main():
     conf_filename = None
     api = None
     force = False
@@ -124,5 +124,5 @@ if __name__ == "__main__":
             print(str(e))
         sys.exit(1)
 
-
-# vim: filetype=python:
+if __name__ == "__main__":
+    main()

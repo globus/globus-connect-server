@@ -1,15 +1,48 @@
 Source: globus-connect-server
 Section: net
 Priority: extra
-Maintainer: Globus Toolki <support@globus.org>
-Build-Depends: debhelper (>= 9), python3 (>= 3.5), python3-setuptools
-Standards-Version: 4.1.0
-X-Python3-Version: >= 3.5
+Maintainer: Mattias Ellert <mattias.ellert@fysast.uu.se>
+Build-Depends: debhelper (>= 7.0.0), python3, python3-six, python3-jwt, python3-setuptools, python3-requests
+Standards-Version: 3.9.3
 
+Package: globus-connect-multiuser
+Depends: globus-connect-server
+Architecture: all
+Section: oldlibs
+Description: Transitional dummy package
+ This is a transitional dummy package. It can safely be removed.
+
+Package: globus-connect-multiuser-common
+Depends: globus-connect-server-common
+Architecture: all
+Section: oldlibs
+Description: Transitional dummy package
+ This is a transitional dummy package. It can safely be removed.
+
+Package: globus-connect-multiuser-id
+Depends: globus-connect-server-id
+Architecture: all
+Section: oldlibs
+Description: Transitional dummy package
+ This is a transitional dummy package. It can safely be removed.
+
+Package: globus-connect-multiuser-io
+Depends: globus-connect-server-io
+Architecture: all
+Section: oldlibs
+Description: Transitional dummy package
+ This is a transitional dummy package. It can safely be removed.
+
+Package: globus-connect-multiuser-web
+Depends: globus-connect-server-web
+Architecture: all
+Section: oldlibs
+Description: Transitional dummy package
+ This is a transitional dummy package. It can safely be removed.
 
 Package: globus-connect-server
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), globus-connect-server-io (= ${binary:Version}), globus-connect-server-web (= ${binary:Version}), globus-connect-server-id (= ${binary:Version})
+Depends: ${shlibs:Depends}, ${misc:Depends}, python, globus-connect-server-io (= ${binary:Version}), globus-connect-server-web (= ${binary:Version}), globus-connect-server-id (= ${binary:Version})
 Replaces: globus-connect-multiuser-server (<< 2.0.60-1)
 Breaks: globus-connect-multiuser-server (<< 2.0.60-1)
 Description: Globus Connect Server Installation Tool
@@ -18,12 +51,12 @@ Description: Globus Connect Server Installation Tool
  many others all over the world. A growing number of projects and companies are
  using the Globus Toolkit to unlock the potential of grids for their cause.
  .
- The globus-connect-server package contains:
+ The globus-connect-server-common package contains:
  Globus Connect Server
 
 Package: globus-connect-server-common
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), python-support|dh-python, globus-openssl-module-progs (<< 4.4) | globus-gsi-cert-utils-progs (>> 9.7)
+Depends: ${shlibs:Depends}, ${misc:Depends}, python, python-support|dh-python, globus-openssl-module-progs (<< 4.4) | globus-gsi-cert-utils-progs (>> 9.7)
 Replaces: globus-connect-multiuser-common (<< 2.0.60-1)
 Breaks: globus-connect-multiuser-common (<< 2.0.60-1)
 Description: Globus Connect Server Installation Tool
@@ -37,7 +70,9 @@ Description: Globus Connect Server Installation Tool
 
 Package: globus-connect-server-id
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), myproxy, myproxy-server, gsi-openssh, gsi-openssh-clients, globus-gsi-cert-utils-progs, globus-simple-ca, globus-connect-server-common (= ${binary:Version})
+Depends: ${shlibs:Depends}, ${misc:Depends}, myproxy, myproxy-server, gsi-openssh, gsi-openssh-clients, globus-gsi-cert-utils-progs, globus-simple-ca, globus-connect-server-common (= ${binary:Version})
+Replaces: globus-connect-multiuser-id (<< 2.0.60-1)
+Breaks: globus-connect-multiuser-id (<< 2.0.60-1)
 Description: Globus Connect Server Installation Tool
  The Globus Toolkit is an open source software toolkit used for building Grid
  systems and applications. It is being developed by the Globus Alliance and
@@ -49,7 +84,9 @@ Description: Globus Connect Server Installation Tool
 
 Package: globus-connect-server-io
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), myproxy, gsi-openssh, gsi-openssh-clients, globus-gsi-cert-utils-progs, globus-gridftp-server-progs (>= 9.3), globus-gss-assist-progs, libglobus-callout0 (>= 2.4), libglobus-gridmap-verify-myproxy-callout0 (>= 1.2), libglobus-gridmap-eppn-callout0 (>= 0.4), libglobus-gsi-credential1 (>= 5.6), globus-connect-server-common (= ${binary:Version})
+Depends: ${shlibs:Depends}, ${misc:Depends}, myproxy, gsi-openssh, gsi-openssh-clients, globus-gsi-cert-utils-progs, globus-gridftp-server-progs (>= 9.3), globus-gss-assist-progs, libglobus-callout0 (>= 2.4), libglobus-gridmap-verify-myproxy-callout0 (>= 1.2), libglobus-gridmap-eppn-callout0 (>= 0.4), libglobus-gsi-credential1 (>= 5.6), globus-connect-server-common (= ${binary:Version})
+Replaces: globus-connect-multiuser-io (<< 2.0.60-1)
+Breaks: globus-connect-multiuser-io (<< 2.0.60-1)
 Description: Globus Connect Server Installation Tool
  The Globus Toolkit is an open source software toolkit used for building Grid
  systems and applications. It is being developed by the Globus Alliance and
@@ -61,7 +98,9 @@ Description: Globus Connect Server Installation Tool
 
 Package: globus-connect-server-web
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), myproxy, myproxy-oauth, globus-connect-server-common (= ${binary:Version})
+Depends: ${shlibs:Depends}, ${misc:Depends}, myproxy, myproxy-oauth, globus-connect-server-common (= ${binary:Version})
+Replaces: globus-connect-multiuser-web (<< 2.0.60-1)
+Breaks: globus-connect-multiuser-web (<< 2.0.60-1)
 Description: Globus Connect Server Installation Tool
  The Globus Toolkit is an open source software toolkit used for building Grid
  systems and applications. It is being developed by the Globus Alliance and
@@ -70,3 +109,4 @@ Description: Globus Connect Server Installation Tool
  .
  The globus-connect-server-web package contains:
  Globus Connect Server Web
+

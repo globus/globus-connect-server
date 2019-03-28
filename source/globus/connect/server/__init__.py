@@ -28,6 +28,8 @@ import sys
 import tempfile
 import time
 
+sys.path.append('/usr/share/globus-connect-server-common')
+
 from six.moves.urllib.request import urlopen
 from six.moves.urllib.parse import urlparse
 
@@ -43,8 +45,6 @@ import globus.connect.security
 from subprocess import Popen, PIPE
 
 LATEST_VERSION_URI = "https://downloads.globus.org/toolkit/gt6/packages/GLOBUS_CONNECT_SERVER_LATEST"
-
-__path__ = pkgutil.extend_path(__path__, __name__)
 
 
 def _urlopen_with_retries(url, retries=3):
@@ -180,14 +180,14 @@ def is_local_service(name):
 def get_api(conf):
     username = conf.get_go_username()
     if username is None:
-        print("Globus Id: ", end=' ')
+        print('Globus Id: ', end=' ', flush=True)
         username = sys.stdin.readline().strip()
         atglobusidorg = username.rfind("@globusid.org")
         if atglobusidorg != -1:
            username = username[:atglobusidorg]
     password = conf.get_go_password()
     if password is None:
-        password = getpass.getpass("Password: ")
+        password = getpass.getpass("Globus Password: ")
 
     auth_result = None
 
@@ -206,8 +206,8 @@ def get_api(conf):
             access_token = response.data['access_token']
         except GlobusAPIError as e:
             if e.http_status == 403:
-                print("{}\nRetrying".format(e.message))
-                print("Globus Id: ", end=' ')
+                print('{}\nRetrying'.format(e.message))
+                print('Globus Id: ', end=' ', flush=True)
                 username = sys.stdin.readline().strip()
                 password = getpass.getpass("Globus Password: ")
             else:
@@ -514,7 +514,7 @@ class GCMU(object):
                         cilogon_ca + ".pem")
                 cilogon_signing_policy = pkgutil.get_data(
                         "globus.connect.security",
-                        cilogon_ca + ".signing_policy")
+                        cilogon_ca + ".signing_policy").decode('utf8')
 
                 globus.connect.security.install_ca(
                     certdir,
@@ -527,13 +527,13 @@ class GCMU(object):
 
                 cilogon_crl_script = pkgutil.get_data(
                         "globus.connect.security",
-                        "cilogon-crl-fetch")
+                        "cilogon-crl-fetch").decode('utf8')
 
                 cilogon_crl_cron_path = os.path.join(self.conf.root,
                         "etc/cron.hourly",
                         "globus-connect-server-" + cilogon_ca + "-crl")
 
-                cilogon_crl_cron_file = file(cilogon_crl_cron_path, "w")
+                cilogon_crl_cron_file = open(cilogon_crl_cron_path, "w")
                 try:
                     cilogon_crl_cron_file.write(cilogon_crl_script % {
                         'certdir': certdir,

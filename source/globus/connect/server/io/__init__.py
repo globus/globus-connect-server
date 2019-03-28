@@ -497,7 +497,7 @@ server
                     "cilogon-basic.pem")
             signing_policy = pkgutil.get_data(
                     "globus.connect.security",
-                    "cilogon-basic.signing_policy")
+                    "cilogon-basic.signing_policy").decode('utf8')
             cahash = security.get_certificate_hash_from_data(ca)
             security.install_ca(cadir, ca, signing_policy)
             # read from installed conf instead?
@@ -516,7 +516,7 @@ server
                     "cilogon-silver.pem")
             signing_policy = pkgutil.get_data(
                     "globus.connect.security",
-                    "cilogon-silver.signing_policy")
+                    "cilogon-silver.signing_policy").decode('utf8')
             cahash = security.get_certificate_hash_from_data(ca)
             security.install_ca(cadir, ca, signing_policy)
             # read from installed conf instead?
@@ -729,8 +729,11 @@ server
                     self.endpoint_xid, new_endpoint)
                 self.logger.debug("endpoint update result: {}".format(
                     result.http_status))
-                if self.endpoint_xid != result.data['id']:
-                    self._update_xid(result.data['id'])
+                self.logger.debug("endpoint update data: {}".format(
+                    result.data))
+                returned_id = result.data.get('resource', '').split('/')[-1]
+                if self.endpoint_xid != returned_id and returned_id != '':
+                    self._update_xid(returned_id)
 
             result = self.api.endpoint_server_list(self.endpoint_xid)
             data = result.data

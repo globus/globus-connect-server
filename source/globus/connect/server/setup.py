@@ -56,9 +56,6 @@ The following options are available:
 
 from __future__ import print_function, absolute_import
 
-if __name__ == "__main__" and __package__ is None:
-    __package__ = "globus.connect.server"
-
 short_usage = """globus-connect-server-setup [-h|--help]
 globus-connect-server-setup {-c FILENAME|--config-file=FILENAME}
                                {-v|--verbose}
@@ -82,7 +79,7 @@ def usage(short=False, outstream=sys.stdout):
     else: 
         print(__doc__, file=outstream) 
 
-if __name__ == "__main__":
+def main():
     conf_filename = None
     api = None
     force = False
@@ -144,5 +141,8 @@ if __name__ == "__main__":
         else:
             print(str(e))
         sys.exit(1)
+
+if __name__ == "__main__":
+    main()
 
 # vim: filetype=python:
