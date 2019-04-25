@@ -1,7 +1,7 @@
 Name:           globus-connect-server
 %global         _name %(tr - _ <<< %{name})
 Version:        4.0.52
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Globus Connect Server
 
 %if %{?rhel}%{!?rhel:0} == 6
@@ -31,8 +31,13 @@ Source1:        %{globus_sdk_wheel}
 BuildRequires:  python3-rpm-macros
 %endif
 
+%if %{?fedora}%{!?fedora:0} >= 28
+BuildRequires: python3-devel
+%endif
+
 %if %{?suse_version}%{!?suse_version:0} >= 1315
 BuildRequires:	python-rpm-macros
+BuildRequires:  unzip
 %global		python3_pkgversion		3
 %endif
 
@@ -208,6 +213,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/globus-connect-server-web-*
 
 %changelog
+* Thu Apr 25 2019 Globus Toolkit <support@globus.org> 4.0.52-2
+- Fedora python3-devel dependency
+
 * Tue Mar 26 2019 Globus Toolkit <support@globus.org> 4.0.52-1
 - Update to new Globus SDK, repackage using python3
 
