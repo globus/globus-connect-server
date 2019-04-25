@@ -2,14 +2,14 @@ Source: globus-connect-server
 Section: net
 Priority: extra
 Maintainer: Globus Toolki <support@globus.org>
-Build-Depends: debhelper (>= 9), python3 (>= 3.5), python3-setuptools, dh-python, unzip
+Build-Depends: debhelper (>= 9), python3 (>= 3.4), python3-setuptools, dh-python, unzip
 Standards-Version: 4.1.0
-X-Python3-Version: >= 3.5
+X-Python3-Version: >= 3.4
 
 
 Package: globus-connect-server
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), globus-connect-server-io (= ${binary:Version}), globus-connect-server-web (= ${binary:Version}), globus-connect-server-id (= ${binary:Version})
+Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.4), globus-connect-server-io (= ${binary:Version}), globus-connect-server-web (= ${binary:Version}), globus-connect-server-id (= ${binary:Version})
 Replaces: globus-connect-multiuser-server (<< 2.0.60-1)
 Breaks: globus-connect-multiuser-server (<< 2.0.60-1)
 Description: Globus Connect Server Installation Tool
@@ -23,7 +23,7 @@ Description: Globus Connect Server Installation Tool
 
 Package: globus-connect-server-common
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), globus-openssl-module-progs (<< 4.4) | globus-gsi-cert-utils-progs (>> 9.7)
+Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.4), globus-openssl-module-progs (<< 4.4) | globus-gsi-cert-utils-progs (>> 9.7)
 Replaces: globus-connect-multiuser-common (<< 2.0.60-1)
 Breaks: globus-connect-multiuser-common (<< 2.0.60-1)
 Description: Globus Connect Server Installation Tool
@@ -37,7 +37,7 @@ Description: Globus Connect Server Installation Tool
 
 Package: globus-connect-server-id
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), myproxy, myproxy-server, gsi-openssh, gsi-openssh-clients, globus-gsi-cert-utils-progs, globus-simple-ca, globus-connect-server-common (= ${binary:Version})
+Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.4), myproxy, myproxy-server, gsi-openssh, gsi-openssh-clients, globus-gsi-cert-utils-progs, globus-simple-ca, globus-connect-server-common (= ${binary:Version})
 Description: Globus Connect Server Installation Tool
  The Globus Toolkit is an open source software toolkit used for building Grid
  systems and applications. It is being developed by the Globus Alliance and
@@ -49,7 +49,7 @@ Description: Globus Connect Server Installation Tool
 
 Package: globus-connect-server-io
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), myproxy, gsi-openssh, gsi-openssh-clients, globus-gsi-cert-utils-progs, globus-gridftp-server-progs (>= 9.3), globus-gss-assist-progs, libglobus-callout0 (>= 2.4), libglobus-gridmap-verify-myproxy-callout0 (>= 1.2), libglobus-gridmap-eppn-callout0 (>= 0.4), libglobus-gsi-credential1 (>= 5.6), globus-connect-server-common (= ${binary:Version})
+Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.4), myproxy, gsi-openssh, gsi-openssh-clients, globus-gsi-cert-utils-progs, globus-gridftp-server-progs (>= 9.3), globus-gss-assist-progs, libglobus-callout0 (>= 2.4), libglobus-gridmap-verify-myproxy-callout0 (>= 1.2), libglobus-gridmap-eppn-callout0 (>= 0.4), libglobus-gsi-credential1 (>= 5.6), globus-connect-server-common (= ${binary:Version})
 Description: Globus Connect Server Installation Tool
  The Globus Toolkit is an open source software toolkit used for building Grid
  systems and applications. It is being developed by the Globus Alliance and
@@ -61,7 +61,7 @@ Description: Globus Connect Server Installation Tool
 
 Package: globus-connect-server-web
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), myproxy, myproxy-oauth, globus-connect-server-common (= ${binary:Version})
+Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.4), myproxy, myproxy-oauth, globus-connect-server-common (= ${binary:Version})
 Description: Globus Connect Server Installation Tool
  The Globus Toolkit is an open source software toolkit used for building Grid
  systems and applications. It is being developed by the Globus Alliance and
