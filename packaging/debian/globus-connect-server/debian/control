@@ -2,7 +2,7 @@ Source: globus-connect-server
 Section: net
 Priority: extra
 Maintainer: Globus Toolki <support@globus.org>
-Build-Depends: debhelper (>= 9), python3 (>= 3.5), python3-setuptools
+Build-Depends: debhelper (>= 9), python3 (>= 3.5), python3-setuptools, dh-python
 Standards-Version: 4.1.0
 X-Python3-Version: >= 3.5
 
@@ -23,7 +23,7 @@ Description: Globus Connect Server Installation Tool
 
 Package: globus-connect-server-common
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), python-support|dh-python, globus-openssl-module-progs (<< 4.4) | globus-gsi-cert-utils-progs (>> 9.7)
+Depends: ${misc:Depends}, ${python3:Depends}, python3 (>= 3.5), globus-openssl-module-progs (<< 4.4) | globus-gsi-cert-utils-progs (>> 9.7)
 Replaces: globus-connect-multiuser-common (<< 2.0.60-1)
 Breaks: globus-connect-multiuser-common (<< 2.0.60-1)
 Description: Globus Connect Server Installation Tool
