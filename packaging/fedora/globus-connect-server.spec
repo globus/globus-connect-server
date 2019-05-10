@@ -1,7 +1,7 @@
 Name:           globus-connect-server
 %global         _name %(tr - _ <<< %{name})
 Version:        4.0.52
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Globus Connect Server
 
 %if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0} == 7
@@ -18,12 +18,20 @@ Summary:        Globus Connect Server
 %global         globus_sdk_name globus_sdk
 %global         globus_sdk_version  1.7.1
 %global         globus_sdk_wheel %{globus_sdk_name}-%{globus_sdk_version}-py2.py3-none-any.whl
+%if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0}  == 7
+%global         pyjwt_name  PyJWT
+%global         pyjwt_version 1.7.1
+%global         pyjwt_wheel %{pyjwt_name}-%{pyjwt_version}-py2.py3-none-any.whl
+%endif
 
 Group:          System Environment/Libraries
 License:        ASL 2.0
 URL:            http://www.globus.org/
 Source:         %{_name}-%{version}.tar.gz
 Source1:        %{globus_sdk_wheel}
+%if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0}  == 7
+Source2:        %{pyjwt_wheel}
+%endif
 
 
 
@@ -173,6 +181,9 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-common
 
 # No python3 pip in el.6, so just unzip the whl to the dest dir
 unzip -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{globus_sdk_wheel}
+%if %{?fedora}%{!?fedora:0} >= 28 ||  %{?rhel}%{!?rhel:0} >= 6
+unzip -d ${RPM_BUILD_ROOT%{_datadir}/%{name}-common %{_sourcedir}/%{pyjwt_wheel}
+%endif
 
 %py3_install
 
@@ -219,7 +230,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/globus-connect-server-web-*
 
 %changelog
-* Thu Apr 25 2019 Globus Toolkit <support@globus.org> 4.0.52-3
+* Thu Apr 25 2019 Globus Toolkit <support@globus.org> 4.0.52-4
 - Fedora python3-devel dependency
 
 * Tue Mar 26 2019 Globus Toolkit <support@globus.org> 4.0.52-1

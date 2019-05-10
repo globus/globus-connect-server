@@ -1,4 +1,4 @@
-globus-connect-server (4.0.52-3+gt6.@distro@) @distro@; urgency=low
+globus-connect-server (4.0.52-4+gt6.@distro@) @distro@; urgency=low
 
   * Update to new Globus SDK, repackage using python3
 
