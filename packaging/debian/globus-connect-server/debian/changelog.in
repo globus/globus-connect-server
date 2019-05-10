@@ -1,14 +1,8 @@
-globus-connect-server (4.0.52-4+gt6.@distro@) @distro@; urgency=low
+globus-connect-server (4.0.53-1+gt6.@distro@) @distro@; urgency=low
 
   * Update to new Globus SDK, repackage using python3
 
- -- Globus Toolkit <support@globus.org>  Thu, 25 Apr 2019 16:26:53 -0400
-
-globus-connect-server (4.0.52-1+gt6.@distro@) @distro@; urgency=low
-
-  * Update to new Globus SDK, repackage using python3
-
- -- Globus Toolkit <support@globus.org>  Thu, 28 Mar 2019 10:41:37 -0400
+ -- Globus Toolkit <support@globus.org>  Fri, 10 May 2019 19:42:08 -0400
 
 globus-connect-server (4.0.51-1+gt6.@distro@) @distro@; urgency=low
 
