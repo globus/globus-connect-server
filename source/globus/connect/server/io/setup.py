@@ -1,5 +1,3 @@
-#! /usr/bin/python
-
 # Copyright 2012-2015 University of Chicago
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
