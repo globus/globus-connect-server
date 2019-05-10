@@ -1,10 +1,10 @@
 Name:           globus-connect-server
 %global         _name %(tr - _ <<< %{name})
 Version:        4.0.52
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Globus Connect Server
 
-%if %{?rhel}%{!?rhel:0} == 6
+%if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0} == 7
 %global         __python3           /usr/bin/python3.4
 %global         python3_pkgversion  34
 %global         py3_build %{expand:\\\
@@ -60,6 +60,12 @@ Requires:       globus-connect-server-common = %{version}
 Requires:       globus-connect-server-io = %{version}
 Requires:       globus-connect-server-id = %{version}
 Requires:       globus-connect-server-web = %{version}
+
+Requires:  python%{python3_pkgversion}
+Requires:  python%{python3_pkgversion}-setuptools
+Requires:  python%{python3_pkgversion}-six
+Requires:  python%{python3_pkgversion}-requests
+
 
 %if %{?fedora}%{!?fedora:0} >= 28 ||  %{?rhel}%{!?rhel:0} >= 6
 Requires:       crontabs
@@ -213,7 +219,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/globus-connect-server-web-*
 
 %changelog
-* Thu Apr 25 2019 Globus Toolkit <support@globus.org> 4.0.52-2
+* Thu Apr 25 2019 Globus Toolkit <support@globus.org> 4.0.52-3
 - Fedora python3-devel dependency
 
 * Tue Mar 26 2019 Globus Toolkit <support@globus.org> 4.0.52-1
