@@ -1,7 +1,7 @@
 Name:           globus-connect-server
 %global         _name %(tr - _ <<< %{name})
 Version:        4.0.52
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Globus Connect Server
 
 %if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0} == 7
@@ -45,7 +45,6 @@ BuildRequires: python3-devel
 
 %if %{?suse_version}%{!?suse_version:0} >= 1315
 BuildRequires:	python-rpm-macros
-BuildRequires:  unzip
 %global		python3_pkgversion		3
 %endif
 
@@ -179,13 +178,17 @@ Globus Connect Server Web
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-common 
 
-# No python3 pip in el.6, so just unzip the whl to the dest dir
-unzip -q -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{globus_sdk_wheel}
+PYTHONPATH=$RPM_BUILD_ROOT%{_datadir}/%{name}-common %{__python3} -measy_install -x -N --install-dir $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{globus_sdk_wheel}
 %if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0}  == 7
-unzip -q -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{pyjwt_wheel}
+PYTHONPATH=$RPM_BUILD_ROOT%{_datadir}/%{name}-common %{__python3} -measy_install -x -N --install-dir $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{pyjwt_wheel}
 %endif
 
 %py3_install
+
+for script in $RPM_BUILD_ROOT/%{_bindir}/globus*; do
+    sed -e '1aimport site\nsite.addsitedir("/usr/share/globus-connect-server-common")\n' -i $script;
+done
+
 
 # Set __python to __python3 to use it for byte-compiling private dependencies 
 # in %{_datadir}/%{name}-common in the post-{%}install scriptlet
@@ -230,7 +233,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/globus-connect-server-web-*
 
 %changelog
-* Thu Apr 25 2019 Globus Toolkit <support@globus.org> 4.0.52-4
+* Thu Apr 25 2019 Globus Toolkit <support@globus.org> 4.0.52-5
 - Fedora python3-devel dependency
 
 * Tue Mar 26 2019 Globus Toolkit <support@globus.org> 4.0.52-1
