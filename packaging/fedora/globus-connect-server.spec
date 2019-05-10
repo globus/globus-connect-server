@@ -19,7 +19,7 @@ Summary:        Globus Connect Server
 %global         globus_sdk_version  1.7.1
 %global         globus_sdk_wheel %{globus_sdk_name}-%{globus_sdk_version}-py2.py3-none-any.whl
 %if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0}  == 7
-%global         pyjwt_name  PyJWT
+%global         pyjwt_name PyJWT
 %global         pyjwt_version 1.7.1
 %global         pyjwt_wheel %{pyjwt_name}-%{pyjwt_version}-py2.py3-none-any.whl
 %endif
@@ -180,9 +180,9 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-common 
 
 # No python3 pip in el.6, so just unzip the whl to the dest dir
-unzip -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{globus_sdk_wheel}
+unzip -q -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{globus_sdk_wheel}
 %if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0}  == 7
-unzip -d ${RPM_BUILD_ROOT%{_datadir}/%{name}-common %{_sourcedir}/%{pyjwt_wheel}
+unzip -q -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{pyjwt_wheel}
 %endif
 
 %py3_install
