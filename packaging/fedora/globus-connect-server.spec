@@ -181,7 +181,7 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-common
 
 # No python3 pip in el.6, so just unzip the whl to the dest dir
 unzip -d $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{globus_sdk_wheel}
-%if %{?fedora}%{!?fedora:0} >= 28 ||  %{?rhel}%{!?rhel:0} >= 6
+%if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0}  == 7
 unzip -d ${RPM_BUILD_ROOT%{_datadir}/%{name}-common %{_sourcedir}/%{pyjwt_wheel}
 %endif
 
