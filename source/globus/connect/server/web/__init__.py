@@ -20,8 +20,10 @@ import os
 import platform
 import re
 import shutil
+import urllib.parse
 
 import globus.connect.server as gcmu
+import globus_sdk
 
 from subprocess import Popen, PIPE
 
@@ -154,9 +156,15 @@ class Web(gcmu.GCMU):
             raise Exception("Attempting to register OAuth with no MyProxy server defined")
         args = ["/usr/sbin/myproxy-oauth-setup", "-s", "-u",
                 user, "-m", myproxy_server, "-o", oauth_server]
-        if self.conf.get_go_instance() == "Test":
+        go_env = self.conf.get_go_instance().lower()
+        if go_env == 'production':
+            go_env = 'default'
+        c = globus_sdk.config.GlobusConfigParser()
+        nexus = c.get('nexus_service', environment=go_env)
+        if nexus:
+            nexus_host = urllib.parse.urlparse(nexus).netloc
             args.append("-n")
-            args.append("graph.api.test.globuscs.info")
+            args.append(nexus_host)
         self.logger.debug("executing " + " ".join(args))
         setup = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
         (out, err) = setup.communicate(self.password.encode('utf8'))

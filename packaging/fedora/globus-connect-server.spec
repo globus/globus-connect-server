@@ -1,6 +1,6 @@
 Name:           globus-connect-server
 %global         _name %(tr - _ <<< %{name})
-Version:        4.0.54
+Version:        4.0.55
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 
@@ -234,7 +234,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/globus-connect-server-web-*
 
 %changelog
-* Fri May 10 2019 Globus Toolkit <support@globus.org> 4.0.54-1
+* Fri May 10 2019 Globus Toolkit <support@globus.org> 4.0.55-1
 - Update to new Globus SDK, repackage using python3
 
 * Thu Jan 10 2019 Globus Toolkit <support@globus.org> 4.0.51-2
