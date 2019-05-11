@@ -15,7 +15,9 @@ sdk_wheel = globus_sdk-1.7.1-py2.py3-none-any.whl
 
 override_dh_auto_install:
 	mkdir -p debian/tmp/usr/share/globus-connect-server-common
-	PYTHONPATH=debian/tmp/usr/share/globus-connect-server-common  python3 -measy_install -N -x --install-dir debian/tmp/usr/share/globus-connect-server-common $(sdk_wheel)
+	cp $(sdk_wheel) debian/tmp/usr/share/globus-connect-server-common
+	cd debian/tmp/usr/share/globus-connect-server-common && \
+	    ls -1 ./*.whl > globus-connect-server-common.pth
 	dh_auto_install
 	for script in debian/tmp/usr/bin/globus*; do \
 	    sed -e '1aimport site\nsite.addsitedir("/usr/share/globus-connect-server-common")\n' -i $$script; \

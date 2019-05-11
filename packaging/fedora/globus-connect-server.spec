@@ -1,7 +1,7 @@
 Name:           globus-connect-server
 %global         _name %(tr - _ <<< %{name})
 Version:        4.0.53
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Globus Connect Server
 
 %if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0} == 7
@@ -176,12 +176,14 @@ Globus Connect Server Web
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-common 
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-common
+cp %_sourcedir/%{globus_sdk_wheel} $RPM_BUILD_ROOT%{_datadir}/%{name}-common
 
-PYTHONPATH=$RPM_BUILD_ROOT%{_datadir}/%{name}-common %{__python3} -measy_install -x -N --install-dir $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{globus_sdk_wheel}
 %if %{?rhel}%{!?rhel:0} == 6 || %{?rhel}%{!?rhel:0}  == 7
-PYTHONPATH=$RPM_BUILD_ROOT%{_datadir}/%{name}-common %{__python3} -measy_install -x -N --install-dir $RPM_BUILD_ROOT%{_datadir}/%{name}-common %_sourcedir/%{pyjwt_wheel}
+cp %_sourcedir/%{pyjwt_wheel} $RPM_BUILD_ROOT%{_datadir}/%{name}-common
 %endif
+(cd $RPM_BUILD_ROOT%{_datadir}/%{name}-common; \
+ ls -1 ./*.whl > %{name}-common.pth)
 
 %py3_install
 
@@ -233,7 +235,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/globus-connect-server-web-*
 
 %changelog
-* Fri May 10 2019 Globus Toolkit <support@globus.org> 4.0.53-1
+* Fri May 10 2019 Globus Toolkit <support@globus.org> 4.0.53-2
 - Update to new Globus SDK, repackage using python3
 
 * Thu Jan 10 2019 Globus Toolkit <support@globus.org> 4.0.51-2
