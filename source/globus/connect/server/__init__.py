@@ -192,6 +192,10 @@ def get_api(conf):
     auth_result = None
 
     go_instance = conf.get_go_instance()
+    if go_instance == 'Production':
+        go_instance = 'default'
+    else:
+        go_instance = go_instance.lower()
     
     socket.setdefaulttimeout(300)
 
@@ -200,10 +204,14 @@ def get_api(conf):
     for tries in range(0,10):
         try:
             authorizer = BasicAuthorizer(username, password)
-            nexus_client = BaseClient('nexus', authorizer=authorizer)
+            nexus_client = BaseClient(
+                'nexus',
+                environment=go_instance,
+                authorizer=authorizer)
 
             response = nexus_client.get(GOAUTH_PATH)
             access_token = response.data['access_token']
+            break
         except GlobusAPIError as e:
             if e.http_status == 403:
                 print('{}\nRetrying'.format(e.message))
@@ -216,9 +224,6 @@ def get_api(conf):
             if "timed out" not in str(e):
                 raise e
             time.sleep(30)
-
-    if go_instance == 'Production':
-        go_instance = 'default'
 
     class TransferClientWithUserNameAndPassword(TransferClient):
         def __init__(self, username=None, password=None, **kwargs):
