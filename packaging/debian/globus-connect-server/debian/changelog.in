@@ -1,3 +1,10 @@
+globus-connect-server (4.0.56-1+gt6.@distro@) @distro@; urgency=low
+
+  * Better error parsing for EC2 checks (#21)
+  * Fix python3 conversion issue reading signing policy (#22)
+
+ -- Globus Toolkit <support@globus.org>  Mon, 20 May 2019 08:09:17 -0400
+
 globus-connect-server (4.0.55-1+gt6.@distro@) @distro@; urgency=low
 
   * Update to new Globus SDK, repackage using python3

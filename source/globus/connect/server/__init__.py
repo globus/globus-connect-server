@@ -30,8 +30,8 @@ import time
 
 sys.path.append('/usr/share/globus-connect-server-common')
 
-from six.moves.urllib.request import urlopen
-from six.moves.urllib.parse import urlparse
+from urllib.request import urlopen
+from urllib.parse import urlparse
 
 from globus_sdk import (
     AccessTokenAuthorizer,
@@ -74,13 +74,15 @@ def to_unicode(data):
 def is_ec2():
     url = 'http://169.254.169.254/latest/meta-data/'
     value = None
+    response = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = _urlopen_with_retries(url).read().decode('utf8')
+        response = _urlopen_with_retries(url)
+        value = response.read().decode('utf8')
     except IOError:
         pass
 
-    if value is not None and re.search(r"404 - (File or directory )*(n|N)ot (f|F)ound", value):
+    if response is not None and response.getcode() >= 400:
         value = None
 
     return value is not None
@@ -93,13 +95,15 @@ def public_name():
     """
     url = 'http://169.254.169.254/latest/meta-data/public-hostname'
     value = None
+    response = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = _urlopen_with_retries(url).read().decode('utf8')
+        response = _urlopen_with_retries(url)
+        value = response.read().decode('utf8')
     except IOError:
         pass
 
-    if value is not None and (("404 - Not Found" in value) or value == ""):
+    if response is not None and response.getcode() >= 400:
         value = None
 
     if value is None:
@@ -115,13 +119,15 @@ def public_ip():
     url = 'http://169.254.169.254/latest/meta-data/public-ipv4'
 
     value = None
+    response = None
     try:
         socket.setdefaulttimeout(3.0)
-        value = _urlopen_with_retries(url).read().decode('utf8')
+        response = _urlopen_with_retries(url)
+        value = response.read().decode('utf8')
     except IOError:
         pass
 
-    if value is not None and "404 - Not Found" in value:
+    if response is not None and response.getcode() >= 400:
         value = None
 
     return value
@@ -437,10 +443,10 @@ class GCMU(object):
         if self.conf.get_gridftp_sharing():
             go_transfer_ca_2_cert = pkgutil.get_data(
                     "globus.connect.security",
-                    "go_transfer_ca_2.pem")
+                    "go_transfer_ca_2.pem").decode("utf8")
             go_transfer_ca_2_signing_policy = pkgutil.get_data(
                     "globus.connect.security",
-                    "go_transfer_ca_2.signing_policy")
+                    "go_transfer_ca_2.signing_policy").decode("utf8")
             globus.connect.security.install_ca(
                     certdir,
                     go_transfer_ca_2_cert,
@@ -448,7 +454,7 @@ class GCMU(object):
             intermediate_hashes = ['14396025', 'c7ab88a4']
             go_transfer_ca_2_int_signing_policy = pkgutil.get_data(
                     "globus.connect.security",
-                    "go_transfer_ca_2_int.signing_policy")
+                    "go_transfer_ca_2_int.signing_policy").decode("utf8")
             globus.connect.security.install_signing_policy(
                     go_transfer_ca_2_int_signing_policy,
                     certdir,
