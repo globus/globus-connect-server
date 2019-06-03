@@ -1,6 +1,6 @@
 Name:           globus-connect-server
 %global         _name %(tr - _ <<< %{name})
-Version:        4.0.56
+Version:        4.0.57
 Release:        1%{?dist}
 Summary:        Globus Connect Server
 
@@ -41,6 +41,7 @@ BuildRequires:  python3-rpm-macros
 
 %if %{?fedora}%{!?fedora:0} >= 28
 BuildRequires: python3-devel
+BuildRequires: python3-jwt
 %endif
 
 %if %{?suse_version}%{!?suse_version:0} >= 1315
@@ -234,6 +235,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/globus-connect-server-web-*
 
 %changelog
+* Mon Jun 03 2019 Globus Toolkit <support@globus.org> 4.0.57-1
+- Match CILogon IdP based on Organization name or Display name
+- Python 3 fix on version string in version_id
+
 * Mon May 20 2019 Globus Toolkit <support@globus.org> 4.0.56-1
 - Better error parsing for EC2 checks (#21)
 - Fix python3 conversion issue reading signing policy (#22)

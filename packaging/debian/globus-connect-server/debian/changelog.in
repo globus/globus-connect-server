@@ -1,3 +1,10 @@
+globus-connect-server (4.0.57-1+gt6.@distro@) @distro@; urgency=low
+
+  * Match CILogon IdP based on Organization name or Display name
+  * Python 3 fix on version string in version_id
+
+ -- Globus Toolkit <support@globus.org>  Mon, 20 May 2019 08:09:17 -0400
+
 globus-connect-server (4.0.56-1+gt6.@distro@) @distro@; urgency=low
 
   * Better error parsing for EC2 checks (#21)

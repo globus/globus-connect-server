@@ -157,7 +157,7 @@ class IO(gcmu.GCMU):
             dist_string = "-".join(dist_string_parts)
             version = pkgutil.get_data(
                 "globus.connect.server",
-                "version")
+                "version").decode('utf8')
             if version:
                 version = version.strip()
                 conf_file.write("version_tag GCS-%s\n" % (version))

@@ -367,6 +367,7 @@ class ConfigFile(configparser.ConfigParser):
         configparser.ConfigParser.__init__(self, defaults)
         self.root = root
         self.cilogon_dn_prefix = CILOGON_DN_PREFIX
+        self.cilogon_org_name = None
         if config_file is None:
             config_file = os.path.join("/", ConfigFile.DEFAULT_CONFIG_FILE)
         config_fp = open(config_file, "r")
@@ -410,11 +411,15 @@ class ConfigFile(configparser.ConfigParser):
                 'globus.connect.security', IDPLIST_XML_FILE)
             idplist_xml = etree.fromstring(idpdata)
             while True:
+                self.cilogon_org_name = None
                 idps = idplist_xml.findall('idp')
                 for idp in idps:
                     org = idp.find('Organization_Name')
-                    if org is not None and org.text == cilogon_idp:
+                    name = idp.find('Display_Name')
+                    if ((org is not None and org.text == cilogon_idp) or
+                           (name is not None and name.text == cilogon_idp)):
                         found = True
+                        self.cilogon_org_name = org.text
                         rands = idp.find('RandS')
                         if rands is not None and rands.text == '1':
                             valid = True
@@ -656,6 +661,8 @@ class ConfigFile(configparser.ConfigParser):
 
     def get_security_cilogon_identity_provider(self):
         cilogon_idp = None
+        if self.cilogon_org_name is not None:
+            return self.cilogon_org_name
         if self.has_option(
                 ConfigFile.SECURITY_SECTION,
                 ConfigFile.CILOGON_IDENTITY_PROVIDER_OPTION):
