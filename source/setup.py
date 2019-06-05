@@ -17,7 +17,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = "4.0.57"
+version = "4.0.58"
 
 versionfile_path = os.path.join("globus","connect","server", "version")
 oldversion = None

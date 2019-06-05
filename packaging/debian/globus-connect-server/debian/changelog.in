@@ -1,3 +1,9 @@
+globus-connect-server (4.0.58-1+gt6.@distro@) @distro@; urgency=low
+
+  * Set text=True when communicating with subprocesses in myproxy-oauth setup
+
+ -- Globus Toolkit <support@globus.org>  Wed, 05 Jun 2019 14:55:31 -0400
+
 globus-connect-server (4.0.57-1+gt6.@distro@) @distro@; urgency=low
 
   * Match CILogon IdP based on Organization name or Display name

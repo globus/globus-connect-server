@@ -166,8 +166,8 @@ class Web(gcmu.GCMU):
             args.append("-n")
             args.append(nexus_host)
         self.logger.debug("executing " + " ".join(args))
-        setup = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
-        (out, err) = setup.communicate(self.password.encode('utf8'))
+        setup = Popen(args, text=True, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+        (out, err) = setup.communicate(self.password)
         if out != "":
             self.logger.debug(out)
         if err != "":
@@ -179,6 +179,7 @@ class Web(gcmu.GCMU):
         if self.dist_type == 'deb':
             if not os.path.exists("/etc/apache2/mods-enabled/mod_ssl.load"):
                 enabler = Popen(["/usr/sbin/a2enmod","ssl"],
+                        text=True,
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = enabler.communicate()
                 if out != "":
@@ -189,7 +190,7 @@ class Web(gcmu.GCMU):
                 touched.close()
         elif self.dist_type == 'suse':
             modlist = Popen(["/sbin/yast2","http-server", "modules", "list"],
-                    stdin=None, stdout=PIPE, stderr=PIPE)
+                    text=True, stdin=None, stdout=PIPE, stderr=PIPE)
             (out, err) = modlist.communicate()
             ssl_already_enabled = False
             for l in err.split("\n"):
@@ -201,6 +202,7 @@ class Web(gcmu.GCMU):
             if not ssl_already_enabled:
                 enabler = Popen(["/sbin/yast2","http-server", "modules",
                         "enable=ssl"],
+                        text=True,
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = enabler.communicate()
                 if out != "":
@@ -222,6 +224,7 @@ class Web(gcmu.GCMU):
             if not(os.path.exists("/etc/apache2/mods-enabled/mod_wsgi.load") \
                     or os.path.exists("/etc/apache2/mods-enabled/wsgi.load")):
                 enabler = Popen(["/usr/sbin/a2enmod","wsgi"],
+                        text=True,
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = enabler.communicate()
                 if out != "":
@@ -234,6 +237,7 @@ class Web(gcmu.GCMU):
                     os.path.exists(
                     "/etc/apache2/conf-enabled/myproxy-oauth.conf"):
                 enabler = Popen(["/usr/sbin/a2enconf", "myproxy-oauth"],
+                        text=True,
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = enabler.communicate()
                 if out != "":
@@ -250,6 +254,7 @@ class Web(gcmu.GCMU):
         if self.dist_type == 'deb':
             if os.path.exists(_enabled_mod_ssl):
                 disabler = Popen(["/usr/sbin/a2dismod","ssl"],
+                        text=True,
                         stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = disabler.communicate()
                 if out != "":
@@ -260,7 +265,8 @@ class Web(gcmu.GCMU):
         elif self.dist_type == 'suse':
             if os.path.exists(_enabled_mod_ssl):
                 disabler =  Popen(["/sbin/yast2","http-server", "module",
-                        "disable=ssl"], stdin=None, stdout=PIPE, stderr=PIPE)
+                        "disable=ssl"],
+                        text=True, stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = disabler.communicate()
                 if out != "":
                     self.logger.debug(out)
@@ -277,7 +283,7 @@ class Web(gcmu.GCMU):
         if self.dist_type == 'deb':
             if os.path.exists(_enabled_mod_wsgi):
                 disabler = Popen(["/usr/sbin/a2dismod","wsgi"],
-                        stdin=None, stdout=PIPE, stderr=PIPE)
+                        text=True, stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = disabler.communicate()
                 if out != "":
                     self.logger.debug(out)
@@ -286,7 +292,7 @@ class Web(gcmu.GCMU):
                 os.remove(_enabled_mod_wsgi)
             if os.path.exists(_enabled_myproxy_oauth_conf):
                 disabler = Popen(["/usr/sbin/a2disconf", "myproxy-oauth"],
-                        stdin=None, stdout=PIPE, stderr=PIPE)
+                        text=True, stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = disabler.communicate()
                 if out != "":
                     self.logger.debug(out)
@@ -299,7 +305,7 @@ class Web(gcmu.GCMU):
         if self.dist_type == 'deb':
             if not os.path.exists("/etc/apache2/sites-enabled/default-ssl"):
                 enabler = Popen(["/usr/sbin/a2ensite","default-ssl"],
-                        stdin=None, stdout=PIPE, stderr=PIPE)
+                        text=True, stdin=None, stdout=PIPE, stderr=PIPE)
                 (stdout, stderr) = enabler.communicate()
                 touched = open(_enabled_default_ssl_site, "w")
                 touched.close()
@@ -322,7 +328,7 @@ class Web(gcmu.GCMU):
 
             if not os.path.exists(_suse_ssl_cert):
                 ssl_create = Popen(["/usr/bin/gensslcert"],
-                        stdin=None, stdout=PIPE, stderr=PIPE)
+                        text=True, stdin=None, stdout=PIPE, stderr=PIPE)
                 (out, err) = ssl_create.communicate()
                 if out != "":
                     self.logger.debug(out)
@@ -336,7 +342,7 @@ class Web(gcmu.GCMU):
         if self.dist_type == 'deb':
             if os.path.exists(_enabled_default_ssl_site):
                 disabler = Popen(["/usr/sbin/a2dissite","default-ssl"],
-                        stdin=None, stdout=PIPE, stderr=PIPE)
+                        text=True, stdin=None, stdout=PIPE, stderr=PIPE)
                 (stdout, stderr) = disabler.communicate()
                 os.remove(_enabled_default_ssl_site)
         elif self.dist_type == 'suse':
